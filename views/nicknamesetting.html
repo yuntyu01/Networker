@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>닉네임 설정 - Networker</title>
+    <link rel="stylesheet" href="../src/css/nicknamesetting.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <span class="logo">
+                <img src="../assets/logo.png" alt="Networker Logo">
+                <h1>Networker</h1>
+            </span>
+            <div class="menu">
+                <a href="#">홈</a>
+                <a href="board.html">자유게시판</a>
+                <a href="#">스토어</a>
+                <a href="#">법률지원</a>
+                <a href="#">메뉴</a>
+                <a href="#">메뉴</a>
+                <a href="#">메뉴</a>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html">로그인</a>
+                <a href="signup.html">회원가입</a>
+                <div class="profile-icon">
+                    <a href="profile.html"><img src="/assets/profile.png" alt="Profile"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="nickname-container">
+            <h2>닉네임 설정</h2>
+            <form id="nickname-form" action="#" method="post">
+                <div class="form-group">
+                    <label for="nickname">닉네임</label>
+                    <input type="text" id="nickname" name="nickname" required>
+                </div>
+                <p>※ 닉네임을 설정하면 <span style="color:red">30일간 변경할 수 없습니다.</span></p>
+                <button type="submit">닉네임 설정</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="src/js/nicknamesetting.js"></script>
+</body>
+</html>

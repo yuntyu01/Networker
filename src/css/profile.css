@@ -1,0 +1,205 @@
+/* 기본 스타일 */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    line-height: 36px;
+}
+.logo img {
+    vertical-align: middle;
+    display: inline;
+    height: 36px;
+}
+
+.logo h1 {
+    vertical-align: middle;
+    display: inline;
+    margin: 0;
+    color: #333;
+}
+
+.menu a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    position: relative;
+    padding: 10px 0px;
+}
+
+.menu a:hover {
+    color: blue;
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: blue;
+    bottom: -2px;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.menu a:hover::after {
+    transform: scaleX(1);
+}
+
+.auth-buttons a {
+    vertical-align: middle;
+    margin: 0 5px;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.auth-buttons .profile-icon {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.auth-buttons .profile-icon img {
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    border-radius: 10%;
+    border: solid 1px gray;
+}
+
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+.post-list {
+    padding: 20px;
+}
+
+.post {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 0;
+}
+
+.post h3 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.post p {
+    margin: 0;
+    color: #666;
+}
+
+.post span {
+    display: block;
+    margin-top: 10px;
+    color: #999;
+    font-size: 12px;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.profile-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-info img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.profile-info h2 {
+    margin: 10px 0;
+}
+
+.profile-info p {
+    color: #666;
+    margin: 5px 0 10px;
+}
+
+.logout-btn {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.profile-sections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.profile-sections section {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    width: calc(100% / 2 - 40px); /* Adjust the width */
+    max-width: 400px;
+}
+
+.profile-sections h3 {
+    margin-top: 0;
+}
+
+.profile-sections ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-sections ul li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.profile-sections ul li:last-child {
+    border-bottom: none;
+}
+
+.profile-sections ul li:hover {
+    background-color: #e0e0e0;
+}

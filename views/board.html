@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Networker 자유게시판</title>
+    <link rel="stylesheet" href="../src/css/board.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <span class="logo">
+                <img src="../src/assets/logo.png">
+                <h1>Networker</h1>
+            </span>
+            <div class="menu">
+                <a href="#">홈</a>
+                <a href="board.html">자유게시판</a>
+                <a href="#">스토어</a>
+                <a href="#">법률지원</a>
+                <a href="#">메뉴</a>
+                <a href="#">메뉴</a>
+                <a href="#">메뉴</a>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html">로그인</a>
+                <a href="signup.html">회원가입</a>
+                <div class="profile-icon">
+                    <a href="profile.html"><img src="../src/assets/profile.png" alt="Profile"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h2>자유게시판</h2>
+        <div id="post-list" class="post-list">
+            <!-- Posts will be loaded here dynamically -->
+        </div>
+        <button class="write-post-button" onclick="window.location.href='/write.html'">
+            <img id="pencil" src="../src/assets/pencil.png" alt="Write"> 글쓰기
+        </button>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <ul class="footer-btn">
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#" style="font-weight: bold;">개인정보처리방침</a></li>
+                <li><a href="#">문의/신고</a></li>
+                <li><a href="#">광고안내</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../src/js/board.js"></script>
+</body>
+</html>

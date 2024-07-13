@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이메일 변경 - Networker</title>
+    <link rel="stylesheet" href="src/css/emailchange.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <span class="logo">
+                <img src="/assets/logo.png" alt="Networker Logo">
+                <h1>Networker</h1>
+            </span>
+            <div class="menu">
+                <a href="#">홈</a>
+                <a href="board.html">자유게시판</a>
+                <a href="#">스토어</a>
+                <a href="#">법률지원</a>
+                <a href="#">메뉴</a>
+                <a href="#">메뉴</a>
+                <a href="#">메뉴</a>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html">로그인</a>
+                <a href="signup.html">회원가입</a>
+                <div class="profile-icon">
+                    <a href="profile.html"><img src="/assets/profile.png" alt="Profile"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="email-change-container">
+            <h2>이메일 변경</h2>
+            <form id="email-change-form" action="#" method="post">
+                <div class="form-group">
+                    <label for="email">이메일</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">계정 비밀번호</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <p>※ 반드시 본인의 이메일을 입력해주세요.<br>※ 계정 분실 시 아이디/비밀번호 찾기, 개인정보 관련 주요 고지사항 안내 등에 사용됩니다.</p>
+                <button type="submit">이메일 변경</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="src/js/emailchange.js"></script>
+</body>
+</html>

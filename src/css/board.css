@@ -1,0 +1,274 @@
+/* 기본 스타일 */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #759465;
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* 좌우 여백 추가 */
+    line-height: 36px;
+}
+
+.logo img {
+    vertical-align: middle;
+    display: inline;
+    height: 36px;
+}
+
+.logo h1 {
+    vertical-align: middle;
+    display: inline;
+    margin: 0;
+    color: white;
+}
+
+.menu a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    position: relative;
+    padding: 10px 0px;
+}
+
+.menu a:hover {
+    color: blue;
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: blue;
+    bottom: -2px;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.menu a:hover::after {
+    transform: scaleX(1);
+}
+
+.auth-buttons a {
+    vertical-align: middle;
+    margin: 0 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+.auth-buttons .profile-icon {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.auth-buttons .profile-icon img {
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    border-radius: 10%;
+    border: solid 1px white;
+}
+
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px; /* 좌우 여백 추가 */
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    color: #333;
+}
+
+.post-list {
+    padding: 20px;
+}
+
+.post {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 0;
+    transition: background-color 0.3s ease; /* 배경색 전환 효과 */
+}
+
+.post:hover {
+    background-color: #f0f0f0; /* hover시 배경색 */
+}
+
+.post h3 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.post p {
+    margin: 0;
+    color: #666;
+}
+
+.post span {
+    display: block;
+    margin-top: 10px;
+    color: #999;
+    font-size: 12px;
+}
+
+.write-post-button {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10%;
+    width: 85px;
+    height: 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.write-post-button img {
+    width: 24px;
+    height: 24px;
+    padding-right: 5px;
+}
+
+.write-post-button:hover {
+    background-color: #0056b3;
+}
+
+.comment-section {
+    margin-top: 20px;
+}
+
+.comment-list {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 20px;
+}
+
+.comment {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0;
+}
+
+.comment p {
+    margin: 0;
+    color: #666;
+}
+
+.comment-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.comment-form button {
+    align-self: flex-end;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.comment-form button:hover {
+    background-color: #0056b3;
+}
+
+.back-to-list-button {
+    display: block;
+    margin: 20px auto;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.back-to-list-button:hover {
+    background-color: #e43e3e;
+}
+
+
+/*
+
+푸터
+
+*/
+footer {
+    background-color: #565656;
+    height: 30px;
+    position: relative;
+    transform: translateY(-100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-container {
+    text-align: center;
+}
+
+.footer-btn {
+    list-style-type: none;
+    color: white;
+
+}
+
+ul.footer-btn a {
+    color: white;
+}
+
+ul.footer-btn>li {
+    float: left;
+    margin-left: 5px;
+
+}
+
+.footer-btn li::after {
+    content: "|";
+    margin-left: 5px;
+}
+
+.footer-btn li:last-child::after {
+    content: "";
+}
+
+.footer-container ul {
+    display: inline-block;
+    padding: 0;
+}
