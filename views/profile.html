@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Networker 프로필 페이지</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../src/css/profile.css">
 </head>
 <body>
     <header>
         <div class="header-content">
             <span class="logo">
-                <img src="../assets/logo.png" alt="Networker Logo">
+                <img src="../src/assets/logo.png">
                 <h1>Networker</h1>
             </span>
             <div class="menu">
-                <a href="../main/index.html">홈</a>
-                <a href="../board/index.html">자유게시판</a>
+                <a href="#">홈</a>
+                <a href="board.html">자유게시판</a>
                 <a href="#">스토어</a>
                 <a href="#">법률지원</a>
                 <a href="#">메뉴</a>
@@ -23,10 +23,10 @@
                 <a href="#">메뉴</a>
             </div>
             <div class="auth-buttons">
-                <a href="../main/index.html">로그인</a>
-                <a href="../signup/signup.html">회원가입</a>
+                <a href="login.html">로그인</a>
+                <a href="signup.html">회원가입</a>
                 <div class="profile-icon">
-                    <a href="../profile/index.html"><img src="../assets/profile.png" alt="Profile"></a>
+                    <a href="profile.html"><img src="../src/assets/profile.png" alt="Profile"></a>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
     <main>
         <div class="profile-container">
             <div class="profile-info">
-                <img src="../assets/profile.png" alt="User">
+                <img src="../src/assets/profile.png" alt="User">
                 <h2>본명 / 닉네임</h2>
                 <p>한국인</p>
                 <button class="logout-btn">로그아웃</button>
@@ -79,6 +79,17 @@
         </div>
     </main>
 
-    <script src="script.js"></script>
+    <footer>
+        <div class="footer-container">
+            <ul class="footer-btn">
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#" style="font-weight: bold;">개인정보처리방침</a></li>
+                <li><a href="#">문의/신고</a></li>
+                <li><a href="#">광고안내</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../src/js/profile.js"></script>
 </body>
 </html>
