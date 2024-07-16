@@ -3,45 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Networker</title>
+    <title>이메일 변경 - Networker</title>
     <link rel="stylesheet" href="../src/css/login.css">
-    <script src="../src/js/login.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <div class="login-section">
-            <div class="logo">
+    <header>
+        <div class="header-content">
+            <span class="logo">
                 <img src="../src/assets/logo.png" alt="Networker Logo">
+                <h1>Networker</h1>
+            </span>
+            <div class="menu">
+                <a href="#">홈</a>
+                <a href="board.html">자유게시판</a>
+                <a href="#">스토어</a>
+                <a href="#">법률지원</a>
+                <a href="#">메뉴</a>
+                <a href="#">메뉴</a>
+                <a href="#">메뉴</a>
             </div>
-            <form id="login-form" class="login-form">
-                <h2 data-i18n="login_title">로그인</h2>
+            <div class="auth-buttons">
+                <a href="login.html">로그인</a>
+                <a href="signup.html">회원가입</a>
+                <div class="profile-icon">
+                    <a href="profile.html"><img src="../src/assets/profile.png" alt="Profile"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="email-change-container">
+            <h2>로그인</h2>
+            <form id="email-change-form" action="#" method="post">
                 <div class="form-group">
-                    <label for="user-email" data-i18n="useremail_label">사용자 이메일</label>
-                    <input type="text" id="user-email" name="user-email" required>
+                    <label for="email">이메일</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="password" data-i18n="password_label">비밀번호</label>
+                    <label for="password">비밀번호</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-                <button type="submit" data-i18n="login_button">로그인</button>
+                <button type="submit">로그인</button>
                 <div class="register-link">
-                    <a href="signup.html" data-i18n="register_link">회원가입</a>
+                    <a href="signup.html">회원가입</a>
                 </div>
             </form>
         </div>
-        <div class="info-section">
-            <h1 data-i18n="welcome_message">함께하는 한국생활, Networker</h1>
-            <p data-i18n="description">Networker와 함께 여러분이 원하는 한국생활을 만들어보세요.</p>
-            <div class="language-select">
-                <label for="language" data-i18n="select_language">언어 선택:</label>
-                <select id="language" name="language">
-                    <option value="ko">한국어</option>
-                    <option value="en">English</option>
-                    <option value="zh">中文</option>
-                    <option value="ja">日本語</option>
-                </select>
-            </div>
+    </main>
+    
+    <footer>
+        <div class="footer-container">
+            <ul class="footer-btn">
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#" style="font-weight: bold;">개인정보처리방침</a></li>
+                <li><a href="#">문의/신고</a></li>
+                <li><a href="#">광고안내</a></li>
+            </ul>
         </div>
-    </div>
+    </footer>
+
+    <script src="../src/js/login.js"></script>
 </body>
 </html>

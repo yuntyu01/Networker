@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Networker 프로필 페이지</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../src/css/profile.css">
 </head>
 <body>
     <header>
         <div class="header-content">
             <span class="logo">
-                <img src="../assets/logo.png" alt="Networker Logo">
+                <img src="../src/assets/logo.png">
                 <h1>Networker</h1>
             </span>
             <div class="menu">
-                <a href="../main/index.html">홈</a>
-                <a href="../board/index.html">자유게시판</a>
+                <a href="#">홈</a>
+                <a href="board.html">자유게시판</a>
                 <a href="#">스토어</a>
                 <a href="#">법률지원</a>
                 <a href="#">메뉴</a>
@@ -23,10 +23,10 @@
                 <a href="#">메뉴</a>
             </div>
             <div class="auth-buttons">
-                <a href="../main/index.html">로그인</a>
-                <a href="../signup/signup.html">회원가입</a>
+                <a href="login.html">로그인</a>
+                <a href="signup.html">회원가입</a>
                 <div class="profile-icon">
-                    <a href="../profile/index.html"><img src="../assets/profile.png" alt="Profile"></a>
+                    <a href="profile.html"><img src="../src/assets/profile.png" alt="Profile"></a>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
     <main>
         <div class="profile-container">
             <div class="profile-info">
-                <img src="../assets/profile.png" alt="User">
+                <img src="../src/assets/profile.png" alt="User">
                 <h2>본명 / 닉네임</h2>
                 <p>한국인</p>
                 <button class="logout-btn">로그아웃</button>
@@ -44,41 +44,51 @@
                 <section>
                     <h3>계정</h3>
                     <ul>
-                        <li class="profile-link" data-url="change-id.html">아이디: abcd1234</li>
-                        <li class="profile-link" data-url="../verify/verify.html">외국인 인증</li>
-                        <li class="profile-link" data-url="../passwordchange/index.html">비밀번호 변경</li>
-                        <li class="profile-link" data-url="../emailchange/index.html">이메일 변경</li>
+                        <li class="profile-link" data-url="#">아이디: abcd1234</li>
+                        <li class="profile-link" data-url="verify.html">외국인 인증</li>
+                        <li class="profile-link" data-url="passwordchange.html">비밀번호 변경</li>
+                        <li class="profile-link" data-url="emailchange.html">이메일 변경</li>
                     </ul>
                 </section>
                 <section>
                     <h3>커뮤니티</h3>
                     <ul>
-                        <li class="profile-link" data-url="../nicknamesetting/index.html">닉네임 설정</li>
-                        <li class="profile-link" data-url="violation-history.html">이용 제재 내역</li>
-                        <li class="profile-link" data-url="community-rules.html">커뮤니티 이용규칙</li>
+                        <li class="profile-link" data-url="nicknamesetting.html">닉네임 설정</li>
+                        <li class="profile-link" data-url="#">이용 제재 내역</li>
+                        <li class="profile-link" data-url="#">커뮤니티 이용규칙</li>
                     </ul>
                 </section>
                 <section>
                     <h3>이용 안내</h3>
                     <ul>
-                        <li class="profile-link" data-url="../inquire/index.html">문의하기</li>
-                        <li class="profile-link" data-url="announcements.html">공지사항</li>
-                        <li class="profile-link" data-url="terms.html">서비스 이용약관</li>
-                        <li class="profile-link" data-url="privacy-policy.html">개인정보 처리방침</li>
-                        <li class="profile-link" data-url="youth-protection.html">청소년 보호 정책</li>
+                        <li class="profile-link" data-url="inquire.html">문의하기</li>
+                        <li class="profile-link" data-url="#">공지사항</li>
+                        <li class="profile-link" data-url="#">서비스 이용약관</li>
+                        <li class="profile-link" data-url="#">개인정보 처리방침</li>
                     </ul>
                 </section>
                 <section>
                     <h3>기타</h3>
                     <ul>
-                        <li class="profile-link" data-url="settings.html">정보동의 설정</li>
-                        <li class="profile-link" data-url="delete-account.html">회원 탈퇴</li>
+                        <li class="profile-link" data-url="#">정보동의 설정</li>
+                        <li class="profile-link" data-url="#">회원 탈퇴</li>
                     </ul>
                 </section>
             </div>
         </div>
     </main>
 
-    <script src="script.js"></script>
+    <footer>
+        <div class="footer-container">
+            <ul class="footer-btn">
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#" style="font-weight: bold;">개인정보처리방침</a></li>
+                <li><a href="#">문의/신고</a></li>
+                <li><a href="#">광고안내</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../src/js/profile.js"></script>
 </body>
 </html>
