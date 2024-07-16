@@ -68,7 +68,7 @@ header {
     vertical-align: middle;
     margin: 0 5px;
     text-decoration: none;
-    color: #333;
+    color: #fff;
     font-size: 16px;
 }
 
@@ -83,7 +83,7 @@ header {
     height: 20px;
     padding: 5px;
     border-radius: 10%;
-    border: solid 1px gray;
+    border: solid 1px #fff;
 }
 
 main {
@@ -126,13 +126,14 @@ h2 {
 .form-group input[type="checkbox"] {
     margin-right: 10px;
 }
-
+/* 파일 첨부 */
 .form-group input[type="file"] {
     padding: 10px 0;
 }
 
+/* 글쓰기 버튼 */
 button[type="submit"] {
-    background-color: #007bff;
+    background-color: #5D9CA4;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -143,7 +144,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #4c8991;
 }
 
 /*

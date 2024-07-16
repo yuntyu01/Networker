@@ -33,13 +33,15 @@
     </header>
 
     <main>
-        <h2>자유게시판</h2>
+        <div class="board-header">
+            <h2>자유게시판</h2>
+            <button class="write-post-button" onclick="window.location.href='write.html'">
+                <img id="pencil" src="../src/assets/pencil.png" alt="Write"> 글쓰기
+            </button>
+        </div>
         <div id="post-list" class="post-list">
             <!-- Posts will be loaded here dynamically -->
         </div>
-        <button class="write-post-button" onclick="window.location.href='write.html'">
-            <img id="pencil" src="../src/assets/pencil.png" alt="Write"> 글쓰기
-        </button>
     </main>
 
     <footer>

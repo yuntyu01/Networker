@@ -6,7 +6,7 @@ body {
     background-color: #f9f9f9;
 }
 
-/* 헤더*/
+/* 헤더 */
 header {
     background-color: #759465;
     padding: 20px 0;
@@ -35,7 +35,8 @@ header {
     margin: 0;
     color: white;
 }
-/* 메뉴 요소*/
+
+/* 메뉴 요소 */
 .menu a {
     margin: 0 15px;
     text-decoration: none;
@@ -45,8 +46,7 @@ header {
     padding: 10px 0px;
 }
 
-/*메뉴 hover시 효과*/
-
+/* 메뉴 hover 시 효과 */
 .menu a::after {
     content: '';
     position: absolute;
@@ -63,7 +63,7 @@ header {
     transform: scaleX(1);
 }
 
-/* 로그인, 회원가입, 프로필 버튼*/
+/* 로그인, 회원가입, 프로필 버튼 */
 .auth-buttons a {
     vertical-align: middle;
     margin: 0 5px;
@@ -86,8 +86,7 @@ header {
     border: solid 1px white;
 }
 
-/*************메인***************/
-
+/* 메인 */
 main {
     max-width: 1200px;
     margin: 20px auto;
@@ -96,14 +95,22 @@ main {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
-/* 자유게시판 타이틀 */
+
+/* 자유게시판 타이틀 및 글쓰기 버튼 */
+.board-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #759465;
+}
+
 h2 {
-    text-align: center;
-    margin-top: 20px;
-    padding-top: 20px;
+    margin: 0;
     color: #333;
 }
 
+/* 게시글 리스트 */
 .post-list {
     padding: 20px;
 }
@@ -115,7 +122,7 @@ h2 {
 }
 
 .post:hover {
-    background-color: #f0f0f0; /* 게시글 hover시 배경색 */
+    background-color: #f0f0f0; /* 게시글 hover 시 배경색 */
 }
 
 .post h3 {
@@ -135,20 +142,15 @@ h2 {
     font-size: 12px;
 }
 
+/* 글쓰기 버튼 */
 .write-post-button {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    background-color: #007bff;
+    background-color:#5D9CA4;
     color: #fff;
     border: none;
-    border-radius: 10%;
-    width: 85px;
-    height: 40px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 10px 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
     cursor: pointer;
 }
 
@@ -159,9 +161,10 @@ h2 {
 }
 
 .write-post-button:hover {
-    background-color: #0056b3;
+    background-color: #4c8991;
 }
 
+/* 댓글 섹션 */
 .comment-section {
     margin-top: 20px;
 }
@@ -195,7 +198,6 @@ h2 {
     border-radius: 5px;
 }
 
-/*글쓰기 버튼*/
 .comment-form button {
     align-self: flex-end;
     background-color: #007bff;
@@ -210,12 +212,24 @@ h2 {
     background-color: #0056b3;
 }
 
+/* 글 목록으로 돌아가기 버튼 */
+.back-to-list-button {
+    display: block;
+    margin: 20px auto;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
 
-/*
+.back-to-list-button:hover {
+    background-color: #e43e3e;
+}
 
-푸터
-
-*/
+/* 푸터 */
 footer {
     background-color: #565656;
     height: 30px;
@@ -233,17 +247,15 @@ footer {
 .footer-btn {
     list-style-type: none;
     color: white;
-
 }
 
 ul.footer-btn a {
     color: white;
 }
 
-ul.footer-btn>li {
+ul.footer-btn > li {
     float: left;
     margin-left: 5px;
-
 }
 
 .footer-btn li::after {

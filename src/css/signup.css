@@ -1,50 +1,232 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* 기본 스타일 */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #c3ecff, #e1e5ea);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
 }
 
-.container {
+/* 헤더 */
+header {
+    background-color: #759465;
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* 좌우 여백 추가 */
+    line-height: 36px;
+}
+
+.logo img {
+    vertical-align: middle;
+    display: inline;
+    height: 36px;
+}
+
+.logo h1 {
+    vertical-align: middle;
+    display: inline;
+    margin: 0;
+    color: white;
+}
+
+/* 메뉴 요소 */
+.menu a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    position: relative;
+    padding: 10px 0px;
+}
+
+/* 메뉴 hover 시 효과 */
+.menu a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    bottom: -2px;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.menu a:hover::after {
+    transform: scaleX(1);
+}
+
+/* 로그인, 회원가입, 프로필 버튼 */
+.auth-buttons a {
+    vertical-align: middle;
+    margin: 0 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+.auth-buttons .profile-icon {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.auth-buttons .profile-icon img {
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    border-radius: 10%;
+    border: solid 1px white;
+}
+
+/* 메인 */
+main {
+    max-width: 780px;
+    margin: 20px auto;
+    padding: 20px; /* 좌우 여백 추가 */
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center; /* 텍스트 가운데 정렬 */
+}
+
+/* 로그인 박스 */
+.login-container {
+    padding: 100px;
     background: rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     border-radius: 10px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.18);
-    overflow: hidden;
-    width: 80%;
-    max-width: 1200px;
-    height: 600px;
+    display: inline-block;
+    margin-top: 20px;
 }
 
-.login-section, .register-section {
-    flex: 1;
-    background: rgba(255, 255, 255, 0.15);
-    padding: 40px;
+.login-form {
+    width: 80%;
+    max-width: 300px;
+    text-align: left; /* 폼 내부 텍스트 왼쪽 정렬 */
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+    color: #000;
+    text-align: center; /* 제목 가운데 정렬 */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #000;
+}
+
+.form-group input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    color: #000;
+}
+
+button {
+    width: 83%;
+    padding: 10px;
+    background: #5D9CA4;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #4C8991;
+}
+
+.register-link {
+    margin-top: 15px;
+    margin-left: 8%;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #000;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/*
+
+푸터
+
+*/
+footer {
+    background-color: #565656;
+    height: 30px;
+    position: relative;
+    transform: translateY(-100%);
+    display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.logo img {
-    width: 150px;
-    margin-bottom: 20px;
+.footer-container {
+    text-align: center;
 }
+
+.footer-btn {
+    list-style-type: none;
+    color: white;
+
+}
+
+ul.footer-btn a {
+    color: white;
+}
+
+ul.footer-btn>li {
+    float: left;
+    margin-left: 5px;
+
+}
+
+.footer-btn li::after {
+    content: "|";
+    margin-left: 5px;
+}
+
+.footer-btn li:last-child::after {
+    content: "";
+}
+
+.footer-container ul {
+    display: inline-block;
+    padding: 0;
+}
+
+
+
 
 .login-form, .register-form {
-    width: 100%;
+    width: 80%;
     max-width: 300px;
     background: rgba(255, 255, 255, 0.3);
     padding: 30px;
@@ -71,8 +253,17 @@ body {
     color: #000;
 }
 
-.form-group input, .form-group select {
-    width: 100%;
+.form-group input{
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    color: #000;
+}
+
+.form-group select {
+    width: 83%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -81,9 +272,9 @@ body {
 }
 
 button {
-    width: 100%;
+    width: 83%;
     padding: 10px;
-    background: #e74c3c;
+    background: #5D9CA4;
     border: none;
     color: white;
     border-radius: 4px;
@@ -92,7 +283,7 @@ button {
 }
 
 button:hover {
-    background: #c0392b;
+    background: #4C8991;
 }
 
 .register-link, .login-link {
@@ -105,6 +296,10 @@ button:hover {
 .register-link a, .login-link a {
     color: #000;
     text-decoration: none;
+}
+
+.login-link a {
+    margin-left: 8%;
 }
 
 .register-link a:hover, .login-link a:hover {
