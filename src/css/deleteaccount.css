@@ -1,12 +1,12 @@
 /* 기본 스타일 */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
 }
 
-/* 헤더*/
+/* 헤더 */
 header {
     background-color: #759465;
     padding: 20px 0;
@@ -35,7 +35,8 @@ header {
     margin: 0;
     color: white;
 }
-/* 메뉴 요소*/
+
+/* 메뉴 요소 */
 .menu a {
     margin: 0 15px;
     text-decoration: none;
@@ -45,8 +46,7 @@ header {
     padding: 10px 0px;
 }
 
-/*메뉴 hover시 효과*/
-
+/* 메뉴 hover 시 효과 */
 .menu a::after {
     content: '';
     position: absolute;
@@ -63,12 +63,12 @@ header {
     transform: scaleX(1);
 }
 
-/* 로그인, 회원가입, 프로필 버튼*/
+/* 로그인, 회원가입, 프로필 버튼 */
 .auth-buttons a {
     vertical-align: middle;
     margin: 0 5px;
     text-decoration: none;
-    color: #fff;
+    color: white;
     font-size: 16px;
 }
 
@@ -83,75 +83,96 @@ header {
     height: 20px;
     padding: 5px;
     border-radius: 10%;
-    border: solid 1px #fff;
+    border: solid 1px white;
 }
 
+/* 메인 */
 main {
     max-width: 1200px;
     margin: 20px auto;
-    padding: 0 20px;
+    padding: 20px; /* 좌우 여백 추가 */
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    text-align: center; /* 텍스트 가운데 정렬 */
 }
 
-h2 {
-    text-align: center;
-    margin-top: 20px;
-    color: #333;
-}
-
-.write-container {
+/* 회원 탈퇴 박스 */
+.delete-account-container {
     padding: 20px;
+    display: inline-block;
+    margin-top: 20px;
+    max-width: 600px;
 }
 
-.form-group {
+.delete-account-container h2 {
+    color: #759465; /* 헤더 색상 */
+    font-weight: bold; /* 굵은 글씨 */
+    margin-bottom: 40px;
+}
+
+.delete-account-container p {
+    font-size: 14px;
+    color: #333;
     margin-bottom: 20px;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
+.delete-account-form {
+    text-align: center;
 }
 
-.form-group input[type="text"],
-.form-group textarea {
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.form-group input {
     width: 100%;
+    max-width: 400px; /* 최대 너비 설정 */
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    color: #000;
+    font-size: 16px;
+    margin: 20px 0px;
 }
 
-.form-group input[type="checkbox"] {
-    margin-right: 10px;
-}
-/* 파일 첨부 */
-.form-group input[type="file"] {
-    padding: 10px 0;
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
-/* 글쓰기 버튼 */
-button[type="submit"] {
-    background-color: #5D9CA4;
-    color: white;
+.confirm-button, .cancel-button {
+    width: 100px;
+    padding: 10px;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    color: white;
+    border-radius: 4px;
     cursor: pointer;
-    display: block;
-    margin: 0 auto;
+    font-size: 16px;
 }
 
-button[type="submit"]:hover {
-    background-color: #4c8991;
+.confirm-button {
+    background: #759465;
 }
 
-/*
+.confirm-button:hover {
+    background: #557247;
+}
 
-푸터
+.cancel-button {
+    background: #ccc;
+}
 
-*/
+.cancel-button:hover {
+    background: #bbb;
+}
+
+
+/* 푸터 */
 footer {
     background-color: #565656;
     height: 30px;
@@ -170,17 +191,15 @@ footer {
 .footer-btn {
     list-style-type: none;
     color: white;
-
 }
 
 ul.footer-btn a {
     color: white;
 }
 
-ul.footer-btn>li {
+ul.footer-btn > li {
     float: left;
     margin-left: 5px;
-
 }
 
 .footer-btn li::after {

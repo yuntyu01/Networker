@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이메일 변경 - Networker</title>
-    <link rel="stylesheet" href="../src/css/emailchange.css">
+    <title>회원 탈퇴 - Networker</title>
+    <link rel="stylesheet" href="../src/css/deleteaccount.css">
 </head>
 <body>
     <header>
@@ -33,23 +33,23 @@
     </header>
 
     <main>
-        <div class="email-change-container">
-            <h2>이메일 변경</h2>
-            <form id="email-change-form" action="#" method="post">
+        <div class="delete-account-container">
+            <h2>회원 탈퇴 전 다음 내용을 꼭 확인해주세요.</h2>
+            <p>회원 탈퇴 시 모든 데이터가 삭제됩니다.<br>
+               또한 90일 이내에 관리자 및 사용자 계정과 동일한 이메일로 재가입 할 수 없습니다.</p>
+            <p>계속 하시겠습니까?</p>
+            <form id="delete-account-form" class="delete-account-form">
                 <div class="form-group">
-                    <label for="email">이메일</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="password" id="password" name="password" placeholder="비밀번호를 입력해 주세요." required>
                 </div>
-                <div class="form-group">
-                    <label for="password">계정 비밀번호</label>
-                    <input type="password" id="password" name="password" required>
+                <div class="button-group">
+                    <button type="submit" class="confirm-button">확인</button>
+                    <button type="button" class="cancel-button" onclick="window.location.href='profile.html'">취소</button>
                 </div>
-                <p>※ 반드시 본인의 이메일을 입력해주세요.<br>※ 계정 분실 시 아이디/비밀번호 찾기, 개인정보 관련 주요 고지사항 안내 등에 사용됩니다.</p>
-                <button type="submit">이메일 변경</button>
             </form>
         </div>
     </main>
-    
+
     <footer>
         <div class="footer-container">
             <ul class="footer-btn">
@@ -60,7 +60,6 @@
             </ul>
         </div>
     </footer>
-
-    <script src="../src/js/emailchange.js"></script>
+    
 </body>
 </html>
