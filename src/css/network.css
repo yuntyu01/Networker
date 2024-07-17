@@ -154,7 +154,7 @@ main {
   label.left {
     left: 20px;
     background-color: white;
-    background-image: url('/Hackathon_Lion/src/assets/화살표4.png');
+    background-image: url('../assets/arrow4.png');
     background-position: center 60%;
     background-size: 170%;
     background-repeat: no-repeat;
@@ -163,7 +163,7 @@ main {
   label.right {
     right: 20px;
     background-color: white;
-    background-image: url('/Hackathon_Lion/src/assets/화살표3.png');
+    background-image: url('../assets/arrow3.png');
     background-position: center 40%;
     background-size: 170%;
     background-repeat: no-repeat;
