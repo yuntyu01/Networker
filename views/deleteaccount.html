@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 탈퇴 - Networker</title>
+    <link rel="stylesheet" href="../src/css/deleteaccount.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <span class="logo">
+                <img src="../src/assets/logo.png" alt="Networker Logo">
+                <h1>Networker</h1>
+            </span>
+            <div class="menu">
+                <a href="index.html">홈</a>
+                <a href="board.html">자유게시판</a>
+                <a href="#">스토어</a>
+                <a href="#">법률지원</a>
+                <a href="#">메뉴</a>
+                <a href="#">메뉴</a>
+                <a href="#">메뉴</a>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html">로그인</a>
+                <a href="signup.html">회원가입</a>
+                <div class="profile-icon">
+                    <a href="profile.html"><img src="../src/assets/profile.png" alt="Profile"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="delete-account-container">
+            <h2>회원 탈퇴 전 다음 내용을 꼭 확인해주세요.</h2>
+            <p>회원 탈퇴 시 모든 데이터가 삭제됩니다.<br>
+               또한 90일 이내에 관리자 및 사용자 계정과 동일한 이메일로 재가입 할 수 없습니다.</p>
+            <p>계속 하시겠습니까?</p>
+            <form id="delete-account-form" class="delete-account-form">
+                <div class="form-group">
+                    <input type="password" id="password" name="password" placeholder="비밀번호를 입력해 주세요." required>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="confirm-button">확인</button>
+                    <button type="button" class="cancel-button" onclick="window.location.href='profile.html'">취소</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

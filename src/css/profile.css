@@ -176,7 +176,7 @@ h2 {
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 15px;
-    width: calc(100% / 2 - 40px); /* Adjust the width */
+    width: calc(70%);
     max-width: 400px;
 }
 
