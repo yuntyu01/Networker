@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Networker</title>
+    <link rel="stylesheet" href="../src/css/network.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <span class="logo">
+                <img src="../src/assets/logo.png">
+                <h1>Networker</h1>
+            </span>
+            <div class="menu">
+                <a href="#">홈</a>
+                <a href="board.html">자유게시판</a>
+                <a href="#">스토어</a>
+                <a href="#">법률지원</a>
+                <a href="news.html">정보</a>
+                <a href="#">메뉴</a>
+                <a href="#">메뉴</a>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html">로그인</a>
+                <a href="signup.html">회원가입</a>
+                <div class="profile-icon">
+                    <a href="profile.html"><img src="../src/assets/profile.png" alt="Profile"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="main-banner">
+            <div class="container">
+                <div class="slidebox">
+                    <input type="radio" name="slide" id="slide01" checked>
+                    <input type="radio" name="slide" id="slide02">
+                    <input type="radio" name="slide" id="slide03">
+                    <input type="radio" name="slide" id="slide04">
+                    
+                    <ul class="slidelist">
+                      <li class="slideitem">
+                        <div>
+                          <label for="slide04" class="left"></label>
+                          <label for="slide02" class="right"></label>
+                          <a href="#"><img src="../src/assets/구인구직.png"></a>
+                        </div>
+                      </li>
+                      <li class="slideitem">
+                        <div>
+                          <label for="slide01" class="left"></label>
+                          <label for="slide03" class="right"></label>
+                          <a href="#"><img src="../src/assets/테스트.png"></a>
+                        </div>
+                      </li>
+                      <li class="slideitem">
+                        <div>
+                          <label for="slide02" class="left"></label>
+                          <label for="slide04" class="right"></label>
+                          <a href="#"><img src="../src/assets/한글.png"></a>
+                        </div>
+                      </li>
+                      <li class="slideitem">
+                        <div>
+                          <label for="slide03" class="left"></label>
+                          <label for="slide01" class="right"></label>
+                          <a href="#"><img src="../src/assets/여러가지 .png"></a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+            </div>
+        </section>
+        <div class="side-board">
+            <div class="board-header">
+                <h3>새 게시판</h3>
+                <button class="more-btn" onclick="location.href='공지사항 링크';">더보기</button>
+            </div>
+            <ul class="board-content">
+                <li>새 글</li>
+                <li>새 글 </li>
+            </ul>
+        </div>
+        <div class="board-sections">
+                <div class="board-row">
+                    <div class="board-item">
+                        <div class="board-header">
+                            <h3>공지사항</h3>
+                            <button class="more-btn" onclick="location.href='공지사항 링크';">더보기</button>
+                        </div>
+                        <ul class="board-content">
+                            <li>공지사항 글 1</li>
+                            <li>공지사항 글 2</li>
+                        </ul>
+                    </div>
+                    <div class="board-item">
+                        <div class="board-header">
+                            <h3>자유게시판</h3>
+                            <button class="more-btn" onclick="location.href='board.html';">더보기</button>
+                        </div>
+                        <ul class="board-content">
+                            <li>자유게시판 글 1</li>
+                            <li>자유게시판 글 2</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="board-row">
+                    <div class="board-item">
+                        <div class="board-header">
+                            <h3>정보</h3>
+                            <button class="more-btn" onclick="location.href='정보 링크';">더보기</button>
+                        </div>
+                        <ul class="board-content">
+                            <li>정보 글 1</li>
+                            <li>정보 글 2</li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-container">
+            <ul class="footer-btn">
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#" style="font-weight: bold;">개인정보처리방침</a></li>
+                <li><a href="#">문의/신고</a></li>
+                <li><a href="#">광고안내</a></li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+</html>
