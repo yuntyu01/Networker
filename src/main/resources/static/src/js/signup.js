@@ -20,25 +20,27 @@ document.addEventListener('DOMContentLoaded', function () {
             password: password
         };
 
-        fetch('웹서버주소', {
+        fetch('/signup', {  // 상대 경로를 사용하여 서버의 /data 엔드포인트로 요청을 보냅니다.
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(signupData)
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
+            .then(response => {
+                if (response.ok) {
+                    return response.text(); // ResponseEntity<String> 타입을 반환하므로 text() 사용
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+            })
+            .then(data => {
                 alert('회원가입이 성공적으로 완료되었습니다.');
                 window.location.href = 'login.html';
-            } else {
-                alert('회원가입에 실패했습니다. 다시 시도해주세요.');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('회원가입 중 오류가 발생했습니다.');
-        });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('회원가입 중 오류가 발생했습니다.');
+            });
     });
 });
