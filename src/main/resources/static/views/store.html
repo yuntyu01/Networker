@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b3f3cec821.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../src/css/store.css">
+    <title>네트워커</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-login">
+            <ul class="nav-btn">
+                <li><a href="#">로그인</a></li>
+                <li><a href="#">도움말</a></li>
+            </ul>
+        </div>
+        <div class="nav-container">
+            <h1 class="nav-title"><a href="./store.html">Networker</a></h1>
+            <div class="nav-menu">
+                <ul class="nav-btn">
+                    <li><a href="#">게시판</a></li>
+                    <li><a href="#">스토어</a></li>
+                    <li><a href="./lawsupport.html">법률지원</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="main-bar">
+            <div class="main-item">
+                <h2 class="main-title">스토어</h2>
+            </div>
+            <div class="main-item">
+                <form class="search-box" action="" method="get">
+                    <input class="search-text" type="text" placeholder="상품을 찾아보세요!">
+                    <button class="search-btn" type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <section class="section-container">
+            <div class="section-product">
+                <a href="#">
+                    <img class="product-info" src="../src/assets/spice.jpg" alt="spice">
+                    <div class="product-info">
+                        <p class="product-description">맛있는 향신료 세트 중국산</p>
+                        <p class="product-cost">5,000원</p>
+                    </div>
+                </a>
+                <div class="btn-set">
+                    <button class="btn-plusminus" onclick="decrease(this)"><i
+                            class="fa-solid fa-minus"></i></button>
+                    <input class="product-count" type="text" value="0">
+                    <button class="btn-plusminus" onclick="increase(this)"><i
+                            class="fa-solid fa-plus"></i></button>
+                    <button class="btn-cart" onclick="addToCart(this)"><i
+                            class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="section-product">
+                <a href="#">
+                    <img class="product-info" src="../src/assets/tea.jpg" alt="tea">
+                    <div class="product-info">
+                        <p class="product-description">맛있는 인도 홍차</p>
+                        <p class="product-cost">7,000원</p>
+                    </div>
+                </a>
+                <div class="btn-set">
+                    <button class="btn-plusminus" onclick="decrease(this)"><i
+                            class="fa-solid fa-minus"></i></button>
+                    <input class="product-count" type="text" value="0">
+                    <button class="btn-plusminus" onclick="increase(this)"><i
+                            class="fa-solid fa-plus"></i></button>
+                    <button class="btn-cart" onclick="addToCart(this)"><i
+                            class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="section-product">
+                <a href="#">
+                    <img class="product-info" src="../src/assets/tisu.jpg" alt="tisu">
+                    <div class="product-info">
+                        <p class="product-description">곽튜브가 추천하는 곽티슈</p>
+                        <p class="product-cost">10,000원</p>
+                    </div>
+                </a>
+                <div class="btn-set">
+                    <button class="btn-plusminus" onclick="decrease(this)"><i
+                            class="fa-solid fa-minus"></i></button>
+                    <input class="product-count" type="text" value="0">
+                    <button class="btn-plusminus" onclick="increase(this)"><i
+                            class="fa-solid fa-plus"></i></button>
+                    <button class="btn-cart" onclick="addToCart(this)"><i
+                            class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <ul class="footer-btn">
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#" style="font-weight: bold;">개인정보처리방침</a></li>
+                <li><a href="#">문의/신고</a></li>
+                <li><a href="#">광고안내</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="../src/js/store.js"></script>
+</body>
+
+</html>
