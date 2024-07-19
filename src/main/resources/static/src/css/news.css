@@ -177,10 +177,48 @@ main {
   font-weight: bold;
 }
 
-.footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-  margin-top: 20px;
+
+/*푸터 */
+footer {
+  background-color: #565656;
+  height: 30px;
+  position: relative;
+  transform: translateY(-100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
 }
+
+.footer-container {
+  text-align: center;
+}
+
+.footer-btn {
+  list-style-type: none;
+  color: white;
+}
+
+ul.footer-btn a {
+  color: white;
+}
+
+ul.footer-btn > li {
+  float: left;
+  margin-left: 5px;
+}
+
+.footer-btn li::after {
+  content: "|";
+  margin-left: 5px;
+}
+
+.footer-btn li:last-child::after {
+  content: "";
+}
+
+.footer-container ul {
+  display: inline-block;
+  padding: 0;
+}
+
