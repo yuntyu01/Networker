@@ -12,25 +12,26 @@ document.addEventListener('DOMContentLoaded', function () {
             password: password
         };
 
-        fetch('웹서버주소', {
+        fetch('/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(loginData)
+            body: JSON.stringify(loginData),
+            credentials: 'include'  // 이 설정을 추가하면 쿠키가 자동으로 전송됩니다.
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('로그인에 성공했습니다.');
-                window.location.href = 'profile.html';
-            } else {
-                alert('로그인에 실패했습니다. 다시 시도해주세요.');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('로그인 중 오류가 발생했습니다.');
-        });
+            .then(response => response.json())
+            .then(data => {
+                console.log('Response:', data);
+                if (data.message === "로그인이 성공적으로 완료되었습니다.") {
+                    window.location.href = 'profile.html'; // 로그인 후 리다이렉트
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('로그인 중 오류가 발생했습니다.');
+            });
     });
 });
