@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -126,8 +127,19 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
+    public ResponseEntity<Map<String, Boolean>> checkSession(HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if(user != null){
+            return ResponseEntity.ok( Map.of("loggedIn", true));
+        }else {
+            return ResponseEntity.ok( Map.of("loggedIn", false));
+        }
+    }
+
     private boolean isValidPassword(String password) {
         return password != null && password.length() >= 8;
     }
+
+
 }
 

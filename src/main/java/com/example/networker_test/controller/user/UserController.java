@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class UserController {
@@ -47,5 +48,10 @@ public class UserController {
     @GetMapping("/profile")
     public ResponseEntity<UserResponse> getUserProfile(HttpSession session) {
         return userService.getUserProfile(session);
+    }
+
+    @GetMapping("/board")
+    public ResponseEntity<Map<String, Boolean>> CheckSession(HttpSession session){
+        return userService.checkSession(session);
     }
 }
