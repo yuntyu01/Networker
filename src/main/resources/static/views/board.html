@@ -38,9 +38,27 @@
             <button class="write-post-button" onclick="window.location.href='write.html'">
                 <img id="pencil" src="../src/assets/pencil.png" alt="Write"> 글쓰기
             </button>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="검색어를 입력하세요">
+                <button id="search-button">검색</button>
+            </div>
         </div>
-        <div id="post-list" class="post-list">
-            <!-- Posts will be loaded here dynamically -->
+        <table id="post-table" class="post-table">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성일</th>
+                    <th>작성자</th>
+                    <th>조회수</th>
+                </tr>
+            </thead>
+            <tbody id="post-list">
+                <!-- Posts will be loaded here dynamically -->
+            </tbody>
+        </table>
+        <div class="pagination" id="pagination">
+            <!-- Pagination buttons will be loaded here dynamically -->
         </div>
     </main>
 
