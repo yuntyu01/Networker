@@ -20,26 +20,37 @@ document.addEventListener('DOMContentLoaded', function () {
             body: JSON.stringify(loginData),
             credentials: 'include'  // 이 설정을 추가하면 쿠키가 자동으로 전송됩니다.
         })
-            .then(response => {
-                console.log('HTTP Status:', response.status);
-                return response.json().then(data => ({ status: response.status, body: data }));
-            })
-            .then(({ status, body }) => {
-                console.log('Response:', body);
-                if (status === 200) {
-                    console.log('로그인 성공(테스트용 코드)')
-                    alert(body.message);
-                    //로그인 성공 시 프로필 페이지로 이동
-                    window.location.href = 'profile.html';
+            .then(response => response.json())
+            .then(data => {
+                console.log('Response:', data);
+                if (data.message === "로그인이 성공적으로 완료되었습니다.") {
+                    window.location.href = 'profile.html'; // 로그인 후 리다이렉트
                 } else {
-                    console.log('로그인 실패(테스트용 코드)')
-                    alert(body.message);
+                    alert(data.message);
                 }
             })
             .catch(error => {
-                console.log('로그인 에러 발생 (테스트용 코드)')
                 console.error('Error:', error);
                 alert('로그인 중 오류가 발생했습니다.');
             });
     });
+
+    const logoutButton = document.getElementById('logout-button');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', function () {
+            fetch('/logout', {
+                method: 'POST',
+                credentials: 'include'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    window.location.href = 'login.html'; // 로그아웃 후 리다이렉트
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('로그아웃 중 오류가 발생했습니다.');
+                });
+        });
+    }
 });

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 프로필 클릭시 data-url 값으로 이동
+    // 프로필 클릭 시 data-url 값으로 이동
     const profileLinks = document.querySelectorAll('.profile-link');
     profileLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -13,11 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 유저 정보 가져오기
     const fetchUserInfo = async () => {
         try {
-            const response = await fetch('/user-info', {
+            const response = await fetch('/profile', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                credentials: 'include'
             });
 
             if (response.ok) {
@@ -36,11 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const profileInfoContainer = document.querySelector('.profile-info');
         const nameElement = profileInfoContainer.querySelector('h2');
         const nationalityElement = profileInfoContainer.querySelector('p');
-        const userEmail = document.getElementById('#user-email');
+        const userEmail = document.getElementById('user-email');
 
         nameElement.textContent = `${userInfo.name} / ${userInfo.nickname}`;
         nationalityElement.textContent = `국적 : ${userInfo.nationality}`;
-
         userEmail.textContent = `아이디 : ${userInfo.email}`;
     };
 
@@ -53,7 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
-                    }
+                    },
+                    credentials: 'include'
                 });
 
                 if (response.ok) {
