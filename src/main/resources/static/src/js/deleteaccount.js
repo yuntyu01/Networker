@@ -7,8 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const password = document.getElementById('password').value;
 
         const userData = {
-            email: email,
-            nationality: nationality,
             password: password
         };
 
@@ -17,17 +15,16 @@ document.addEventListener('DOMContentLoaded', function () {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(userData)
+            body: JSON.stringify(userData),
+            credentials: 'include'  // 쿠키를 포함하여 요청
         })
         .then(response => response.json())
         .then(data => {
-            if (password == userData.password) {
+            if (data.success) {
                 alert('회원 탈퇴가 성공적으로 완료되었습니다.');
                 window.location.href = 'networker.html';
-            } else if (password != userData.password) {
-                alert('올바른 비밀번호를 입력하세요');
             } else {
-                alert('회원 탈퇴에 실패했습니다. 다시 시도해주세요.');
+                alert(data.message || '회원 탈퇴에 실패했습니다. 다시 시도해주세요.');
             }
         })
         .catch(error => {
