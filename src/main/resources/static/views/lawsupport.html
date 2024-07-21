@@ -13,10 +13,10 @@
     <header>
         <div class="header-content">
             <a href="networker.html" style="text-decoration: none;">
-            <span class="logo">
-                <img src="../src/assets/logo.png">
-                <h1>Networker</h1>
-            </span>
+                <span class="logo">
+                    <img src="../src/assets/logo.png">
+                    <h1>Networker</h1>
+                </span>
             </a>
             <div class="menu">
                 <a href="networker.html">홈</a>
@@ -36,118 +36,23 @@
     </header>
 
     <main>
-        <div class="main-bar">
-            <div class="main-item">
-                <h2 class="main-title">법률지원</h2>
-            </div>
-            <div class="main-item">
-                <form class="search-box" action="" method="get">
-                    <input class="search-text" type="text" placeholder="게시글을 찾아보세요!">
-                    <button class="search-btn" type="submit">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </form>
-            </div>
+        <table class="community">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>글쓴이</th>
+                    <th>작성일</th>
+                    <th>조회수</th>
+                    <th>추천</th>
+                </tr>
+            </thead>
+            <tbody id="post-list"></tbody>
+        </table>
+        <div class="bottom-box">
+            <div class="bottom-search-box"></div>
+            <div class="bottom-paging-box"></div>
         </div>
-        <section class="section-container">
-            <table class="table">
-                <thead>
-                    <tr class="table-container">
-                        <th class="table-item">번호</th>
-                        <th class="table-item">제목</th>
-                        <th class="table-item">글쓴이</th>
-                        <th class="table-item">작성일</th>
-                        <th class="table-item">조회</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="table-container">
-                        <th class="table-item">공지</th>
-                        <th class="table-item">체불임금 해결방법</th>
-                        <th class="table-item">운영자</th>
-                        <th class="table-item">24.01.01</th>
-                        <th class="table-item">0</th>
-                    </tr>
-                    <tr class="table-container">
-                        <th class="table-item">공지</th>
-                        <th class="table-item">국선변호사 선임</th>
-                        <th class="table-item">운영자</th>
-                        <th class="table-item">24.01.01</th>
-                        <th class="table-item">0</th>
-                    </tr>
-                    <tr class="table-container">
-                        <th class="table-item">공지</th>
-                        <th class="table-item">근로기준법 조항</th>
-                        <th class="table-item">운영자</th>
-                        <th class="table-item">24.01.01</th>
-                        <th class="table-item">0</th>
-                    </tr>
-                    <tr class="table-container">
-                        <th class="table-item">공지</th>
-                        <th class="table-item">기타 문의 방법</th>
-                        <th class="table-item">운영자</th>
-                        <th class="table-item">24.01.01</th>
-                        <th class="table-item">0</th>
-                    </tr>
-                    <tr class="table-container">
-                        <th class="table-item">공지</th>
-                        <th class="table-item">체불임금 해결방법</th>
-                        <th class="table-item">운영자</th>
-                        <th class="table-item">24.01.01</th>
-                        <th class="table-item">0</th>
-                    </tr>
-                    <tr class="table-container">
-                        <th class="table-item">공지</th>
-                        <th class="table-item">국선변호사 선임</th>
-                        <th class="table-item">운영자</th>
-                        <th class="table-item">24.01.01</th>
-                        <th class="table-item">0</th>
-                    </tr>
-                    <tr class="table-container">
-                        <th class="table-item">공지</th>
-                        <th class="table-item">근로기준법 조항</th>
-                        <th class="table-item">운영자</th>
-                        <th class="table-item">24.01.01</th>
-                        <th class="table-item">0</th>
-                    </tr>
-                    <tr class="table-container">
-                        <th class="table-item">공지</th>
-                        <th class="table-item">기타 문의 방법</th>
-                        <th class="table-item">운영자</th>
-                        <th class="table-item">24.01.01</th>
-                        <th class="table-item">0</th>
-                    </tr>
-                    <tr class="table-container">
-                        <th class="table-item">공지</th>
-                        <th class="table-item">체불임금 해결방법</th>
-                        <th class="table-item">운영자</th>
-                        <th class="table-item">24.01.01</th>
-                        <th class="table-item">0</th>
-                    </tr>
-                    <tr class="table-container">
-                        <th class="table-item">공지</th>
-                        <th class="table-item">국선변호사 선임</th>
-                        <th class="table-item">운영자</th>
-                        <th class="table-item">24.01.01</th>
-                        <th class="table-item">0</th>
-                    </tr>
-                    <tr class="table-container">
-                        <th class="table-item">공지</th>
-                        <th class="table-item">근로기준법 조항</th>
-                        <th class="table-item">운영자</th>
-                        <th class="table-item">24.01.01</th>
-                        <th class="table-item">0</th>
-                    </tr>
-                    <tr class="table-container">
-                        <th class="table-item">공지</th>
-                        <th class="table-item">기타 문의 방법</th>
-                        <th class="table-item">운영자</th>
-                        <th class="table-item">24.01.01</th>
-                        <th class="table-item">0</th>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
     </main>
 
     <footer>
