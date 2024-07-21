@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', function () {
             password: password
         };
 
-        fetch('/user', {
-            method: 'POST',
+        fetch('/delete', {
+            method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
             },

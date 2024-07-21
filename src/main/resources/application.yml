@@ -12,8 +12,3 @@ spring:
         show_sql: true
         format_sql: true
         dialect: org.hibernate.dialect.MySQL8Dialect
-server:
-  servlet:
-    session:
-      cookie:
-        name: LION

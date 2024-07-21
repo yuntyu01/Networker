@@ -4,7 +4,6 @@ public class UserCreateRequest {
     private String email;
     private String password;
     private String nationality;
-    // getters and setters
 
 
     public String getEmail() {

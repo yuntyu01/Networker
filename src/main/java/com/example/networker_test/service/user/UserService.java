@@ -55,7 +55,7 @@ public class UserService {
 
 
     @Transactional
-    public ResponseEntity<String> loginUser(UserCreateRequest request,  HttpSession session) {
+    public ResponseEntity<String> loginUser(UserCreateRequest request, HttpSession session) {
         logger.info("Received login request: email={}, password={}", request.getEmail(), request.getPassword());
 
         try {
@@ -75,7 +75,6 @@ public class UserService {
                 logger.info("Password matches for email: {}", user.getEmail());
 
                 session.setAttribute("user", user);
-
                 return ResponseEntity.ok("{\"message\": \"로그인이 성공적으로 완료되었습니다.\"}");
             }
 
@@ -87,11 +86,40 @@ public class UserService {
         }
     }
 
+    @Transactional
+    public ResponseEntity<String> logoutUser(HttpSession session) {
+        session.invalidate();
+        return ResponseEntity.ok("{\"message\": \"로그아웃이 성공적으로 완료되었습니다.\"}");
+    }
 
-
-
+    public ResponseEntity<UserResponse> getUserProfile(HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+        return ResponseEntity.ok(new UserResponse(user.getId(), user.getEmail(), user.getNationality(), user.getPassword()));
+    }
 
     @Transactional
+    public ResponseEntity<String> deleteUser(HttpSession session) {
+        User user = (User) session.getAttribute("user");
+
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("{\"message\": \"로그인이 필요합니다.\"}");
+        }
+
+        try {
+            userRepository.delete(user);
+            session.invalidate();
+            return ResponseEntity.ok("{\"message\": \"회원 탈퇴가 성공적으로 완료되었습니다.\"}");
+        } catch (Exception e) {
+            logger.error("Error occurred while deleting user", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"message\": \"회원 탈퇴 중 오류가 발생했습니다. 다시 시도해주세요.\"}");
+        }
+    }
+
+
+        @Transactional
     public List<UserResponse> getUsers() {
         return userRepository.findAll().stream()
                 .map(user -> new UserResponse(user.getId(), user.getEmail(), user.getNationality(), user.getPassword()))
