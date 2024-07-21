@@ -40,8 +40,8 @@ public class UserController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteUser(HttpSession session){
-        return userService.deleteUser(session);
+    public ResponseEntity<String> deleteUser(@RequestBody UserCreateRequest request, HttpSession session){
+        return userService.deleteUser(request, session);
     }
 
 
