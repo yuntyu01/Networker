@@ -1,9 +1,24 @@
 package com.example.networker_test.domain.user;
 
+import jakarta.persistence.*;
+
+@Entity
 public class User {
-    String email;
-    String password;
-    String nationality;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id = null;
+
+    @Column(nullable = false, length = 100)
+    private String email;
+
+    @Column(nullable = false, length = 100)
+    private String password;
+
+    @Column(nullable = false, length = 100)
+    private String nationality;
+
+    protected User(){}
 
 
     public User(String email, String password, String nationality) {
@@ -26,5 +41,9 @@ public class User {
 
     public String getNationality() {
         return nationality;
+    }
+
+    public long getId() {
+        return id;
     }
 }

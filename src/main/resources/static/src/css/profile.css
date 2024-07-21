@@ -64,20 +64,15 @@ header {
 }
 
 /* 로그인, 회원가입, 프로필 버튼*/
-.auth-buttons a {
+.profile-icon {
+    display: inline-block;
     vertical-align: middle;
     margin: 0 5px;
     text-decoration: none;
     color: #fff;
     font-size: 16px;
 }
-
-.auth-buttons .profile-icon {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.auth-buttons .profile-icon img {
+.profile-icon img {
     vertical-align: middle;
     width: 20px;
     height: 20px;
@@ -140,6 +135,7 @@ h2 {
 }
 
 .profile-info img {
+    background-color: #759465;
     width: 80px;
     height: 80px;
     border-radius: 50%;

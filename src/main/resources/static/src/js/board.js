@@ -1,38 +1,29 @@
-// 무한스크롤
 document.addEventListener('DOMContentLoaded', () => {
-    const postList = document.getElementById('post-list');
-    let page = 1;
-    const limit = 10;
+    const loginButton = document.querySelector('.auth-buttons a[href="login.html"]');
+    const signupButton = document.querySelector('.auth-buttons a[href="signup.html"]');
+    const profileIcon = document.querySelector('.auth-buttons .profile-icon');
 
-    // 더미 데이터 post 생성 및 가져오기
-    const loadPosts = async (page, limit) => {
-        // Replace this with an actual API call to fetch posts
-        const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}`);
-        const posts = await response.json();
-
-        posts.forEach(post => {
-            const postElement = document.createElement('div');
-            postElement.classList.add('post');
-            postElement.innerHTML = `
-                <h3>${post.title}</h3>
-                <p>${post.body}</p>
-                <span>${new Date().toLocaleTimeString()}</span>
-            `;
-            postElement.addEventListener('click', () => {
-                window.location.href = `post.html?postId=${post.id}`;
-            });
-            postList.appendChild(postElement);
-        });
+    // 로그인 상태 확인 함수(로그인 여부에 따라 헤더 요소 변경)
+    const checkLoginStatus = () => {
+        fetch('/board', {
+            method: 'GET',
+            credentials: 'include'
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.loggedIn) {
+                    loginButton.style.display = 'none';
+                    signupButton.style.display = 'none';
+                    profileIcon.style.display = 'inline-block';
+                } else {
+                    loginButton.style.display = 'inline-block';
+                    signupButton.style.display = 'inline-block';
+                    profileIcon.style.display = 'none';
+                }
+            })
+            .catch(error => console.error('Error:', error));
     };
 
-    const handleScroll = () => {
-        const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-        if (scrollTop + clientHeight >= scrollHeight - 5) {
-            page++;
-            loadPosts(page, limit);
-        }
-    };
-
-    loadPosts(page, limit);
-    window.addEventListener('scroll', handleScroll);
+    // 페이지 로드 시 로그인 상태 확인
+    checkLoginStatus();
 });

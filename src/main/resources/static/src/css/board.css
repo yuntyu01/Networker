@@ -6,7 +6,6 @@ body {
     background-color: #f9f9f9;
 }
 
-/* 헤더 */
 header {
     background-color: #759465;
     padding: 20px 0;
@@ -36,7 +35,6 @@ header {
     color: white;
 }
 
-/* 메뉴 요소 */
 .menu a {
     margin: 0 15px;
     text-decoration: none;
@@ -46,7 +44,6 @@ header {
     padding: 10px 0px;
 }
 
-/* 메뉴 hover 시 효과 */
 .menu a::after {
     content: '';
     position: absolute;
@@ -63,7 +60,6 @@ header {
     transform: scaleX(1);
 }
 
-/* 로그인, 회원가입, 프로필 버튼 */
 .auth-buttons a {
     vertical-align: middle;
     margin: 0 5px;
@@ -86,159 +82,123 @@ header {
     border: solid 1px white;
 }
 
-/* 메인 */
 main {
     max-width: 1200px;
     margin: 20px auto;
-    padding: 0 20px; /* 좌우 여백 추가 */
+    padding: 20px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
 
-/* 자유게시판 타이틀 및 글쓰기 버튼 */
 .board-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 20px;
-    border-bottom: 1px solid #759465;
 }
 
-h2 {
+.board-header h2 {
     margin: 0;
     color: #333;
 }
 
-/* 게시글 리스트 */
-.post-list {
-    padding: 20px;
-}
-
-.post {
-    border-bottom: 1px solid #e0e0e0;
-    padding: 15px 0;
-    transition: background-color 0.3s ease; /* 배경색 전환 효과 */
-}
-
-.post:hover {
-    background-color: #f0f0f0; /* 게시글 hover 시 배경색 */
-}
-
-.post h3 {
-    margin: 0 0 10px;
-    color: #333;
-}
-
-.post p {
-    margin: 0;
-    color: #666;
-}
-
-.post span {
-    display: block;
-    margin-top: 10px;
-    color: #999;
-    font-size: 12px;
-}
-
-/* 글쓰기 버튼 */
 .write-post-button {
-    background-color:#5D9CA4;
+    background-color: #5D9CA4;
     color: #fff;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 10px 15px;
     display: flex;
     align-items: center;
     cursor: pointer;
+    margin-left: 10px; /* 타이틀과 10px 간격 */
 }
 
 .write-post-button img {
     width: 24px;
     height: 24px;
-    padding-right: 5px;
+    margin-right: 5px;
 }
 
 .write-post-button:hover {
-    background-color: #4c8991;
+    background-color: #4C8991;
 }
 
-/* 댓글 섹션 */
-.comment-section {
-    margin-top: 20px;
-}
-
-.comment-list {
-    border-top: 1px solid #e0e0e0;
-    padding-top: 20px;
-}
-
-.comment {
-    border-bottom: 1px solid #e0e0e0;
-    padding: 10px 0;
-}
-
-.comment p {
-    margin: 0;
-    color: #666;
-}
-
-.comment-form {
-    margin-top: 20px;
+.search-box {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    margin-left: auto; /* 오른쪽 정렬 */
 }
 
-.comment-form textarea {
-    width: 100%;
+.search-box input {
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 4px 0 0 4px;
+    outline: none;
 }
 
-.comment-form button {
-    align-self: flex-end;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
+.search-box button {
     padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.comment-form button:hover {
-    background-color: #0056b3;
-}
-
-/* 글 목록으로 돌아가기 버튼 */
-.back-to-list-button {
-    display: block;
-    margin: 20px auto;
-    background-color: #ff4d4d;
+    border: none;
+    background-color: #759465;
     color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 0 4px 4px 0;
     cursor: pointer;
+}
+
+.search-box button:hover {
+    background-color: #607d3b;
+}
+
+.post-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.post-table th, .post-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
     text-align: center;
 }
 
-.back-to-list-button:hover {
-    background-color: #e43e3e;
+.post-table th {
+    background-color: #f2f2f2;
+    color: #333;
 }
 
-/* 푸터 */
+.post-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.pagination button {
+    padding: 10px 20px;
+    border: none;
+    margin: 0 5px;
+    background-color: #759465;
+    color: white;
+    cursor: pointer;
+}
+
+.pagination button:hover {
+    background-color: #607d3b;
+}
+
+/* 푸터 스타일 */
 footer {
     background-color: #565656;
     height: 30px;
+    margin-top: 50px;
     position: relative;
     transform: translateY(-100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
 }
 
 .footer-container {

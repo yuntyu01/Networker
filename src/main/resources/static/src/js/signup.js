@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     signupForm.addEventListener('submit', function (event) {
         event.preventDefault();
-
+//
         const email = document.getElementById('email').value;
         const nationality = document.getElementById('nationality').value;
         const password = document.getElementById('password').value;
@@ -20,27 +20,34 @@ document.addEventListener('DOMContentLoaded', function () {
             password: password
         };
 
-        fetch('/signup', {  // 상대 경로를 사용하여 서버의 /data 엔드포인트로 요청을 보냅니다.
+        console.log('Sending signup request', signupData);
+
+        fetch('/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(signupData)
         })
-            .then(response => {
-                if (response.ok) {
-                    return response.text(); // ResponseEntity<String> 타입을 반환하므로 text() 사용
+            .then(response => response.text().then(text => ({ status: response.status, body: text })))
+            .then(({ status, body }) => {
+                console.log('Response status:', status);
+                console.log('Response body:', body);
+
+                if (status === 200) {
+                    alert(body); // 성공 메시지를 알림
+                    window.location.href = 'login.html';
+                } else if (status === 409) {
+                    alert(body);
+                } else if (status === 400) {
+                    alert(body);
                 } else {
-                    throw new Error('Network response was not ok.');
+                    alert(body);
                 }
             })
-            .then(data => {
-                alert('회원가입이 성공적으로 완료되었습니다.');
-                window.location.href = 'login.html';
-            })
             .catch(error => {
-                console.error('Error:', error);
-                alert('회원가입 중 오류가 발생했습니다.');
+                console.error('Network Error:', error);
+                alert('회원가입 중 네트워크 오류가 발생했습니다. 다시 시도해주세요.');
             });
     });
 });
