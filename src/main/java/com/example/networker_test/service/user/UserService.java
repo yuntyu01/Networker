@@ -30,8 +30,8 @@ public class UserService {
 
     @Transactional
     public ResponseEntity<String> signupUser(UserCreateRequest request) {
-        logger.info("Received signup request: email={}, nationality={}, password={}",
-                request.getEmail(), request.getNationality(), request.getPassword());
+        logger.info("Received signup request: nickname={}, email={}, nationality={}, password={}",
+                request.getNickname(), request.getEmail(), request.getNationality(), request.getPassword());
 
         try {
 
@@ -40,11 +40,19 @@ public class UserService {
                 return ResponseEntity.status(HttpStatus.CONFLICT).body("이미 등록된 아이디입니다.");
             }
 
+            if (userRepository.findByNickname(request.getNickname()).isPresent()){
+                return ResponseEntity.status(HttpStatus.CONFLICT).body("이미 등록된 닉네임입니다.");
+            }
+
+            if (!isValidNickname(request.getNickname())) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("닉네임은 2글자 이상 10글자 이하여야 합니다.");
+            }
+
             if (!isValidPassword(request.getPassword())) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("비밀번호는 최소 8자 이상이어야 합니다.");
             }
 
-            userRepository.save(new User(request.getEmail(), request.getPassword(), request.getNationality()));
+            userRepository.save(new User(request.getNickname(), request.getEmail(), request.getPassword(), request.getNationality()));
 
             return ResponseEntity.ok("회원가입이 성공적으로 완료되었습니다.");
         } catch (Exception e) {
@@ -98,11 +106,11 @@ public class UserService {
         if (user == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
-        return ResponseEntity.ok(new UserResponse(user.getId(), user.getEmail(), user.getNationality(), user.getPassword()));
+        return ResponseEntity.ok(new UserResponse(user.getId(), user.getNickname(), user.getEmail(), user.getNationality(), user.getPassword()));
     }
 
     @Transactional
-    public ResponseEntity<String> deleteUser(HttpSession session) {
+    public ResponseEntity<String> deleteUser(UserCreateRequest request, HttpSession session) {
         User user = (User) session.getAttribute("user");
 
         if (user == null) {
@@ -110,6 +118,9 @@ public class UserService {
         }
 
         try {
+            if(!(request.getPassword().equals(user.getPassword()))){
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"message\": \"비밀번호가 틀렸습니다.\"}");
+            }
             userRepository.delete(user);
             session.invalidate();
             return ResponseEntity.ok("{\"message\": \"회원 탈퇴가 성공적으로 완료되었습니다.\"}");
@@ -123,10 +134,11 @@ public class UserService {
         @Transactional
     public List<UserResponse> getUsers() {
         return userRepository.findAll().stream()
-                .map(user -> new UserResponse(user.getId(), user.getEmail(), user.getNationality(), user.getPassword()))
+                .map(user -> new UserResponse(user.getId(), user.getNickname(), user.getEmail(), user.getNationality(), user.getPassword()))
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     public ResponseEntity<Map<String, Boolean>> checkSession(HttpSession session) {
         User user = (User) session.getAttribute("user");
         if(user != null){
@@ -138,6 +150,10 @@ public class UserService {
 
     private boolean isValidPassword(String password) {
         return password != null && password.length() >= 8;
+    }
+
+    private boolean isValidNickname(String nickname){
+        return nickname != null && nickname.length() <= 10 && nickname.length() >= 2;
     }
 
 
