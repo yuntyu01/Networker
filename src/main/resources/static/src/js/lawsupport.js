@@ -96,3 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
     loadPosts(currentPage, limit); // 첫 페이지의 게시물 로드
     createPagination(15); // 예시로 총 20페이지라고 가정하여 페이지네이션 생성
 });
+
+// 취소 버튼 누를 때 돌아감 기능
+document.getElementById('post-button').onclick = function() {
+    window.location.href = 'createpost.html';
+};

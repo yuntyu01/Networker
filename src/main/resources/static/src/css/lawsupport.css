@@ -182,6 +182,11 @@ main li {
     width: 960px;
 }
 
+.bottom-btn-box button a {
+    text-decoration-line: none;
+    color: #759465;
+}
+
 /* 검색창 및 드롭박스 디자인 */
 main form {
     background: #759465;

@@ -51,9 +51,9 @@
         </table>
         <div class="bottom-box">
             <div class="bottom-btn-box">
-                <button>전체글</button>
-                <button>추천글</button>
                 <button>글쓰기</button>
+                <button>추천글</button>
+                <button id="post-button">글쓰기</button>
             </div>
 
             <ul id="pagination"></ul>
@@ -67,9 +67,9 @@
                         <option>글쓴이</option>
                     </select>
                 </div>
-                <form>
-                    <input class="search-input" type="text">
-                    <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <form action="/URL데이터를 처리할 URL" method="get">
+                    <input class="search-input" type="text" name="query" placeholder="검색어 입력">
+                    <button class="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
         </div>
