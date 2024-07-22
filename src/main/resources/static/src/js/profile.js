@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 프로필 클릭 시 data-url 값으로 이동
+    // 메뉴 요소 클릭 시 data-url 값으로 이동
     const profileLinks = document.querySelectorAll('.profile-link');
     profileLinks.forEach(link => {
         link.addEventListener('click', () => {
