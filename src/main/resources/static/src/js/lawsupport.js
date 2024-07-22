@@ -21,6 +21,32 @@ const formatDate = (dateString) => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 로그인, 회원가입, 프로필 아이콘
+    const loginButton = document.querySelector('.auth-buttons a[href="login.html"]');
+    const signupButton = document.querySelector('.auth-buttons a[href="signup.html"]');
+    const profileIcon = document.querySelector('.auth-buttons .profile-icon');
+
+    // 로그인 상태 확인 함수(로그인 여부에 따라 헤더 요소 변경)
+    const checkLoginStatus = () => {
+        fetch('/board', {
+            method: 'GET',
+            credentials: 'include'
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.loggedIn) {
+                    loginButton.style.display = 'none';
+                    signupButton.style.display = 'none';
+                    profileIcon.style.display = 'inline-block';
+                } else {
+                    loginButton.style.display = 'inline-block';
+                    signupButton.style.display = 'inline-block';
+                    profileIcon.style.display = 'none';
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    };
+
     const postList = document.getElementById('post-list'); // 게시물을 표시할 테이블 본문 요소
     const pagination = document.getElementById('pagination'); // 페이지네이션 요소
     const limit = 50; // 한 번에 요청할 게시물 수
@@ -95,6 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // 초기 게시물 로드 및 페이지네이션 생성
     loadPosts(currentPage, limit); // 첫 페이지의 게시물 로드
     createPagination(15); // 예시로 총 20페이지라고 가정하여 페이지네이션 생성
+
+    // 페이지 로드 시 로그인 상태 확인
+    checkLoginStatus();
 });
 
 // 취소 버튼 누를 때 돌아감 기능

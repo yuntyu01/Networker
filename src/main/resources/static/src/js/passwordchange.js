@@ -1,5 +1,6 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
     const passwordForm = document.getElementById('password-form');
+    const currentPassword = document.getElementById('current-password');
     const newPassword = document.getElementById('new-password');
     const confirmPassword = document.getElementById('confirm-password');
     const passwordCriteriaError = document.getElementById('password-criteria-error');
@@ -44,22 +45,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     passwordForm.addEventListener('submit', (e) => {
-        const password = newPassword.value;
-        if (!validatePasswordCriteria(password)) {
-            e.preventDefault();
-            if (password.length < 8 || password.length > 20) {
+        e.preventDefault();
+
+        const currentPasswordValue = currentPassword.value.trim();
+        const newPasswordValue = newPassword.value.trim();
+
+        if (!validatePasswordCriteria(newPasswordValue)) {
+            if (newPasswordValue.length < 8 || newPasswordValue.length > 20) {
                 passwordCriteriaError.textContent = '8~20자 내로 입력해주세요.';
                 passwordCriteriaError.style.display = 'block';
             } else {
                 passwordCriteriaError.textContent = '영문/숫자/특수문자 중 두 가지 이상을 조합해주세요.';
                 passwordCriteriaError.style.display = 'block';
             }
+            return;
         }
 
-        if (newPassword.value !== confirmPassword.value) {
-            e.preventDefault();
+        if (newPasswordValue !== confirmPassword.value) {
             passwordMatchError.textContent = '비밀번호가 다릅니다.';
             passwordMatchError.style.display = 'block';
+            return;
         }
+
+        const passwordData = {
+            currentPassword: currentPasswordValue,
+            newPassword: newPasswordValue
+        };
+
+        fetch('/update-password', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(passwordData),
+            credentials: 'include'  // 쿠키를 포함하여 요청
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    window.location.href = 'profile.html';
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert(error.message);
+            });
     });
 });
