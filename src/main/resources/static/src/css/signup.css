@@ -72,7 +72,6 @@ header {
     font-size: 16px;
 }
 
-
 /* 메인 */
 main {
     max-width: 780px;
@@ -210,9 +209,6 @@ ul.footer-btn>li {
     padding: 0;
 }
 
-
-
-
 .login-form, .register-form {
     width: 80%;
     max-width: 300px;
@@ -241,7 +237,7 @@ ul.footer-btn>li {
     color: #000;
 }
 
-.form-group input{
+.form-group input {
     width: 80%;
     padding: 10px;
     border: 1px solid #ddd;
