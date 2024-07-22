@@ -2,9 +2,11 @@ package com.example.networker_test.domain.user;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Getter
+@Setter
 public class User {
 
     @Id
@@ -36,6 +38,5 @@ public class User {
         this.password = password;
         this.nationality = nationality;
     }
-
 
 }

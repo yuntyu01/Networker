@@ -68,7 +68,7 @@ header {
     vertical-align: middle;
     margin: 0 5px;
     text-decoration: none;
-    color: #333;
+    color: white;
     font-size: 16px;
 }
 
@@ -83,7 +83,7 @@ header {
     height: 20px;
     padding: 5px;
     border-radius: 10%;
-    border: solid 1px gray;
+    border: solid 1px white;
 }
 
 main {

@@ -18,18 +18,28 @@ document.addEventListener('DOMContentLoaded', function () {
             body: JSON.stringify(userData),
             credentials: 'include'  // 쿠키를 포함하여 요청
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('회원 탈퇴가 성공적으로 완료되었습니다.');
-                window.location.href = 'networker.html';
+        .then(response => {
+            if (response.ok) {
+                return response.json(); //data = response.json() 탈퇴 성공 시 success 값이 true
             } else {
-                alert(data.message || '회원 탈퇴에 실패했습니다. 다시 시도해주세요.');
+                return response.json().then(errorData => {
+                    throw new Error(errorData.message);
+                });
+            }
+        })
+        .then(data => {
+            console.log('Response data:', data); // 디버깅을 위한 로그
+            // 로그인 성공시 성공 메세지 띄우고 홈 화면으로 이동
+            if (data.success) {
+                alert(data.message);
+                window.location.href = 'networker.html';
+            } else { // 실패시 실패 메세지 알림
+                alert(data.message);
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('회원 탈퇴 중 오류가 발생했습니다.');
+            alert(error.message);
         });
     });
 });

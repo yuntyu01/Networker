@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 프로필 클릭 시 data-url 값으로 이동
+    // 메뉴 요소 클릭 시 data-url 값으로 이동
     const profileLinks = document.querySelectorAll('.profile-link');
     profileLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const nationalityElement = profileInfoContainer.querySelector('p');
         const userEmail = document.getElementById('user-email');
 
-        nameElement.textContent = `${userInfo.name} / ${userInfo.nickname}`;
+        nameElement.textContent = `${userInfo.nickname}`;
         nationalityElement.textContent = `국적 : ${userInfo.nationality}`;
         userEmail.textContent = `아이디 : ${userInfo.email}`;
     };
