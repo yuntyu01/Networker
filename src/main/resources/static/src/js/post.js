@@ -1,11 +1,4 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const postId = new URLSearchParams(window.location.search).get('postId');
-    const postTitle = document.getElementById('post-title');
-    const postContent = document.getElementById('post-content');
-    const commentList = document.getElementById('comment-list');
-    const commentContent = document.getElementById('comment-content');
-    const submitComment = document.getElementById('submit-comment');
-
     // 로그인, 회원가입, 프로필 아이콘
     const loginButton = document.querySelector('.auth-buttons a[href="login.html"]');
     const signupButton = document.querySelector('.auth-buttons a[href="signup.html"]');
@@ -32,57 +25,52 @@ document.addEventListener('DOMContentLoaded', async () => {
             .catch(error => console.error('Error:', error));
     };
 
-
-    // 게시글 내용 불러오기
-    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
-    const post = await response.json();
-    postTitle.textContent = post.title;
-    postContent.textContent = post.body;
-
-    // 댓글 불러오기
-    const commentResponse = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
-    const comments = await commentResponse.json();
-    comments.forEach(comment => {
-        const commentElement = document.createElement('div');
-        commentElement.classList.add('comment');
-        commentElement.innerHTML = `
-            <p><strong>${comment.email}</strong></p>
-            <p>${comment.body}</p>
-        `;
-        commentList.appendChild(commentElement);
-    });
-
-    // 댓글 작성
-    submitComment.addEventListener('click', async () => {
-        const content = commentContent.value.trim();
-        if (content === '') {
-            alert('댓글을 입력해주세요.');
-            return;
-        }
-
-        // 여기에 실제 댓글 작성 API 호출 코드를 추가하세요.
-        const newComment = {
-            postId: postId,
-            id: new Date().getTime(),
-            email: 'user@example.com',
-            body: content,
-        };
-
-        // 댓글 리스트에 추가
-        const commentElement = document.createElement('div');
-        commentElement.classList.add('comment');
-        commentElement.innerHTML = `
-            <p><strong>${newComment.email}</strong></p>
-            <p>${newComment.body}</p>
-        `;
-        commentList.appendChild(commentElement);
-
-        // 입력란 초기화
-        commentContent.value = '';
-    });
-
-
-    // 페이지 로드 시 로그인 상태 확인
+    // 로그인 상태 확인 호출
     checkLoginStatus();
 
+    // jsonplaceholder에서 postId가 1인 posts와 comments 출력 함수
+    const fetchPostsAndComments = async () => {
+        try {
+            const postsResponse = await fetch('https://jsonplaceholder.typicode.com/posts');
+            const commentsResponse = await fetch('https://jsonplaceholder.typicode.com/comments');
+
+            const posts = await postsResponse.json();
+            const comments = await commentsResponse.json();
+
+            const filteredPost = posts.find(post => post.id === 1);
+            const filteredComments = comments.filter(comment => comment.postId === 1);
+
+            const postInfoElement = document.getElementById('post-info');
+            const commentsInfoElement = document.getElementById('comments-info');
+
+            if (filteredPost) {
+                postInfoElement.innerHTML = `
+                    <p><strong>ID:</strong> ${filteredPost.userId}</p>
+                    <p><strong>Title:</strong> ${filteredPost.title}</p>
+                    <p><strong>Body:</strong> ${filteredPost.body}</p>
+                `;
+            } else {
+                postInfoElement.innerHTML = '<p>No post found with ID 1.</p>';
+            }
+
+            if (filteredComments.length > 0) {
+                commentsInfoElement.innerHTML = filteredComments.map(comment => `
+                    <div>
+                        <p><strong>Comment ID:</strong> ${comment.id}</p>
+                        <p><strong>Name:</strong> ${comment.name}</p>
+                        <p><strong>Email:</strong> ${comment.email}</p>
+                        <p><strong>Body:</strong> ${comment.body}</p>
+                    </div>
+                    <hr>
+                `).join('');
+            } else {
+                commentsInfoElement.innerHTML = '<p>No comments found for this post.</p>';
+            }
+        } catch (error) {
+            console.error('Error fetching posts and comments:', error);
+        }
+    };
+
+    // 함수 호출
+    fetchPostsAndComments();
 });

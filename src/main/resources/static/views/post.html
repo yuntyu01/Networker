@@ -33,20 +33,9 @@
     </header>
 
     <main>
-        <div class="post-container">
-            <h2 id="post-title">게시글 제목</h2>
-            <p id="post-content">게시글 내용</p>
-            <div class="comment-section">
-                <h3>댓글</h3>
-                <div id="comment-list" class="comment-list">
-                    <!-- 댓글 목록이 여기에 동적으로 로드됩니다 -->
-                </div>
-                <div class="comment-form">
-                    <textarea id="comment-content" rows="3" placeholder="댓글을 입력하세요"></textarea>
-                    <button id="submit-comment">댓글 작성</button>
-                </div>
-            </div>
-            <button class="back-to-list-button" onclick="window.location.href='../board/index.html'">글 목록</button>
+        <div id="post-details">
+            <div id="post-info"></div>
+            <div id="comments-info"></div>
         </div>
     </main>
 
