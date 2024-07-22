@@ -159,6 +159,22 @@ button:hover {
     text-decoration: underline;
 }
 
+/* 회원가입 조건, 에러 메시지 */
+p {
+    display: inline-block;
+    color: #666;
+    font-size: 12px;
+    text-align: left;
+    line-height: 1.5;
+    margin-top: 0;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
 /*
 
 푸터

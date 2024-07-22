@@ -1,20 +1,77 @@
 document.addEventListener('DOMContentLoaded', function () {
     const signupForm = document.getElementById('signup-form');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirm-password');
+    const passwordCriteriaError = document.getElementById('password-criteria-error');
+    const passwordMatchError = document.getElementById('password-match-error');
+
+    function validatePasswordCriteria(password) {
+        const lengthValid = password.length >= 8 && password.length <= 20;
+        const criteriaValid = /(?=.*[a-zA-Z])(?=.*[0-9])|(?=.*[a-zA-Z])(?=.*[!@#$%^&*])|(?=.*[0-9])(?=.*[!@#$%^&*])/.test(password);
+        return lengthValid && criteriaValid;
+    }
+
+    password.addEventListener('input', () => {
+        const pw = password.value;
+        if (pw.length < 8 || pw.length > 20) {
+            passwordCriteriaError.textContent = '8~20자 내로 입력해주세요.';
+            passwordCriteriaError.style.display = 'block';
+        } else if (!validatePasswordCriteria(pw)) {
+            passwordCriteriaError.textContent = '영문/숫자/특수문자 중 두 가지 이상을 조합해주세요.';
+            passwordCriteriaError.style.display = 'block';
+        } else {
+            passwordCriteriaError.textContent = '';
+            passwordCriteriaError.style.display = 'none';
+        }
+
+        if (password.value !== confirmPassword.value) {
+            passwordMatchError.textContent = '비밀번호가 다릅니다.';
+            passwordMatchError.style.display = 'block';
+        } else {
+            passwordMatchError.textContent = '';
+            passwordMatchError.style.display = 'none';
+        }
+    });
+
+    confirmPassword.addEventListener('input', () => {
+        if (password.value !== confirmPassword.value) {
+            passwordMatchError.textContent = '비밀번호가 다릅니다.';
+            passwordMatchError.style.display = 'block';
+        } else {
+            passwordMatchError.textContent = '';
+            passwordMatchError.style.display = 'none';
+        }
+    });
+
 
     signupForm.addEventListener('submit', function (event) {
         event.preventDefault();
-//
+
+        const nickname = document.getElementById('nickname').value;
         const email = document.getElementById('email').value;
         const nationality = document.getElementById('nationality').value;
-        const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirm-password').value;
+        const passwordValue = password.value.trim();
 
-        if (password !== confirmPassword) {
-            alert('비밀번호가 일치하지 않습니다.');
+
+        if (!validatePasswordCriteria(passwordValue)) {
+            if (passwordValue.length < 8 || passwordValue.length > 20) {
+                passwordCriteriaError.textContent = '8~20자 내로 입력해주세요.';
+                passwordCriteriaError.style.display = 'block';
+            } else {
+                passwordCriteriaError.textContent = '영문/숫자/특수문자 중 두 가지 이상을 조합해주세요.';
+                passwordCriteriaError.style.display = 'block';
+            }
+            return;
+        }
+
+        if (passwordValue !== confirmPassword.value) {
+            passwordMatchError.textContent = '비밀번호가 다릅니다.';
+            passwordMatchError.style.display = 'block';
             return;
         }
 
         const signupData = {
+            nickname: nickname,
             email: email,
             nationality: nationality,
             password: password
