@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const nationalityElement = profileInfoContainer.querySelector('p');
         const userEmail = document.getElementById('user-email');
 
-        nameElement.textContent = `${userInfo.name} / ${userInfo.nickname}`;
+        nameElement.textContent = `${userInfo.nickname}`;
         nationalityElement.textContent = `국적 : ${userInfo.nationality}`;
         userEmail.textContent = `아이디 : ${userInfo.email}`;
     };
