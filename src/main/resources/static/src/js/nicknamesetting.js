@@ -25,10 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert('닉네임이 성공적으로 변경되었습니다.');
+                alert(data.message);
                 window.location.href = 'networker.html';
             } else {
-                alert(data.message || '닉네임 변경에 실패했습니다. 다시 시도해주세요.');
+                alert(data.message);
             }
         })
         .catch(error => {

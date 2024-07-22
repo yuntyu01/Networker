@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log('Response body:', body);
 
                 if (status === 200) {
-                    alert(body); // 성공 메시지를 알림
+                    alert(body);
                     window.location.href = 'login.html';
                 } else if (status === 409) {
                     alert(body);

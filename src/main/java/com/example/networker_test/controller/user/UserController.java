@@ -44,6 +44,20 @@ public class UserController {
         return userService.deleteUser(request, session);
     }
 
+    @PostMapping("/update-nickname")
+    public ResponseEntity<String> updateNickname(@RequestBody UserCreateRequest request, HttpSession session){
+        return userService.updateNickname(request, session);
+    }
+
+    @PostMapping("/update-password")
+    public ResponseEntity<String> updatePassword(@RequestBody Map<String, String> passwordData, HttpSession session) {
+        return userService.updatePassword(passwordData, session);
+    }
+
+    @PostMapping("/update-email")
+    public ResponseEntity<String> updateEmail(@RequestBody UserCreateRequest request,HttpSession session) {
+        return userService.updateEmail(request, session);
+    }
 
     @GetMapping("/profile")
     public ResponseEntity<UserResponse> getUserProfile(HttpSession session) {
@@ -54,4 +68,6 @@ public class UserController {
     public ResponseEntity<Map<String, Boolean>> CheckSession(HttpSession session){
         return userService.checkSession(session);
     }
+
+
 }

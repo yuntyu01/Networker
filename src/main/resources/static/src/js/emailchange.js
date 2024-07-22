@@ -29,15 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert('이메일 변경이 완료되었습니다.');
+                alert(data.message);
                 window.location.href = 'profile.html';
             } else {
-                alert('이메일 변경에 실패하였습니다.');
+                alert(data.message);
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('이메일 변경 중 오류가 발생했습니다.');
+            alert(error.message);
         });
     });
 });

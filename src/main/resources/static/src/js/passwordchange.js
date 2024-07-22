@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
     const passwordForm = document.getElementById('password-form');
     const currentPassword = document.getElementById('current-password');
     const newPassword = document.getElementById('new-password');
@@ -80,18 +80,18 @@ document.addEventListener('DOMContentLoaded', () => {
             body: JSON.stringify(passwordData),
             credentials: 'include'  // 쿠키를 포함하여 요청
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('비밀번호 변경이 완료되었습니다.');
-                window.location.href = 'profile.html';
-            } else {
-                alert('비밀번호 변경에 실패하였습니다. 다시 시도해 주세요.');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('비밀번호 변경 중 오류가 발생했습니다.');
-        });
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    window.location.href = 'profile.html';
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert(error.message);
+            });
     });
 });

@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Map;
@@ -123,13 +124,93 @@ public class UserService {
             }
             userRepository.delete(user);
             session.invalidate();
-            return ResponseEntity.ok("{\"message\": \"회원 탈퇴가 성공적으로 완료되었습니다.\"}");
+            return ResponseEntity.ok("{\"success\": true, \"message\": \"회원탈퇴가 성공적으로 완료되었습니다.\"}");
         } catch (Exception e) {
             logger.error("Error occurred while deleting user", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"message\": \"회원 탈퇴 중 오류가 발생했습니다. 다시 시도해주세요.\"}");
         }
     }
 
+    @Transactional
+    public ResponseEntity<String> updateNickname(@RequestBody UserCreateRequest request, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("{\"message\": \"로그인이 필요합니다.\"}");
+        }
+
+        try {
+            if (userRepository.findByNickname(request.getNickname()).isPresent()){
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\": \"중복된 닉네임 입니다.\"}");
+            }
+
+            if (!isValidNickname(request.getNickname())) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\": \"닉네임은 2글자 이상 10글자 이하여야 합니다.\"}");
+            }
+            user.setNickname(request.getNickname());
+            userRepository.save(user);
+
+            session.setAttribute("user", user);
+            return ResponseEntity.ok("{\"success\": true, \"message\": \"성공적으로 닉네임이 변경되었습니다.\"}");
+        } catch (Exception e) {
+            logger.error("Error occurred while updating nickname", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"message\": \"닉네임 변경 중 오류가 생겼습니다.\"}");
+        }
+
+    }
+
+    @Transactional
+    public ResponseEntity<String> updatePassword(@RequestBody Map<String, String> passwordData, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("{\"message\": \"로그인이 필요합니다.\"}");
+        }
+
+        String currentPassword = passwordData.get("currentPassword");
+        String newPassword = passwordData.get("newPassword");
+
+        if (!user.getPassword().equals(currentPassword)) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\": \"현재 비밀번호가 틀렸습니다.\"}");
+        }
+
+        if (!isValidPassword(newPassword)) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\": \"비밀번호는 최소 8자 이상이어야 합니다.\"}");
+        }
+
+        user.setPassword(newPassword);
+        userRepository.save(user);
+
+        return ResponseEntity.ok("{\"success\": true, \"message\": \"비밀번호가 성공적으로 변경되었습니다.\"}");
+    }
+
+    @Transactional
+    public ResponseEntity<String> updateEmail(@RequestBody UserCreateRequest request, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("{\"message\": \"로그인이 필요합니다.\"}");
+        }
+
+        try {
+            if (!user.getPassword().equals(request.getPassword())) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\": \"비밀번호가 일치하지 않습니다.\"}");
+            }
+
+            if (userRepository.findByEmail(request.getEmail()).isPresent()) {
+                return ResponseEntity.status(HttpStatus.CONFLICT).body("{\"message\": \"이미 등록된 이메일입니다.\"}");
+            }
+
+            user.setEmail(request.getEmail());
+            userRepository.save(user);
+
+            session.setAttribute("user", user);
+            return ResponseEntity.ok("{\"success\": true, \"message\": \"이메일이 성공적으로 변경되었습니다.\"}");
+        } catch (Exception e) {
+            logger.error("Error occurred while updating email", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"message\": \"이메일 변경 중 오류가 발생했습니다.\"}");
+        }
+    }
 
         @Transactional
     public List<UserResponse> getUsers() {
@@ -148,7 +229,10 @@ public class UserService {
         }
     }
 
-    private boolean isValidPassword(String password) {
+
+
+
+        private boolean isValidPassword(String password) {
         return password != null && password.length() >= 8;
     }
 
