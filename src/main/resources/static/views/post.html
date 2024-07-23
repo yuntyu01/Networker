@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 - Networker</title>
     <link rel="stylesheet" href="../src/css/post.css">
 </head>
+
 <body>
     <header>
         <div class="header-content">
@@ -14,7 +16,7 @@
                     <img src="../src/assets/logo.png">
                     <h1>Networker</h1>
                 </span>
-                </a>
+            </a>
             <div class="menu">
                 <a href="networker.html">홈</a>
                 <a href="news.html">정보</a>
@@ -33,9 +35,26 @@
     </header>
 
     <main>
-        <div id="post-details">
-            <div id="post-info"></div>
-            <div id="comments-info"></div>
+        <div class="post" id="post-details">
+            <h2>법률지원</h2>
+            <div class="content" id="post-info"></div>
+            <div class="center-align">
+                <!-- 
+                추천 개수 표시 하려면 이부분 수정해야함.
+                <p id="recommend-count"></p> 
+                <p id="not-recommend-count"></p> 
+                -->
+                <button id="recommend" class="recommend-button" type="submit">추천</button>
+                <button id="not-recommend" class="recommend-button" type="submit">비추천</button>
+            </div>
+            <div class="comment" id="comments-info"></div>
+            <form class="comment-write">
+                <div class="user-id" id="user-info">임시 아이디</div>
+                <div class="input-container">
+                    <textarea id="comment-input" class="text-input"></textarea>
+                    <button id="comment-button" class="text-button" type="submit">작성</button>
+                </div>
+            </form>
         </div>
     </main>
 
@@ -52,4 +71,5 @@
 
     <script src="../src/js/post.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b3f3cec821.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../src/css/cart.css">
+    <title>장바구니</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <a href="networker.html" style="text-decoration: none;">
+            <span class="logo">
+                <img src="../src/assets/logo.png">
+                <h1>Networker</h1>
+            </span>
+            </a>
+            <div class="menu">
+                <a href="networker.html">홈</a>
+                <a href="news.html">정보</a>
+                <a href="board.html">자유게시판</a>
+                <a href="store.html">스토어</a>
+                <a href="lawsupport.html">법률지원</a>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html">로그인</a>
+                <a href="signup.html">회원가입</a>
+                <div class="profile-icon">
+                    <a href="profile.html"><img src="../src/assets/profile.png" alt="Profile"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="cart-container">
+            <h2 class="cart-title">장바구니</h2>
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>이미지</th>
+                        <th>상품정보</th>
+                        <th>판매가</th>
+                        <th>수량</th>
+                        <th>합계</th>
+                        <th>삭제</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Cart items will be dynamically added here -->
+                </tbody>
+            </table>
+            <div class="cart-summary">
+                <table class="summary-table">
+                    <tr>
+                        <td>총 상품금액</td>
+                        <td class="summary-amount">0원</td>
+                    </tr>
+                    <tr>
+                        <td>총 배송비</td>
+                        <td class="shipping">0원</td>
+                    </tr>
+                    <tr class="summary-total">
+                        <td>결제예정금액</td>
+                        <td class="total-amount">0원</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="clearNpay">
+                <button class="clear-btn">장바구니 비우기</button>
+                <button class="payment-btn">결제하기</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <ul class="footer-btn">
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#" style="font-weight: bold;">개인정보처리방침</a></li>
+                <li><a href="#">문의/신고</a></li>
+                <li><a href="#">광고안내</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="../src/js/cart.js"></script>
+</body>
+
+</html>

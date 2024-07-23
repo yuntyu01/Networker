@@ -1,6 +1,4 @@
-// store.js
-
-// Decrease  function
+// 수량 감소 함수
 function decrease(button) {
     var input = button.parentElement.querySelector('.product-count');
     var currentValue = parseInt(input.value);
@@ -9,16 +7,76 @@ function decrease(button) {
     }
 }
 
-// Increase  function
+// 수량 증가 함수
 function increase(button) {
     var input = button.parentElement.querySelector('.product-count');
     var currentValue = parseInt(input.value);
     input.value = currentValue + 1;
 }
 
-// Add to cart function
+// 장바구니에 추가 함수
 function addToCart(button) {
-   
+    var productElement = button.closest('.section-product');
+    var productId = productElement.getAttribute('data-id');
+    var productName = productElement.getAttribute('data-name');
+    var productPrice = parseInt(productElement.getAttribute('data-price'));
+    var productImage = productElement.querySelector('img').src;
+    var input = productElement.querySelector('.product-count');
+    var productCount = parseInt(input.value);
+    
+    if (productCount > 0) {
+        var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        var existingItem = cartItems.find(item => item.id === productId);
+        
+        if (existingItem) {
+            existingItem.count += productCount;
+        } else {
+            var cartItem = {
+                id: productId,
+                name: productName,
+                price: productPrice,
+                image: productImage,
+                count: productCount
+            };
+            cartItems.push(cartItem);
+        }
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        alert(productCount + '개의 상품이 장바구니에 추가되었습니다.');
+        input.value = 0;
+    } else {
+        alert('추가할 상품 수량을 선택해주세요.');
+    }
+}
+
+// 가격순으로 정렬하는 함수
+function sortProducts(order) {
+    const productList = document.getElementById('product-list');
+    const products = Array.from(productList.getElementsByClassName('section-product'));
+
+    products.sort((a, b) => {
+        const priceA = parseInt(a.getAttribute('data-price'));
+        const priceB = parseInt(b.getAttribute('data-price'));
+        return order === 'low' ? priceA - priceB : priceB - priceA;
+    });
+
+    products.forEach(product => productList.appendChild(product));
+}
+
+// 검색어로 상품 필터링 함수
+function filterProducts() {
+    const searchInput = document.querySelector('.search-text').value.toLowerCase();
+    const productList = document.getElementById('product-list');
+    const products = Array.from(productList.getElementsByClassName('section-product'));
+
+    products.forEach(product => {
+        const productName = product.getAttribute('data-name').toLowerCase();
+        if (productName.includes(searchInput) || searchInput === '') {
+            product.style.display = 'flex';
+        } else {
+            product.style.display = 'none';
+        }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
