@@ -1,0 +1,39 @@
+package com.example.networker_test.post;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.example.networker_test.DataNotFoundException;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class PostService {
+	
+	private final PostRepository postRepository;
+	
+	public List<Post> getList(){
+		return this.postRepository.findAll();//등록된 게시물 전체 조회
+	}
+
+	public Post getPost(Integer id) {
+		Optional<Post> post = this.postRepository.findById(id);//id 유무에 따라 페이지 연결
+		if(post.isPresent()) {
+			return post.get();//존재|해당 페이지 연결
+		}else {
+			throw new DataNotFoundException("E:POST NOT FOUND");//존재하지않는 id|404 pagenotfound 연결 및 E:POST NOT FOUND 남김(상위 디렉토리의 클래스로 연결)
+		}
+	}
+	public void create(String subject, String content) {
+		Post pos = new Post();
+		pos.setSubject(subject);
+		pos.setContent(content);
+		pos.setCreateDate(LocalDateTime.now());
+		this.postRepository.save(pos);
+	//게시물 생성 처리 연결(controller - entity)
+	}
+}
