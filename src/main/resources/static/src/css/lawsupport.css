@@ -127,6 +127,14 @@ td:nth-child(2) {
     text-align: left;
 }
 
+table a {
+    text-decoration: none;
+}
+
+table a:visited{
+    color: transparent;
+}
+
 /* 페이지 번호 양식 1페이지 2페이지 3페이지 ... */
 main ul {
     display: flex;

@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 postElement.classList.add('post'); // 'post' 클래스 추가
                 postElement.innerHTML = `
                     <td>${post.id}</td>
-                    <td>${post.title}</td>
+                    <td><a href="#" class="post-title" data-id="${post.id}">${post.title}</a></td>
                     <td>${post.userId}</td>
                     <td>${additionalData.date}</td>
                     <td>${additionalData.views}</td>
@@ -83,6 +83,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 `; // 게시물 데이터를 행 요소에 추가
                 postList.appendChild(postElement); // 행 요소를 테이블 본문에 추가
             });
+
+            // 게시물 제목 클릭 이벤트 리스너 추가
+            document.querySelectorAll('.post-title').forEach(title => {
+                title.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const postId = e.target.getAttribute('data-id');
+                    window.location.href = `post.html?id=${postId}`;
+                });
+            });
+
+            
         } catch (error) {
             console.error('Error fetching posts:', error); // 게시물 요청 중 오류 발생 시 콘솔에 로그
         }
@@ -126,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     checkLoginStatus();
 });
 
-// 취소 버튼 누를 때 돌아감 기능
-document.getElementById('post-button').onclick = function() {
+// 글쓰기 버튼 누르면 createpost로 이동함.
+document.getElementById('post-button').onclick = function () {
     window.location.href = 'createpost.html';
 };
