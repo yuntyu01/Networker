@@ -100,10 +100,12 @@ main {
     display: flex;
 }
 
+/* 게시글 폭 지정 */
 .post {
     width: 960px;
 }
 
+/* post의 내용 세로 정렬 */
 .content {
     display: flex;
     flex-direction: column;
@@ -113,38 +115,63 @@ main {
     width: 960px;
 }
 
-.content div:first-child{
+/* 상단 구분선 */
+.content div:first-child {
     border-top: 4px solid #759465;
     border-bottom: 3px solid #e9ecef;
 }
 
-.content div:last-child{
+/* 본문 최소 크기 */
+.content div:last-child {
     min-height: 640px;
 }
 
-.post-title{
+/* 게시글 제목 크기 */
+.post-title {
     font-size: 18px;
 }
 
+/* 댓글바 상단 구분선 */
 .comment {
     border-top: 4px solid #759465;
 }
 
-.comment div{
+/* 각 댓글 나열 */
+.comment div {
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: row;
 }
 
+/* 댓글 크기 조절 */
 .comment p {
     margin: 0;
     padding: 10px;
     text-align: left;
 }
-.comment-id{
+
+.comment-id {
     width: 80px;
 }
+
+/* 추천 버튼 */
+.center-align {
+    margin: 20px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.recommend-button {
+    color: white;
+    background: #759465;
+    border-color: #769900;
+    width: 82px;
+    height: 35px;
+    line-height: 31px;
+    font-weight: bold;
+}
+
 /*
 
 푸터
