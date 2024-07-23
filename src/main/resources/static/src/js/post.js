@@ -45,10 +45,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             if (filteredPost) {
                 postInfoElement.innerHTML = `
-                    <p><strong>ID:</strong> ${filteredPost.userId}</p>
-                    <p><strong>Title:</strong> ${filteredPost.title}</p>
-                    <p><strong>Body:</strong> ${filteredPost.body}</p>
-                `;
+                    <div>
+                        <p class="post-title">${filteredPost.title}</p>    
+                        <p>${filteredPost.userId}</p>
+                        
+                    </div>
+                    <div>
+                        <p>${filteredPost.body}</p>
+                    </div>
+                `; // 작성일 p 태그 추가 해야함.
             } else {
                 postInfoElement.innerHTML = '<p>No post found with ID 1.</p>';
             }
@@ -56,13 +61,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (filteredComments.length > 0) {
                 commentsInfoElement.innerHTML = filteredComments.map(comment => `
                     <div>
-                        <p><strong>Comment ID:</strong> ${comment.id}</p>
-                        <p><strong>Name:</strong> ${comment.name}</p>
-                        <p><strong>Email:</strong> ${comment.email}</p>
-                        <p><strong>Body:</strong> ${comment.body}</p>
+                        <p class="comment-id">${comment.id}</p>
+                        <p class="comment-body">${comment.body}</p>
+                        
                     </div>
                     <hr>
-                `).join('');
+                `).join(''); // 작성일 p 태그 추가 해야함.
             } else {
                 commentsInfoElement.innerHTML = '<p>No comments found for this post.</p>';
             }

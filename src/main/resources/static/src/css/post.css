@@ -19,7 +19,8 @@ header {
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px; /* 좌우 여백 추가 */
+    padding: 0 20px;
+    /* 좌우 여백 추가 */
     line-height: 36px;
 }
 
@@ -35,6 +36,7 @@ header {
     margin: 0;
     color: white;
 }
+
 /* 메뉴 요소*/
 .menu a {
     margin: 0 15px;
@@ -85,19 +87,64 @@ header {
     border-radius: 10%;
     border: solid 1px white;
 }
+
 /* main */
 main {
     max-width: 1200px;
     margin: 20px auto;
-    padding: 0 20px; /* 좌우 여백 추가 */
+    padding: 0 20px;
+    /* 좌우 여백 추가 */
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    display: flex;
 }
 
+.post {
+    width: 960px;
+}
 
+.content {
+    display: flex;
+    flex-direction: column;
+}
 
+.content div {
+    width: 960px;
+}
 
+.content div:first-child{
+    border-top: 4px solid #759465;
+    border-bottom: 3px solid #e9ecef;
+}
+
+.content div:last-child{
+    min-height: 640px;
+}
+
+.post-title{
+    font-size: 18px;
+}
+
+.comment {
+    border-top: 4px solid #759465;
+}
+
+.comment div{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.comment p {
+    margin: 0;
+    padding: 10px;
+    text-align: left;
+}
+.comment-id{
+    width: 80px;
+}
 /*
 
 푸터
