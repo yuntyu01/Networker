@@ -148,11 +148,17 @@ main {
 .comment p {
     margin: 0;
     padding: 10px;
-    text-align: left;
 }
 
 .comment-id {
-    width: 80px;
+    display: inline-block;
+    width: 160px;
+}
+
+.comment-body {
+    display: inline-block;
+    padding-left: 20px;
+    width: 800px;
 }
 
 /* 추천 버튼 */
@@ -172,6 +178,37 @@ main {
     font-weight: bold;
 }
 
+/* 댓글 */
+.comment-write {
+    display: flex;
+}
+
+.user-id {
+    width: 160px;
+}
+
+.input-container {
+    width: 800px;
+    padding-left: 20px;
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+}
+.text-input{
+    height: 80px;
+    width: 800px;
+}
+.text-button{
+    color: white;
+    background: #759465;
+    border-color: #769900;
+    width: 82px;
+    height: 35px;
+    line-height: 31px;
+    font-weight: bold;
+
+    margin-top: 20px;
+}
 /*
 
 푸터
