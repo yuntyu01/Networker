@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // 회원가입 폼
     const signupForm = document.getElementById('signup-form');
     const password = document.getElementById('password');
     const confirmPassword = document.getElementById('confirm-password');
@@ -43,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-
     signupForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const email = document.getElementById('email').value;
         const nationality = document.getElementById('nationality').value;
         const passwordValue = password.value.trim();
-
 
         if (!validatePasswordCriteria(passwordValue)) {
             if (passwordValue.length < 8 || passwordValue.length > 20) {
@@ -74,10 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
             nickname: nickname,
             email: email,
             nationality: nationality,
-            password: password
+            password: passwordValue
         };
-
-        console.log('Sending signup request', signupData);
 
         fetch('/signup', {
             method: 'POST',
@@ -88,16 +85,9 @@ document.addEventListener('DOMContentLoaded', function () {
         })
             .then(response => response.text().then(text => ({ status: response.status, body: text })))
             .then(({ status, body }) => {
-                console.log('Response status:', status);
-                console.log('Response body:', body);
-
                 if (status === 200) {
                     alert(body);
                     window.location.href = 'login.html';
-                } else if (status === 409) {
-                    alert(body);
-                } else if (status === 400) {
-                    alert(body);
                 } else {
                     alert(body);
                 }
@@ -107,4 +97,5 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert('회원가입 중 네트워크 오류가 발생했습니다. 다시 시도해주세요.');
             });
     });
+
 });

@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log('Sending data:', data);
 
-        fetch('웹서버주소', {
+        fetch('/inquiry', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
