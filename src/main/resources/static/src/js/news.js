@@ -27,3 +27,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // 페이지 로드 시 로그인 상태 확인
     checkLoginStatus();
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    // 모든 뉴스 항목의 제목과 링크를 가져옴
+    const newsItems = Array.from(document.querySelectorAll('.news-content-main, .news-content')).map(el => {
+      return {
+        title: el.querySelector('h2').innerText,
+        url: el.querySelector('a').href
+      };
+    });
+  
+    // 로컬 스토리지에 저장
+    localStorage.setItem('newsItems', JSON.stringify(newsItems));
+  });
+  
