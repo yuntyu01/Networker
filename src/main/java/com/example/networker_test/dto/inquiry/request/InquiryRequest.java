@@ -1,13 +1,12 @@
 package com.example.networker_test.dto.inquiry.request;
 
-import jakarta.persistence.Entity;
-import lombok.Getter;
-import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 public class InquiryRequest {
     private String inquiryType;
     private String content;
     private String email;
+    private MultipartFile file;
 
     public String getInquiryType() {
         return inquiryType;
@@ -31,5 +30,13 @@ public class InquiryRequest {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 }
