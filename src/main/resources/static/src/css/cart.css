@@ -366,7 +366,7 @@ main {
     cursor: pointer;
 }
 
-.order-btn:hover, .wishlist-btn:hover, .delete-btn:hover, .delete-selected-btn:hover, .clear-btn:hover, .print-btn:hover {
+.order-btn:hover, .wishlist-btn:hover, .delete-btn:hover, .delete-selected-btn:hover, .print-btn:hover {
     background: linear-gradient(145deg, #5D9CA4, #759465);
 }
 
@@ -402,7 +402,7 @@ main {
 }
 
 .summary-total {
-    color: #759465; /* Change the color to highlight the total amount */
+    color: #759465;
 }
 
 .clearNpay{
@@ -412,7 +412,7 @@ main {
 .clearNpay button{
     height: 40px;
     font-size: large;
-    background-color: #5D9CA4;
+    background-color: #759465;
     border: 1px solid rgba(117, 148, 101, 0.18);
     border-radius: 10px;
     backdrop-filter: blur(10px);
@@ -421,6 +421,10 @@ main {
     color: white;
     padding: 5px 10px;
     cursor: pointer;
+}
+
+.clearNpay button:hover{
+    background-color: #567345;
 }
 
 /* 푸터 */
