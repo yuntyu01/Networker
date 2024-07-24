@@ -1,3 +1,46 @@
+// DB에서 데이터 가져오기
+async function fetchProductData() {
+    try {
+        const response = await fetch('/웹서버주소'); // URL 조정 필요
+        const products = await response.json();
+        displayProducts(products);
+    } catch (error) {
+        console.error('Error fetching product data:', error);
+    }
+}
+
+// 데이터 기반 상품 목록 생성
+function displayProducts(products) {
+    const productList = document.getElementById('product-list');
+    productList.innerHTML = ''; // 기존 제품 목록 삭제
+
+    products.forEach(product => {
+        const productElement = document.createElement('div');
+        productElement.className = 'section-product';
+        productElement.setAttribute('data-id', product.id);
+        productElement.setAttribute('data-price', product.price);
+        productElement.setAttribute('data-name', product.name);
+
+        productElement.innerHTML = `
+            <a href="product_detail.html">
+                <img class="product-info" src="${product.image}" alt="${product.name}">
+                <div class="product-info">
+                    <p class="product-description">${product.name}</p>
+                    <p class="product-cost">${product.price.toLocaleString()}원</p>
+                </div>
+            </a>
+            <div class="btn-set">
+                <button class="btn-plusminus" onclick="decrease(this)"><i class="fa-solid fa-minus"></i></button>
+                <input class="product-count" type="text" value="0">
+                <button class="btn-plusminus" onclick="increase(this)"><i class="fa-solid fa-plus"></i></button>
+                <button class="btn-cart" onclick="addToCart(this)"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+        `;
+        
+        productList.appendChild(productElement);
+    });
+}
+
 // 수량 감소 함수
 function decrease(button) {
     var input = button.parentElement.querySelector('.product-count');
@@ -107,4 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 페이지 로드 시 로그인 상태 확인
     checkLoginStatus();
+    
+    // 상품 목록 생성하기
+    fetchProductData();
 });
