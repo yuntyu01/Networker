@@ -1,9 +1,9 @@
 //댓글
-package com.example.networker_test.comment;
+package com.example.networker_test.domain.comment;
 
 import java.time.LocalDateTime;
 
-import com.example.networker_test.post.Post;
+import com.example.networker_test.domain.post.Post;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

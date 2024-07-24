@@ -17,8 +17,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: "gmail 이름 ex) asd@gmail.com 이면 asd만 작성" "imap 설정 필요함"
-    password: "앱 비밀번호 / gmail 2차 인증 생성후 앱 비밀번호 생성 해야 함"
+    username: yuntyu01
+    password: "앱 비밀번호"
     properties:
       mail:
         smtp:

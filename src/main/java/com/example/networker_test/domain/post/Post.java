@@ -1,10 +1,10 @@
 //게시글
-package com.example.networker_test.post;
+package com.example.networker_test.domain.post;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.example.networker_test.comment.Comment;
+import com.example.networker_test.domain.comment.Comment;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

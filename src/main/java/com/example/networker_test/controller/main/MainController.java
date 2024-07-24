@@ -1,4 +1,4 @@
-package com.example.networker_test;
+package com.example.networker_test.controller.main;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

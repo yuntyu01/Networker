@@ -1,7 +1,9 @@
-package com.example.networker_test.post;
+package com.example.networker_test.controller.post;
 
 import java.util.List;
 
+import com.example.networker_test.domain.post.Post;
+import com.example.networker_test.service.post.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

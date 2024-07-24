@@ -1,7 +1,7 @@
 package com.example.networker_test.service.user;
 
 import com.example.networker_test.domain.user.User;
-import com.example.networker_test.domain.user.UserRepository;
+import com.example.networker_test.repository.user.UserRepository;
 import com.example.networker_test.dto.user.reponese.UserResponse;
 import com.example.networker_test.dto.user.request.UserCreateRequest;
 import jakarta.servlet.http.HttpSession;

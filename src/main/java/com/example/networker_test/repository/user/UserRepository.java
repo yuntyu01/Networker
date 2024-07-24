@@ -1,5 +1,6 @@
-package com.example.networker_test.domain.user;
+package com.example.networker_test.repository.user;
 
+import com.example.networker_test.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

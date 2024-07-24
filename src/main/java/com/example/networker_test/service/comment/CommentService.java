@@ -1,10 +1,12 @@
-package com.example.networker_test.comment;
+package com.example.networker_test.service.comment;
 
 import java.time.LocalDateTime;
 
+import com.example.networker_test.domain.comment.Comment;
+import com.example.networker_test.repository.comment.CommentRepository;
 import org.springframework.stereotype.Service;
 
-import com.example.networker_test.post.Post;
+import com.example.networker_test.domain.post.Post;
 
 import lombok.RequiredArgsConstructor;
 
