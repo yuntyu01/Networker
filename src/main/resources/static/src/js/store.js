@@ -1,7 +1,7 @@
 // DB에서 데이터 가져오기
 async function fetchProductData() {
     try {
-        const response = await fetch('/웹서버주소'); // URL 조정 필요
+        const response = await fetch('/store'); // URL 조정 필요
         const products = await response.json();
         displayProducts(products);
     } catch (error) {

@@ -1,12 +1,14 @@
-package com.example.networker_test.post;
+package com.example.networker_test.service.post;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.networker_test.domain.post.Post;
+import com.example.networker_test.repository.post.PostRepository;
 import org.springframework.stereotype.Service;
 
-import com.example.networker_test.DataNotFoundException;
+import com.example.networker_test.exception.DataNotFoundException;
 
 import lombok.RequiredArgsConstructor;
 
