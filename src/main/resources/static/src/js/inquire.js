@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const privacyConsentInput = document.getElementById('privacy-consent');
     const inquiryTypeSelect = document.getElementById('inquiry-type');
     const emailInput = document.getElementById('email');
+    const fileInput = document.getElementById('file');  // 파일 입력 요소
 
     // 로그인, 회원가입, 프로필
     const loginButton = document.querySelector('.auth-buttons a[href="login.html"]');
@@ -49,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const content = contentInput.value.trim();
         const email = emailInput.value.trim();
         const privacyConsent = privacyConsentInput.checked;
+        const file = fileInput.files[0];
 
         if (content === '') {
             alert('문의 내용을 입력해주세요.');
@@ -60,20 +62,19 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const data = {
-            inquiryType: inquiryType,
-            content: content,
-            email: email
-        };
+        const formData = new FormData();
+        formData.append('inquiryType', inquiryType);
+        formData.append('content', content);
+        formData.append('email', email);
+        if (file) {
+            formData.append('file', file);
+        }
 
-        console.log('Sending data:', data);
+        console.log('Sending data:', formData);
 
         fetch('/inquiry', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data),
+            body: formData,
             mode: 'cors'
         })
         .then(response => {
@@ -95,5 +96,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 페이지 로드 시 로그인 상태 확인
-    checkLoginStatus()
+    checkLoginStatus();
 });
