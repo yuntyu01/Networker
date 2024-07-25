@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const shipping = 3900; // Assuming fixed shipping cost
         const finalTotal = total + shipping;
         
-        // Update the summary table
+        // 예상 결제 금액 출력
         document.querySelector('.summary-amount').innerText = `${total}원`;
         document.querySelector('.shipping').textContent = `${shipping}원`;
         document.querySelector('.total-amount').textContent = `${finalTotal}원`;
