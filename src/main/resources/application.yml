@@ -25,12 +25,12 @@ spring:
           auth: true
           starttls:
             enable: true
-#pull내용 유지
+
   thymeleaf:
-    prefix: classpath:/static/views
+    prefix: classpath:/templates/
     suffix: .html
     cache: false  
     mode: html
-    encoding: UTF-8
-    servlet:
-      content-type: text/html
+    #encoding: UTF-8
+    #servlet:
+    #  content-type: text/html

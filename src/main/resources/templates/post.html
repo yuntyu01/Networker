@@ -37,8 +37,10 @@
     <main>
         <div class="post" id="post-details">
             <h2>법률지원</h2>
-            <div class="content" id="post-info"></div>
-            <div class="center-align">
+            <div class="content" id="post-info">
+				<h1 th:text="${post.subject}"></h1>
+			</div>
+            <div class="center-align" th:text="${question.content}">				
                 <!-- 
                 추천 개수 표시 하려면 이부분 수정해야함.
                 <p id="recommend-count"></p> 
@@ -47,11 +49,17 @@
                 <button id="recommend" class="recommend-button" type="submit">추천</button>
                 <button id="not-recommend" class="recommend-button" type="submit">비추천</button>
             </div>
-            <div class="comment" id="comments-info"></div>
-            <form class="comment-write">
+			<h5 th:text="|댓글 ${#lists.size(post.commentList)}개|"></h5>
+            <div class="comment" id="comments-info">
+				<ul>
+					<li th:each="comment : ${post.commentList}" th:text="${comment.content}"></li>
+				</ul>
+			</div>
+            <form class="comment-write" th:action="@{|/comment/create/${question.id}|}" method="post">
                 <div class="user-id" id="user-info">임시 아이디</div>
                 <div class="input-container">
-                    <textarea id="comment-input" class="text-input"></textarea>
+                    <textarea name="content" id="comment-input" class="text-input"></textarea>
+					<input type="submit" value="작성">
                     <button id="comment-button" class="text-button" type="submit">작성</button>
                 </div>
             </form>
