@@ -4,14 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const privacyConsentInput = document.getElementById('privacy-consent');
     const inquiryTypeSelect = document.getElementById('inquiry-type');
     const emailInput = document.getElementById('email');
-    const fileInput = document.getElementById('file');  // 파일 입력 요소
+    const fileInput = document.getElementById('file');
 
-    // 로그인, 회원가입, 프로필
     const loginButton = document.querySelector('.auth-buttons a[href="login.html"]');
     const signupButton = document.querySelector('.auth-buttons a[href="signup.html"]');
     const profileIcon = document.querySelector('.auth-buttons .profile-icon');
-    
-    // 로그인 상태 확인 함수(로그인 여부에 따라 헤더 요소 변경)
+
     const checkLoginStatus = () => {
         fetch('/board', {
             method: 'GET',
@@ -32,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error:', error));
     };
 
-    // 문의 종류별 내용 변화
     inquiryTypeSelect.addEventListener('change', () => {
         if (inquiryTypeSelect.value === 'advertisement') {
             contentInput.value = "1. 캠페인 내용\n2. 기간\n3. 예산";
@@ -41,8 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-
-    // 문의 내용 백엔드로 전달
     inquiryForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -62,39 +57,43 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        const maxFileSize = 15 * 1024 * 1024;
+        if (file && file.size > maxFileSize) {
+            alert('첨부 파일의 크기는 15MB를 초과할 수 없습니다.');
+            return;
+        }
+
         const formData = new FormData();
-        formData.append('inquiryType', inquiryType);
-        formData.append('content', content);
-        formData.append('email', email);
+        formData.append('inquiryRequest', new Blob([JSON.stringify({
+            inquiryType: inquiryType,
+            content: content,
+            email: email
+        })], {type: 'application/json'}));
         if (file) {
             formData.append('file', file);
         }
 
-        console.log('Sending data:', formData);
-
         fetch('/inquiry', {
             method: 'POST',
             body: formData,
+            credentials: 'include',
             mode: 'cors'
         })
-        .then(response => {
-            console.log('Response:', response);
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();
-        })
-        .then(response => {
-            console.log('Response:', response);
-            alert('문의가 성공적으로 접수되었습니다.');
-            inquiryForm.reset();
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('문의 접수 중 오류가 발생했습니다.');
-        });
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(response => {
+                alert('문의가 성공적으로 접수되었습니다.');
+                inquiryForm.reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('문의 접수 중 오류가 발생했습니다.');
+            });
     });
 
-    // 페이지 로드 시 로그인 상태 확인
     checkLoginStatus();
 });
