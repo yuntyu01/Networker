@@ -78,4 +78,58 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     */
 
+    // 결제하기 버튼 클릭 시 결제 정보 웹서버에 전달 -> 결제 모듈 연결 후 결제 성공 시 실행되도록 코드 수정 예정
+    const orderForm = document.getElementById('order-form');
+    orderForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // 주문자 정보
+        const orderInfo = {
+            orderName: document.getElementById('order-name').value,
+            email: document.getElementById('email').value,
+            mobile: `${document.getElementById('mobile-prefix').value}-${document.getElementById('mobile-middle').value}-${document.getElementById('mobile-last').value}`,
+        };
+        // 배송 정보
+        const shippingInfo = {
+            receiver: document.getElementById('receiver').value,
+            postcode: document.getElementById('postcode').value,
+            address: document.getElementById('address').value,
+            addressDetail: document.getElementById('address-detail').value,
+            mobile: `${document.getElementById('mobile-prefix2').value}-${document.getElementById('mobile-middle2').value}-${document.getElementById('mobile-last2').value}`,
+        };
+        // 결제 금액 정보
+        const paymentInfo = {
+            totalAmount: totalAmount,
+            shippingFee: shippingFee,
+            finalAmount: finalAmount
+        };
+        
+        // 최종 결제 정보 데이터
+        const orderData = {
+            orderInfo: orderInfo,
+            shippingInfo: shippingInfo,
+            cartItems: cartItems,   // 주문한 상품 정보
+            paymentInfo: paymentInfo
+        };
+
+        fetch('/api/order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('결제가 성공적으로 완료되었습니다.');
+                // 결제 성공 후 주문 정보 확인 페이지(07.25.미구현상태)로 리디렉션하기
+            } else {
+                alert('결제 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('결제 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
+        });
+    });
 });
