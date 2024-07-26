@@ -62,9 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const shippingFee = 4000; // 배송비
     const finalAmount = totalAmount + shippingFee;
 
-    getElementById('total-amount').textContent = `${totalAmount}원`;
-    getElementById('shipping-fee').textContent = `+${shippingFee}원`;
-    getElementById('final-amount').textContent = `${finalAmount}원`;
+    document.getElementById('total-amount').textContent = `${totalAmount} 원`;
+    document.getElementById('shipping-fee').textContent = `+ ${shippingFee} 원`;
+    document.getElementById('final-amount').textContent = `${finalAmount} 원`;
 
     /*
     const paymentInfoSection = document.querySelector('.payment-info-section');    
