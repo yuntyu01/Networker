@@ -122,6 +122,9 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             if (data.success) {
                 alert('결제가 성공적으로 완료되었습니다.');
+                // 로컬 스토리지 장바구니 데이터 삭제
+                localStorage.removeItem('cartItems');
+                location.reload();
                 // 결제 성공 후 주문 정보 확인 페이지(07.25.미구현상태)로 리디렉션하기
             } else {
                 alert('결제 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
