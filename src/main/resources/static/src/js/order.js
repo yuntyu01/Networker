@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const profileIcon = document.querySelector('.auth-buttons .profile-icon');
 
     // 로그인 상태 확인 함수(로그인 여부에 따라 헤더 요소 변경)
+
+    let userEmail = '';
+
     const checkLoginStatus = () => {
         fetch('/board', {
             method: 'GET',
@@ -15,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     loginButton.style.display = 'none';
                     signupButton.style.display = 'none';
                     profileIcon.style.display = 'inline-block';
+                    // 유저 이메일(아이디) 저장
+                    userEmail = data.userEmail;
                 } else {
                     loginButton.style.display = 'inline-block';
                     signupButton.style.display = 'inline-block';
@@ -62,9 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const shippingFee = 4000; // 배송비
     const finalAmount = totalAmount + shippingFee;
 
-    getElementById('total-amount').textContent = `${totalAmount}원`;
-    getElementById('shipping-fee').textContent = `+${shippingFee}원`;
-    getElementById('final-amount').textContent = `${finalAmount}원`;
+    document.getElementById('total-amount').textContent = `${totalAmount} 원`;
+    document.getElementById('shipping-fee').textContent = `+ ${shippingFee} 원`;
+    document.getElementById('final-amount').textContent = `${finalAmount} 원`;
 
     /*
     const paymentInfoSection = document.querySelector('.payment-info-section');    
@@ -84,6 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         // 주문자 정보
         const orderInfo = {
+            id: userEmail,  // 유저 아이디(주문자 정보에 넣는 이메일과 다를 수 있음)
             orderName: document.getElementById('order-name').value,
             email: document.getElementById('email').value,
             mobile: `${document.getElementById('mobile-prefix').value}-${document.getElementById('mobile-middle').value}-${document.getElementById('mobile-last').value}`,
