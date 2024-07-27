@@ -1,105 +1,9 @@
-/* 기본 스타일 */
-body {
-  font-family: "Arial", sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f9f9f9;
-}
-
-/* 헤더*/
-header {
-  background-color: #759465;
-  padding: 20px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px; /* 좌우 여백 추가 */
-  line-height: 36px;
-}
-
-.logo img {
-  vertical-align: middle;
-  display: inline;
-  height: 36px;
-}
-
-.logo h1 {
-  vertical-align: middle;
-  display: inline;
-  margin: 0;
-  color: white;
-}
-/* 메뉴 요소*/
-.menu a {
-  margin: 0 15px;
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  position: relative;
-  padding: 10px 0px;
-}
-
-/*메뉴 hover시 효과*/
-
-.menu a::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: white;
-  bottom: -2px;
-  left: 0;
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.menu a:hover::after {
-  transform: scaleX(1);
-}
-
-/* 로그인, 회원가입, 프로필 버튼*/
-.auth-buttons a {
-  vertical-align: middle;
-  margin: 0 5px;
-  text-decoration: none;
-  color: #fff;
-  font-size: 16px;
-}
-
-.auth-buttons .profile-icon {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.auth-buttons .profile-icon img {
-  vertical-align: middle;
-  width: 20px;
-  height: 20px;
-  padding: 5px;
-  border-radius: 10%;
-  border: solid 1px #fff;
-}
-
-main {
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 0 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-}
 /* 메인 배너 스타일 */
 .main-banner {
   text-align: left;
   margin-top: 0;
   padding-top: 20px;
-  padding-left: 5px;
+  padding-left: 20px;
   background-color: white;
   float: left;
   margin-bottom: 25px;
@@ -336,7 +240,7 @@ label.right {
 .board-sections {
   clear: both;
   max-width: 1000px;
-  margin-left: 5px;
+  margin-left: 22px;
   display: flex;
   flex-direction: column;
   gap: 0px;
@@ -407,6 +311,140 @@ label.right {
   background-color: #45a049; /* 호버 시 배경색 */
 }
 
+.auth-buttons .profile-icon img {
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  border-radius: 10%;
+  border: solid 1px white;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+/* 헤더 */
+header {
+  background-color: #759465;
+  padding: 20px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  height: 40px;
+  margin: 0 auto;
+  padding: 0 10px; /* 좌우 여백 추가 */
+  margin-left: 110px;
+  line-height: 36px;
+}
+
+.logo img {
+  vertical-align: middle;
+  display: inline;
+  height: 36px;
+}
+
+.logo h1 {
+  vertical-align: middle;
+  display: inline;
+  margin: 0;
+  color: white;
+}
+
+/* 메뉴 요소 */
+.menu a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  padding: 10px 0px;
+}
+
+/* 메뉴 hover 시 효과 */
+.menu a::after {
+  content: "";
+  position: absolute;
+  width: 1300px;
+  background-color: white;
+  bottom: -2px;
+  left: 0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.menu a:hover::after {
+  transform: scaleX(1);
+}
+
+/* 로그인, 회원가입, 프로필 버튼 */
+.auth-buttons a {
+  vertical-align: middle;
+  margin: 0 5px;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+}
+
+.auth-buttons .profile-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.auth-buttons .profile-icon img {
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  border-radius: 10%;
+  border: solid 1px white;
+}
+
+main {
+  max-width: 1240px;
+  margin: 20px auto;
+  padding: 10px 25px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.language-selector {
+  display: inline-block;
+  margin-left: 10px; /* 필요에 따라 조정 */
+  vertical-align: middle;
+  position: relative; /* 위치 조정 가능하게 설정 */
+}
+
+.language-selector .earth-icon {
+  width: 35px;
+  height: auto;
+  margin-top: 10px; /* 지구본 위치를 아래로 내리기 */
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#languageSelector {
+  margin-bottom: 0;
+  margin-top: 5px; /* 언어 변경 창을 위로 올리기 */
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.language-selector label {
+  color: white;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 /*푸터 */
 footer {
   background-color: #565656;
@@ -450,3 +488,4 @@ ul.footer-btn > li {
   display: inline-block;
   padding: 0;
 }
+

@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Networker 자유게시판</title>
-    <link rel="stylesheet" href="../src/css/board.css">
+    <title>review</title>
     <link rel="stylesheet" href="../src/css/shared.css" />
+    <link rel="stylesheet" href="../src/css/review.css" >
     <script src="../src/js/lang.js" defer></script>
-
+    <script src="https://kit.fontawesome.com/b3f3cec821.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -30,7 +30,7 @@
             <a href="login.html" id="login">로그인</a>
             <a href="signup.html" id="signup">회원가입</a>
             <div class="profile-icon">
-              <a href="profile.html" id="profile-size"
+              <a href="profile.html"
                 ><img src="../src/assets/profile.png" alt="Profile"
               /></a>
             </div>
@@ -50,49 +50,20 @@
           </div>
         </div>
       </header>
-  
 
-    <main>
-        <div class="board-header">
-            <h2>자유게시판</h2>
-            <button class="write-post-button" onclick="window.location.href='write.html'">
-                <img id="pencil" src="../src/assets/pencil.png" alt="Write"> 글쓰기
-            </button>
-            <div class="search-box">
-                <input type="text" id="search-input" placeholder="검색어를 입력하세요">
-                <button id="search-button">검색</button>
-            </div>
-        </div>
-        <table id="post-table" class="post-table">
-            <thead>
-                <tr>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>작성일</th>
-                    <th>작성자</th>
-                    <th>조회수</th>
-                </tr>
-            </thead>
-            <tbody id="post-list">
-                <!-- Posts will be loaded here dynamically -->
-            </tbody>
-        </table>
-        <div class="pagination" id="pagination">
-            <!-- Pagination buttons will be loaded here dynamically -->
-        </div>
-    </main>
+      <main>
 
-    <footer>
+      </main>
+
+      <footer>
         <div class="footer-container">
-            <ul class="footer-btn">
-                <li><a href="#">이용약관</a></li>
-                <li><a href="privacy_Policy.html" style="font-weight: bold;">개인정보처리방침</a></li>
-                <li><a href="#">문의/신고</a></li>
-                <li><a href="#">광고안내</a></li>
-            </ul>
+          <ul class="footer-btn">
+            <li><a href="#">이용약관</a></li>
+            <li><a href="privacy_Policy.html" style="font-weight: bold">개인정보처리방침</a></li>
+            <li><a href="#">문의/신고</a></li>
+            <li><a href="#">광고안내</a></li>
+          </ul>
         </div>
-    </footer>
-
-    <script src="../src/js/board.js"></script>
+      </footer>
 </body>
 </html>
