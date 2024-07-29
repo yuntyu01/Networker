@@ -1,4 +1,7 @@
 /* 기본 스타일 */
+/*notosans 토스용 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -209,19 +212,25 @@ form h3 {
     color: #333;
 }
 
-form button[type="submit"] {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 0;
-    padding: 15px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 1.2em;
-}
 
-form button[type="submit"]:hover {
-    background-color: #555;
+#payment-button {
+    font-family: "Noto Sans KR", sans-serif;
+    
+    width: 100%;
+    margin: 30px 24px;
+    
+    padding: 11px 22px;
+    border: none;
+    border-radius:  8px;
+    
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    
+
+    background-color: #3282f6;
+    color: #f9fcff;
+    
 }
 
 /* 푸터 스타일 */
