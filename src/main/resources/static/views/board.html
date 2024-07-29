@@ -33,32 +33,47 @@
     </header>
 
     <main>
-        <div class="board-header">
-            <h2>자유게시판</h2>
-            <button class="write-post-button" onclick="window.location.href='write.html'">
-                <img id="pencil" src="../src/assets/pencil.png" alt="Write"> 글쓰기
-            </button>
-            <div class="search-box">
-                <input type="text" id="search-input" placeholder="검색어를 입력하세요">
-                <button id="search-button">검색</button>
-            </div>
-        </div>
         <table id="post-table" class="post-table">
             <thead>
                 <tr>
                     <th>번호</th>
                     <th>제목</th>
+                    <th>글쓴이</th>
                     <th>작성일</th>
-                    <th>작성자</th>
                     <th>조회수</th>
+                    <th>추천</th>
                 </tr>
             </thead>
-            <tbody id="post-list">
-                <!-- Posts will be loaded here dynamically -->
-            </tbody>
+            <tbody id="post-list"></tbody>
         </table>
-        <div class="pagination" id="pagination">
-            <!-- Pagination buttons will be loaded here dynamically -->
+        <div class="bottom-box">
+            <div class="bottom-btn-box">
+                <button>전체글</button>
+                <button>추천글</button>
+                <button class="write-post-button" onclick="window.location.href='createpost.html'">
+                    글쓰기
+                </button>
+            </div>
+
+            <!-- <div class="pagination" id="pagination"></div> -->
+                <!-- Pagination buttons will be loaded here dynamically -->
+            
+            <ul id="pagination"></ul>
+
+            <div class="bottom-search-box">
+                <div class="dropdown">
+                    <select>
+                        <option>제목+내용</option>
+                        <option>제목</option>
+                        <option>내용</option>
+                        <option>글쓴이</option>
+                    </select>
+                </div>
+                <form action="/URL데이터를 처리할 URL" method="get">
+                    <input class="search-input" type="text" name="query" placeholder="검색어 입력">
+                    <button class="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </div>
         </div>
     </main>
 

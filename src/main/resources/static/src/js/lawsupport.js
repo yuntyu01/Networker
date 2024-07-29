@@ -139,5 +139,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 글쓰기 버튼 누르면 createpost로 이동함.
 document.getElementById('post-button').onclick = function () {
-    window.location.href = 'createpost.html';
+    window.location.href = 'createpost_law.html';
 };
