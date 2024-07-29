@@ -32,16 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 페이지 로드 시 로그인 상태 확인
     checkLoginStatus();
 
-    // 모든 약관 동의 체크박스 기능
-    const agreeAllCheckbox = document.getElementById('agree-all');
-    const agreeCheckboxes = document.querySelectorAll('input[name^="agree-"]');
-
-    agreeAllCheckbox.addEventListener('change', (e) => {
-        agreeCheckboxes.forEach(checkbox => {
-            checkbox.checked = e.target.checked;
-        });
-    });
-
     // 로컬스토리지에서 cartItems 불러와서 주문상품 정보 추가
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     const orderProductsContainer = document.querySelector('.order-products');
@@ -54,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="product-details">
                     <p>${item.name}</p>
                     <p>수량: ${item.count}개</p>
-                    <p>${item.price}원</p>
+                    <p>${item.price*item.count}원</p>
                 </div>
             </div>
         `;
@@ -71,19 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('shipping-fee').textContent = `+ ${shippingFee} 원`;
     document.getElementById('final-amount').textContent = `${finalAmount} 원`;
 
-    /*
-    const paymentInfoSection = document.querySelector('.payment-info-section');    
-    paymentInfoSection.innerHTML = `
-        <h3>결제정보</h3>
-        <div class="payment-info">
-            <p>주문상품: <span>${totalAmount}원</span></p>
-            <p>배송비: <span>+${shippingFee}원</span></p>
-            <h4>최종 결제 금액: <span>${finalAmount}원</span></h4>
-        </div>
-    `;
-    */
 
     // 결제하기 버튼 클릭 시 결제 정보 웹서버에 전달 -> 결제 모듈 연결 후 결제 성공 시 실행되도록 코드 수정 예정
+    // 결제 실패시 fail.html 관련 js 파일에서 저장한 결제 정보 삭제하도록하는 코드 추가하기
+
     const orderForm = document.getElementById('order-form');
     orderForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -141,4 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('결제 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
         });
     });
+
+
 });

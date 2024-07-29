@@ -1,151 +1,239 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://js.tosspayments.com/v2/standard"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>주문/결제</title>
-    <link rel="stylesheet" href="../src/css/order.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../src/css/order.css" />
+  </head>
+  <body>
     <header>
-        <div class="header-content">
-            <a href="networker.html" style="text-decoration: none;">
-            <span class="logo">
-                <img src="../src/assets/logo.png">
-                <h1>Networker</h1>
-            </span>
-            </a>
-            <div class="menu">
-                <a href="networker.html">홈</a>
-                <a href="news.html">정보</a>
-                <a href="board.html">자유게시판</a>
-                <a href="store.html">스토어</a>
-                <a href="lawsupport.html">법률지원</a>
-            </div>
-            <div class="auth-buttons">
-                <a href="login.html">로그인</a>
-                <a href="signup.html">회원가입</a>
-                <div class="profile-icon">
-                    <a href="profile.html"><img src="../src/assets/profile.png" alt="Profile"></a>
-                </div>
-            </div>
+      <div class="header-content">
+        <a href="networker.html" style="text-decoration: none">
+          <span class="logo">
+            <img src="../src/assets/logo.png" />
+            <h1>Networker</h1>
+          </span>
+        </a>
+        <div class="menu">
+          <a href="networker.html">홈</a>
+          <a href="news.html">정보</a>
+          <a href="board.html">자유게시판</a>
+          <a href="store.html">스토어</a>
+          <a href="lawsupport.html">법률지원</a>
         </div>
+        <div class="auth-buttons">
+          <a href="login.html">로그인</a>
+          <a href="signup.html">회원가입</a>
+          <div class="profile-icon">
+            <a href="profile.html"
+              ><img src="../src/assets/profile.png" alt="Profile"
+            /></a>
+          </div>
+        </div>
+      </div>
     </header>
 
     <main>
-        <div class="order-container">
-            <h2>주문/결제</h2>
-            <form id="order-form" action="#" method="post">
-                <section id="user-info">
-                    <h3>주문 정보</h3>
-                    <div class="form-group">
-                        <label for="order-name">주문자</label>
-                        <input type="text" id="order-name" name="order-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">이메일</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="mobile">휴대전화</label>
-                        <div class="phone-input" id="mobile">
-                            <select id="mobile-prefix">
-                                <option value="010">010</option>
-                                <option value="011">011</option>
-                                <option value="016">016</option>
-                                <option value="017">017</option>
-                                <option value="018">018</option>
-                                <option value="019">019</option>
-                            </select>
-                            <input type="tel" id="mobile-middle" name="mobile-middle" maxlength="4">
-                            <input type="tel" id="mobile-last" name="mobile-last" maxlength="4">
-                        </div>
-                    </div>
-                </section>
-                <section>
-                    <h3>배송 정보</h3>
-                    <div class="form-group">
-                        <label for="receiver">받는사람</label>
-                        <input type="text" id="receiver" name="receiver" required>
-                    </div>
-                    <div class="form-group" style="display: block;">
-                        <label class="address-title" for="postcode">주소</label>
-                        <div class="address-input">
-                            <input type="text" id="postcode" name="postcode" placeholder="우편번호">
-                            <button type="button" id="find-address">주소검색</button>
-                        </div>
-                        <input type="text" id="address" name="address" placeholder="기본주소">
-                        <input type="text" id="address-detail" name="address-detail" placeholder="나머지 주소">
-                    </div>
-                    <div class="form-group">
-                        <label for="mobile2">휴대전화</label>
-                        <div class="phone-input" id="mobile2">
-                            <select id="mobile-prefix2">
-                                <option value="010">010</option>
-                                <option value="011">011</option>
-                                <option value="016">016</option>
-                                <option value="017">017</option>
-                                <option value="018">018</option>
-                                <option value="019">019</option>
-                            </select>
-                            <input type="tel" id="mobile-middle2" name="mobile-middle2" maxlength="4">
-                            <input type="tel" id="mobile-last2" name="mobile-last2" maxlength="4">
-                        </div>
-                    </div>
-                </section>
-                
-                <!-- 주문상품 정보 -->
-                <section>
-                    <h3>주문상품</h3>
-                    <div class="order-products">
-                    <!-- 여기에 주문상품 정보가 동적으로 추가됩니다 -->
-                    </div>
-                </section>
-                
-                
-                <!-- 결제정보 -->
-                <section class="payment-info-section">
-                    <h3>결제정보</h3>
-                    <div class="payment-info">
-                        <p>주문상품: <span id="total-amount">0원</span></p>
-                        <p>배송비: <span id="shipping-fee">+0원</span></p>
-                        <h4>최종 결제 금액: <span id="final-amount">0원</span></h4>
-                    </div>
-                </section>
+      <div class="order-container">
+        <h2>주문/결제</h2>
+        <form id="order-form" action="#" method="post">
+          <section id="user-info">
+            <h3>주문 정보</h3>
+            <div class="form-group">
+              <label for="order-name">주문자</label>
+              <input type="text" id="order-name" name="order-name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">이메일</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="mobile">휴대전화</label>
+              <div class="phone-input" id="mobile">
+                <select id="mobile-prefix">
+                  <option value="010">010</option>
+                  <option value="011">011</option>
+                  <option value="016">016</option>
+                  <option value="017">017</option>
+                  <option value="018">018</option>
+                  <option value="019">019</option>
+                </select>
+                <input
+                  type="tel"
+                  id="mobile-middle"
+                  name="mobile-middle"
+                  maxlength="4"
+                />
+                <input
+                  type="tel"
+                  id="mobile-last"
+                  name="mobile-last"
+                  maxlength="4"
+                />
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>배송 정보</h3>
+            <div class="form-group">
+              <label for="receiver">받는사람</label>
+              <input type="text" id="receiver" name="receiver" required />
+            </div>
+            <div class="form-group" style="display: block">
+              <label class="address-title" for="postcode">주소</label>
+              <div class="address-input">
+                <input
+                  type="text"
+                  id="postcode"
+                  name="postcode"
+                  placeholder="우편번호"
+                />
+                <button type="button" id="find-address">주소검색</button>
+              </div>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                placeholder="기본주소"
+              />
+              <input
+                type="text"
+                id="address-detail"
+                name="address-detail"
+                placeholder="나머지 주소"
+              />
+            </div>
+            <div class="form-group">
+              <label for="mobile2">휴대전화</label>
+              <div class="phone-input" id="mobile2">
+                <select id="mobile-prefix2">
+                  <option value="010">010</option>
+                  <option value="011">011</option>
+                  <option value="016">016</option>
+                  <option value="017">017</option>
+                  <option value="018">018</option>
+                  <option value="019">019</option>
+                </select>
+                <input
+                  type="tel"
+                  id="mobile-middle2"
+                  name="mobile-middle2"
+                  maxlength="4"
+                />
+                <input
+                  type="tel"
+                  id="mobile-last2"
+                  name="mobile-last2"
+                  maxlength="4"
+                />
+              </div>
+            </div>
+          </section>
 
-                <!-- 약관 동의 -->
-                <section>
-                    <h3>약관 동의</h3>
-                    <div class="form-group">
-                        <input type="checkbox" id="agree-all" name="agree-all">
-                        <label for="agree-all">모든 약관 동의</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="checkbox" id="agree-terms" name="agree-terms" required>
-                        <label for="agree-terms">[필수] 쇼핑몰 이용약관 동의</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="checkbox" id="agree-privacy" name="agree-privacy" required>
-                        <label for="agree-privacy">[필수] 개인정보 수집 및 이용 동의</label>
-                    </div>
-                </section>
+          <!-- 주문상품 정보 -->
+          <section>
+            <h3>주문상품</h3>
+            <div class="order-products">
+              <!-- 여기에 주문상품 정보가 동적으로 추가됩니다 -->
+            </div>
+          </section>
 
-                <button type="submit">46,500원 결제하기</button>
-            </form>
-        </div>
+          <!-- 결제정보 -->
+          <section class="payment-info-section">
+            <h3>결제정보</h3>
+            <div class="payment-info">
+              <p>주문상품: <span id="total-amount">0 원</span></p>
+              <p>배송비: <span id="shipping-fee">+ 0 원</span></p>
+              <h4>최종 결제 금액: <span id="final-amount">0 원</span></h4>
+            </div>
+          </section>
+        </form>
+
+        <section>
+          <!-- 결제 UI -->
+          <div id="payment-method"></div>
+          <!-- 이용약관 UI -->
+          <div id="agreement"></div>
+          <!-- 결제하기 버튼 -->
+          <button class="button" id="payment-button">결제하기</button>
+        </section>
+      </div>
     </main>
 
     <footer>
-        <div class="footer-container">
-            <ul class="footer-btn">
-                <li><a href="#">이용약관</a></li>
-                <li><a href="privacy_Policy.html" style="font-weight: bold;">개인정보처리방침</a></li>
-                <li><a href="#">문의/신고</a></li>
-                <li><a href="#">광고안내</a></li>
-            </ul>
-        </div>
+      <div class="footer-container">
+        <ul class="footer-btn">
+          <li><a href="#">이용약관</a></li>
+          <li>
+            <a href="privacy_Policy.html" style="font-weight: bold"
+              >개인정보처리방침</a
+            >
+          </li>
+          <li><a href="#">문의/신고</a></li>
+          <li><a href="#">광고안내</a></li>
+        </ul>
+      </div>
     </footer>
-
     <script src="../src/js/order.js"></script>
-</body>
+
+    <script>
+      main();
+
+      async function main() {
+        const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+        const totalAmount =
+          cartItems.reduce(
+            (total, item) => total + item.price * item.count,
+            0
+          ) + 4000;
+
+        const button = document.getElementById("payment-button");
+        // ------  결제위젯 초기화 ------
+        const clientKey = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm";
+        const tossPayments = TossPayments(clientKey);
+        // 회원 결제
+        const customerKey = "k4PTvGldYG6jghqXE2T-E";
+        const widgets = tossPayments.widgets({
+          customerKey,
+        });
+        // 비회원 결제
+        // const widgets = tossPayments.widgets({ customerKey: TossPayments.ANONYMOUS });
+
+        // ------ 주문의 결제 금액 설정 ------
+        await widgets.setAmount({
+          currency: "KRW",
+          value: 20000,
+        });
+
+        await Promise.all([
+          // ------  결제 UI 렌더링 ------
+          widgets.renderPaymentMethods({
+            selector: "#payment-method",
+            variantKey: "DEFAULT",
+          }),
+          // ------  이용약관 UI 렌더링 ------
+          widgets.renderAgreement({
+            selector: "#agreement",
+            variantKey: "AGREEMENT",
+          }),
+        ]);
+
+        // ------ '결제하기' 버튼 누르면 결제창 띄우기 ------
+        button.addEventListener("click", async function () {
+          window.alert("결제하기 버튼 클릭 확인용 메세지(결제 모듈 구현 완료 시 삭제하기)")
+          await widgets.requestPayment({
+            orderId: "G4B8w3SY4Ey0sOjxhqG6o",
+            orderName: "토스 티셔츠 외 2건",
+            successUrl: window.location.origin + "/views/success.html",
+            failUrl: window.location.origin + "/views/fail.html",
+            customerEmail: "customer123@gmail.com",
+            customerName: "김토스",
+            customerMobilePhone: "01012341234",
+          });
+        });
+      }
+    </script>
+  </body>
 </html>
