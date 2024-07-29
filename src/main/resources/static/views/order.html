@@ -2,9 +2,8 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <script src="https://js.tosspayments.com/v2/standard"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>주문/결제</title>
+    <title>주문/배송 정보 입력</title>
     <link rel="stylesheet" href="../src/css/order.css" />
   </head>
   <body>
@@ -90,7 +89,6 @@
                   name="postcode"
                   placeholder="우편번호"
                 />
-                <button type="button" id="find-address">주소검색</button>
               </div>
               <input
                 type="text"
@@ -149,16 +147,11 @@
               <h4>최종 결제 금액: <span id="final-amount">0 원</span></h4>
             </div>
           </section>
+
+          <!-- 결제하기 버튼 -->
+          <button type="submit" class="button" id="payment-button">결제하기</button>
         </form>
 
-        <section>
-          <!-- 결제 UI -->
-          <div id="payment-method"></div>
-          <!-- 이용약관 UI -->
-          <div id="agreement"></div>
-          <!-- 결제하기 버튼 -->
-          <button class="button" id="payment-button">결제하기</button>
-        </section>
       </div>
     </main>
 
@@ -177,63 +170,5 @@
       </div>
     </footer>
     <script src="../src/js/order.js"></script>
-
-    <script>
-      main();
-
-      async function main() {
-        const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-        const totalAmount =
-          cartItems.reduce(
-            (total, item) => total + item.price * item.count,
-            0
-          ) + 4000;
-
-        const button = document.getElementById("payment-button");
-        // ------  결제위젯 초기화 ------
-        const clientKey = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm";
-        const tossPayments = TossPayments(clientKey);
-        // 회원 결제
-        const customerKey = "k4PTvGldYG6jghqXE2T-E";
-        const widgets = tossPayments.widgets({
-          customerKey,
-        });
-        // 비회원 결제
-        // const widgets = tossPayments.widgets({ customerKey: TossPayments.ANONYMOUS });
-
-        // ------ 주문의 결제 금액 설정 ------
-        await widgets.setAmount({
-          currency: "KRW",
-          value: 20000,
-        });
-
-        await Promise.all([
-          // ------  결제 UI 렌더링 ------
-          widgets.renderPaymentMethods({
-            selector: "#payment-method",
-            variantKey: "DEFAULT",
-          }),
-          // ------  이용약관 UI 렌더링 ------
-          widgets.renderAgreement({
-            selector: "#agreement",
-            variantKey: "AGREEMENT",
-          }),
-        ]);
-
-        // ------ '결제하기' 버튼 누르면 결제창 띄우기 ------
-        button.addEventListener("click", async function () {
-          window.alert("결제하기 버튼 클릭 확인용 메세지(결제 모듈 구현 완료 시 삭제하기)")
-          await widgets.requestPayment({
-            orderId: "G4B8w3SY4Ey0sOjxhqG6o",
-            orderName: "토스 티셔츠 외 2건",
-            successUrl: window.location.origin + "/views/success.html",
-            failUrl: window.location.origin + "/views/fail.html",
-            customerEmail: "customer123@gmail.com",
-            customerName: "김토스",
-            customerMobilePhone: "01012341234",
-          });
-        });
-      }
-    </script>
   </body>
 </html>
