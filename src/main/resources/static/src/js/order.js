@@ -70,10 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         // 주문자 정보
         const orderInfo = {
-            id: userEmail,  // 유저 아이디(주문자 정보에 넣는 이메일과 다를 수 있음)
+            orderId: crypto.randomUUID(),   // 주문 번호
+            userId: userEmail,           // 유저 아이디(주문자 정보에 넣는 이메일과 다를 수 있음)
             orderName: document.getElementById('order-name').value,
             email: document.getElementById('email').value,
-            mobile: `${document.getElementById('mobile-prefix').value}-${document.getElementById('mobile-middle').value}-${document.getElementById('mobile-last').value}`,
+            mobile: document.getElementById('mobile-prefix').value+document.getElementById('mobile-middle').value+document.getElementById('mobile-last').value,
         };
         // 배송 정보
         const shippingInfo = {
@@ -81,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             postcode: document.getElementById('postcode').value,
             address: document.getElementById('address').value,
             addressDetail: document.getElementById('address-detail').value,
-            mobile: `${document.getElementById('mobile-prefix2').value}-${document.getElementById('mobile-middle2').value}-${document.getElementById('mobile-last2').value}`,
+            mobile: document.getElementById('mobile-prefix2').value+document.getElementById('mobile-middle2').value+document.getElementById('mobile-last2').value,
         };
         // 결제 금액 정보
         const paymentInfo = {
@@ -98,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
             paymentInfo: paymentInfo
         };
 
-        fetch('/api/order', {
+        fetch('/checkout', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -108,20 +109,19 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert('결제가 성공적으로 완료되었습니다.');
+                alert('결제를 진행합니다');
                 // 로컬 스토리지 장바구니 데이터 삭제
                 localStorage.removeItem('cartItems');
-                location.reload();
-                // 결제 성공 후 주문 정보 확인 페이지(07.25.미구현상태)로 리디렉션하기
+                // 결제 정보 저장 후 결제하기 페이지로 리다이렉션
+                window.location.href = 'checkout.html';
             } else {
-                alert('결제 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
+                alert('주문 정보 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('결제 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
+            alert('주문 정보 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
         });
     });
-
 
 });
