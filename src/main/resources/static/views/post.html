@@ -44,8 +44,12 @@
                 <p id="recommend-count"></p> 
                 <p id="not-recommend-count"></p> 
                 -->
-                <button id="recommend" class="recommend-button" type="submit">추천</button>
-                <button id="not-recommend" class="recommend-button" type="submit">비추천</button>
+                <button id="recommend" class="recommend-button" type="button" onclick="recommend()">추천</button>
+
+            </div>
+            <div class="right-align">
+                <button id="edit" type="button" onclick="post_edit()">수정</button>
+                <button id="delete" type="button" onclick="post_delete()">삭제</button>
             </div>
             <div class="comment" id="comments-info"></div>
             <form class="comment-write">
