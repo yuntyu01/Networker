@@ -19,10 +19,10 @@ header {
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
-    /* 좌우 여백 추가 */
+    padding: 0 20px;/* 좌우 여백 추가 */
     line-height: 36px;
-}
+}    
+
 
 .logo img {
     vertical-align: middle;
@@ -91,11 +91,11 @@ header {
 main {
     max-width: 1200px;
     margin: 20px auto;
-    padding: 0 20px;
-    /* 좌우 여백 추가 */
+    padding: 0 20px;/* 좌우 여백 추가 */
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    
 
     display: flex;
     flex-direction: column;
