@@ -4,40 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Networker</title>
-    <link rel="stylesheet" href="../src/css/network.css" />
-    <script src="../src/js/networker.js" defer></script>
-    <script src="../src/js/fetchNewsTitles.js" defer></script>
-    <script type="text/javascript" src="../src/js/network.js" defer></script>
-    <script src="../src/js/lang.js" defer></script>
+    <link rel="stylesheet" href="../source/css/network.css" />
+    <script src="../source/js/networker.js" defer></script>
+    <script src="../source/js/fetchNewsTitles.js" defer></script>
+    <script type="text/javascript" src="../source/js/networker.js" defer></script>
+    <script src="../source/js/lang.js" defer></script>
   </head>
   <body>
     <header>
       <div class="header-content">
-        <a href="networker.html" style="text-decoration: none">
+        <a href="/main" style="text-decoration: none">
           <span class="logo">
-            <img src="../src/assets/logo.png" alt="logo" />
+            <img src="../source/assets/logo.png" alt="logo" />
             <h1 id="site_title">Networker</h1>
           </span>
         </a>
         <div class="menu">
-          <a href="networker.html" id="menu_home">홈</a>
-          <a href="news.html" id="menu_news">정보</a>
-          <a href="board.html" id="menu_board">자유게시판</a>
-          <a href="store.html" id="menu_store">스토어</a>
-          <a href="lawsupport.html" id="menu_law">법률지원</a>
-          <a href="review.html" id="menu_review">기업리뷰</a>
+          <a href="/main" id="menu_home">홈</a>
+          <a href="/views/news.html" id="menu_news">정보</a>
+          <a href="/post/list" id="menu_board">자유게시판</a>
+          <a href="/views/store.html" id="menu_store">스토어</a>
+          <a href="/lawsupport/main" id="menu_law">법률지원</a>
+          <a href="/views/review.html" id="menu_review">기업리뷰</a>
         </div>
         <div class="auth-buttons">
-          <a href="login.html" id="login">로그인</a>
-          <a href="signup.html" id="signup">회원가입</a>
+          <a href="/views/login.html" id="login">로그인</a>
+          <a href="/views/signup.html" id="signup">회원가입</a>
           <div class="profile-icon">
-            <a href="profile.html" id="profile-size"
-              ><img src="../src/assets/profile.png" alt="Profile"
+            <a href="/views/profile.html" id="profile-size"
+              ><img src="../source/assets/profile.png" alt="Profile"
             /></a>
           </div>
           <div class="language-selector">
             <img
-              src="../src/assets/earth_icon.png"
+              src="../source/assets/earth_icon.png"
               alt="earth"
               class="earth-icon"
             />
@@ -71,7 +71,7 @@
                   <label for="slide04" class="left"></label>
                   <label for="slide02" class="right"></label>
                   <a href="#"
-                    ><img src="../src/assets/Networker_test.webp"
+                    ><img src="../source/assets/Networker_test.webp"
                   /></a>
                 </div>
               </li>
@@ -79,21 +79,21 @@
                 <div>
                   <label for="slide01" class="left"></label>
                   <label for="slide03" class="right"></label>
-                  <a href="#"><img src="../src/assets/Networker2.webp" /></a>
+                  <a href="#"><img src="../source/assets/Networker2.webp" /></a>
                 </div>
               </li>
               <li class="slideitem">
                 <div>
                   <label for="slide02" class="left"></label>
                   <label for="slide04" class="right"></label>
-                  <a href="#"><img src="../src/assets/banner3.png" /></a>
+                  <a href="#"><img src="../source/assets/banner3.png" /></a>
                 </div>
               </li>
               <li class="slideitem">
                 <div>
                   <label for="slide03" class="left"></label>
                   <label for="slide01" class="right"></label>
-                  <a href="#"><img src="../src/assets/banner4.png" /></a>
+                  <a href="#"><img src="../source/assets/banner4.png" /></a>
                 </div>
               </li>
             </ul>
@@ -105,7 +105,7 @@
           <div class="board-item">
             <div class="board-header">
               <h3>자유게시판</h3>
-              <button class="more-btn" onclick="location.href='board.html';">
+              <button class="more-btn" onclick="location.href='/post/list';">
                 더보기
               </button>
             </div>
@@ -116,7 +116,7 @@
           <div class="board-item">
             <div class="board-header">
               <h3>정보</h3>
-              <button class="more-btn" onclick="location.href='news.html';">
+              <button class="more-btn" onclick="location.href='/views/news.html';">
                 더보기
               </button>
             </div>
@@ -129,7 +129,7 @@
               <h3>법률지원</h3>
               <button
                 class="more-btn"
-                onclick="location.href='lawsupport.html';"
+                onclick="location.href='/main';"
               >
                 더보기
               </button>
@@ -141,7 +141,7 @@
           <div class="board-item">
             <div class="board-header">
               <h3>스토어</h3>
-              <button class="more-btn" onclick="location.href='store.html';">
+              <button class="more-btn" onclick="location.href='/views/store.html';">
                 더보기
               </button>
             </div>
@@ -158,7 +158,7 @@
         <ul class="footer-btn">
           <li><a href="#">이용약관</a></li>
           <li>
-            <a href="privacy_Policy.html" style="font-weight: bold"
+            <a href="/views/Privacy_Policy.html" style="font-weight: bold"
               >개인정보처리방침</a
             >
           </li>
