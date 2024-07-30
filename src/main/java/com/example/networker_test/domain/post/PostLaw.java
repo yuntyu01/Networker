@@ -32,6 +32,13 @@ public class PostLaw {
 
     private LocalDateTime createDate;
 
+    @Column(columnDefinition = "TEXT")
+    private String userId;
+
+    private Integer viewCount;
+
+    private Integer recommendCount;
+
     @OneToMany(mappedBy = "postLaw", cascade = CascadeType.REMOVE)
     private List<CommentLaw> commentLawList;
 
