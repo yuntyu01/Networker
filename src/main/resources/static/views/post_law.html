@@ -7,7 +7,7 @@
     <title>게시글 - Networker</title>
     <link rel="stylesheet" href="/src/css/post.css">
     <script src="/src/js/lang.js" defer></script>
-    <link rel="stylesheet" href="/src/css/shared.css" />
+    <link rel="stylesheet" href="/src/css/post.css" />
 </head>
 
 <body>
@@ -54,10 +54,10 @@
 
     <main>
         <div class="post" id="post-details">
-            <h2>자유게시판</h2>
+            <h2>법률지원</h2>
             <div class="content" id="post-info">
-                <h1 th:text="${post.subject}"></h1>
-                <div th:text="${post.content}"></div>
+                <h1 th:text="${postLaw.subject}"></h1>
+                <div th:text="${postLaw.content}"></div>
             </div>
             <div class="center-align">
                 <!-- 
@@ -72,14 +72,14 @@
                 <button id="edit" type="button" onclick="post_edit()">수정</button>
                 <button id="delete" type="button" onclick="post_delete()">삭제</button>
             </div>
-            <h5 th:text="|댓글 ${#lists.size(post.commentList)}개|"></h5>
+            <h5 th:text="|댓글 ${#lists.size(postLaw.commentLawList)}개|"></h5>
             <div class="comment" id="comments-info">
                 <ul>
-                    <li th:each="comment : ${post.commentList}" th:text="${comment.content}"></li>
+                    <li th:each="commentLaw : ${postLaw.commentLawList}" th:text="${commentLaw.content}"></li>
                 </ul>
             </div>
 
-            <form class="comment-write" th:action="@{|/comment/create/${post.id}|}" method="post">
+            <form class="comment-write" th:action="@{|/commentlaw/create/${postLaw.id}|}" method="post">
                 <div class="user-id" id="user-info">임시 아이디</div>
                 <div class="input-container">
                     <textarea id="comment-input" class="text-input" name="content" ></textarea>
