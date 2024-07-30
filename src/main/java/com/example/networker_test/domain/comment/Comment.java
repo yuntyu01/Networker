@@ -26,6 +26,11 @@ public class Comment {
 	private String content;
 	
 	private LocalDateTime createDate;//댓글 작성일
+
+	@Column(columnDefinition = "TEXT")
+	private String userId;
+
+	private Integer recommendCount;
 	
     @ManyToOne
     private Post post;//하나의 게시물, 여러 댓글
