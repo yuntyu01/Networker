@@ -3,10 +3,10 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* 배경 색상 명확히 지정 */
 }
 
-/* 헤더*/
+/* 헤더 */
 header {
     background-color: #759465;
     padding: 20px 0;
@@ -35,7 +35,8 @@ header {
     margin: 0;
     color: white;
 }
-/* 메뉴 요소*/
+
+/* 메뉴 요소 */
 .menu a {
     margin: 0 15px;
     text-decoration: none;
@@ -45,8 +46,7 @@ header {
     padding: 10px 0px;
 }
 
-/*메뉴 hover시 효과*/
-
+/* 메뉴 hover 시 효과 */
 .menu a::after {
     content: '';
     position: absolute;
@@ -63,7 +63,7 @@ header {
     transform: scaleX(1);
 }
 
-/* 로그인, 회원가입, 프로필 버튼*/
+/* 로그인, 회원가입, 프로필 버튼 */
 .profile-icon {
     display: inline-block;
     vertical-align: middle;
@@ -72,6 +72,7 @@ header {
     color: #fff;
     font-size: 16px;
 }
+
 .profile-icon img {
     vertical-align: middle;
     width: 20px;
@@ -85,7 +86,7 @@ main {
     max-width: 1200px;
     margin: 20px auto;
     padding: 0 20px;
-    background-color: #fff;
+    background-color: #fff; /* 배경 색상 명확히 지정 */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
@@ -201,12 +202,7 @@ h2 {
     background-color: #e0e0e0;
 }
 
-
-/*
-
-푸터
-
-*/
+/* 푸터 */
 footer {
     background-color: #565656;
     height: 30px;
@@ -225,7 +221,6 @@ footer {
 .footer-btn {
     list-style-type: none;
     color: white;
-
 }
 
 ul.footer-btn a {
@@ -235,7 +230,6 @@ ul.footer-btn a {
 ul.footer-btn>li {
     float: left;
     margin-left: 5px;
-
 }
 
 .footer-btn li::after {
