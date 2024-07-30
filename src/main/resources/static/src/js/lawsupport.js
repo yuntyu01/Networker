@@ -62,3 +62,4 @@ document.addEventListener('DOMContentLoaded', () => {
 document.getElementById('post-button').onclick = function () {
     window.location.href = '/lawsupport/create';
 };
+

@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             fuse = new Fuse(data, {
-                keys: ['subject', 'content', 'id'],
+                keys: ['subject', 'content', 'id'], // 아이디가 작성자가 아니라 글 id임 수정 해야함.
                 includeScore: true,
                 threshold: 0.3,
             });
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const category = searchCategory.value;
         if (category === 'all') {
             fuse.setOptions({
-                keys: ['subject', 'content', 'id'],
+                keys: ['subject', 'content', 'id'], // 아이디가 작성자가 아니라 글 id임 수정 해야함.
             });
         } else {
             fuse.setOptions({
