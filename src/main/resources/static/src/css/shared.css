@@ -1,0 +1,27 @@
+.language-selector {
+  display: inline-block;
+  margin-left: 10px; /* 필요에 따라 조정 */
+  vertical-align: middle;
+  position: relative; /* 위치 조정 가능하게 설정 */
+}
+
+.language-selector .earth-icon {
+  width: 35px;
+  height: auto;
+  margin-top: 10px; /* 지구본 위치를 아래로 내리기 */
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#languageSelector {
+  margin-bottom: 0;
+  margin-top: 5px; /* 언어 변경 창을 위로 올리기 */
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.language-selector label {
+  color: white;
+  display: inline-block;
+  vertical-align: middle;
+}

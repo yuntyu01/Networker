@@ -1,4 +1,7 @@
 /* 기본 스타일 */
+/*notosans 토스용 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -60,20 +63,12 @@ header {
     transform: scaleX(1);
 }
 
-.auth-buttons a {
-    vertical-align: middle;
-    margin: 0 5px;
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
-}
-
-.auth-buttons .profile-icon {
+.profile-icon {
     display: inline-block;
     vertical-align: middle;
 }
 
-.auth-buttons .profile-icon img {
+.profile-icon img {
     vertical-align: middle;
     width: 20px;
     height: 20px;
@@ -209,19 +204,24 @@ form h3 {
     color: #333;
 }
 
-form button[type="submit"] {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 0;
-    padding: 15px;
-    cursor: pointer;
+#payment-button {
+    font-family: "Noto Sans KR", sans-serif;
+    
     width: 100%;
-    font-size: 1.2em;
-}
+    margin: 30px 0;
+    
+    padding: 11px 22px;
+    border: none;
+    border-radius:  8px;
+    
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    
 
-form button[type="submit"]:hover {
-    background-color: #555;
+    background-color: #5D9CA4;
+    color: #f9fcff;
+    
 }
 
 /* 푸터 스타일 */
