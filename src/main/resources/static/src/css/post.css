@@ -100,6 +100,16 @@ main {
     display: flex;
 }
 
+main button{
+    color: white;
+    background: #759465;
+    border-color: #769900;
+    width: 82px;
+    height: 35px;
+    line-height: 31px;
+    font-weight: bold;
+}
+
 /* 게시글 폭 지정 */
 .post {
     width: 960px;
@@ -163,21 +173,23 @@ main {
 
 /* 추천 버튼 */
 .center-align {
+    width: 960px;
     margin: 20px 0px;
     display: flex;
     justify-content: center;
 }
 
-.recommend-button {
-    color: white;
-    background: #759465;
-    border-color: #769900;
-    width: 82px;
-    height: 35px;
-    line-height: 31px;
-    font-weight: bold;
+/* 수정 삭제버튼 */
+.right-align {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 20px;
 }
-
+.right-align button{
+    background-color: white;
+    color: #759465;
+    margin-right: 10px;
+}
 /* 댓글 */
 .comment-write {
     display: flex;
@@ -199,14 +211,6 @@ main {
     width: 800px;
 }
 .text-button{
-    color: white;
-    background: #759465;
-    border-color: #769900;
-    width: 82px;
-    height: 35px;
-    line-height: 31px;
-    font-weight: bold;
-
     margin-top: 20px;
 }
 /*

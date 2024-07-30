@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
@@ -85,6 +85,7 @@ header {
     border: solid 1px white;
 }
 
+
 main {
     max-width: 1200px;
     margin: 20px auto;
@@ -94,129 +95,18 @@ main {
     border-radius: 10px;
 }
 
-.order-container {
-    padding: 20px;
-}
-
-.order-container h2 {
-    margin-bottom: 30px;
-    color: #333;
-}
-
-form section {
+#toss-payments-section{
     margin-bottom: 20px;
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 5px;
-    background-color: #f7f7f7;
-}
-
-form h3 {
-    margin-bottom: 10px;
-    color: #555;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-.form-group {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-}
-
-.form-group label {
-    margin: 0;
-    flex: 1; /* 레이블과 인풋 요소 간의 비율 조정 */
-}
-
-.form-group input,
-.form-group select,
-.form-group button {
-    width: 70%; /* 가로 길이를 반으로 줄임 */
-    padding: 10px;
-    box-sizing: border-box;
-    margin-top: 5px;
-}
-
-.form-group input[type="checkbox"] {
-    margin-right: 10px;
-    width: auto;
-}
-
-.phone-input {
-    display: flex;
-    align-items: center;
-}
-
-.phone-input select,
-.phone-input input {
-    margin: 0 5px; /* 요소 간의 간격 */
-}
-
-.phone-input select {
-    width: calc(30% - 10px); /* 가로 길이를 조정 */
-}
-
-.phone-input input {
-    width: calc(35% - 10px); /* 가로 길이를 조정 */
-}
-
-/* 배송지 주소 */
-.address-title{
-    display: block;
-}
-
-.address-input {
-    height: 100%;
-    width: 100%;
-    display: block;
-    align-items: center;
-}
-
-.address-input input {
-    width: 20%;
-}
-
-.address-input button {
-    width: 100px;
-    margin-left: 10px; /* 버튼과 입력 필드 사이 간격 조정 */
-    padding: 10px 20px; /* 버튼의 패딩 조정 */
-    height: 42px; /* 버튼 높이 조정 */
-}
-
-.product-info {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.product-image {
-    width: 100px;
-    height: auto;
-    margin-right: 20px;
-}
-
-.product-details p {
-    margin: 5px 0;
-}
-
-.shipping-fee,
-.payment-info {
-    padding-top: 10px;
-    margin-top: 10px;
-}
-
-.payment-info h4 {
-    margin-top: 10px;
-    font-size: 1.2em;
-    color: #333;
+    background-color: #fff;
 }
 
 #payment-button {
-    font-family: "Noto Sans KR", sans-serif;
     
     width: 100%;
-    margin: 30px 0;
+    margin: 30px 24px;
     
     padding: 11px 22px;
     border: none;
@@ -227,10 +117,154 @@ form h3 {
     cursor: pointer;
     
 
-    background-color: #5D9CA4;
+    background-color: #3282f6;
     color: #f9fcff;
     
 }
+
+/* 토스 페이먼츠 */
+.w-100 {
+    width: 100%;
+    }
+    
+    .h-100 {
+    height: 100%;
+    }
+    
+    a {
+    text-decoration: none;
+    text-align: center;
+    }
+    
+    .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    overflow: auto;
+    }
+    
+    .max-w-540 {
+    max-width: 540px;
+    }
+    
+    .btn-wrapper {
+    background-color: #fff;
+    padding: 20px 0;
+    }
+    
+    .btn {
+    padding: 11px 0;
+    border: none;
+    border-radius:  8px;
+    
+    background-color: #f2f4f6;
+    color: #4e5968;
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    }
+    
+    .btn.primary {
+    background-color: #3282f6;
+    color: #f9fcff;
+    }
+    
+    .text-center {
+    text-align: center;
+    }
+    
+    .flex {
+    display: flex;
+    }
+    
+    .flex-column {
+    display: flex;
+    flex-direction: column;
+    }
+    
+    .justify-center {
+    justify-content: center;
+    }
+    
+    .justify-between {
+    justify-content: space-between;
+    }
+    
+    .align-center {
+    align-items: center;
+    }
+    
+    .confirm-loading {
+    margin-top: 72px;
+    height: 400px;
+    justify-content: space-between;
+    }
+    
+    
+    .confirm-success {
+    display: none;
+    margin-top: 72px;
+    }
+    
+    .button-group {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    }
+    
+    .title {
+    margin-top: 32px;
+    margin-bottom: 0;
+    color: #191f28;
+    font-weight: bold;
+    font-size: 24px;
+    }
+    
+    .description {
+    margin-top: 8px;
+    color: #4e5968;
+    font-size: 17px;
+    font-weight: 500;
+    }
+    
+    .response-section {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 20px;
+    }
+    
+    .response-section .response-label {
+    font-weight: 600;
+    color: #333d48;
+    font-size: 17px;
+    }
+    
+    .response-section .response-text {
+    font-weight: 500;
+    color: #4e5968;
+    font-size: 17px;
+    padding-left: 16px;
+    word-break: break-word;
+    text-align: right;
+    }
+    
+    .color-grey {
+    color: #b0b8c1;
+    }
+
+/*successs.html*/
+#confirmPaymentButton{
+    font-family: "Noto Sans KR", sans-serif;
+}
+#confirmPaymentButton:hover{
+    background-color: #295dac;
+}
+
 
 /* 푸터 스타일 */
 footer {

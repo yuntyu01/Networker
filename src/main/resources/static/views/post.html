@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -50,27 +50,39 @@
             </div>
           </div>
         </div>
-      </header>
-  
+    </header>
 
     <main>
         <div class="post" id="post-details">
-            <h2>법률지원</h2>
-            <div class="content" id="post-info"></div>
+            <h2>자유게시판</h2>
+            <div class="content" id="post-info">
+                <h1 th:text="${post.subject}"></h1>
+                <div th:text="${post.content}"></div>
+            </div>
             <div class="center-align">
                 <!-- 
                 추천 개수 표시 하려면 이부분 수정해야함.
                 <p id="recommend-count"></p> 
                 <p id="not-recommend-count"></p> 
                 -->
-                <button id="recommend" class="recommend-button" type="submit">추천</button>
-                <button id="not-recommend" class="recommend-button" type="submit">비추천</button>
+                <button id="recommend" class="recommend-button" type="button" onclick="recommend()">추천</button>
+
             </div>
-            <div class="comment" id="comments-info"></div>
-            <form class="comment-write">
+            <div class="right-align">
+                <button id="edit" type="button" onclick="post_edit()">수정</button>
+                <button id="delete" type="button" onclick="post_delete()">삭제</button>
+            </div>
+            <h5 th:text="|댓글 ${#lists.size(post.commentList)}개|"></h5>
+            <div class="comment" id="comments-info">
+                <ul>
+                    <li th:each="comment : ${post.commentList}" th:text="${comment.content}"></li>
+                </ul>
+            </div>
+
+            <form class="comment-write" th:action="@{|/comment/create/${post.id}|}" method="post">
                 <div class="user-id" id="user-info">임시 아이디</div>
                 <div class="input-container">
-                    <textarea id="comment-input" class="text-input"></textarea>
+                    <textarea id="comment-input" class="text-input" name="content" ></textarea>
                     <button id="comment-button" class="text-button" type="submit">작성</button>
                 </div>
             </form>
@@ -88,7 +100,7 @@
         </div>
     </footer>
 
-    <script src="../src/js/post.js"></script>
+    <script src="/src/js/post.js"></script>
 </body>
 
 </html>
