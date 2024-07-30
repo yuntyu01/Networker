@@ -39,7 +39,7 @@ function displayProducts(products) {
         
         // 상품 클릭 시 상세 페이지로 이동
         productElement.querySelector('.product-link').addEventListener('click', () => {
-            window.location.href = `/product_detail.html?productId=${product.id}`;
+            window.location.href = `/productdetail.html?productId=${product.id}`;
         });
 
         productList.appendChild(productElement);

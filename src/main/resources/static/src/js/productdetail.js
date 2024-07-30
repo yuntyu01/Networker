@@ -1,20 +1,60 @@
-// DB에서 데이터 가져오기
-async function fetchProductData() {
-    try {
-        const response = await fetch('/detail'); // URL 조정 필요
-        const productInfo = await response.json();
-        displayInformation(productInfo);
-    } catch (error) {
-        console.error('Error fetching product data:', error);
+// 전역변수
+let productId, productImg, productName, productPrice;
+
+document.addEventListener('DOMContentLoaded', function() {
+    // 기본적으로 첫 번째 탭을 열기
+    document.querySelector('.tab-button').click();
+    
+    // URL에서 productId 파라미터를 가져옴
+    const urlParams = new URLSearchParams(window.location.search);
+    productId = urlParams.get('productId');
+
+    if (productId) {
+        // 제품 정보를 가져오는 API 호출
+        fetch(`/api/products/${productId}`)
+            .then(response => response.json())
+            .then(product => {
+                // 전역변수에 제품 정보 저장
+                productImg = product.imageurl;
+                productName = product.name;
+                productPrice = product.price;
+                
+                // 제품 정보를 HTML에 추가
+                const productDetailContainer = document.getElementById('product-detail-container');
+                productDetailContainer.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.imageUrl}" alt="${product.name}">
+                    </div>
+                    <div class="product-info">
+                        <h1 class="product-name">${product.name}</h1>
+                        <p class="product-description">${product.description}</p>
+                        <p class="product-price">₩ ${product.price.toLocaleString()}</p>
+                        <div class="product-quantity">
+                        <p>수량</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="decreaseQuantity()"><i class="fa-solid fa-minus"></i></button>
+                            <input type="text" id="quantity-input" value="0" readonly>
+                            <button class="quantity-btn" onclick="increaseQuantity()"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="total-price">
+                        <p>TOTAL</p>
+                        <p class="total">₩ 0</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="buy-now" onclick="buyNow()">구매하기</button>
+                        <button class="add-to-cart" onclick="addToCart()">장바구니에 추가</button>
+                    </div>
+                    </div>
+                `;
+            })
+            .catch(error => {
+                console.error('Error fetching product:', error);
+            });
+    } else {
+        console.error('Product ID is missing in the URL.');
     }
-}
-
-// 데이터 기반 상품 목록 생성
-function displayInformation(info) {
-    const productList = document.getElementById('product-list');
-    productList.innerHTML = ''; // 기존 제품 목록 삭제
-
-}
+});
 
 
 // 구매 수량 늘리기
@@ -36,21 +76,15 @@ function decreaseQuantity() {
 
 // 합계 가격 출력
 function updateTotalPrice() {
-    var quantityInput = document.getElementById('quantity-input').value;
-    var unitPrice = 24000; // 상품 단가
-    var totalPriceElement = document.querySelector('.total');
-    totalPriceElement.textContent = '₩ ' + (unitPrice * quantityInput).toLocaleString();
+    var quantityInput = document.getElementById('quantity-input').value;    // 구매 갯수
+    var totalPriceElement = document.querySelector('.total');               // 총 가격 출력할 곳
+    totalPriceElement.textContent = '₩ ' + (productPrice * quantityInput).toLocaleString();
 }
 
 // 장바구니에 추가 함수
 function addToCart() {
-    var productElement = button.closest('.section-product');
-    var productId = productElement.getAttribute('data-id');
-    var productName = productElement.getAttribute('data-name');
-    var productPrice = parseInt(productElement.getAttribute('data-price'));
-    var productImage = productElement.querySelector('img').src;
-    var input = productElement.querySelector('.product-count');
-    var productCount = parseInt(input.value);
+    // 구매 갯수
+    var productCount = document.getElementById('quantity-input').value;
     
     if (productCount > 0) {
         var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -77,6 +111,10 @@ function addToCart() {
     }
 }
 
+function buyNow(){
+    addToCart();
+    window.location.href = '/cart.html';
+}
 
 // 상세정보, 구매후기, 반품교환, Q&A 탭 이동
 function openTab(tabName) {
@@ -92,7 +130,3 @@ function openTab(tabName) {
     document.getElementById(tabName).style.display = "block";
     event.currentTarget.classList.add("active");
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('.tab-button').click(); // 기본적으로 첫 번째 탭을 열기
-});

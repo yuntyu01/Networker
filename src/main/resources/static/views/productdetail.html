@@ -59,35 +59,9 @@
         </div>
 
         <div class="product-detail-container">
-            <div class="product-image">
-                <img src="../src/assets/spice.jpg" alt="상품 이미지">
-            </div>
-            <div class="product-info">
-                <h1 class="product-name">벨라 러블리 원피스</h1>
-                <p class="product-description">
-                    간편하게 이 원피스 하나로 센스있게 그날의 스타일링 완성! 너무 밋밋하지도 않으면서 너무 과하지 않은! 원피스 한 장으로 멋내기 성공 :)
-                </p>
-                <hr class="product-divider">
-                <p class="product-price">₩ 24,000</p>
-                <div class="product-quantity">
-                    <p>수량</p>
-                    <div class="quantity-controls">
-                        <button class="quantity-btn" onclick="decreaseQuantity()"><i class="fa-solid fa-minus"></i></button>
-                        <input type="text" id="quantity-input" value="0" readonly>
-                        <button class="quantity-btn" onclick="increaseQuantity()"><i class="fa-solid fa-plus"></i></button>
-                    </div>
-                </div>
-                <div class="total-price">
-                    <p>TOTAL</p>
-                    <p class="total">₩ 0</p>
-                </div>
-                <div class="product-actions">
-                    <button class="buy-now">구매하기</button>
-                    <button class="add-to-cart" onclick="addToCart()">장바구니에 추가</button>
-                </div>
-            </div>
+            <!-- 제품 정보가 로드된 후 여기에 표시됩니다. -->
         </div>
-        
+
         <div class="product-detail-tabs">
             <button class="tab-button" onclick="openTab('details')">상세정보</button>
             <button class="tab-button" onclick="openTab('purchase')">구매후기</button>
