@@ -22,7 +22,7 @@ function displayProducts(products) {
         productElement.setAttribute('data-name', product.name);
 
         productElement.innerHTML = `
-            <a href="product_detail.html">
+            <a href="javascript:void(0);" class="product-link">
                 <img class="product-info" src="${product.image}" alt="${product.name}">
                 <div class="product-info">
                     <p class="product-description">${product.name}</p>
@@ -33,10 +33,15 @@ function displayProducts(products) {
                 <button class="btn-plusminus" onclick="decrease(this)"><i class="fa-solid fa-minus"></i></button>
                 <input class="product-count" type="text" value="0">
                 <button class="btn-plusminus" onclick="increase(this)"><i class="fa-solid fa-plus"></i></button>
-                <button class="btn-cart" onclick="addToCart(this)"><i class="fa-solid fa-cart-shopping"></i></button>
+                <button class="btn-cart" onclick="addToCart(this)"><i class="fa-solid fa-cart-plus"></i></button>
             </div>
         `;
         
+        // 상품 클릭 시 상세 페이지로 이동
+        productElement.querySelector('.product-link').addEventListener('click', () => {
+            window.location.href = `/product_detail.html?productId=${product.id}`;
+        });
+
         productList.appendChild(productElement);
     });
 }
