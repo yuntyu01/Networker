@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginButton = document.querySelector('.auth-buttons a[href="login.html"]');
     const signupButton = document.querySelector('.auth-buttons a[href="signup.html"]');
     const profileIcon = document.querySelector('.auth-buttons .profile-icon');
+    const postButton = document.querySelector('.bottom-btn-box .write-post-button');
 
     // 로그인 상태 확인 함수(로그인 여부에 따라 헤더 요소 변경)
     const checkLoginStatus = () => {
@@ -38,10 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     loginButton.style.display = 'none';
                     signupButton.style.display = 'none';
                     profileIcon.style.display = 'inline-block';
+                    postButton.style.display = 'inline-block';
                 } else {
                     loginButton.style.display = 'inline-block';
                     signupButton.style.display = 'inline-block';
                     profileIcon.style.display = 'none';
+                    postButton.style.display = 'none';
                 }
             })
             .catch(error => console.error('Error:', error));
