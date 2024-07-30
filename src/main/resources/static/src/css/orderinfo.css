@@ -99,6 +99,13 @@ h2 {
     color: #333;
 }
 
+.empty-list{
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 20px;
+    color: #333;
+}
+
 .order-history-container {
     padding: 20px;
 }
