@@ -29,12 +29,3 @@ document.addEventListener('DOMContentLoaded', async () => {
     // DOMContentLoaded 이벤트가 발생하면 로그인 상태 확인 함수 호출
     checkLoginStatus();
 });
-
-
-function removeCheck() {
-    if (confirm("정말 삭제하시겠습니까??") == true) {    //확인
-        // 삭제 시 이벤트.
-    } else {   //취소
-        return false;
-    }
-}
