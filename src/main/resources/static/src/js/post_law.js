@@ -2,9 +2,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // DOMContentLoaded 이벤트가 발생하면, 즉 페이지의 DOM이 완전히 로드된 후에 실행됩니다.
 
     // 로그인, 회원가입, 프로필 아이콘 요소를 선택합니다.
-    const loginButton = document.querySelector('.auth-buttons a[href="login.html"]');
-    const signupButton = document.querySelector('.auth-buttons a[href="signup.html"]');
-    const profileIcon = document.querySelector('.auth-buttons .profile-icon');
+    const loginButton = document.querySelector('#login');
+    const signupButton = document.querySelector('#signup');
+    const profileIcon = document.querySelector('.profile-icon');
     const edit_delete_Button = document.querySelector('.right-align button');
 
     const getPostuserId = async () => {

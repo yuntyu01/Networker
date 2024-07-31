@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 로그인 여부 확인 관련 요소
-    const loginButton = document.querySelector('.auth-buttons a[href="login.html"]');
-    const signupButton = document.querySelector('.auth-buttons a[href="signup.html"]');
-    const profileIcon = document.querySelector('.auth-buttons .profile-icon');
+    const loginButton = document.querySelector('#login');
+    const signupButton = document.querySelector('#signup');
+    const profileIcon = document.querySelector('.profile-icon');
     // 장바구니 관련 요소
     const cartTableBody = document.querySelector('.cart-table tbody');
     const clearCartButton = document.querySelector('.clear-btn');

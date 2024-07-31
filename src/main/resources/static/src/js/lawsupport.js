@@ -22,9 +22,9 @@ const formatDate = (dateString) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     // 로그인, 회원가입, 프로필 아이콘
-    const loginButton = document.querySelector('.auth-buttons a[href="login.html"]');
-    const signupButton = document.querySelector('.auth-buttons a[href="signup.html"]');
-    const profileIcon = document.querySelector('.auth-buttons .profile-icon');
+    const loginButton = document.querySelector('#login');
+    const signupButton = document.querySelector('#signup');
+    const profileIcon = document.querySelector('.profile-icon');
     const postButton = document.querySelector('.bottom-btn-box .write-post-button');
 
     // 로그인 상태 확인 함수(로그인 여부에 따라 헤더 요소 변경)
