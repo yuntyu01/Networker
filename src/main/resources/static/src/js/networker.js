@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const loginButton = document.querySelector('.auth-buttons a[href="login.html"]');
-    const signupButton = document.querySelector('.auth-buttons a[href="signup.html"]');
-    const profileIcon = document.querySelector('.auth-buttons .profile-icon');
+    const loginButton = document.querySelector('#login');
+    const signupButton = document.querySelector('#signup');
+    const profileIcon = document.querySelector('.profile-icon');
 
     // 로그인 상태 확인 함수(로그인 여부에 따라 헤더 요소 변경)
     const checkLoginStatus = () => {

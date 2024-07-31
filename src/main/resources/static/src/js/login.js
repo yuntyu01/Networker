@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 console.log('Response:', data);
                 if (data.message === "로그인이 성공적으로 완료되었습니다.") {
-                    window.location.href = 'profile.html'; // 로그인 후 리다이렉트
+                    window.location.href = 'networker.html'; // 로그인 후 리다이렉트
                 } else {
                     alert(data.message);
                 }
