@@ -31,6 +31,13 @@ public class Post {
 	private String content;
 	
 	private LocalDateTime createDate;
+
+	@Column(columnDefinition = "TEXT")
+	private String userId;
+
+	private Integer viewCount;
+
+	private Integer recommendCount;
 	
 	@OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
 	private List<Comment> commentList;
