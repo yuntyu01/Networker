@@ -148,8 +148,24 @@ h2 {
 }
 
 .profile-info p {
+    height: 30px;
     color: #666;
     margin: 5px 0 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+#nationality{
+    display: inline-block;
+}
+.flag{
+    display: inline-block;
+}
+#flag {
+    height: 20px;
+    width: auto;
+    background-color: #fff;
+    border-radius: 0%;
+    margin: 0 5px;
 }
 
 .logout-btn {
