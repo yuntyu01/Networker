@@ -71,6 +71,10 @@
                 <td th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}"></td>
                 <td>
                     <a th:href="@{/lawsupport/detail/{id}(id=${postLaw.id})}" th:text="${postLaw.subject}"></a>
+                    <span class="text-danger small ms-2"
+                          th:if="${#lists.size(postLaw.commentLawList) > 0}"
+                          th:text="${#lists.size(postLaw.commentLawList)}">
+                    </span>
                 </td>
                 <td>NULL</td>
                 <td th:text="${#temporals.format(postLaw.createDate, 'yyyy-MM-dd-HH:mm')}"></td>
