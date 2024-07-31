@@ -36,11 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateProfileInfo = (userInfo) => {
         const profileInfoContainer = document.querySelector('.profile-info');
         const nameElement = profileInfoContainer.querySelector('h2');
-        const nationalityElement = profileInfoContainer.querySelector('p');
+        const nationalityElement = profileInfoContainer.querySelector('.flag');
         const userEmail = document.getElementById('user-email');
 
         nameElement.textContent = `${userInfo.nickname}`;
-        nationalityElement.textContent = `국적 : ${userInfo.nationality}`;
+        nationalityElement.innerHTML += `<img src="../src/assets/flags/${userInfo.nationality}.svg" id="flag">`;
         userEmail.textContent = `아이디 : ${userInfo.email}`;
     };
 
