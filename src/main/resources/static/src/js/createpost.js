@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const loginButton = document.querySelector('.auth-buttons a[href="login.html"]');
-    const signupButton = document.querySelector('.auth-buttons a[href="signup.html"]');
-    const profileIcon = document.querySelector('.auth-buttons .profile-icon');
+    const loginButton = document.querySelector('#login');
+    const signupButton = document.querySelector('#signup');
+    const profileIcon = document.querySelector('.profile-icon');
     const contentTextarea = document.querySelector('.post-body');
 
     // 취소 버튼 누를 때 돌아감 기능
