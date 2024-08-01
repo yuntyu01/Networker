@@ -107,7 +107,7 @@ main li {
 }
 
 /* 검색창 및 드롭박스 디자인 */
-main form {
+main .search-container {
     background: #759465;
     width: 350px;
     height: 39px;
