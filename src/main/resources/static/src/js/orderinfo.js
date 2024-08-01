@@ -41,9 +41,9 @@ function fetchOrders() {
                 row.innerHTML = `
                     <td>${info.orderId}</td>
                     <td><img src="${info.image}" alt="${info.productName}" /></td>
-                    <td>${info.productName} 외 ${info.itemCnt - 1}건</td>
+                    <td>${info.productName} 외 ${info.count - 1}건</td>
                     <td>₩ ${info.totalAmount}</td>
-                    <td>${info.date}</td>
+                    <td>${info.created_at}</td>
                 `;
                 row.addEventListener('click', () => {
                     window.location.href = `/order-details.html?orderId=${info.orderId}`;
