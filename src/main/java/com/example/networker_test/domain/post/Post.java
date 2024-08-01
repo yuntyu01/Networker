@@ -6,13 +6,8 @@ import java.util.List;
 
 import com.example.networker_test.domain.comment.Comment;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.example.networker_test.domain.user.User;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,8 +27,9 @@ public class Post {
 	
 	private LocalDateTime createDate;
 
-	@Column(columnDefinition = "TEXT")
-	private String userId;
+	@ManyToOne
+	@JoinColumn(name = "author_id")
+	private User author;
 
 	private Integer viewCount;
 

@@ -68,14 +68,20 @@
             <button id="delete" type="button" onclick="post_delete()">삭제</button>
         </div>
         <h5 th:text="|댓글 ${#lists.size(post.commentList)}개|"></h5>
-        <div class="comment" id="comments-info">
-            <ul>
-                <li th:each="comment : ${post.commentList}" th:text="${comment.content}"></li>
-            </ul>
-        </div>
+        <tbody>
+        <tr th:each="comment : ${post.commentList}" class="comment-row">
+            <td>
+                <div class="comment">
+                    <span th:text="${comment.author != null ? comment.author.nickname : 'Unknown'}"></span>
+                    <span th:text="${#temporals.format(comment.createDate, 'yyyy-MM-dd-HH:mm')}"></span>
+                </div>
+                <div class="comment-content" th:text="${comment.content}"></div>
+            </td>
+        </tr>
+        </tbody>
 
         <form class="comment-write" th:action="@{|/comment/create/${post.id}|}" method="post">
-            <div class="user-id" id="user-info">임시 아이디</div>
+            <div class="user-id" id="user-info">            </div><!--임시아이디영역-->
             <div class="input-container">
                 <textarea id="comment-input" class="text-input" name="content"></textarea>
                 <button id="comment-button" class="text-button" type="submit">작성</button>

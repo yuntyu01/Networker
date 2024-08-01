@@ -5,12 +5,8 @@ import java.time.LocalDateTime;
 
 import com.example.networker_test.domain.post.Post;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import com.example.networker_test.domain.user.User;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,12 +23,13 @@ public class Comment {
 	
 	private LocalDateTime createDate;//댓글 작성일
 
-	@Column(columnDefinition = "TEXT")
-	private String userId;
-
 	private Integer recommendCount;
-	
-    @ManyToOne
-    private Post post;//하나의 게시물, 여러 댓글
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "post_id")
+	private Post post;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
+	private User author;
 }

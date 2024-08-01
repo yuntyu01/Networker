@@ -33,20 +33,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // 페이지 로드 시 로그인 상태 확인
     checkLoginStatus();
 
-    // 파일 업로드 처리
+
     document.querySelector('.create-post').addEventListener('submit', function(event) {
-        event.preventDefault(); // 기본 제출 동작을 막습니다.
+        event.preventDefault();
 
         const formData = new FormData(this);
-        const file = formData.get('file'); // 파일을 가져옵니다.
-        const MAX_SIZE = 5 * 1024 * 1024; // 5MB
+        const file = formData.get('file'); .
+        const MAX_SIZE = 5 * 1024 * 1024;
 
         if (file && file.size > MAX_SIZE) {
             alert('파일 크기는 5MB를 초과할 수 없습니다.');
             return;
         }
 
-        // 파일 업로드를 처리합니다.
+
         fetch('/post/uploadImage', {
             method: 'POST',
             body: formData,
@@ -54,9 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             if (data.fileUrl) {
-                // 마크다운 콘텐츠에 이미지 URL을 삽입합니다.
+
                 const imageMarkdown = `![Image](${data.fileUrl})\n`;
-                contentTextarea.value += imageMarkdown; // 현재 내용에 추가
+                contentTextarea.value += imageMarkdown;
             } else {
                 console.error('파일 업로드 실패:', data);
             }
