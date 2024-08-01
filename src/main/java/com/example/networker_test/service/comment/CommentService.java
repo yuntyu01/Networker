@@ -11,6 +11,8 @@ import com.example.networker_test.repository.user.UserRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Service
 @RequiredArgsConstructor
@@ -20,25 +22,29 @@ public class CommentService {
 	private final UserRepository userRepository;
 	private final PostRepository postRepository;
 
+	private static final Logger logger = LoggerFactory.getLogger(CommentService.class);
+
 	public void create(Integer postId, String content, HttpSession session) {
-		// 세션에서 사용자 정보 가져오기
-		User user = (User) session.getAttribute("user");
-		if (user == null) {
-			throw new RuntimeException("User not found in session");
+		try {
+
+			User user = (User) session.getAttribute("user");
+			if (user == null) {
+				throw new RuntimeException("User not found in session");
+			}
+
+			Post post = postRepository.findById(postId)
+					.orElseThrow(() -> new RuntimeException("Post not found"));
+
+			Comment comment = new Comment();
+			comment.setContent(content);
+			comment.setCreateDate(LocalDateTime.now());
+			comment.setPost(post);
+			comment.setAuthor(user);
+
+			commentRepository.save(comment);
+		} catch (Exception e) {
+			logger.error("Error creating comment", e);
+			throw e;
 		}
-
-		// 게시물 ID로 게시물 찾기
-		Post post = postRepository.findById(postId)
-				.orElseThrow(() -> new RuntimeException("Post not found"));
-
-		// 댓글 객체 생성 및 설정
-		Comment comment = new Comment();
-		comment.setContent(content);
-		comment.setCreateDate(LocalDateTime.now());
-		comment.setPost(post); // 댓글이 속하는 게시물 설정
-		comment.setAuthor(user); // 댓글 작성자 설정
-
-		// 댓글 저장
-		commentRepository.save(comment);
 	}
 }
