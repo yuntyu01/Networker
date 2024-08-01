@@ -12,6 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     // 유저 이메일(아이디) 저장
                     userEmail = data.userEmail;
                 }
+                else {  // 비 로그인 상태
+                    window.alert("로그인이 필요합니다.");
+                    window.location.href = 'login.html';
+                }
             })
             .catch(error => console.error('Error:', error));
     };
