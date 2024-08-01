@@ -7,15 +7,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const profileIcon = document.querySelector('.profile-icon');
     const edit_delete_Button = document.querySelector('.right-align button');
 
-    const getPostuserId = async () => {
-        const response = await fetch('/get-post-userid', { //post id가 아닌 post userid로 해야함 아직 DB 연결에 추가가 안되어있음.
-            method: 'GET',
-            credentials: 'include'
-        });
-        const data = await response.json();
-        return data.postId;
-    };
-
     // 로그인 상태 및 작성자를 확인하는 함수 정의
     const checkStatus = () => {
         // 서버에 로그인 상태를 확인하기 위한 GET 요청을 보냅니다.
@@ -32,9 +23,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 signupButton.style.display = 'none'; // 회원가입 버튼을 숨깁니다.
                 profileIcon.style.display = 'inline-block'; // 프로필 아이콘을 표시합니다.
 
-                // 클라이언트에서 현재 페이지의 post id를 가져옵니다. (getCurrentPostId 함수는 구현이 필요합니다.)
-                const postuserId = await getPostuserId(); 
-
+                // 현재 페이지의 post id 가져오기(유저 이메일 아이디)
+                const postuserId = document.querySelector('.postuserId')
                 // 서버로 현재 로그인된 사용자의 id와 post id를 전송하여 비교 요청을 보냅니다.
                 const userId = data.userEmail; // 서버에서 받아온 현재 로그인된 사용자의 id
 
