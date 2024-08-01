@@ -43,6 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(`/api/products/${productId}`)
             .then(response => response.json())
             .then(product => {
+                // 디버깅 용
+                console.log(product);
+
                 // 전역변수에 제품 정보 저장
                 productImg = product.imageurl;
                 productName = product.name;
