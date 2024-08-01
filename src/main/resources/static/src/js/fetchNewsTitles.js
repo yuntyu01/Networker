@@ -8,3 +8,25 @@ document.addEventListener("DOMContentLoaded", function () {
     infoList.innerHTML = newsItems.map(item => `<li><a href="${item.url}" target="_blank">${item.title}</a></li>`).join('');
   });
   
+  document.addEventListener('DOMContentLoaded', () => {
+    // 최근 게시글을 가져와서 표시
+    const fetchRecentPosts = () => {
+        fetch('/api/recent-posts')
+            .then(response => response.json())
+            .then(posts => {
+                const boardContent = document.querySelector('.board-content');
+                boardContent.innerHTML = '';
+                posts.forEach(post => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = `/post/detail/${post.id}`;
+                    a.textContent = post.title;
+                    li.appendChild(a);
+                    boardContent.appendChild(li);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    };
+
+    fetchRecentPosts();
+});
