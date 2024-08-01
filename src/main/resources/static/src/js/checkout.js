@@ -1,18 +1,22 @@
 main();
 
 async function main() {
-    // 필요한 정보들(유저 고유번호, 주문번호, 결제금액, 이메일, 주문자명, 휴대폰 번호, 구매 상품 갯수)
-    let userId, orderId, Amount, userEmail, userName, phoneNumber, count;
+    // 로컬스토리지에서 주문번호(orderId) 가져오기
+    const orderId = localStorage.getItem('orderId');
+    // 저장 후 로컬스토리지에서 orderId 삭제
+    localStorage.removeItem('orderId');
+    // 필요한 정보들(유저 고유번호, 결제금액, 이메일, 주문자명, 휴대폰 번호, 구매 상품 갯수)
+    let userId, Amount, userEmail, userName, phoneNumber, count;
 
     // db에서 결제 정보 데이터 가져오기
     fetch('/payinfo', {
         method: 'GET',
-        credentials: 'include'
+        credentials: 'include',
+        body: JSON.stringify({ orderId }) // orderId를 요청 본문에 포함
     })
     .then(response => response.json())
     .then(data => {
         userId = data.userId
-        orderId = data.orderId;
         Amount = data.finalAmount;
         userEmail = data.userEmail;
         userName = data.orderName;

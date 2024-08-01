@@ -60,8 +60,13 @@ document.addEventListener('DOMContentLoaded', () => {
     orderForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
+        // 주문 번호 생성
+        const orderId = crypto.randomUUID();
+        // 로컬스토리지에 orderId 저장
+        localStorage.setItem('orderId', orderId);
+
         const orderInfo = {
-            orderId: crypto.randomUUID(),
+            orderId: orderId,
             userId: userEmail,
             orderName: document.getElementById('order-name').value,
             email: document.getElementById('email').value,
@@ -105,11 +110,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     window.location.href = 'checkout.html';
                 } else {
                     alert('주문 정보 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
+                    // 로컬스토리지에서 orderId 삭제
+                    localStorage.removeItem('orderId');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
                 alert('주문 정보 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
+                // 로컬스토리지에서 orderId 삭제
+                localStorage.removeItem('orderId');
             });
 
     });
