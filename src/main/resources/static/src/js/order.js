@@ -55,34 +55,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const orderForm = document.getElementById('order-form');
     orderForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        // 주문자 정보
+
         const orderInfo = {
-            orderId: crypto.randomUUID(),   // 주문 번호
-            userId: userEmail,           // 유저 아이디(주문자 정보에 넣는 이메일과 다를 수 있음)
+            orderId: crypto.randomUUID(),
+            userId: userEmail,
             orderName: document.getElementById('order-name').value,
             email: document.getElementById('email').value,
-            mobile: document.getElementById('mobile-prefix').value+document.getElementById('mobile-middle').value+document.getElementById('mobile-last').value,
+            mobile: document.getElementById('mobile-prefix').value + document.getElementById('mobile-middle').value + document.getElementById('mobile-last').value,
         };
-        // 배송 정보
+
         const shippingInfo = {
             receiver: document.getElementById('receiver').value,
             postcode: document.getElementById('postcode').value,
             address: document.getElementById('address').value,
             addressDetail: document.getElementById('address-detail').value,
-            mobile: document.getElementById('mobile-prefix2').value+document.getElementById('mobile-middle2').value+document.getElementById('mobile-last2').value,
+            mobile: document.getElementById('mobile-prefix2').value + document.getElementById('mobile-middle2').value + document.getElementById('mobile-last2').value,
         };
-        // 결제 금액 정보
+
         const paymentInfo = {
             totalAmount: totalAmount,
             shippingFee: shippingFee,
             finalAmount: finalAmount
         };
-        
-        // 최종 결제 정보 데이터
+
         const orderData = {
             orderInfo: orderInfo,
             shippingInfo: shippingInfo,
-            cartItems: cartItems,   // 주문한 상품 정보
+            cartItems: cartItems,
             paymentInfo: paymentInfo
         };
 
@@ -93,22 +92,22 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify(orderData)
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('결제를 진행합니다');
-                // 로컬 스토리지 장바구니 데이터 삭제
-                localStorage.removeItem('cartItems');
-                // 결제 정보 저장 후 결제하기 페이지로 리다이렉션
-                window.location.href = 'checkout.html';
-            } else {
+            .then(response => response.json())
+            .then(data => {
+                console.log('Response from server:', data); // 서버 응답 확인
+                if (data.success) {
+                    alert('결제를 진행합니다');
+                    localStorage.removeItem('cartItems');
+                    window.location.href = 'checkout.html';
+                } else {
+                    alert('주문 정보 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
                 alert('주문 정보 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('주문 정보 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
-        });
+            });
+
     });
 
 });
