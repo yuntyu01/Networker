@@ -124,6 +124,7 @@ public class PostController {
 		}
 	}
 
+
 	@PostMapping("/comment/{postId}")
 	public String createComment(@PathVariable("postId") Integer postId,
 								@RequestParam(value="content") String content,
@@ -140,5 +141,6 @@ public class PostController {
 			e.printStackTrace();
 			return "댓글 등록 실패";
 		}
+
 	}
 }

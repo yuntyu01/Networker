@@ -27,6 +27,7 @@ public class PostService {
 	private final PostRepository postRepository;
 	private final UserRepository userRepository;
 
+
 	public List<Post> getList(){
 		return this.postRepository.findAll(); // 등록된 게시물 전체 조회
 	}
@@ -60,5 +61,7 @@ public class PostService {
 		post.setAuthor(user); // User 객체를 통해 작성자 설정
 
 		this.postRepository.save(post); // 게시물 생성 처리 연결(controller - entity)
+
+
 	}
 }

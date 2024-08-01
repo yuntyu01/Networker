@@ -1,5 +1,6 @@
 package com.example.networker_test.controller.user;
 
+import com.example.networker_test.domain.user.User;
 import com.example.networker_test.dto.user.request.UserCreateRequest;
 import com.example.networker_test.dto.user.reponese.UserResponse;
 import com.example.networker_test.service.user.UserService;
@@ -7,6 +8,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -67,6 +69,13 @@ public class UserController {
     @GetMapping("/board")
     public ResponseEntity<Map<String, Object>> CheckSession(HttpSession session){
         return userService.checkSession(session);
+    }
+
+    @GetMapping("/user/status")
+    public Map<String, Boolean> checkLoginStatus(HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        boolean loggedIn = (user != null);
+        return Collections.singletonMap("loggedIn", loggedIn);
     }
 
 
