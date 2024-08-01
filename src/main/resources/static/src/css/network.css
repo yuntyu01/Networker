@@ -1,3 +1,13 @@
+/* 홈 화면만 결과가 다르게 보이는 스타일 조정 */
+#important {
+  max-width: 1240px;
+}
+
+#important .auth-buttons .profile-icon img {
+  width: 32px;
+  height: 32px;
+}
+
 /* 메인 배너 스타일 */
 .main-banner {
   text-align: left;
@@ -311,103 +321,6 @@ label.right {
   background-color: #45a049; /* 호버 시 배경색 */
 }
 
-.auth-buttons .profile-icon img {
-  vertical-align: middle;
-  width: 20px;
-  height: 20px;
-  padding: 5px;
-  border-radius: 10%;
-  border: solid 1px white;
-}
-
-body {
-  font-family: "Arial", sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f9f9f9;
-}
-
-/* 헤더 */
-header {
-  background-color: #759465;
-  padding: 20px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1240px;
-    height: 40px;
-    margin: 0 auto;
-    padding: 0 20px;
-    line-height: 36px;
-}
-
-.logo img {
-  vertical-align: middle;
-  display: inline;
-  height: 36px;
-}
-
-.logo h1 {
-  vertical-align: middle;
-  display: inline;
-  margin: 0;
-  color: white;
-}
-
-/* 메뉴 요소 */
-.menu a {
-  margin: 0 15px;
-  text-decoration: none;
-  color: white;
-  position: relative;
-  padding: 10px 0px;
-}
-
-/* 메뉴 hover 시 효과 */
-.menu a::after {
-  content: "";
-  position: absolute;
-  width: 1300px;
-  background-color: white;
-  bottom: -2px;
-  left: 0;
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.menu a:hover::after {
-  transform: scaleX(1);
-}
-
-/* 로그인, 회원가입, 프로필 버튼 */
-.auth-buttons a {
-  vertical-align: middle;
-  text-decoration: none;
-  color: white;
-  font-size: 16px;
-}
-#login, #signup {
-  margin: 0 5px;
-}
-
-.auth-buttons .profile-icon {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.auth-buttons .profile-icon img {
-  vertical-align: middle;
-  width: 32px;
-  height: 32px;
-  padding: 5px;
-  border-radius: 10%;
-  border: solid 1px white;
-}
-
 main {
   max-width: 1240px;
   margin: 20px auto;
@@ -416,49 +329,3 @@ main {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
-
-
-/*푸터 */
-footer {
-  background-color: #565656;
-  height: 30px;
-  position: relative;
-  transform: translateY(-100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
-}
-
-.footer-container {
-  text-align: center;
-}
-
-.footer-btn {
-  list-style-type: none;
-  color: white;
-}
-
-ul.footer-btn a {
-  color: white;
-}
-
-ul.footer-btn > li {
-  float: left;
-  margin-left: 5px;
-}
-
-.footer-btn li::after {
-  content: "|";
-  margin-left: 5px;
-}
-
-.footer-btn li:last-child::after {
-  content: "";
-}
-
-.footer-container ul {
-  display: inline-block;
-  padding: 0;
-}
-
