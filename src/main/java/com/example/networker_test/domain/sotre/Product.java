@@ -14,12 +14,14 @@ public class Product {
     private Long price;
     private String name;
     private String image;
+    private String description;
 
-    public Product(Long id, Long price, String name, String image) {
+    public Product(Long id, Long price, String name, String image, String description) {
         this.id = id;
         this.price = price;
         this.name = name;
         this.image = image;
+        this.description = description;
     }
 
     protected Product() {
