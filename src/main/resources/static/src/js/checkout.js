@@ -33,8 +33,8 @@ async function main() {
         alert(`Error: ${error.message}`);
         return;
     }
-    console.log(userId, userEmail, count);
 
+    //로그인 상태 확인 함수
     const checkLoginStatus = () => {
         fetch('/board', {
             method: 'GET',
