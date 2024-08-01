@@ -179,6 +179,27 @@ public class OrderService {
 
         return shippingInfoRepository.save(shippingInfo);
     }
+    public ResponseEntity<?> getPaymentInfo(String orderId) {
+        Optional<OrderInfo> orderInfoOptional = orderInfoRepository.findById(orderId);
+        if (orderInfoOptional.isPresent()) {
+            OrderInfo orderInfo = orderInfoOptional.get();
+            PaymentInfo paymentInfo = paymentInfoRepository.findByOrderInfo(orderInfo);
 
+            if (paymentInfo != null) {
+                Map<String, Object> response = new HashMap<>();
+                response.put("userId", orderInfo.getUserid());
+                response.put("finalAmount", paymentInfo.getFinalAmount());
+                response.put("userEmail", orderInfo.getEmail());
+                response.put("orderName", orderInfo.getOrderName());
+                response.put("mobile", orderInfo.getMobile());
+                response.put("count", cartItemsRepository.countByOrderInfo(orderInfo)); // 상품 갯수 추가
 
-}
+                return ResponseEntity.ok().body(response);
+            } else {
+                return ResponseEntity.status(404).body("Payment info not found");
+            }
+        } else {
+            return ResponseEntity.status(404).body("Order not found");
+        }
+    }
+    }

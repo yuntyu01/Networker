@@ -11,6 +11,7 @@ import lombok.Setter;
 public class ShippingInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "shippingid")
     private Long shippingId;
 
     @ManyToOne
