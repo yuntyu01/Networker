@@ -127,17 +127,17 @@
 
             <div class="bottom-search-box">
                 <div class="dropdown">
-                    <select>
-                        <option>제목+내용</option>
-                        <option>제목</option>
-                        <option>내용</option>
-                        <option>글쓴이</option>
+                    <select class="search-category">
+                        <option value="제목+내용">제목+내용</option>
+                        <option value="제목">제목</option>
+                        <option value="내용">내용</option>
+                        <option value="글쓴이">글쓴이</option>
                     </select>
                 </div>
-                <form action="/URL데이터를 처리할 URL" method="get">
+                <div class="search-container">
                     <input class="search-input" type="text" name="query" placeholder="검색어 입력">
-                    <button class="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </form>
+                    <button class="search-btn">검색</button>
+                </div>
             </div>
         </div>
     </main>
@@ -153,6 +153,8 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script> <!-- Fuse.js library -->
+    <script src="../src/js/search.js" defer></script>
     <script src="../src/js/board.js"></script>
 </body>
 </html>
