@@ -63,13 +63,15 @@ header {
     transform: scaleX(1);
 }
 
-/* 로그인, 회원가입 버튼 */
+/* 로그인, 회원가입, 프로필 버튼 */
 .auth-buttons a {
     vertical-align: middle;
-    margin: 0 5px;
     text-decoration: none;
     color: white;
     font-size: 16px;
+}
+#login, #signup {
+    margin: 0 5px;
 }
 
 /* 메인 */

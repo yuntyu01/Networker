@@ -338,7 +338,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 1240px;
+    height: 40px;
     margin: 0 auto;
     padding: 0 20px;
     line-height: 36px;
@@ -386,10 +387,12 @@ header {
 /* 로그인, 회원가입, 프로필 버튼 */
 .auth-buttons a {
   vertical-align: middle;
-  margin: 0 5px;
   text-decoration: none;
   color: white;
   font-size: 16px;
+}
+#login, #signup {
+  margin: 0 5px;
 }
 
 .auth-buttons .profile-icon {
@@ -415,35 +418,6 @@ main {
   border-radius: 10px;
 }
 
-
-.language-selector {
-  display: inline-block;
-  margin-left: 10px; /* 필요에 따라 조정 */
-  vertical-align: middle;
-  position: relative; /* 위치 조정 가능하게 설정 */
-}
-
-.language-selector .earth-icon {
-  width: 35px;
-  height: auto;
-  margin-top: 10px; /* 지구본 위치를 아래로 내리기 */
-  display: inline-block;
-  vertical-align: middle;
-}
-
-#languageSelector {
-  margin-bottom: 0;
-  margin-top: 5px; /* 언어 변경 창을 위로 올리기 */
-  width: 81.5px;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.language-selector label {
-  color: white;
-  display: inline-block;
-  vertical-align: middle;
-}
 
 /*푸터 */
 footer {
