@@ -7,9 +7,26 @@
     <link rel="stylesheet" href="../src/css/network.css" />
     <link rel="stylesheet" href="../src/css/shared.css" />
     <script src="../src/js/networker.js" defer></script>
-    <script src="../src/js/fetchNewsTitles.js" defer></script>
+    <script src="../src/js/fetchTitles.js" defer></script>
     <script type="text/javascript" src="../src/js/networker.js" defer></script>
     <script src="../src/js/lang.js" defer></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          fetch('/post/latest')
+              .then(response => response.json())
+              .then(data => {
+                  const boardContent = document.querySelector('.board-content');
+                  boardContent.innerHTML = '';
+                  data.forEach(post => {
+                      const listItem = document.createElement('li');
+                      listItem.textContent = `${post.subject} - ${new Date(post.create_date).toLocaleDateString()}`;
+                      boardContent.appendChild(listItem);
+                  });
+              })
+              .catch(error => console.error('Error fetching latest posts:', error));
+      });
+  </script>
   </head>
   <body>
     <header>
@@ -111,7 +128,7 @@
               </button>
             </div>
             <ul class="board-content">
-      
+              <!-- 여기에 최신 글 제목 갱신-->
             </ul>
           </div>
           <div class="board-item">
@@ -121,7 +138,9 @@
                 더보기
               </button>
             </div>
-            <ul class="board-content board-content-info"></ul>
+            <ul class="board-content board-content-info">
+              <!-- 여기에 최신 글 제목 갱신-->
+            </ul>
           </div>
         </div>
         <div class="board-row">
