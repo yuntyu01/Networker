@@ -1,12 +1,8 @@
 main();
 
 async function main() {
-    // 필요한 정보들(주문번호, 결제금액, 이메일, 주문자명, 휴대폰 번호)
-    let orderId ='';
-    let Amount = 0;
-    let userEmail = '';
-    let userName = '';
-    let phoneNumber = '';
+    // 필요한 정보들(유저 고유번호, 주문번호, 결제금액, 이메일, 주문자명, 휴대폰 번호, 구매 상품 갯수)
+    let userId, orderId, Amount, userEmail, userName, phoneNumber, count;
 
     // db에서 결제 정보 데이터 가져오기
     fetch('/payinfo', {
@@ -15,11 +11,13 @@ async function main() {
     })
     .then(response => response.json())
     .then(data => {
-        orderId = data.orderInfo.orderId;
-        Amount = data.paymentInfo.finalAmount;
-        userEmail = data.orderInfo.userId;
-        userName = data.orderInfo.orderName;
-        phoneNumber = data.orderInfo.mobile;
+        userId = data.userId
+        orderId = data.orderId;
+        Amount = data.finalAmount;
+        userEmail = data.userEmail;
+        userName = data.orderName;
+        phoneNumber = data.mobile;
+        count = data.count
     })
     .catch(error => console.error('Error:', error));
 
@@ -30,7 +28,7 @@ async function main() {
     const clientKey = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm";
     const tossPayments = TossPayments(clientKey);
     // 회원 결제
-    const customerKey = "k4PTvGldYG6jghqXE2T-E";
+    const customerKey = userId;     // 테스트 키 "k4PTvGldYG6jghqXE2T-E";
     const widgets = tossPayments.widgets({
         customerKey,
     });
@@ -58,7 +56,7 @@ async function main() {
     button.addEventListener("click", async function () {
         await widgets.requestPayment({
         orderId: orderId,
-        orderName: "네트워커 스토어",
+        orderName: `네트워커 스토어 ${count}개 상품`,
         successUrl: window.location.origin + "/views/success.html",
         failUrl: window.location.origin + "/views/fail.html",
         customerEmail: userEmail,
