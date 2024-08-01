@@ -3,12 +3,10 @@ package com.example.networker_test.controller.store;
 import com.example.networker_test.domain.sotre.Product;
 import com.example.networker_test.dto.user.request.UserCreateRequest;
 import com.example.networker_test.service.store.ProductService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ProductController {
@@ -23,4 +21,8 @@ public class ProductController {
         return productService.getProduct();
     }
 
+    @GetMapping("/api/products/{id}")
+    public Optional<Product> getProductById(@PathVariable Long id) {
+        return productService.getProductById(id);
+    }
 }
