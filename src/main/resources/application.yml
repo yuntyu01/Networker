@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://43.203.238.26:3306/networker
+    url: jdbc:mysql://43.203.238.26:3306/networker3
     username: root
     password: testdbpw
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -44,4 +44,4 @@ spring:
 #    servlet:
 #    content-type: text/html
 file:
-  upload-dir: C:/Users/user/files
+  upload-dir: ~/

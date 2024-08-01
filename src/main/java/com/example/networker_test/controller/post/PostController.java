@@ -2,7 +2,10 @@ package com.example.networker_test.controller.post;
 
 import com.example.networker_test.CommonUtil;
 import com.example.networker_test.domain.post.Post;
+import com.example.networker_test.domain.user.User;
+import com.example.networker_test.service.comment.CommentService;
 import com.example.networker_test.service.post.PostService;
+import com.example.networker_test.service.user.UserService; // UserService 추가
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -12,18 +15,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.Files;
 
 @Controller
 @RequestMapping("/post")
@@ -31,12 +30,14 @@ import java.nio.file.Files;
 public class PostController {
 
 	private final PostService postService;
+	private final CommentService commentService;
+	private final UserService userService; // UserService 추가
 	private final CommonUtil commonUtil;
 
 	@Value("${file.upload-dir}")
 	private String uploadDir;
 
-	@GetMapping("/list") // 게시물 리스트 페이지 연결
+	@GetMapping("/list")
 	public String list(Model model, @RequestParam(value="page", defaultValue = "0") int page) {
 		if (page < 0) {
 			page = 0; // 페이지 번호가 음수일 경우 0으로 설정
@@ -46,7 +47,7 @@ public class PostController {
 		return "board";
 	}
 
-	@GetMapping(value="/detail/{id}") // 특정 게시물의 페이지 연결
+	@GetMapping("/detail/{id}")
 	public String detail(Model model, @PathVariable("id") Integer id) {
 		Post post = this.postService.getPost(id);
 		model.addAttribute("post", post);
@@ -54,16 +55,23 @@ public class PostController {
 		return "post";
 	}
 
-	@GetMapping("/create") // 게시물 등록 요청 페이지 연결
+	@GetMapping("/create")
 	public String postCreate() {
 		return "createpost";
 	}
 
-	@PostMapping("/create") // 게시물 등록 처리
+	@PostMapping("/create")
 	public String createPost(@RequestParam(value="subject") String subject,
 							 @RequestParam(value="content") String content,
-							 @RequestParam(value="file", required = false) MultipartFile file) {
+							 @RequestParam(value="file", required = false) MultipartFile file,
+							 HttpSession session) {
 		try {
+			// 세션에서 로그인된 사용자 가져오기
+			User user = (User) session.getAttribute("user");
+			if (user == null) {
+				return "redirect:/login"; // 로그인 페이지로 리다이렉트
+			}
+
 			if (file != null && !file.isEmpty()) {
 				String fileName = file.getOriginalFilename();
 				Path destinationPath = Paths.get(uploadDir).resolve(fileName);
@@ -74,15 +82,15 @@ public class PostController {
 			}
 
 			// 게시글 생성
-			this.postService.create(subject, content);
-			return "redirect:/post/list"; // 저장 후 목록으로
+			this.postService.create(subject, content, session);
+			return "redirect:/post/list";
 		} catch (IOException e) {
 			e.printStackTrace();
 			return "파일 업로드 실패";
 		}
 	}
 
-	@PostMapping("/uploadImage") // 이미지 업로드 처리
+	@PostMapping("/uploadImage")
 	public ResponseEntity<?> uploadImage(@RequestParam("file") MultipartFile file) {
 		try {
 			String fileName = file.getOriginalFilename();
@@ -101,7 +109,7 @@ public class PostController {
 		}
 	}
 
-	@GetMapping("/files/{filename:.+}") // 파일 서빙
+	@GetMapping("/files/{filename:.+}")
 	public ResponseEntity<Resource> getFile(@PathVariable String filename) {
 		try {
 			Path filePath = Paths.get(uploadDir).resolve(filename).normalize();
@@ -113,6 +121,24 @@ public class PostController {
 			}
 		} catch (Exception e) {
 			throw new RuntimeException("파일을 읽을 수 없습니다.");
+		}
+	}
+
+	@PostMapping("/comment/{postId}")
+	public String createComment(@PathVariable("postId") Integer postId,
+								@RequestParam(value="content") String content,
+								HttpSession session) {
+		try {
+			// 게시물 가져오기
+			Post post = postService.getPost(postId);
+
+			// 댓글 생성
+			commentService.create(postId, content, session);
+
+			return String.format("redirect:/post/detail/%s", postId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "댓글 등록 실패";
 		}
 	}
 }

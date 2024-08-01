@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 
 import com.example.networker_test.domain.post.Post;
 
+import com.example.networker_test.domain.user.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,8 +28,8 @@ public class Comment {
 	
 	private LocalDateTime createDate;//댓글 작성일
 
-	@Column(columnDefinition = "TEXT")
-	private String userId;
+	@ManyToOne
+	private User Author;
 
 	private Integer recommendCount;
 	
