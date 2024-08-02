@@ -12,21 +12,21 @@
     <script src="../src/js/lang.js" defer></script>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-          fetch('/post/latest')
-              .then(response => response.json())
-              .then(data => {
-                  const boardContent = document.querySelector('.board-content');
-                  boardContent.innerHTML = '';
-                  data.forEach(post => {
-                      const listItem = document.createElement('li');
-                      listItem.textContent = `${post.subject} - ${new Date(post.create_date).toLocaleDateString()}`;
-                      boardContent.appendChild(listItem);
-                  });
-              })
-              .catch(error => console.error('Error fetching latest posts:', error));
-      });
-  </script>
+  document.addEventListener("DOMContentLoaded", function() {
+      fetch('/post/latest')
+          .then(response => response.json())
+          .then(data => {
+              const boardContent = document.querySelector('.board-content');
+              boardContent.innerHTML = '';
+              data.forEach(post => {
+                  const listItem = document.createElement('li');
+                  listItem.textContent = `${post.subject} - ${new Date(post.createDate).toLocaleDateString()}`;
+                  boardContent.appendChild(listItem);
+		});
+		})
+          .catch(error => console.error('Error fetching latest posts:', error));
+	});
+	</script>
   </head>
   <body>
     <header>

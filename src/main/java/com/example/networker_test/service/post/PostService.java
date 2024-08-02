@@ -18,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.networker_test.exception.DataNotFoundException;
 
@@ -26,10 +27,13 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class PostService {
-
+	@Autowired
 	private final PostRepository postRepository;
 	private final UserRepository userRepository;
 
+	public List<Post> getLatestPosts() {
+        	return postRepository.findTop2ByOrderByCreateDateDesc();
+    	}
 
 	public List<Post> getList(){
 		return this.postRepository.findAll(); // 등록된 게시물 전체 조회
