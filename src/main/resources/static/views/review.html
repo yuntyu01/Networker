@@ -226,71 +226,59 @@
     </footer>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // 각 회사의 리뷰 데이터
-        const companyReviews = {
-          "solution-tech": [],
-          "next-tech": [],
-          "future-solutions": [],
-          "ace-industry": [],
-          "global-innovation": [],
-          "smart-technology": [],
-        };
+      document.addEventListener('DOMContentLoaded', function () {
+    // 각 회사의 리뷰 데이터를 위한 객체
+    const companyReviews = {
+        'solution-tech': [],
+        'next-tech': [],
+        'future-solutions': [],
+        'ace-industry': [],
+        'global-innovation': [],
+        'smart-technology': []
+    };
 
-        // 로컬 스토리지에서 리뷰 데이터 불러오기
-        const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+    // 로컬 스토리지에서 리뷰 데이터 불러오기
+    const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
 
-        // 리뷰를 각 회사별로 분류
-        reviews.forEach((review) => {
-          if (review.companyId && companyReviews[review.companyId]) {
+    // 각 회사의 ID에 따라 리뷰를 분류
+    reviews.forEach(review => {
+        // review 객체가 회사 ID를 가지고 있는지 확인
+        if (review.companyId && companyReviews[review.companyId]) {
             companyReviews[review.companyId].push(review);
-          }
-        });
+        }
+    });
 
-        // 각 회사에 대해 평균 별점과 최신 리뷰 업데이트
-        Object.keys(companyReviews).forEach((companyId) => {
-          const companyReviewList = companyReviews[companyId];
-          const averageRatingElement = document.getElementById(
-            `${companyId}-average-rating`
-          );
-          const averageScoreElement = document.getElementById(
-            `${companyId}-average-score`
-          );
-          const latestReviewTextElement = document.querySelector(
-            `.${companyId}-latest-review-text`
-          );
+    // 각 회사별로 평균 별점과 최신 리뷰 업데이트
+    Object.keys(companyReviews).forEach(companyId => {
+        const companyReviewList = companyReviews[companyId];
+        const averageRatingElement = document.getElementById(`${companyId}-average-rating`);
+        const averageScoreElement = document.getElementById(`${companyId}-average-score`);
+        const latestReviewTextElement = document.querySelector(`.${companyId}-latest-review-text`);
 
-          if (companyReviewList.length === 0) {
-            averageRatingElement.innerHTML = "☆☆☆☆☆";
-            averageScoreElement.innerHTML = "0.0";
-            latestReviewTextElement.innerHTML = "리뷰 없음";
-          } else {
-            const totalRating = companyReviewList.reduce(
-              (sum, review) => sum + parseInt(review.rating),
-              0
-            );
-            const averageRating = (
-              totalRating / companyReviewList.length
-            ).toFixed(1);
-            const fullStars = "★".repeat(Math.floor(averageRating));
-            const halfStar = averageRating % 1 !== 0 ? "☆" : "";
-            const emptyStars = "☆".repeat(5 - Math.ceil(averageRating));
+        if (companyReviewList.length === 0) {
+            // 리뷰가 없는 경우 기본 값 설정
+            averageRatingElement.innerHTML = '☆☆☆☆☆';
+            averageScoreElement.innerHTML = '0.0';
+            latestReviewTextElement.innerHTML = '리뷰 없음';
+        } else {
+            // 평균 별점 계산
+            const totalRating = companyReviewList.reduce((sum, review) => sum + parseInt(review.rating), 0);
+            const averageRating = (totalRating / companyReviewList.length).toFixed(1);
+            const fullStars = '★'.repeat(Math.floor(averageRating));
+            const halfStar = averageRating % 1 !== 0 ? '☆' : '';
+            const emptyStars = '☆'.repeat(5 - Math.ceil(averageRating));
 
             // 최신 리뷰 가져오기
-            const latestReview =
-              companyReviewList[companyReviewList.length - 1];
+            const latestReview = companyReviewList[companyReviewList.length - 1];
 
-            // 별점 평균 업데이트
+            // 별점 평균 및 최신 리뷰 업데이트
             averageRatingElement.innerHTML = `${fullStars}${halfStar}${emptyStars}`;
             averageScoreElement.innerHTML = `${averageRating}`;
+            latestReviewTextElement.innerHTML = latestReview.headline ? `"${latestReview.headline}"` : "리뷰 없음";
+        }
+    });
+});
 
-            // 최신 리뷰 업데이트
-            latestReviewTextElement.innerHTML = latestReview.headline
-              ? `"${latestReview.headline}"`
-              : "리뷰 없음";
-          }
-        });
-      });
     </script>
   </body>
 </html>
