@@ -16,7 +16,7 @@ public interface PostLawRepository extends JpaRepository<PostLaw, Integer> {
     PostLaw findBySubjectAndContent(String subject, String content);
     List<PostLaw> findBySubjectLike(String subject);
     Page<PostLaw> findAll(Pageable pageable);
-    Page<PostLaw> findAll(Specification<PostLaw> spec, Pageable pageable); // 오류 발생 라인
+    Page<PostLaw> findAll(Specification<PostLaw> spec, Pageable pageable);
 
     @Query(value = "SELECT * FROM post_law ORDER BY create_date DESC LIMIT 2", nativeQuery = true)
     List<PostLaw> findTop2ByOrderByCreateDateDesc();

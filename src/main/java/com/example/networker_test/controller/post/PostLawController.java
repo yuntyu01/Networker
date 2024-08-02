@@ -168,7 +168,7 @@ public class PostLawController {
         // 세션에서 사용자 정보 가져오기
         User loggedInUser = (User) session.getAttribute("user");
         if (loggedInUser == null || !loggedInUser.getNickname().equals(postLaw.getAuthor().getNickname())) {
-            return "redirect:/login"; // 로그인되지 않았거나 권한이 없는 경우 리다이렉트
+            return "redirect:/views/login.html"; // 로그인되지 않았거나 권한이 없는 경우 리다이렉트
         }
 
         // 게시물 정보를 폼에 맞게 설정
@@ -208,7 +208,7 @@ public class PostLawController {
         // 세션에서 사용자 정보 가져오기
         User loggedInUser = (User) session.getAttribute("user");
         if (loggedInUser == null || !loggedInUser.getNickname().equals(postLaw.getAuthor().getNickname())) {
-            return "redirect:/login"; // 로그인되지 않았거나 권한이 없는 경우 리다이렉트
+            return "redirect:/views/login.html"; // 로그인되지 않았거나 권한이 없는 경우 리다이렉트
         }
 
         postLaw.setSubject(postForm.getSubject());
@@ -224,7 +224,7 @@ public class PostLawController {
             // 현재 사용자 정보를 가져옵니다.
             User currentUser = (User) session.getAttribute("user");
             if (currentUser == null) {
-                return "redirect:/views/login"; // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
+                return "redirect:/views/login.html"; // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
             }
 
             // 게시물을 가져옵니다.
@@ -246,7 +246,7 @@ public class PostLawController {
     public String recommendPost(@PathVariable("id") Integer id, HttpSession session) {
         User currentUser = (User) session.getAttribute("user");
         if (currentUser == null) {
-            return "redirect:/views/login"; // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
+            return "redirect:/views/login.html"; // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
         }
 
         try {
