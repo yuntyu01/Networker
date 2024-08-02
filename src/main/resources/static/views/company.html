@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../src/css/shared.css" />
     <link rel="stylesheet" href="../src/css/review_page.css" />
     <script src="../src/js/company.js" defer></script>
-    <script src="../src/js/translate.js" defer></script>
+    <script src="../src/js/lang.js" defer></script>
     <script src="https://kit.fontawesome.com/b3f3cec821.js" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -33,15 +33,22 @@
           <div class="profile-icon">
             <a href="profile.html"><img src="../src/assets/profile.png" alt="Profile" /></a>
           </div>
-          <div id="google_translate_element" style="display: none;"></div>
-          <div class="language-selector2">
-            <img src="../src/assets/earth_icon.png" alt="earth" class="earth-icon" />
-            <select id="languageSelector2">
-              <option value="ko">한국어</option>
+          <div class="language-selector">
+            <img
+              src="../src/assets/earth_icon.png"
+              alt="earth"
+              class="earth-icon"
+            />
+            <label for="languageSelector"></label>
+            <select id="languageSelector">
               <option value="en">English</option>
+              <option value="ko" selected>한국어</option>
+              <option value="zh">中文</option>
               <option value="ja">日本語</option>
-              <option value="zh-CN">中文(简体)</option>
-          </select>
+              <option value="vi">Tiếng Việt</option>
+              <option value="mn">Монгол</option>
+              <option value="uk">українська мова</option>
+            </select>
           </div>
         </div>
       </div>
@@ -59,9 +66,9 @@
               </p>      
                   <div class="bottom-box">
                     <div class="bottom-btn-box">
-                      <button id="write-post-button" onclick="window.location.href='../views/write_review.html'">
+                      <button id="write-post-button" class="write_review_button" onclick="window.location.href='../views/write_review.html'">
                         리뷰하기
-                    </button>                    
+                    </button>                                        
                     </div>
                 </div>
         </div>
@@ -70,20 +77,13 @@
       <div class="reviews" id="reviews-container">
           <!-- 리뷰 항목이 동적으로 추가될 예정 -->
       </div>
-      <div class="pagination">
+      <!-- <div class="pagination">
           <button class="active">1</button>
           <button><a href="networker.html">2</a></button>
           <button>3</button>
-      </div>
+      </div> -->
   </section>
 
-      <div id="google_translate_element" style="display:none;"></div>
-    <ul class="translation-links">
-      <li><a href="javascript:void(0)" class="korean" data-lang="ko" title="korean"><span class="flag ko"></span></a></li>
-      <li><a href="javascript:void(0)" class="english" data-lang="en" title="English"><span class="flag en"></span></a></li>
-      <li><a href="javascript:void(0)" class="japanese" data-lang="ja" title="日本語"><span class="flag ja"></span></a></li>
-      <li><a href="javascript:void(0)" class="chinese" data-lang="zh-CN" title="中文(简体)"><span class="flag zh-CN"></span></a></li>
-    </ul>
     </main>
 
     <footer>
@@ -99,6 +99,5 @@
       </div>
     </footer>
 
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   </body>
 </html>
