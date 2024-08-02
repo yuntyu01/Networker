@@ -5,9 +5,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface PostRepository extends JpaRepository<Post, Integer> {
     Post findBySubject(String subject);
     Post findBySubjectAndContent(String subject, String content);
@@ -15,5 +18,7 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     Page<Post> findAll(Pageable pageable);
 
     Page<Post> findAll(Specification<Post> spec, Pageable pageable);
-
+    
+    @Query(value = "SELECT * FROM post ORDER BY create_date DESC LIMIT 2", nativeQuery = true)
+    List<Post> findTop2ByOrderByCreateDateDesc();
 }

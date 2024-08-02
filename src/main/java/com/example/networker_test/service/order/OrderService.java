@@ -7,8 +7,7 @@ import com.example.networker_test.domain.order.ShippingInfo;
 import com.example.networker_test.dto.order.cartItem.CartItemsDTO;
 import com.example.networker_test.dto.order.orderinfo.OrderInfoDTO;
 import com.example.networker_test.dto.order.paymentinfo.PaymentInfoDTO;
-
-import com.example.networker_test.dto.order.request.OrderRequest;
+import com.example.networker_test.dto.order.request.OrderData;
 import com.example.networker_test.dto.order.shippinginfo.ShippingInfoDTO;
 import com.example.networker_test.repository.order.CartItemsRepository;
 import com.example.networker_test.repository.order.OrderInfoRepository;
@@ -48,6 +47,8 @@ public class OrderService {
         this.paymentInfoRepository = paymentInfoRepository;
         this.cartItemsRepository = cartItemsRepository;
     }
+
+
 
     public ResponseEntity<JSONObject> confirmPayment(@RequestBody String jsonBody) throws Exception {
 
@@ -97,7 +98,7 @@ public class OrderService {
     }
 
     @Transactional
-    public ResponseEntity<?> processOrder( OrderRequest.OrderData orderData) {
+    public ResponseEntity<?> processOrder(OrderData orderData) {
         OrderInfoDTO orderInfoDTO = orderData.getOrderInfo();
 
         // UUID 설정
@@ -120,7 +121,7 @@ public class OrderService {
         orderInfo.setEmail(orderInfoDTO.getEmail());
         orderInfo.setMobile(orderInfoDTO.getMobile());
         orderInfo.setUserid(orderInfoDTO.getUserId());
-        return orderInfoRepository.save(orderInfo);
+            return orderInfoRepository.save(orderInfo);
     }
 
     @Transactional
@@ -163,7 +164,6 @@ public class OrderService {
         paymentInfo.setShippingFee(paymentInfoDTO.getShippingFee());
         paymentInfo.setFinalAmount(paymentInfoDTO.getFinalAmount());
         paymentInfo.setOrderInfo(orderInfo);
-
         return paymentInfoRepository.save(paymentInfo);
     }
 
@@ -201,5 +201,7 @@ public class OrderService {
         } else {
             return ResponseEntity.status(404).body("Order not found");
         }
+
     }
-    }
+
+}
