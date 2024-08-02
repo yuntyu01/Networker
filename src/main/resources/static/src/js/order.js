@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'https://cdn.jsdelivr.net/npm/uuid@latest/dist/esm-browser/index.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // 유저 아이디(이메일) 정보 가져오기
