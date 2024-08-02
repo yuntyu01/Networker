@@ -7,9 +7,7 @@ const langResource = {
     menu_law: "법률지원",
     menu_review: "기업리뷰",
     login: "로그인",
-    login2: "로그인",
     signup: "회원가입",
-    signup2: "회원가입",
     board_free: "자유게시판",
     more_free: "더보기",
     board_news: "정보",
@@ -96,6 +94,20 @@ const langResource = {
     nickname_notice: "※ 닉네임을 설정하면 ",
     change_notice: "30일간 변경할 수 없습니다.",
     set_nickname_button: "닉네임 설정",
+    order_payment_history_heading: "주문/결제 내역",
+    order_number: "주문번호",
+    payment_amount: "결제금액",
+    order_date: "주문일시",
+    empty_list_message: "주문 내역이 없습니다.",
+    change_password_heading: "비밀번호 변경",
+    current_password_label: "현재 비밀번호",
+    current_password_input: "현재 비밀번호를 입력하세요.",
+    new_password_label: "새 비밀번호",
+    new_password_input: "새 비밀번호를 입력하세요.",
+    confirm_password_label: "새 비밀번호 확인",
+    confirm_password_input: "새 비밀번호를 다시 입력하세요.",
+    password_criteria_note: "※ 비밀번호 조건 : 영문/숫자/특수문자 중 2가지 이상을 포함한 8~20자",
+    change_password_button: "비밀번호 변경",
   },
   en: {
     menu_home: "Home",
@@ -192,6 +204,20 @@ const langResource = {
     nickname_notice: "※ Once set, ",
     change_notice: "it cannot be changed for 30 days.",
     set_nickname_button: "Set Nickname",
+    order_payment_history_heading: "Order/Payment History",
+    order_number: "Order Number",
+    payment_amount: "Payment Amount",
+    order_date: "Order Date & Time",
+    empty_list_message: "No order history available.",
+    change_password_heading: "Change Password",
+    current_password_label: "Current Password",
+    current_password_input: "Please enter your current password.",
+    new_password_label: "New Password",
+    new_password_input: "Please enter your new password.",
+    confirm_password_label: "Confirm New Password",
+    confirm_password_input: "Please re-enter your new password.",
+    password_criteria_note: "※ Password criteria: 8-20 characters including at least two of the following: letters, numbers, special characters.",
+    change_password_button: "Change Password",
   },
   zh: {
     menu_home: "首页",
@@ -288,6 +314,20 @@ const langResource = {
     nickname_notice: "※ 一旦设置，",
     change_notice: "30天内无法更改。",
     set_nickname_button: "设置昵称",
+    order_payment_history_heading: "订单/支付历史",
+    order_number: "订单编号",
+    payment_amount: "支付金额",
+    order_date: "订单日期和时间",
+    empty_list_message: "没有可用的订单历史记录。",
+    change_password_heading: "更改密码",
+    current_password_label: "当前密码",
+    current_password_input: "请输入您的当前密码。",
+    new_password_label: "新密码",
+    new_password_input: "请输入您的新密码。",
+    confirm_password_label: "确认新密码",
+    confirm_password_input: "请重新输入您的新密码。",
+    password_criteria_note: "※ 密码条件：8-20个字符，包括以下两种字符：字母、数字、特殊字符。",
+    change_password_button: "更改密码",
   },
   ja: {
     menu_home: "ホーム",
@@ -384,6 +424,20 @@ const langResource = {
     nickname_notice: "※ 設定すると、",
     change_notice: "30日間変更できません。",
     set_nickname_button: "ニックネーム設定",
+    order_payment_history_heading: "注文/支払い履歴",
+    order_number: "注文番号",
+    payment_amount: "支払金額",
+    order_date: "注文日時",
+    empty_list_message: "注文履歴がありません。",
+    change_password_heading: "パスワード変更",
+    current_password_label: "現在のパスワード",
+    current_password_input: "現在のパスワードを入力してください。",
+    new_password_label: "新しいパスワード",
+    new_password_input: "新しいパスワードを入力してください。",
+    confirm_password_label: "新しいパスワードの確認",
+    confirm_password_input: "新しいパスワードを再入力してください。",
+    password_criteria_note: "※ パスワード条件：英数字/特殊文字のうち2種類以上を含む8〜20文字。",
+    change_password_button: "パスワード変更",
   },
   vi: {
     menu_home: "Trang Chủ",
@@ -480,6 +534,20 @@ const langResource = {
     nickname_notice: "※ Một khi được đặt, ",
     change_notice: "không thể thay đổi trong 30 ngày.",
     set_nickname_button: "Cài đặt biệt danh",
+    order_payment_history_heading: "Lịch sử Đặt hàng/Thanh toán",
+    order_number: "Số đơn hàng",
+    payment_amount: "Số tiền thanh toán",
+    order_date: "Ngày & Giờ đặt hàng",
+    empty_list_message: "Không có lịch sử đặt hàng.",
+    change_password_heading: "Thay đổi mật khẩu",
+    current_password_label: "Mật khẩu hiện tại",
+    current_password_input: "Vui lòng nhập mật khẩu hiện tại của bạn.",
+    new_password_label: "Mật khẩu mới",
+    new_password_input: "Vui lòng nhập mật khẩu mới của bạn.",
+    confirm_password_label: "Xác nhận mật khẩu mới",
+    confirm_password_input: "Vui lòng nhập lại mật khẩu mới của bạn.",
+    password_criteria_note: "※ Tiêu chí mật khẩu: 8-20 ký tự bao gồm ít nhất hai trong số các ký tự sau: chữ cái, số, ký tự đặc biệt.",
+    change_password_button: "Thay đổi mật khẩu",
   },
   mn: {
     menu_home: "Нүүр",
@@ -576,6 +644,20 @@ const langResource = {
     nickname_notice: "※ Нэг удаа тохируулснаар, ",
     change_notice: "30 хоногийн турш өөрчлөх боломжгүй.",
     set_nickname_button: "Хоч нэр тохируулах",
+    order_payment_history_heading: "Захиалга/Төлбөрийн түүх",
+    order_number: "Захиалгын дугаар",
+    payment_amount: "Төлбөрийн дүн",
+    order_date: "Захиалгын огноо ба цаг",
+    empty_list_message: "Захиалгын түүх байхгүй байна.",
+    change_password_heading: "Нууц үг өөрчлөх",
+    current_password_label: "Одоогийн нууц үг",
+    current_password_input: "Таны одоогийн нууц үгийг оруулна уу.",
+    new_password_label: "Шинэ нууц үг",
+    new_password_input: "Шинэ нууц үгээ оруулна уу.",
+    confirm_password_label: "Шинэ нууц үгийг баталгаажуулах",
+    confirm_password_input: "Шинэ нууц үгээ дахин оруулна уу.",
+    password_criteria_note: "※ Нууц үгийн нөхцөл: Англи үсэг/тоо/тусгай тэмдэгтийн 2 ба түүнээс дээш орсон 8-20 тэмдэгт.",
+    change_password_button: "Нууц үг өөрчлөх",
   },
   uk: {
     menu_home: "Головна",
@@ -672,6 +754,20 @@ const langResource = {
     nickname_notice: "※ Після встановлення, ",
     change_notice: "його не можна буде змінити протягом 30 днів.",
     set_nickname_button: "Встановити псевдонім",
+    order_payment_history_heading: "Історія замовлень/платежів",
+    order_number: "Номер замовлення",
+    payment_amount: "Сума платежу",
+    order_date: "Дата та час замовлення",
+    empty_list_message: "Історія замовлень відсутня.",
+    change_password_heading: "Змінити пароль",
+    current_password_label: "Поточний пароль",
+    current_password_input: "Будь ласка, введіть свій поточний пароль.",
+    new_password_label: "Новий пароль",
+    new_password_input: "Будь ласка, введіть свій новий пароль.",
+    confirm_password_label: "Підтвердьте новий пароль",
+    confirm_password_input: "Будь ласка, введіть свій новий пароль ще раз.",
+    password_criteria_note: "※ Критерії пароля: 8-20 символів, що містять принаймні два з наступних: літери, цифри, спеціальні символи.",
+    change_password_button: "Змінити пароль",
   },
 };
 
@@ -680,32 +776,36 @@ window.addEventListener("load", function () {
   document.getElementById("languageSelector").value = selectedLang;
   updateLanguage(selectedLang);
 
-  document
-    .getElementById("languageSelector")
-    .addEventListener("change", function () {
-      const selectedLang = this.value;
-      localStorage.setItem("selectedLang", selectedLang);
-      updateLanguage(selectedLang);
-    });
+  document.getElementById("languageSelector").addEventListener("change", function () {
+    const selectedLang = this.value;
+    localStorage.setItem("selectedLang", selectedLang);
+    updateLanguage(selectedLang);
+  });
 });
 
 function updateLanguage(lang) {
+  if (!langResource[lang]) {
+    console.error(`Language resources for '${lang}' are not available.`);
+    return;
+  }
+
   for (let key in langResource[lang]) {
-    const element = document.getElementById(key);
-    if (element) {
-      element.textContent = langResource[lang][key];
+    // id 기반 요소 업데이트
+    const elementById = document.getElementById(key);
+    if (elementById) {
+      elementById.textContent = langResource[lang][key];
     }
 
-    const elements = document.querySelectorAll(`.${key}`);
-    elements.forEach((el) => {
+    // class 기반 요소 업데이트
+    const elementsByClass = document.querySelectorAll(`.${key}`);
+    elementsByClass.forEach((el) => {
       el.textContent = langResource[lang][key];
     });
 
-    const placeholders = document.querySelectorAll(`.${key}`);
-    placeholders.forEach((el) => {
-      if (el.placeholder) {
-        el.placeholder = langResource[lang][key];
-      }
+    // placeholder 업데이트 (placeholder가 있는 요소만 선택)
+    const elementsWithPlaceholder = document.querySelectorAll(`[placeholder].${key}`);
+    elementsWithPlaceholder.forEach((el) => {
+      el.placeholder = langResource[lang][key];
     });
   }
 }
