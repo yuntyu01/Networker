@@ -30,9 +30,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 // 서버에서 받은 결과를 확인하여 post id와 user id의 일치 여부를 처리합니다.
                 if (postuserId == userId) {
+                    // 디버깅용
+                    window.alert('수정, 삭제 버튼 떠야함');
                     // post id와 user id가 일치하는 경우
                     edit_delete_Button.style.display = 'inline-block'
                 } else {
+                    // 디버깅용
+                    window.alert('수정, 삭제 버튼 없어야함');
                     // post id와 user id가 일치하지 않는 경우
                     edit_delete_Button.style.display = 'none'
                 }
