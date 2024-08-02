@@ -1,87 +1,152 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const languageSelector = document.getElementById("languageSelector2");
 
-  // 로컬 스토리지에서 선택한 언어 가져오기
-  const savedLanguage = localStorage.getItem('selectedLanguage');
-  if (savedLanguage) {
-      languageSelector.value = savedLanguage; // 저장된 언어로 설정
-  }
+const langResource = {
+  ko: {
+    menu_home: "홈",
+    menu_news: "정보",
+    menu_board: "자유게시판",
+    menu_store: "스토어",
+    menu_law: "법률지원",
+    menu_review: "기업리뷰",
+    login: "로그인",
+    signup: "회원가입",
+    footer_terms: "이용약관",
+    footer_privacy: "개인정보처리방침",
+    footer_contact: "문의/신고",
+    footer_ads: "광고 안내",
+    read_more: "더 읽기",
+    more_free: "더보기"
+  },
+  en: {
+      menu_home: "Home",
+      menu_news: "News",
+      menu_board: "Board",
+      menu_store: "Store",
+      menu_law: "Legal Support",
+      menu_review: "Company Reviews",
+      login: "Login",
+      signup: "Sign Up",
+      footer_terms: "Terms of Use",
+      footer_privacy: "Privacy Policy",
+      footer_contact: "Contact/Report",
+      footer_ads: "Advertising Info",
+      read_more: "Read More",
+      more_free: "More",
+  },
+  zh: {
+      menu_home: "首页",
+      menu_news: "新闻",
+      menu_board: "公告栏",
+      menu_store: "商店",
+      menu_law: "法律支援",
+      menu_review: "公司评论",
+      footer_terms: "使用条款",
+      footer_privacy: "隐私政策",
+      footer_contact: "联系/举报",
+      footer_ads: "广告信息",
+      read_more: "阅读更多",
+      more_free: "更多",
+  },
+  ja: {
+      menu_home: "ホーム",
+      menu_news: "ニュース",
+      menu_board: "掲示板",
+      menu_store: "ストア",
+      menu_law: "法律支援",
+      menu_review: "企業レビュー",
+      login: "ログイン",
+      signup: "サインアップ",
+      footer_terms: "利用規約",
+      footer_privacy: "プライバシーポリシー",
+      footer_contact: "お問い合わせ/報告",
+      footer_ads: "広告案内",
+      read_more: "続きを読む",
+      more_free: "もっと見る",
+  },
+  vi: {
+      menu_home: "Trang Chủ",
+      menu_news: "Tin Tức",
+      menu_board: "Bảng Tin",
+      menu_store: "Cửa Hàng",
+      menu_law: "Hỗ Trợ Pháp Lý",
+      menu_review: "Đánh Giá Công Ty",
+      login: "Đăng Nhập",
+      signup: "Đăng Ký",
+      footer_terms: "Điều Khoản Sử Dụng",
+      footer_privacy: "Chính Sách Bảo Mật",
+      footer_contact: "Liên Hệ/Báo Cáo",
+      footer_ads: "Thông Tin Quảng Cáo",
+      read_more: "Đọc Thêm",
+      more_free: "Thêm",
+  },
+  mn: {
+      menu_home: "Нүүр",
+      menu_news: "Мэдээ",
+      menu_board: "Зарлалын самбар",
+      menu_store: "Дэлгүүр",
+      menu_law: "Хууль эрх зүйн дэмжлэг",
+      menu_review: "Компанийн тойм",
+      login: "Нэвтрэх",
+      signup: "Бүртгүүлэх",
+      footer_terms: "Ашиглах нөхцөл",
+      footer_privacy: "Нууцлалын бодлого",
+      footer_contact: "Холбоо барих/Мэдээлэх",
+      footer_ads: "Зар сурталчилгааны мэдээлэл",
+      read_more: "Цааш унших",
+      more_free: "Илүү",
+  },
+  uk: {
+      menu_home: "Головна",
+      menu_news: "Новини",
+      menu_board: "Дошка оголошень",
+      menu_store: "Магазин",
+      menu_law: "Юридична підтримка",
+      menu_review: "Відгуки про компанії",
+      login: "Увійти",
+      signup: "Реєстрація",
+      footer_terms: "Умови використання",
+      footer_privacy: "Політика конфіденційності",
+      footer_contact: "Контакт/Звіт",
+      footer_ads: "Інформація про рекламу",
+      read_more: "Читати далі",
+      more_free: "Більше",
+  },
+};
 
-  // 언어 변경 이벤트 핸들러
-  languageSelector.addEventListener("change", function () {
-      const selectedLanguage = this.value;
-      setLanguage(selectedLanguage); // 언어 설정 함수 호출
+window.addEventListener("load", function () {
+  const selectedLang = localStorage.getItem("selectedLang") || "ko";
+  document.getElementById("languageSelector").value = selectedLang;
+  updateLanguage(selectedLang);
+
+  document.getElementById("languageSelector").addEventListener("change", function () {
+    const selectedLang = this.value;
+    localStorage.setItem("selectedLang", selectedLang);
+    updateLanguage(selectedLang);
   });
-
-  // 페이지 로드 시 저장된 언어로 번역 설정
-  applySavedLanguage();
 });
 
-// 언어 설정 함수
-function setLanguage(language) {
-  const googleTranslateCombo = document.querySelector(".goog-te-combo");
-
-  if (googleTranslateCombo) {
-      googleTranslateCombo.value = language;
-      googleTranslateCombo.dispatchEvent(new Event("change"));
-  } else {
-      console.log("Google 번역 콤보 리스트를 찾을 수 없습니다. 번역 위젯이 아직 로드되지 않았을 수 있습니다.");
+function updateLanguage(lang) {
+  if (!langResource[lang]) {
+    console.error(`Language resources for '${lang}' are not available.`);
+    return;
   }
 
-  // 로컬 스토리지에 선택한 언어 저장
-  localStorage.setItem('selectedLanguage', language);
-}
+  for (let key in langResource[lang]) {
+    // id 기반 요소 업데이트
+    const elementById = document.getElementById(key);
+    if (elementById) {
+      elementById.textContent = langResource[lang][key];
+    }
 
-// Google 번역 초기화 함수
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-      pageLanguage: 'ko',
-      autoDisplay: false // 자동 표시 비활성화
-  }, 'google_translate_element');
-}
+    // class 기반 요소 업데이트
+    const elementsByClass = document.querySelectorAll(`.${key}`);
+    elementsByClass.forEach((el) => {
+      el.textContent = langResource[lang][key];
+    });
 
-// 저장된 언어 설정 적용
-function applySavedLanguage() {
-  const savedLanguage = localStorage.getItem('selectedLanguage');
-  if (savedLanguage) {
-      const interval = setInterval(() => {
-          const googleTranslateCombo = document.querySelector(".goog-te-combo");
-
-          if (googleTranslateCombo) {
-              setLanguage(savedLanguage);
-              clearInterval(interval); // 번역 설정 후 인터벌 제거
-          }
-      }, 100); // 100ms 간격으로 시도
+    // placeholder 업데이트 (placeholder가 있는 요소만 선택)
+    const elementsWithPlaceholder = document.querySelectorAll(`[placeholder].${key}`);
+    elementsWithPlaceholder.forEach((el) => {
+      el.placeholder = langResource[lang][key];
+    });
   }
 }
-
-
-
-// function googleTranslateElementInit() {
-//     new google.translate.TranslateElement({ pageLanguage: 'ko', autoDisplay: true }, 'google_translate_element');
-//   }
-  
-//   document.addEventListener('DOMContentLoaded', function() {
-//     const translationLinks = document.querySelector('.translation-links');
-  
-//     if (translationLinks) {
-//       translationLinks.addEventListener('click', function(event) {
-//         let el = event.target;
-//         while (el.nodeName === 'FONT' || el.nodeName === 'SPAN') {
-//           el = el.parentElement;
-//         }
-//         if (el && el.nodeName === 'A') {
-//           const lang = el.getAttribute('data-lang');
-//           const gtcombo = document.querySelector('.goog-te-combo');
-//           if (gtcombo) {
-//             gtcombo.value = lang;
-//             gtcombo.dispatchEvent(new Event('change'));
-//           } else {
-//             alert("Error: Could not find Google translate Combolist.");
-//           }
-//         }
-//         event.preventDefault();
-//       });
-//     }
-//   });
-  

@@ -10,6 +10,7 @@
     <title>상품 상세 - 네트워커</title>
     <link rel="stylesheet" href="../src/css/productdetail.css">
     <link rel="stylesheet" href="../src/css/shared.css">
+    <script src="../src/js/lang.js" defer></script>
 </head>
 <body>
     <header>
@@ -44,7 +45,7 @@
               <option value="ja">日本語</option>
               <option value="vi">Tiếng Việt</option>
               <option value="mn">Монгол</option>
-              <option value="ru">Русский</option>
+              <option value="uk">українська мова</option>
             </select>
           </div>
         </div>
@@ -52,35 +53,37 @@
     </header>
     
     <main>
-        <div class="navigation-buttons">
-            <a href="store.html" class="back-to-store-button"><i class="fa-solid fa-circle-arrow-left"></i>스토어</a>
-            <h2>제품 정보</h2>
-            <a href="cart.html" class="go-to-cart-button"><i class="fa-solid fa-cart-shopping"></i>장바구니</a>
-        </div>
-
-        <div class="product-detail-container">
-            <!-- 제품 정보가 로드된 후 여기에 표시됩니다. -->
-        </div>
-
-        <div class="product-detail-tabs">
-            <button class="tab-button" onclick="openTab('details')">상세정보</button>
-            <button class="tab-button" onclick="openTab('purchase')">구매후기</button>
-            <button class="tab-button" onclick="openTab('returns')">반품/교환</button>
-            <button class="tab-button" onclick="openTab('qa')">Q&A</button>
-        </div>
-        <div class="tab-content" id="details">상세 정보 내용</div>
-        <div class="tab-content" id="purchase">구매 후기 내용</div>
-        <div class="tab-content" id="returns">반품/교환 내용</div>
-        <div class="tab-content" id="qa">Q&A 내용</div>
+      <div class="navigation-buttons">
+        <a href="store.html" class="back-to-store-button"><i class="fa-solid fa-circle-arrow-left"></i><span class="back_to_store">스토어</span></a>
+        <h2 class="product_info_heading">제품 정보</h2>
+        <a href="cart.html" class="go-to-cart-button"><i class="fa-solid fa-cart-shopping"></i><span class="go_to_cart">장바구니</span></a>
+    </div>
+    
+    <div class="product-detail-container">
+        <!-- 제품 정보가 로드된 후 여기에 표시됩니다. -->
+    </div>
+    
+    <div class="product-detail-tabs">
+        <button class="tab-button details_tab" onclick="openTab('details')">상세정보</button>
+        <button class="tab-button purchase_tab" onclick="openTab('purchase')">구매후기</button>
+        <button class="tab-button returns_tab" onclick="openTab('returns')">반품/교환</button>
+        <button class="tab-button qa_tab" onclick="openTab('qa')">Q&A</button>
+    </div>
+    <div class="tab-content" id="details"><span class="details_content">상세 정보 내용</span></div>
+    <div class="tab-content" id="purchase"><span class="purchase_content">구매 후기 내용</span></div>
+    <div class="tab-content" id="returns"><span class="returns_content">반품/교환 내용</span></div>
+    <div class="tab-content" id="qa"><span class="qa_content">Q&A 내용</span></div>    
     </main>
     
     <footer>
       <div class="footer-container">
         <ul class="footer-btn">
-          <li><a href="#">이용약관</a></li>
-          <li><a href="privacy_Policy.html" style="font-weight: bold;">개인정보처리방침</a></li>
-          <li><a href="/views/inquire.html">문의/신고</a></li>
-          <li><a href="/views/inquire.html">광고안내</a></li>
+          <li><a href="#" id="footer_terms">이용약관</a></li>
+          <li>
+            <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
+          </li>
+             <li><a href="/views/inquire.html" id="footer_contact">문의/신고</a></li>
+             <li><a href="/views/inquire.html" id="footer_ads">광고안내</a></li>
         </ul>
       </div>
     </footer>
