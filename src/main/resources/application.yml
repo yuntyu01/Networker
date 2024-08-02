@@ -1,13 +1,13 @@
 spring:
   datasource:
-    url: jdbc:mysql://43.203.238.26/networker2
+    url: jdbc:mysql://43.201.135.252/networker
     username: root
-    password: testdbpw
+    password: happyk!
     #driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     properties:
       hibernate:
         show_sql: true
@@ -44,4 +44,4 @@ spring:
 #    servlet:
 #    content-type: text/html
 file:
-  upload-dir: ~/
+  upload-dir: /home/ubuntu/files
