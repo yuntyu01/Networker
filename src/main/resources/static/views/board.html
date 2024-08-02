@@ -51,6 +51,7 @@
     </header>
 
     <main>
+        <h2>자유게시판</h2>
         <table id="post-table" class="post-table">
             <thead>
                 <tr>
@@ -58,8 +59,8 @@
                     <th id="title">제목</th>
                     <th id="author">작성자</th>
                     <th id="date">작성일</th>
-                    <th id="views">조회수</th>
-                    <th id="recommend">추천</th>
+<!--                    <th id="views">조회수</th>-->
+<!--                    <th id="recommend">추천</th>-->
                 </tr>
             </thead>
             <tbody id="post-list">
@@ -75,8 +76,8 @@
                 </td>
                 <td th:text="${post.author != null ? post.author.nickname : 'Unknown'}"></td>
                 <td th:text="${#temporals.format(post.createDate, 'yyyy-MM-dd-HH:mm')}"></td>
-                <td>NULL</td>
-                <td>NULL</td>
+<!--                <td>NULL</td>-->
+<!--                <td>NULL</td>-->
             </tr>
             </tbody>
         </table>
