@@ -8,11 +8,10 @@ import lombok.Setter;
 
 import java.util.List;
 
-public class OrderRequest {
 
     @Setter
     @Getter
-    public static class OrderData {
+    public class OrderData {
  ;
         private OrderInfoDTO orderInfo;
         private ShippingInfoDTO shippingInfo;
@@ -27,4 +26,3 @@ public class OrderRequest {
         }
     }
 
-}

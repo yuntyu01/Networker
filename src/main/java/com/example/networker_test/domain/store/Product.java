@@ -1,4 +1,4 @@
-package com.example.networker_test.domain.sotre;
+package com.example.networker_test.domain.store;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

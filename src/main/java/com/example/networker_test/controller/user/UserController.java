@@ -31,11 +31,6 @@ public class UserController {
         return userService.loginUser(request, session);
     }
 
-    @GetMapping("/signup")
-    public List<UserResponse> getUsers() {
-        return userService.getUsers();
-    }
-
     @PostMapping("/logout")
     public ResponseEntity<String> logoutUser(HttpSession session) {
         return userService.logoutUser(session);
