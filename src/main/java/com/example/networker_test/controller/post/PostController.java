@@ -45,7 +45,7 @@ public class PostController {
 
 	@GetMapping("/post/latest")
    	public List<Post> getLatestPosts() {
-        	return postService.getLatestPosts();
+        	return postService.findLatestPosts();
     	}
 
 	@Value("${file.upload-dir}")
