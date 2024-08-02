@@ -175,6 +175,33 @@ header {
   vertical-align: middle;
 }
 
+
+.language-selector2 {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative; /* 위치 조정 가능하게 설정 */
+}
+
+.language-selector2 > .earth-icon {
+  width: 35px;
+  height: auto;
+  margin-top: 5px; /* 지구본 위치를 아래로 내리기 */
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#languageSelector2 {
+  margin-bottom: 0;
+  width: 76px;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+#languageSelector2 option {
+  font-size: 14px;
+}
+
 /*
 
 푸터
@@ -223,4 +250,19 @@ ul.footer-btn>li {
 .footer-container ul {
   display: inline-block;
   padding: 0;
+}
+
+/* Google Translate Toolbar 숨기기 */
+body > .skiptranslate > iframe.skiptranslate {
+  display: none;
+}
+
+/* Google Translate 배너 및 닫기 버튼 숨기기 */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+/* 도구 막대가 만든 여백 제거 */
+body {
+  top: 0px !important; 
 }

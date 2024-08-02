@@ -88,9 +88,9 @@
                 <div>
                   <label for="slide04" class="left"></label>
                   <label for="slide02" class="right"></label>
-                  <a href="#"
-                    ><img src="../src/assets/Networker_test.webp"
-                  /></a>
+                  <a href="#">
+                    <img src="../src/assets/Networker_test.webp" />
+                  </a>
                 </div>
               </li>
               <li class="slideitem">
@@ -122,8 +122,8 @@
         <div class="board-row">
           <div class="board-item">
             <div class="board-header">
-              <h3>자유게시판</h3>
-              <button class="more-btn" onclick="location.href='/post/list';">
+              <h3 id="board_free">자유게시판</h3>
+              <button class="more-btn" id="more_free" onclick="location.href='/post/list';">
                 더보기
               </button>
             </div>
@@ -133,8 +133,8 @@
           </div>
           <div class="board-item">
             <div class="board-header">
-              <h3>정보</h3>
-              <button class="more-btn" onclick="location.href='/views/news.html';">
+              <h3 id="board_news">정보</h3>
+              <button class="more-btn" id="more_news" onclick="location.href='/views/news.html';">
                 더보기
               </button>
             </div>
@@ -146,9 +146,10 @@
         <div class="board-row">
           <div class="board-item">
             <div class="board-header">
-              <h3>법률지원</h3>
+              <h3 id="board_law">법률지원</h3>
               <button
                 class="more-btn"
+                id="more_law"
                 onclick="location.href='/main';"
               >
                 더보기
@@ -160,8 +161,8 @@
           </div>
           <div class="board-item">
             <div class="board-header">
-              <h3>스토어</h3>
-              <button class="more-btn" onclick="location.href='/views/store.html';">
+              <h3 id="board_store">스토어</h3>
+              <button class="more-btn" id="more_store" onclick="location.href='/views/store.html';">
                 더보기
               </button>
             </div>
@@ -176,14 +177,12 @@
     <footer>
       <div class="footer-container">
         <ul class="footer-btn">
-          <li><a href="#">이용약관</a></li>
+          <li><a href="#" id="footer_terms">이용약관</a></li>
           <li>
-            <a href="/views/Privacy_Policy.html" style="font-weight: bold"
-              >개인정보처리방침</a
-            >
+            <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
           </li>
-          <li><a href="#">문의/신고</a></li>
-          <li><a href="#">광고안내</a></li>
+          <li><a href="#" id="footer_contact">문의/신고</a></li>
+          <li><a href="#" id="footer_ads">광고안내</a></li>
         </ul>
       </div>
     </footer>

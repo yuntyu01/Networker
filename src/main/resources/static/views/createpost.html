@@ -7,9 +7,9 @@
     <script src="https://kit.fontawesome.com/b3f3cec821.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/simplemde@latest/dist/simplemde.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplemde@latest/dist/simplemde.min.css">
-    <link rel="stylesheet" href="/src/css/shared.css" />
-    <link rel="stylesheet" href="/src/css/createpost.css">
-
+    <link rel="stylesheet" href="../src/css/shared.css" />
+    <link rel="stylesheet" href="../src/css/createpost.css">
+    <script src="../src/js/lang.js" defer></script>
     <title>네트워커</title>
 </head>
 
@@ -48,7 +48,7 @@
                     <option value="ja">日本語</option>
                     <option value="vi">Tiếng Việt</option>
                     <option value="mn">Монгол</option>
-                    <option value="ru">Русский</option>
+                    <option value="uk">українська мова</option>
                 </select>
             </div>
         </div>
@@ -59,37 +59,39 @@
     <form class="create-post" th:action="@{/post/create}" th:object="${postForm}" method="post" enctype="multipart/form-data">
     <!--    <div th:each="err : ${#fields.allErrors()}" th:text="${err}" ></div>
         <div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}"></div>-->
-        <h2 class="page-title">글쓰기</h2>
-        <h3>제목</h3>
+        <h2 class="page-title write_post">글쓰기</h2>
+        <h3 class="title">제목</h3>
         <input class="post-title" type="text" th:field="*{subject}" name="subject" maxlength="30">
         <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('subject')}">
             <div th:each="err : ${#fields.errors('subject')}" th:text="${err}"></div>
         </div>
-        <h3>내용</h3>
+        <h3 class="content">내용</h3>
         <textarea id="markdown-editor" th:field="*{content}" name="content"></textarea>
         <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('content')}">
             <div th:each="err : ${#fields.errors('content')}" th:text="${err}"></div>
         </div>
-        <h3>사진 첨부 </h3>
+        <h3 id="image_upload" class="image_upload">사진 첨부</h3>
         <input type="file" id="image-upload" name="file">
-        <p>(사진 첨부는 최대 5MB)</p>
+        <p id="image_upload_note" class="image_upload_note">(사진 첨부는 최대 5MB)</p>
         <div class="btn-container">
-            <button type="submit" id="post-button" class="btn-post">등록</button>
-            <button type="button" id="cancel-button" class="btn-cancel">취소</button>
+            <button type="submit" class="btn-post post-button">등록</button>
+            <button type="button" class="btn-cancel cancel-button">취소</button>
         </div>
     </form>
 </main>
 
 <footer>
     <div class="footer-container">
-        <ul class="footer-btn">
-            <li><a href="#">이용약관</a></li>
-            <li><a href="privacy_Policy.html" style="font-weight: bold;">개인정보처리방침</a></li>
-            <li><a href="#">문의/신고</a></li>
-            <li><a href="#">광고안내</a></li>
-        </ul>
+      <ul class="footer-btn">
+        <li><a href="#" id="footer_terms">이용약관</a></li>
+        <li>
+          <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
+        </li>
+        <li><a href="#" id="footer_contact">문의/신고</a></li>
+        <li><a href="#" id="footer_ads">광고안내</a></li>
+      </ul>
     </div>
-</footer>
+  </footer>
 <script src="/src/js/createpost.js"></script>
 <script>
     // SimpleMDE 에디터 초기화

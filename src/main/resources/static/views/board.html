@@ -43,7 +43,7 @@
                       <option value="ja">日本語</option>
                       <option value="vi">Tiếng Việt</option>
                       <option value="mn">Монгол</option>
-                      <option value="ru">Русский</option>
+                      <option value="uk">українська мова</option>
                     </select>
                   </div>
             </div>
@@ -54,12 +54,12 @@
         <table id="post-table" class="post-table">
             <thead>
                 <tr>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>작성일</th>
-                    <th>조회수</th>
-                    <th>추천</th>
+                    <th id="number">번호</th>
+                    <th id="title">제목</th>
+                    <th id="author">작성자</th>
+                    <th id="date">작성일</th>
+                    <th id="views">조회수</th>
+                    <th id="recommend">추천</th>
                 </tr>
             </thead>
             <tbody id="post-list">
@@ -82,9 +82,9 @@
         </table>
         <div class="bottom-box">
             <div class="bottom-btn-box">
-                <button>전체글</button>
-                <button>추천글</button>
-                <button class="write-post-button" onclick="window.location.href='/post/create'">
+                <button id="all_posts">전체글</button>
+                <button id="recommended_posts">추천글</button>
+                <button class="write-post-button" onclick="window.location.href='/post/create'" id="write_post">
                     글쓰기
                 </button>
             </div>
@@ -98,7 +98,7 @@
                     <li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
                        <button>
                         <a class="page-link" href="javascript:void(0)" th:data-page="${paging.number-1}">
-                            <span>이전</span>
+                            <span id="previous">이전</span>
                         </a>
                        </button>
                     </li>
@@ -116,7 +116,7 @@
                         <button>
                         <a class="page-link"
                            href="javascript:void(0)" th:data-page="${paging.number+1}">
-                            <span>다음</span>
+                            <span class="next">다음</span>
                         </a>
                         </button>
                     </li>
@@ -134,15 +134,15 @@
             <div class="bottom-search-box">
                 <div class="dropdown">
                     <select class="search-category">
-                        <option value="제목+내용">제목+내용</option>
-                        <option value="제목">제목</option>
-                        <option value="내용">내용</option>
-                        <option value="글쓴이">글쓴이</option>
+                        <option value="제목+내용" class="title_and_content">제목+내용</option>
+                        <option value="제목" class="search_title">제목</option>
+                        <option value="내용" class="content">내용</option>
+                        <option value="글쓴이" class="writer">글쓴이</option>
                     </select>
                 </div>
                 <div class="search-container">
-                    <input class="search-input" type="text" name="query" id="search_kw" th:value="${kw}" placeholder="검색어 입력">
-                    <button class="search-btn" type="button" id="btn_search">검색</button>
+                    <input class="search-input search_placeholder" type="text" name="query" id="search_kw" th:value="${kw}" placeholder="검색어 입력">
+                    <button class="search-btn search_t" type="button" id="btn_search">검색</button>
                 </div>
             </div>
         </div>
@@ -150,14 +150,16 @@
 
     <footer>
         <div class="footer-container">
-            <ul class="footer-btn">
-                <li><a href="#">이용약관</a></li>
-                <li><a href="Privacy_Policy.html" style="font-weight: bold;">개인정보처리방침</a></li>
-                <li><a href="#">문의/신고</a></li>
-                <li><a href="#">광고안내</a></li>
-            </ul>
+          <ul class="footer-btn">
+            <li><a href="#" id="footer_terms">이용약관</a></li>
+            <li>
+              <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
+            </li>
+            <li><a href="#" id="footer_contact">문의/신고</a></li>
+            <li><a href="#" id="footer_ads">광고안내</a></li>
+          </ul>
         </div>
-    </footer>
+      </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script> <!-- Fuse.js library -->
     <script src="../src/js/search.js" defer></script>

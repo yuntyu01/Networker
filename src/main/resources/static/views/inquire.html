@@ -45,7 +45,7 @@
                     <option value="ja">日本語</option>
                     <option value="vi">Tiếng Việt</option>
                     <option value="mn">Монгол</option>
-                    <option value="ru">Русский</option>
+                    <option value="uk">українська мова</option>
                 </select>
             </div>
         </div>
@@ -54,48 +54,51 @@
 
 <main>
     <div class="inquiry-container">
-        <h2>문의하기</h2>
+        <h2 class="inquiry_heading">문의하기</h2>
         <form id="inquiry-form" method="post">
             <div class="form-group">
-                <label for="inquiry-type">문의 종류</label>
+                <label for="inquiry-type" class="inquiry_type_label">문의 종류</label>
                 <select id="inquiry-type" name="inquiry-type" aria-required="true">
-                    <option value="usage">이용 문의</option>
-                    <option value="report">신고</option>
-                    <option value="advertisement">광고문의</option>
+                    <option value="usage" class="option_usage">이용 문의</option>
+                    <option value="report" class="option_report">신고</option>
+                    <option value="advertisement" class="option_advertisement">광고문의</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="content">내용</label>
+                <label for="content" class="content_label">내용</label>
                 <textarea id="content" name="content" rows="10" required aria-required="true"></textarea>
             </div>
             <div class="form-group">
-                <label for="email">연락받을 이메일</label>
-                <input type="email" id="email" name="email" required aria-required="true">
+                <label for="email" class="email_label">연락받을 이메일</label>
+                <input type="email" id="email" name="email" class="email_input_placeholder" placeholder="이메일을 입력하세요." required aria-required="true">
             </div>
             <div class="form-group">
-                <label for="file">첨부 파일</label>
+                <label for="file" class="file_label">첨부 파일</label>
                 <input type="file" id="file" name="file" accept=".jpg,.jpeg,.png,.pdf">
             </div>
             <div class="form-group">
-                <label for="privacy-consent">개인정보 수집 및 이용</label>
-                <input type="checkbox" id="privacy-consent" name="privacy-consent" required aria-required="true"> 개인정보 수집 및 이용에 동의합니다 (필수)
+                <label for="privacy-consent" class="privacy_label">개인정보 수집 및 이용</label>
+                <input type="checkbox" id="privacy-consent" name="privacy-consent" required aria-required="true">
+                <span class="privacy_consent_text">개인정보 수집 및 이용에 동의합니다 (필수)</span>
             </div>
-            <p>문의 처리를 위해 이메일, 회원정보, 기기정보, 문의내용에 포함된 개인정보를 수집하며, 개인정보보호법에 따라 3년 후 파기됩니다.</p>
-            <button type="submit">문의 접수하기</button>
+            <p class="privacy_notice">문의 처리를 위해 이메일, 회원정보, 기기정보, 문의내용에 포함된 개인정보를 수집하며, 개인정보보호법에 따라 3년 후 파기됩니다.</p>
+            <button type="submit" class="submit_button">문의 접수하기</button>
         </form>
     </div>
 </main>
 
 <footer>
     <div class="footer-container">
-        <ul class="footer-btn">
-            <li><a href="#">이용약관</a></li>
-            <li><a href="Privacy_Policy.html" style="font-weight: bold;">개인정보처리방침</a></li>
-            <li><a href="#">문의/신고</a></li>
-            <li><a href="#">광고안내</a></li>
-        </ul>
+      <ul class="footer-btn">
+        <li><a href="#" id="footer_terms">이용약관</a></li>
+        <li>
+          <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
+        </li>
+        <li><a href="#" id="footer_contact">문의/신고</a></li>
+        <li><a href="#" id="footer_ads">광고안내</a></li>
+      </ul>
     </div>
-</footer>
+  </footer>
 
 <script src="../src/js/inquire.js"></script>
 </body>

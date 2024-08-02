@@ -52,7 +52,7 @@
               <option value="ja">日本語</option>
               <option value="vi">Tiếng Việt</option>
               <option value="mn">Монгол</option>
-              <option value="ru">Русский</option>
+              <option value="uk">українська мова</option>
             </select>
           </div>
         </div>
@@ -61,16 +61,16 @@
 
     <main>
       <div class="cart-container">
-        <h2 class="cart-title">장바구니</h2>
+        <h2 class="cart-title cart_title">장바구니</h2>
         <table class="cart-table">
           <thead>
             <tr>
-              <th>이미지</th>
-              <th>상품정보</th>
-              <th>판매가</th>
-              <th>수량</th>
-              <th>합계</th>
-              <th>삭제</th>
+              <th class="image_header">이미지</th>
+              <th class="product_info">상품정보</th>
+              <th class="price">판매가</th>
+              <th class="quantity">수량</th>
+              <th class="subtotal">합계</th>
+              <th class="delete">삭제</th>
             </tr>
           </thead>
           <tbody>
@@ -80,37 +80,38 @@
         <div class="cart-summary">
           <table class="summary-table">
             <tr>
-              <td>총 상품금액</td>
+              <td class="total_product_price">총 상품금액</td>
               <td class="summary-amount">0원</td>
             </tr>
             <tr>
-              <td>총 배송비</td>
+              <td class="total_shipping">총 배송비</td>
               <td class="shipping">0원</td>
             </tr>
             <tr class="summary-total">
-              <td>결제예정금액</td>
+              <td class="total_payment">결제예정금액</td>
               <td class="total-amount">0원</td>
             </tr>
           </table>
         </div>
         <div class="clearNpay">
-          <button class="clear-btn">장바구니 비우기</button>
-          <a href="order.html"><button class="payment-btn">결제하기</button></a>
+          <button class="clear-btn clear_cart">장바구니 비우기</button>
+          <a href="order.html">
+            <button class="payment-btn proceed_to_payment">결제하기</button>
+          </a>
         </div>
       </div>
     </main>
+    
 
     <footer>
       <div class="footer-container">
         <ul class="footer-btn">
-          <li><a href="#">이용약관</a></li>
+          <li><a href="#" id="footer_terms">이용약관</a></li>
           <li>
-            <a href="privacy_Policy.html" style="font-weight: bold"
-              >개인정보처리방침</a
-            >
+            <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
           </li>
-          <li><a href="#">문의/신고</a></li>
-          <li><a href="#">광고안내</a></li>
+          <li><a href="#" id="footer_contact">문의/신고</a></li>
+          <li><a href="#" id="footer_ads">광고안내</a></li>
         </ul>
       </div>
     </footer>

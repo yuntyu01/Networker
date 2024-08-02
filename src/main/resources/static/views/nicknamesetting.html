@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../src/css/nicknamesetting.css">
     <script src="../src/js/lang.js" defer></script>
     <link rel="stylesheet" href="../src/css/shared.css" />
+    <script src="../src/js/lang.js" defer></script>
 </head>
 <body>
     <header>
@@ -51,27 +52,29 @@
 
     <main>
         <div class="nickname-container">
-            <h2>닉네임 설정</h2>
-            <form id="nickname-form" action="#" method="post">
-                <div class="form-group">
-                    <label for="nickname">닉네임</label>
-                    <input type="text" id="nickname" name="nickname" required>
-                </div>
-                <p>※ 닉네임을 설정하면 <span style="color:red">30일간 변경할 수 없습니다.</span></p>
-                <button type="submit">닉네임 설정</button>
+          <h2 class="set_nickname_heading">닉네임 설정</h2>
+          <form id="nickname-form" action="#" method="post">
+              <div class="form-group">
+                  <label for="nickname" class="nickname_label">닉네임</label>
+                  <input type="text" id="nickname" name="nickname" class="nickname_input" placeholder="닉네임을 입력하세요." required>
+              </div>
+              <p class="nickname_notice">※ 닉네임을 설정하면 <span class="change_notice" style="color:red">30일간 변경할 수 없습니다.</span></p>
+              <button type="submit" class="set_nickname_button">닉네임 설정</button>
             </form>
         </div>
     </main>
 
     <footer>
-        <div class="footer-container">
-            <ul class="footer-btn">
-                <li><a href="#">이용약관</a></li>
-                <li><a href="privacy_Policy.html" style="font-weight: bold;">개인정보처리방침</a></li>
-                <li><a href="#">문의/신고</a></li>
-                <li><a href="#">광고안내</a></li>
-            </ul>
-        </div>
+      <div class="footer-container">
+        <ul class="footer-btn">
+          <li><a href="#" id="footer_terms">이용약관</a></li>
+          <li>
+            <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
+          </li>
+          <li><a href="#" id="footer_contact">문의/신고</a></li>
+          <li><a href="#" id="footer_ads">광고안내</a></li>
+        </ul>
+      </div>
     </footer>
     
     <script src="../src/js/nicknamesetting.js"></script>
