@@ -1,5 +1,5 @@
 // 전역변수
-let productId, productImg, productName, productPrice;
+let productId, productImage, productName, productPrice;
 
 document.addEventListener('DOMContentLoaded', function() {
     // 헤더 요소
@@ -43,10 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(`/api/products/${productId}`)
             .then(response => response.json())
             .then(product => {
-
-                console.log(product);
                 // 전역변수에 제품 정보 저장
-                productImg = product.image;
+                productImage = product.image;
                 productName = product.name;
                 productPrice = product.price;
                 
@@ -115,13 +113,15 @@ function updateTotalPrice() {
 // 장바구니에 추가 함수
 function addToCart() {
     // 구매 갯수
-    var productCount = document.getElementById('quantity-input').value;
+    var productCount = parseInt(document.getElementById('quantity-input').value);
     
     if (productCount > 0) {
         var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         var existingItem = cartItems.find(item => item.id === productId);
+
         
         if (existingItem) {
+
             existingItem.count += productCount;
         } else {
             var cartItem = {
@@ -136,7 +136,7 @@ function addToCart() {
 
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
         alert(productCount + '개의 상품이 장바구니에 추가되었습니다.');
-        input.value = 0;
+        productCount.value = 0;
     } else {
         alert('추가할 상품 수량을 선택해주세요.');
     }
@@ -144,7 +144,7 @@ function addToCart() {
 
 function buyNow(){
     addToCart();
-    window.location.href = '/cart.html';
+    window.location.href = '/views/cart.html';
 }
 
 // 상세정보, 구매후기, 반품교환, Q&A 탭 이동
