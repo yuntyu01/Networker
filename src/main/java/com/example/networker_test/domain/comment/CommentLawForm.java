@@ -4,14 +4,13 @@ import com.example.networker_test.domain.user.User;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class CommentForm {
+public class CommentLawForm {
     @NotEmpty(message = "내용을 입력해주세요")
     private String content;
 

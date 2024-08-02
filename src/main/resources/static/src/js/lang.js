@@ -36,7 +36,7 @@ const langResource = {
     search_title: "제목",
     search_placeholder: "검색어 입력",
     search_t: "검색",
-    content: "내용",
+//    content: "내용",
     writer: "글쓴이",
     cart_title: "장바구니",
     image_header: "이미지",
