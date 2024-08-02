@@ -38,7 +38,9 @@ public class CommentController {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("post", post);
 			return "post";
-		}//빈칸 작성 방지 및 비 로그인 사용자의 실수에 의한 빈칸에서 작성 클릭 시 페이지에서 안나가게 함
+
+		}//빈칸 작성 방지 및 비 로그인 사용자의 실수에 의한 빈칸에서 작성 클릭 시 페이지에서 안나가게 함  
+
 		try {
 			// 댓글 생성
 			commentService.create(id, content, session);

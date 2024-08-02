@@ -46,12 +46,13 @@ public class PostController {
 	private String uploadDir;
 
 	@GetMapping("/list")
-	public String list(Model model, @RequestParam(value="page", defaultValue = "0") int page) {
+	public String list(Model model, @RequestParam(value="page", defaultValue = "0") int page, @RequestParam(value = "kw", defaultValue = "") String kw) {
 		if (page < 0) {
 			page = 0; // 페이지 번호가 음수일 경우 0으로 설정
 		}
-		Page<Post> paging = this.postService.getList(page);
+		Page<Post> paging = this.postService.getList(page, kw);
 		model.addAttribute("paging", paging);
+		model.addAttribute("kw", kw);
 		return "board";
 	}
 

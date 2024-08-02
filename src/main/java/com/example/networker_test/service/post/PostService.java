@@ -5,15 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.networker_test.domain.comment.Comment;
 import com.example.networker_test.domain.post.Post;
 import com.example.networker_test.domain.user.User;
 import com.example.networker_test.repository.post.PostRepository;
 import com.example.networker_test.repository.user.UserRepository;
+import jakarta.persistence.criteria.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.example.networker_test.exception.DataNotFoundException;
@@ -41,11 +44,12 @@ public class PostService {
 		}
 	}
 
-	public Page<Post> getList(int page) {
+	public Page<Post> getList(int page, String kw) {
 		List<Sort.Order> sorts = new ArrayList<>();
 		sorts.add(Sort.Order.desc("createDate"));
-		Pageable pageable = PageRequest.of(page, 30, Sort.by(sorts)); // paging scope
-		return this.postRepository.findAll(pageable);
+		Pageable pageable = PageRequest.of(page, 30, Sort.by(sorts));
+		Specification<Post> spec = search(kw);// paging scope
+		return this.postRepository.findAll(spec, pageable);
 	}
 
 	public void create(String subject, String content, HttpSession session) {
@@ -65,6 +69,26 @@ public class PostService {
 
 	}
 
+	private Specification<Post> search(String kw) {
+		return new Specification<>() {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public Predicate toPredicate(Root<Post> q, CriteriaQuery<?> query, CriteriaBuilder cb) {
+				query.distinct(true);
+				Join<Post, User> u1 = q.join("author", JoinType.LEFT);
+				Join<Post, Comment> a = q.join("commentList", JoinType.LEFT);
+				Join<Comment, User> u2 = a.join("author", JoinType.LEFT);
+				return cb.or(cb.like(q.get("subject"), "%" + kw + "%"), // 제목
+						cb.like(q.get("content"), "%" + kw + "%"),      // 내용
+						cb.like(u1.get("nickname"), "%" + kw + "%"),    // 질문 작성자
+						cb.like(a.get("content"), "%" + kw + "%"),      // 답변 내용
+						cb.like(u2.get("nickname"), "%" + kw + "%"));   // 답변 작성자
+			}
+		};
+	}
+}
+
+
 	// 게시물 수정 메서드
 	public void update(Post post) {
 		// 게시물 정보를 업데이트
@@ -80,6 +104,7 @@ public class PostService {
 		postRepository.deleteById(id);
 	}
 	}
+
 
 
 

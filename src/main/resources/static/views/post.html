@@ -57,7 +57,6 @@
         <h2>자유게시판</h2>
         <div class="content" id="post-info">
             <h1 th:text="${post.subject}"></h1>
-
             <h4>
                 <td th:text="${post.author != null ? post.author.nickname : 'Unknown'}"></td>
                 <td th:text="${#temporals.format(post.createDate, 'yyyy-MM-dd-HH:mm')}"></td>
