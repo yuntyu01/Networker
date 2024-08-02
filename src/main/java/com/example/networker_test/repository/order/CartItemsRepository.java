@@ -8,6 +8,4 @@ import java.util.List;
 
 public interface CartItemsRepository extends JpaRepository<CartItems, Integer> {
     Object countByOrderInfo(OrderInfo orderInfo);
-
-    List<CartItems> findByOrderInfo(OrderInfo orderInfo);
 }

@@ -1,7 +1,6 @@
 package com.example.networker_test.controller.order;
 
 import com.example.networker_test.dto.order.orderinfo.OrderInfoDTO;
-import com.example.networker_test.dto.order.orderinfo.UserOrderInfoDTO;
 import com.example.networker_test.dto.order.paymentinfo.PaymentInfoDTO;
 import com.example.networker_test.dto.order.request.OrderRequest;
 import com.example.networker_test.service.order.OrderService;
@@ -10,9 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.core.Authentication;
 
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -40,6 +37,7 @@ public class OrderController {
         return orderService.getPaymentInfo(orderId);
     }
 
+<<<<<<< HEAD
     // POST 요청을 처리하도록 메서드 수정
     @PostMapping("/orderinfo")
     public ResponseEntity<?> getOrderInfo(@RequestBody Map<String, String> request) {
@@ -54,4 +52,6 @@ public class OrderController {
         }
     }
 
+=======
+>>>>>>> parent of 7604c6f (#160 주문/결제 내역 백엔드)
 }
