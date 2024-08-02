@@ -31,7 +31,7 @@ public class PostService {
 	private final PostRepository postRepository;
 	private final UserRepository userRepository;
 
-	public List<Post> getLatestPosts() {
+	public List<Post> findLatestPosts() {
         	return postRepository.findTop2ByOrderByCreateDateDesc();
     	}
 
