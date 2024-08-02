@@ -74,16 +74,24 @@
         </div>
         <div class="right-align">
             <!-- 수정 버튼을 위한 폼 -->
-            <form th:action="@{/post/modify/{id}(id=${post.id})}" method="get">
-                <button id="edit" type="submit" class="btn btn-outline-secondary">수정</button>
-            </form>
+<!--            <form th:action="@{/post/modify/{id}(id=${post.id})}" method="get">-->
+<!--                <button id="edit" type="submit" class="btn btn-outline-secondary">수정</button>-->
+<!--            </form>-->
 
             <!-- 삭제 버튼을 위한 폼, 로그인된 사용자와 게시물 작성자 비교 -->
-            <form th:action="@{/post/delete/{id}(id=${post.id})}" method="post"
-                  onsubmit="return confirm('정말로 삭제하시겠습니까?');"
-                  th:if="${post.author != null and currentUser != null and post.author.id == currentUser.id}">
-                <button id="delete" type="submit" class="btn btn-outline-danger">삭제</button>
-            </form>
+<!--            <form th:action="@{/post/delete/{id}(id=${post.id})}" method="post"-->
+<!--                  onsubmit="return confirm('정말로 삭제하시겠습니까?');"-->
+<!--                  th:if="${post.author != null and currentUser != null and post.author.id == currentUser.id}">-->
+<!--                <button id="delete" type="submit" class="btn btn-outline-danger">삭제</button>-->
+<!--            </form>-->
+            <div class="button-group">
+                <form id="edit-button-form" th:action="@{/post/modify/{id}(id=${post.id})}" method="get" style="display:inline;">
+                    <button type="submit" class="btn btn-mod">수정</button>
+                </form>
+                <form id="delete-button-form" th:action="@{/post/delete/{id}(id=${post.id})}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">삭제</button>
+                </form>
+            </div>
         </div>
 
         <h5 th:text="|댓글 ${#lists.size(post.commentList)}개|"></h5>

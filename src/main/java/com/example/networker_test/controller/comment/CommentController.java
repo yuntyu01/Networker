@@ -47,7 +47,7 @@ public class CommentController {
 			logger.info("Comment created successfully for post ID {}", id);
 		} catch (Exception e) {
 			logger.error("Error creating comment for post ID {}", id, e);
-			return "redirect:/error";
+			return "redirect:/views/login.html";
 		}
 
 		return String.format("redirect:/post/detail/%s", id);
