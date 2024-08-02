@@ -3,6 +3,7 @@ package com.example.networker_test.domain.post;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 import com.example.networker_test.domain.comment.Comment;
 
@@ -37,6 +38,9 @@ public class Post {
 	
 	@OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
 	private List<Comment> commentList;
+
+	@OneToMany(mappedBy = "post")
+	private Set<PostRecommendation> recommendations;
 	
 
 }
