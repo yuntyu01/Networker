@@ -1,5 +1,5 @@
 // 전역변수
-let productId, productImg, productName, productPrice;
+let productId;
 
 document.addEventListener('DOMContentLoaded', function() {
     // 헤더 요소
@@ -43,16 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(`/api/products/${productId}`)
             .then(response => response.json())
             .then(product => {
-                // 전역변수에 제품 정보 저장
-                productImg = product.imageurl;
-                productName = product.name;
-                productPrice = product.price;
-                
                 // 제품 정보를 HTML에 추가
-                const productDetailContainer = document.getElementById('product-detail-container');
+                const productDetailContainer = document.querySelector('.product-detail-container');
                 productDetailContainer.innerHTML = `
                     <div class="product-image">
-                        <img src="${product.imageUrl}" alt="${product.name}">
+                        <img src="${product.image}" alt="${product.name}">
                     </div>
                     <div class="product-info">
                         <h1 class="product-name">${product.name}</h1>
