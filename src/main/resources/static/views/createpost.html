@@ -56,12 +56,20 @@
 </header>
 
 <main>
-    <form class="create-post" th:action="@{/post/create}" method="post" enctype="multipart/form-data">
+    <form class="create-post" th:action="@{/post/create}" th:object="${postForm}" method="post" enctype="multipart/form-data">
+    <!--    <div th:each="err : ${#fields.allErrors()}" th:text="${err}" ></div>
+        <div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}"></div>-->
         <h2 class="page-title">글쓰기</h2>
         <h3>제목</h3>
-        <input class="post-title" type="text" name="subject" maxlength="30">
+        <input class="post-title" type="text" th:field="*{subject}" name="subject" maxlength="30">
+        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('subject')}">
+            <div th:each="err : ${#fields.errors('subject')}" th:text="${err}"></div>
+        </div>
         <h3>내용</h3>
-        <textarea id="markdown-editor" name="content"></textarea>
+        <textarea id="markdown-editor" th:field="*{content}" name="content"></textarea>
+        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('content')}">
+            <div th:each="err : ${#fields.errors('content')}" th:text="${err}"></div>
+        </div>
         <h3>사진 첨부 </h3>
         <input type="file" id="image-upload" name="file">
         <p>(사진 첨부는 최대 5MB)</p>

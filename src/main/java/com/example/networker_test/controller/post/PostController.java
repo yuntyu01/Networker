@@ -1,11 +1,14 @@
 package com.example.networker_test.controller.post;
 
 import com.example.networker_test.CommonUtil;
+import com.example.networker_test.domain.comment.CommentForm;
 import com.example.networker_test.domain.post.Post;
+import com.example.networker_test.domain.post.PostForm;
 import com.example.networker_test.domain.user.User;
 import com.example.networker_test.service.comment.CommentService;
 import com.example.networker_test.service.post.PostService;
 import com.example.networker_test.service.user.UserService; // UserService 추가
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -15,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import jakarta.servlet.http.HttpSession;
@@ -38,17 +42,18 @@ public class PostController {
 	private String uploadDir;
 
 	@GetMapping("/list")
-	public String list(Model model, @RequestParam(value="page", defaultValue = "0") int page) {
+	public String list(Model model, @RequestParam(value="page", defaultValue = "0") int page, @RequestParam(value = "kw", defaultValue = "") String kw) {
 		if (page < 0) {
 			page = 0; // 페이지 번호가 음수일 경우 0으로 설정
 		}
-		Page<Post> paging = this.postService.getList(page);
+		Page<Post> paging = this.postService.getList(page, kw);
 		model.addAttribute("paging", paging);
+		model.addAttribute("kw", kw);
 		return "board";
 	}
 
 	@GetMapping("/detail/{id}")
-	public String detail(Model model, @PathVariable("id") Integer id) {
+	public String detail(Model model, @PathVariable("id") Integer id, CommentForm commentForm) {
 		Post post = this.postService.getPost(id);
 		model.addAttribute("post", post);
 		model.addAttribute("postContent", commonUtil.markdown(post.getContent())); // Markdown 내용 변환
@@ -56,15 +61,19 @@ public class PostController {
 	}
 
 	@GetMapping("/create")
-	public String postCreate() {
+	public String postCreate(PostForm postForm) {
 		return "createpost";
 	}
 
 	@PostMapping("/create")
-	public String createPost(@RequestParam(value="subject") String subject,
-							 @RequestParam(value="content") String content,
+	public String createPost(@Valid PostForm postForm, BindingResult bindingResult,
 							 @RequestParam(value="file", required = false) MultipartFile file,
 							 HttpSession session) {
+		if (bindingResult.hasErrors()) {
+
+			return "createpost";
+		}
+
 		try {
 			// 세션에서 로그인된 사용자 가져오기
 			User user = (User) session.getAttribute("user");
@@ -72,6 +81,7 @@ public class PostController {
 				return "redirect:/login"; // 로그인 페이지로 리다이렉트
 			}
 
+			// 파일이 업로드 되었는지 확인하고 처리
 			if (file != null && !file.isEmpty()) {
 				String fileName = file.getOriginalFilename();
 				Path destinationPath = Paths.get(uploadDir).resolve(fileName);
@@ -82,13 +92,14 @@ public class PostController {
 			}
 
 			// 게시글 생성
-			this.postService.create(subject, content, session);
+			this.postService.create(postForm.getSubject(), postForm.getContent(), session);
 			return "redirect:/post/list";
 		} catch (IOException e) {
 			e.printStackTrace();
 			return "파일 업로드 실패";
 		}
 	}
+
 
 	@PostMapping("/uploadImage")
 	public ResponseEntity<?> uploadImage(@RequestParam("file") MultipartFile file) {
