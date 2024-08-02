@@ -13,22 +13,22 @@
 <div class="wrapper w-100">
   <div class="flex-column align-center w-100 max-w-540">
     <img src="https://static.toss.im/lotties/error-spot-no-loop-space-apng.png" width="160" height="160"></img>
-    <h2 class="title">결제를 실패했어요</h2>
+    <h2 class="title payment_failed_title">결제를 실패했어요</h2>
     <div class="response-section w-100">
       <div class="flex justify-between">
-        <span class="response-label">code</span>
+        <span class="response-label error_code_label">code</span>
         <span id="error-code" class="response-text"></span>
       </div>
       <div class="flex justify-between">
-        <span class="response-label">message</span>
+        <span class="response-label error_message_label">message</span>
         <span id="error-message" class="response-text"></span>
       </div>
     </div>
     <div class="w-100 button-group">
-      <a class="btn" href="cart.html">돌아가기</a>
+      <a class="btn go_back_button" href="cart.html">돌아가기</a>
       <div class="flex" style="gap: 16px;">
-        <a class="btn w-100" href="https://docs.tosspayments.com/reference/error-codes" target="_blank" rel="noreferrer noopener">에러코드 문서보기</a>
-        <a class="btn w-100" href="https://developers.tosspayments.com/sandbox" target="_blank" rel="noreferrer noopener">토스 페이먼츠 샌드박스</a>
+        <a class="btn w-100 error_docs_button" href="https://docs.tosspayments.com/reference/error-codes" target="_blank" rel="noreferrer noopener">에러코드 문서보기</a>
+        <a class="btn w-100 sandbox_button" href="https://developers.tosspayments.com/sandbox" target="_blank" rel="noreferrer noopener">토스 페이먼츠 샌드박스</a>
       </div>
     </div>
   </div>

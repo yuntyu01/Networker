@@ -39,7 +39,7 @@
                 <option value="ja">日本語</option>
                 <option value="vi">Tiếng Việt</option>
                 <option value="mn">Монгол</option>
-                <option value="ru">Русский</option>
+                <option value="uk">українська мова</option>
               </select>
             </div>
           </div>
@@ -47,35 +47,37 @@
       </header>
   
 
-<main>
-    <div class="email-change-container">
-        <h2>로그인</h2>
-        <form id="login-form" action="#" method="post">
-            <div class="form-group">
-                <label for="email">이메일</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">비밀번호</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit">로그인</button>
-            <div class="register-link">
-                <a href="/views/signup.html">회원가입</a>
-            </div>
-        </form>
-    </div>
-</main>
-
-<footer>
-    <div class="footer-container">
+      <main>
+        <div class="email-change-container">
+            <h2 class="login">로그인</h2>
+            <form id="login-form" action="#" method="post">
+                <div class="form-group">
+                    <label for="email" class="email_label">이메일</label>
+                    <input type="email" id="email" name="email" class="email_placeholder" placeholder="이메일을 입력하세요." required>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="password_label">비밀번호</label>
+                    <input type="password" id="password" name="password" class="password_placeholder" placeholder="비밀번호를 입력하세요." required>
+                </div>
+                <button type="submit" class="login_button login">로그인</button>
+                <div class="register-link">
+                    <a href="/views/signup.html" class="signup_link signup">회원가입</a>
+                </div>
+            </form>
+        </div>
+    </main>
+    
+    <footer>
+      <div class="footer-container">
         <ul class="footer-btn">
-            <li><a href="#">이용약관</a></li>
-            <li><a href="/views/Privacy_Policy.html" style="font-weight: bold;">개인정보처리방침</a></li>
-            <li><a href="/views/inquire.html">문의/신고</a></li>
-            <li><a href="/views/inquire.html">광고안내</a></li>
+          <li><a href="#" id="footer_terms">이용약관</a></li>
+          <li>
+            <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
+          </li>
+             <li><a href="/views/inquire.html" id="footer_contact">문의/신고</a></li>
+             <li><a href="/views/inquire.html" id="footer_ads">광고안내</a></li>
         </ul>
-    </div>
-</footer>
+      </div>
+    </footer>
 </body>
 </html>

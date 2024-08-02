@@ -5,6 +5,7 @@
     <script src="https://js.tosspayments.com/v2/standard"></script>
     <link rel="stylesheet" href="../src/css/payments.css" />
     <link rel="stylesheet" href="../src/css/shared.css" />
+    <script src="../src/js/lang.js" defer></script>
   </head>
   <body>
     <header>
@@ -43,7 +44,7 @@
               <option value="ja">日本語</option>
               <option value="vi">Tiếng Việt</option>
               <option value="mn">Монгол</option>
-              <option value="ru">Русский</option>
+              <option value="uk">українська мова</option>
             </select>
           </div>
         </div>
@@ -55,7 +56,7 @@
         <div id="payment-method" class="w-100"></div>
         <div id="agreement" class="w-100"></div>
         <div class="btn-wrapper w-100">
-          <button id="payment-request-button" class="btn primary w-100">
+          <button id="payment-request-button" class="btn primary w-100 proceed_to_payment">
             결제하기
           </button>
         </div>
@@ -65,14 +66,12 @@
     <footer>
       <div class="footer-container">
         <ul class="footer-btn">
-          <li><a href="#">이용약관</a></li>
+          <li><a href="#" id="footer_terms">이용약관</a></li>
           <li>
-            <a href="privacy_Policy.html" style="font-weight: bold"
-              >개인정보처리방침</a
-            >
+            <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
           </li>
-          <li><a href="/views/inquire.html">문의/신고</a></li>
-          <li><a href="/views/inquire.html">광고안내</a></li>
+             <li><a href="/views/inquire.html" id="footer_contact">문의/신고</a></li>
+             <li><a href="/views/inquire.html" id="footer_ads">광고안내</a></li>
         </ul>
       </div>
     </footer>

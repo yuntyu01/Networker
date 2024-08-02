@@ -6,10 +6,8 @@
     <title>솔루션 테크</title>
     <link rel="stylesheet" href="../src/css/shared.css" />
     <link rel="stylesheet" href="../src/css/review_page.css" />
-    <link rel="stylesheet" href="../src/css/flags.css" />
     <script src="../src/js/company.js" defer></script>
     <script src="../src/js/translate.js" defer></script>
-    <script src="../src/js/lang.js" defer></script>
     <script src="https://kit.fontawesome.com/b3f3cec821.js" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -18,7 +16,7 @@
         <a href="networker.html" style="text-decoration: none">
           <span class="logo">
             <img src="../src/assets/logo.png" alt="logo" />
-            <h1 id="site_title">Networker</h1>
+            <h1 id="site_title" class="notranslate">Networker</h1>
           </span>
         </a>
         <div class="menu">
@@ -35,18 +33,15 @@
           <div class="profile-icon">
             <a href="profile.html"><img src="../src/assets/profile.png" alt="Profile" /></a>
           </div>
-          <div class="language-selector">
+          <div id="google_translate_element" style="display: none;"></div>
+          <div class="language-selector2">
             <img src="../src/assets/earth_icon.png" alt="earth" class="earth-icon" />
-            <label for="languageSelector"></label>
-            <select id="languageSelector">
+            <select id="languageSelector2">
+              <option value="ko">한국어</option>
               <option value="en">English</option>
-              <option value="ko" selected>한국어</option>
-              <option value="zh">中文</option>
               <option value="ja">日本語</option>
-              <option value="vi">Tiếng Việt</option>
-              <option value="mn">Монгол</option>
-              <option value="ru">Русский</option>
-            </select>
+              <option value="zh-CN">中文(简体)</option>
+          </select>
           </div>
         </div>
       </div>
@@ -94,15 +89,16 @@
     <footer>
       <div class="footer-container">
         <ul class="footer-btn">
-          <li><a href="#">이용약관</a></li>
-          <li><a href="privacy_Policy.html" style="font-weight: bold">개인정보처리방침</a></li>
-          <li><a href="/views/inquire.html">문의/신고</a></li>
-          <li><a href="/views/inquire.html">광고안내</a></li>
+          <li><a href="#" id="footer_terms">이용약관</a></li>
+          <li>
+            <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
+          </li>
+             <li><a href="/views/inquire.html" id="footer_contact">문의/신고</a></li>
+             <li><a href="/views/inquire.html" id="footer_ads">광고안내</a></li>
         </ul>
       </div>
     </footer>
 
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script src="../src/js/translate.js" defer></script>
   </body>
 </html>

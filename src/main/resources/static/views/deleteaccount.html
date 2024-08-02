@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../src/css/shared.css" />
     <link rel="stylesheet" href="../src/css/deleteaccount.css">
     <script src="../src/js/deleteaccount.js" defer></script>
-</head>
+    <script src="../src/js/lang.js" defer></script>
 <body>
     <header>
         <div class="header-content">
@@ -42,7 +42,7 @@
                 <option value="ja">日本語</option>
                 <option value="vi">Tiếng Việt</option>
                 <option value="mn">Монгол</option>
-                <option value="ru">Русский</option>
+                <option value="uk">українська мова</option>
               </select>
             </div>
           </div>
@@ -51,31 +51,33 @@
   
     <main>
         <div class="delete-account-container">
-            <h2>회원 탈퇴 전 다음 내용을 꼭 확인해주세요.</h2>
-            <p>회원 탈퇴 시 모든 데이터가 삭제됩니다.<br>
-               또한 90일 이내에 관리자 및 사용자 계정과 동일한 이메일로 재가입 할 수 없습니다.</p>
-            <p>계속 하시겠습니까?</p>
-            <form id="delete-account-form" class="delete-account-form">
-                <div class="form-group">
-                    <input type="password" id="password" name="password" placeholder="비밀번호를 입력해 주세요." required>
-                </div>
-                <div class="button-group">
-                    <button type="submit" class="confirm-button">확인</button>
-                    <button type="button" class="cancel-button" onclick="window.location.href='/views/profile.html'">취소</button>
+          <h2 class="delete_account_heading">회원 탈퇴 전 다음 내용을 꼭 확인해주세요.</h2>
+          <p class="delete_account_warning">회원 탈퇴 시 모든 데이터가 삭제됩니다.<br>
+             또한 90일 이내에 관리자 및 사용자 계정과 동일한 이메일로 재가입 할 수 없습니다.</p>
+          <p class="delete_account_confirm">계속 하시겠습니까?</p>
+          <form id="delete-account-form" class="delete-account-form">
+              <div class="form-group">
+                  <input type="password" id="password" name="password" class="password_placeholder" placeholder="비밀번호를 입력해 주세요." required>
+              </div>
+              <div class="button-group">
+                  <button type="submit" class="confirm_button btn-post">확인</button>
+                  <button type="button" class="cancel_button btn-cancel" onclick="window.location.href='/views/profile.html'">취소</button>
                 </div>
             </form>
         </div>
     </main>
 
     <footer>
-        <div class="footer-container">
-            <ul class="footer-btn">
-                <li><a href="#">이용약관</a></li>
-                <li><a href="/views/Privacy_Policy.html" style="font-weight: bold;">개인정보처리방침</a></li>
-                <li><a href="/views/inquire.html">문의/신고</a></li>
-                <li><a href="/views/inquire.html">광고안내</a></li>
-            </ul>
-        </div>
+      <div class="footer-container">
+        <ul class="footer-btn">
+          <li><a href="#" id="footer_terms">이용약관</a></li>
+          <li>
+            <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
+          </li>
+             <li><a href="/views/inquire.html" id="footer_contact">문의/신고</a></li>
+             <li><a href="/views/inquire.html" id="footer_ads">광고안내</a></li>
+        </ul>
+      </div>
     </footer>
     
 </body>
