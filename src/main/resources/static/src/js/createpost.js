@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
 
         const formData = new FormData(this);
-        const file = formData.get('file'); .
+        const file = formData.get('file');
         const MAX_SIZE = 5 * 1024 * 1024;
 
         if (file && file.size > MAX_SIZE) {

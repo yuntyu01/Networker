@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateCartSummary() {
         const cartItems = JSON.parse(localStorage.getItem('cartItems'));
         const total = cartItems.reduce((sum, item) => sum + (item.price * item.count), 0);
-        const shipping = 3900; // Assuming fixed shipping cost
+        const shipping = 4000; // Assuming fixed shipping cost
         const finalTotal = total + shipping;
         
         // 예상 결제 금액 출력

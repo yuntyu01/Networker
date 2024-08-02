@@ -22,25 +22,31 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.beans.factory.annotation.Autowired;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 @Controller
 @RequestMapping("/post")
 @RequiredArgsConstructor
 
 public class PostController {
-
+	@Autowired
 	private final PostService postService;
 	private final CommentService commentService;
 	private final UserService userService;
 	private final CommonUtil commonUtil;
 	private final PostRecommendationService postRecommendationService;
 
+	@GetMapping("/post/latest")
+   	public List<Post> getLatestPosts() {
+        	return postService.findLatestPosts();
+    	}
 
 	@Value("${file.upload-dir}")
 	private String uploadDir;

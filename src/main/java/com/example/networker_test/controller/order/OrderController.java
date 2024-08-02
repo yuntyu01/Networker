@@ -36,4 +36,11 @@ public class OrderController {
         return orderService.getPaymentInfo(orderId);
     }
 
+    @GetMapping("/orderinfo")
+    public ResponseEntity<List<UserOrderInfoDTO>> getUserOrderInfo(Authentication authentication) {
+        String userId = authentication.getName();
+        List<UserOrderInfoDTO> orders = orderService.getUserOrdersByUserId(userId);
+        return ResponseEntity.ok(orders);
+    }
+
 }
