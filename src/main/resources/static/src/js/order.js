@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 document.addEventListener('DOMContentLoaded', () => {
     // 유저 아이디(이메일) 정보 가져오기
     let userEmail = '';
@@ -61,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
 
         // 주문 번호 생성
-        const orderId = crypto.randomUUID();
+        const orderId = uuidv4();
         // 로컬스토리지에 orderId 저장
         localStorage.setItem('orderId', orderId);
 
