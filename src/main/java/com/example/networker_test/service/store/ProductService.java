@@ -1,8 +1,7 @@
 package com.example.networker_test.service.store;
 
-import com.example.networker_test.domain.sotre.Product;
+import com.example.networker_test.domain.store.Product;
 import com.example.networker_test.repository.store.ProductRepository;
-import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

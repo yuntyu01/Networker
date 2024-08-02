@@ -1,7 +1,6 @@
 package com.example.networker_test.controller.store;
 
-import com.example.networker_test.domain.sotre.Product;
-import com.example.networker_test.dto.user.request.UserCreateRequest;
+import com.example.networker_test.domain.store.Product;
 import com.example.networker_test.service.store.ProductService;
 import org.springframework.web.bind.annotation.*;
 

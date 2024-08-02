@@ -1,7 +1,5 @@
 package com.example.networker_test.dto.user.reponese;
 
-import com.example.networker_test.domain.user.User;
-
 public class UserResponse {
     private long id;
     private String nickname;
@@ -15,14 +13,6 @@ public class UserResponse {
         this.email = email;
         this.nationality = nationality;
         this.password = password;
-    }
-
-    public UserResponse(int id, User user) {
-        this.id = id;
-        this.nickname = user.getNickname();
-        this.email = user.getEmail();
-        this.nationality = user.getNationality();
-        this.password = user.getPassword();
     }
 
     public long getId() {
