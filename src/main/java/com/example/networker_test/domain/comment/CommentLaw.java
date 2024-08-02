@@ -22,10 +22,10 @@ public class CommentLaw {
 
     private LocalDateTime createDate;//댓글 작성일
 
-    private Integer recommendCount;
+    //private Integer recommendCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "post_id")
+    @JoinColumn(name = "post_law_id")
     private PostLaw postLaw;
 
     @ManyToOne(fetch = FetchType.LAZY)
