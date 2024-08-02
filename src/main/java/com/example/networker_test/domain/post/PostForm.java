@@ -7,6 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+
 public class PostForm {
     @NotEmpty(message="제목을 입력해주세요")
     @Size(max=200)
@@ -14,4 +15,9 @@ public class PostForm {
 
     @NotEmpty(message="내용을 입력해주세요")
     private String content;
+    public PostForm(String subject, String content) {
+        this.subject = subject;
+        this.content = content;
+    }
+
 }

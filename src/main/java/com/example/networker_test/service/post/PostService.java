@@ -68,6 +68,7 @@ public class PostService {
 
 
 	}
+
 	private Specification<Post> search(String kw) {
 		return new Specification<>() {
 			private static final long serialVersionUID = 1L;
@@ -86,3 +87,25 @@ public class PostService {
 		};
 	}
 }
+
+
+	// 게시물 수정 메서드
+	public void update(Post post) {
+		// 게시물 정보를 업데이트
+		if (post.getId() == null || !postRepository.existsById(post.getId())) {
+			throw new IllegalArgumentException("게시물을 찾을 수 없습니다.");
+		}
+		postRepository.save(post);
+	}
+	public void delete(Integer id) {
+		if (!postRepository.existsById(id)) {
+			throw new DataNotFoundException("게시물을 찾을 수 없습니다.");
+		}
+		postRepository.deleteById(id);
+	}
+	}
+
+
+
+
+

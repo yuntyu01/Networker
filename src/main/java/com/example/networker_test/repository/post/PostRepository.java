@@ -13,5 +13,7 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     Post findBySubjectAndContent(String subject, String content);
     List<Post> findBySubjectLike(String subject);
     Page<Post> findAll(Pageable pageable);
+
     Page<Post> findAll(Specification<Post> spec, Pageable pageable);
+
 }

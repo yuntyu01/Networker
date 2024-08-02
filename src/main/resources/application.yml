@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://43.203.238.26:3306/networker3
+    url: jdbc:mysql://localhost/networker
     username: root
-    password: testdbpw
+    password: 1631
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:

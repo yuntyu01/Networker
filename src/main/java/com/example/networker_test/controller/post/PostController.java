@@ -6,6 +6,7 @@ import com.example.networker_test.domain.post.Post;
 import com.example.networker_test.domain.post.PostForm;
 import com.example.networker_test.domain.user.User;
 import com.example.networker_test.service.comment.CommentService;
+import com.example.networker_test.service.post.PostRecommendationService;
 import com.example.networker_test.service.post.PostService;
 import com.example.networker_test.service.user.UserService; // UserService 추가
 import jakarta.validation.Valid;
@@ -31,12 +32,15 @@ import java.nio.file.Paths;
 @Controller
 @RequestMapping("/post")
 @RequiredArgsConstructor
+
 public class PostController {
 
 	private final PostService postService;
 	private final CommentService commentService;
-	private final UserService userService; // UserService 추가
+	private final UserService userService;
 	private final CommonUtil commonUtil;
+	private final PostRecommendationService postRecommendationService;
+
 
 	@Value("${file.upload-dir}")
 	private String uploadDir;
@@ -51,6 +55,7 @@ public class PostController {
 		model.addAttribute("kw", kw);
 		return "board";
 	}
+
 
 	@GetMapping("/detail/{id}")
 	public String detail(Model model, @PathVariable("id") Integer id, CommentForm commentForm) {
@@ -154,4 +159,108 @@ public class PostController {
 		}
 
 	}
+
+	@GetMapping("/post/modify/{id}")
+	public String showModifyForm(@PathVariable("id") Integer id, Model model, HttpSession session) {
+		// 게시물 조회
+		Post post = postService.getPost(id);
+
+		// 세션에서 사용자 정보 가져오기
+		User loggedInUser = (User) session.getAttribute("user");
+		if (loggedInUser == null || !loggedInUser.getNickname().equals(post.getAuthor().getNickname())) {
+			return "redirect:/login"; // 로그인되지 않았거나 권한이 없는 경우 리다이렉트
+		}
+
+		// 게시물 정보를 폼에 맞게 설정
+		PostForm postForm = new PostForm(null, null);
+		postForm.setSubject(post.getSubject());
+		postForm.setContent(post.getContent());
+
+		model.addAttribute("postForm", postForm);
+		model.addAttribute("postId", id);
+
+		return "modifyPost"; // 수정 폼 템플릿
+	}
+
+
+	@GetMapping("/modify/{id}")
+	public String modifyPostForm(@PathVariable("id") Integer id, Model model, HttpSession session) {
+		Post post = postService.getPost(id);
+		// 세션에서 사용자 정보 가져오기
+		User loggedInUser = (User) session.getAttribute("user");
+		if (loggedInUser == null || !loggedInUser.getNickname().equals(post.getAuthor().getNickname())) {
+			return "redirect:/login"; // 권한이 없는 경우 로그인 페이지로 리다이렉트
+		}
+		model.addAttribute("postForm", new PostForm(post.getSubject(), post.getContent()));
+		model.addAttribute("postId", id);
+		return "modifypost"; // 수정 폼을 표시할 템플릿 이름
+	}
+
+	@PostMapping("/modify/{id}")
+	public String modifyPost(@PathVariable("id") Integer id,
+							 @Valid @ModelAttribute("postForm") PostForm postForm,
+							 BindingResult bindingResult,
+							 HttpSession session) {
+		if (bindingResult.hasErrors()) {
+			return "modifypost"; // 폼 검증 오류가 있는 경우 수정 폼을 다시 표시
+		}
+
+		Post post = postService.getPost(id);
+		// 세션에서 사용자 정보 가져오기
+		User loggedInUser = (User) session.getAttribute("user");
+		if (loggedInUser == null || !loggedInUser.getNickname().equals(post.getAuthor().getNickname())) {
+			return "redirect:/login"; // 로그인되지 않았거나 권한이 없는 경우 리다이렉트
+		}
+
+		post.setSubject(postForm.getSubject());
+		post.setContent(postForm.getContent());
+		postService.update(post);
+
+		return "redirect:/post/detail/" + id; // 수정 후 상세 페이지로 리다이렉트
+	}
+
+	@PostMapping("/delete/{id}")
+	public String deletePost(@PathVariable("id") Integer id, HttpSession session) {
+		try {
+			// 현재 사용자 정보를 가져옵니다.
+			User currentUser = (User) session.getAttribute("user");
+			if (currentUser == null) {
+				return "redirect:/login"; // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
+			}
+
+			// 게시물을 가져옵니다.
+			Post post = postService.getPost(id);
+			if (post.getAuthor() == null || !post.getAuthor().getId().equals(currentUser.getId())) {
+				return "redirect:/post/list"; // 작성자가 아닌 경우 게시물 목록 페이지로 리다이렉트
+			}
+
+			// 게시물 삭제
+			postService.delete(id);
+			return "redirect:/post/list"; // 게시물 삭제 후 목록 페이지로 리다이렉트
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "게시물 삭제 실패";
+		}
+	}
+
+
+	@PostMapping("/recommend/{id}")
+	public String recommendPost(@PathVariable("id") Integer id, HttpSession session) {
+		User currentUser = (User) session.getAttribute("user");
+		if (currentUser == null) {
+			return "redirect:/login"; // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
+		}
+
+		try {
+			postRecommendationService.recommendPost(id, currentUser);
+			return "redirect:/post/detail/" + id; // 추천 후 게시물 상세 페이지로 리다이렉트
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+			return "redirect:/post/detail/" + id + "?error=recommendation"; // 이미 추천한 경우
+		}
+	}
 }
+
+
+
+
