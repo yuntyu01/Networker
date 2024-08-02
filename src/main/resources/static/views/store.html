@@ -62,9 +62,9 @@
     <main>
       <div class="main-bar">
         <div class="main-item">
-          <h2 class="main-title">스토어</h2>
+          <h2 class="main-title menu_store">스토어</h2>
         </div>
-        <a href="cart.html" class="cart-button-container">
+        <a href="cart.html" class="cart-button-container cart_title">
           <i class="fa-solid fa-cart-shopping"></i>
           장바구니
         </a>
@@ -77,8 +77,8 @@
 
       <div class="sort-search-bar">
         <div class="sort-buttons">
-          <button onclick="sortProducts('low')">낮은 가격순</button>
-          <button onclick="sortProducts('high')">높은 가격순</button>
+          <button class="sort_low_price" onclick="sortProducts('low')">낮은 가격순</button>
+          <button class="sort_high_price" onclick="sortProducts('high')">높은 가격순</button>
         </div>
         <div class="search-box-container">
           <form

@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="../src/css/review_page.css">
     <link rel="stylesheet" href="../src/css/write_review.css">
     <script src="../src/js/star.js" defer></script>
-    <script src="../src/js/translate.js" defer></script>
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="../src/js/lang.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>기업 리뷰하기</title>
 </head>
@@ -37,59 +36,68 @@
                 ><img src="../src/assets/profile.png" alt="Profile"
               /></a>
             </div>
-            <div id="google_translate_element" style="display: none;"></div>
-          <div class="language-selector2">
-            <img src="../src/assets/earth_icon.png" alt="earth" class="earth-icon" />
-            <select id="languageSelector2">
-              <option value="ko">한국어</option>
-              <option value="en">English</option>
-              <option value="ja">日本語</option>
-              <option value="zh-CN">中文(简体)</option>
-          </select>
-          </div>
+            <div class="language-selector">
+              <img
+                src="../src/assets/earth_icon.png"
+                alt="earth"
+                class="earth-icon"
+              />
+              <label for="languageSelector"></label>
+              <select id="languageSelector">
+                <option value="en">English</option>
+                <option value="ko" selected>한국어</option>
+                <option value="zh">中文</option>
+                <option value="ja">日本語</option>
+                <option value="vi">Tiếng Việt</option>
+                <option value="mn">Монгол</option>
+                <option value="uk">українська мова</option>
+              </select>
+            </div>
         </div>
       </header>
 
       <main>
         <section class="review-form">
-            <h2>기업 리뷰 작성</h2>
-            <form action="/submit_review" method="POST">
-                <div class="form-group">
-                    <label for="headline">회사에 대한 한줄 평</label>
-                    <input type="text" id="headline" name="headline" placeholder="한 줄 평을 입력하세요" required>
-                </div>
-                <div class="form-group">
-                    <label for="pros">장점</label>
-                    <textarea id="pros" name="pros" placeholder="회사의 장점을 작성하세요" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="cons">단점</label>
-                    <textarea id="cons" name="cons" placeholder="회사의 단점을 작성하세요" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="cons">별점</label>
-                    <div class ="star_rating">
-                        <span class="star on" value="1"> </span>
-                        <span class="star" value="2"> </span>
-                        <span class="star" value="3"> </span>
-                        <span class="star" value="4"> </span>
-                        <span class="star" value="5"> </span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <button type="submit">리뷰 제출</button>
-                </div>
-            </form>
-        </section>
+          <h2 class="write_company_review_heading">기업 리뷰 작성</h2>
+          <form action="/submit_review" method="POST">
+              <div class="form-group">
+                  <label for="headline" class="headline_label">회사에 대한 한줄 평</label>
+                  <input type="text" id="headline" name="headline" class="headline_input" placeholder="한 줄 평을 입력하세요" required>
+              </div>
+              <div class="form-group">
+                  <label for="pros" class="pros_label">장점</label>
+                  <textarea id="pros" name="pros" class="pros_input" placeholder="회사의 장점을 작성하세요" required></textarea>
+              </div>
+              <div class="form-group">
+                  <label for="cons" class="cons_label">단점</label>
+                  <textarea id="cons" name="cons" class="cons_input" placeholder="회사의 단점을 작성하세요" required></textarea>
+              </div>
+              <div class="form-group">
+                  <label for="rating" class="rating_label">별점</label>
+                  <div class="star_rating">
+                      <span class="star on" value="1"> </span>
+                      <span class="star" value="2"> </span>
+                      <span class="star" value="3"> </span>
+                      <span class="star" value="4"> </span>
+                      <span class="star" value="5"> </span>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <button type="submit" class="submit_review_button">리뷰 제출</button>
+              </div>
+          </form>
+        </section>          
       </main>
 
       <footer>
         <div class="footer-container">
           <ul class="footer-btn">
-            <li><a href="#">이용약관</a></li>
-            <li><a href="/views/Privacy_Policy.html" style="font-weight: bold">개인정보처리방침</a></li>
-            <li><a href="/views/inquire.html">문의/신고</a></li>
-            <li><a href="/views/inquire.html">광고안내</a></li>
+            <li><a href="#" id="footer_terms">이용약관</a></li>
+            <li>
+              <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
+            </li>
+               <li><a href="/views/inquire.html" id="footer_contact">문의/신고</a></li>
+               <li><a href="/views/inquire.html" id="footer_ads">광고안내</a></li>
           </ul>
         </div>
       </footer>
