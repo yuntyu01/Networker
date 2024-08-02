@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:c="http://www.w3.org/1999/XSL/Transform">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 - Networker</title>
-    <link rel="stylesheet" href="../src/css/post.css">
+    <link rel="stylesheet" href="/src/css/post.css">
     <script src="/src/js/lang.js" defer></script>
-    <link rel="stylesheet" href="../src/css/shared.css" />
+    <link rel="stylesheet" href="/src/css/shared.css" />
 </head>
 
 <body>
 <header>
     <div class="header-content">
         <a href="/main" style="text-decoration: none">
-            <span class="logo">
-              <img src="../src/assets/logo.png" alt="logo" />
-              <h1 id="site_title">Networker</h1>
-            </span>
+                <span class="logo">
+                    <img src="/src/assets/logo.png" alt="logo" />
+                    <h1 id="site_title">Networker</h1>
+                </span>
         </a>
         <div class="menu">
             <a href="/main" id="menu_home">홈</a>
@@ -31,12 +31,12 @@
             <a href="/views/login.html" id="login">로그인</a>
             <a href="/views/signup.html" id="signup">회원가입</a>
             <div class="profile-icon">
-                <a href="/views/profile.html" id="profile-size"
-                ><img src="../src/assets/profile.png" alt="Profile"
-                /></a>
+                <a href="/views/profile.html" id="profile-size">
+                    <img src="/src/assets/profile.png" alt="Profile" />
+                </a>
             </div>
             <div class="language-selector">
-                <img src="../src/assets/earth_icon.png" alt="earth" class="earth-icon">
+                <img src="/src/assets/earth_icon.png" alt="earth" class="earth-icon">
                 <label for="languageSelector"></label>
                 <select id="languageSelector">
                     <option value="en">English</option>
@@ -54,35 +54,54 @@
 
 <main>
     <div class="post" id="post-details">
-        <h2>법률지원</h2>
+        <h2>자유게시판</h2>
         <div class="content" id="post-info">
             <h1 th:text="${postLaw.subject}"></h1>
-            <div th:text="${postLaw.content}"></div>
+            <h4>
+                <td th:text="${postLaw.author != null ? postLaw.author.nickname : 'Unknown'}"></td>
+                <td th:text="${#temporals.format(postLaw.createDate, 'yyyy-MM-dd-HH:mm')}"></td>
+            </h4>
+            <!-- Markdown을 HTML로 변환한 결과를 렌더링 -->
+            <div id="post-content" th:utext="${postContent}"></div>
         </div>
         <div class="center-align">
-            <!--
-            추천 개수 표시 하려면 이부분 수정해야함.
-            <p id="recommend-count"></p>
-            <p id="not-recommend-count"></p>
-            -->
-            <button id="recommend" class="recommend-button" type="button" onclick="recommend()">추천</button>
-
+            <!--<button id="recommend" class="recommend-button" type="button" onclick="recommend()">추천</button>-->
+            <form th:action="@{/lawsupport/recommend/{id}(id=${postLaw.id})}" method="post"
+                  th:if="${currentUser != null}">
+                <button id="recommend" type="submit" class="recommend-button">추천</button>
+            </form>
         </div>
         <div class="right-align">
-            <button id="edit" type="button" onclick="post_edit()">수정</button>
-            <button id="delete" type="button" onclick="post_delete()">삭제</button>
-        </div>
-        <h5 th:text="|댓글 ${#lists.size(postLaw.commentLawList)}개|"></h5>
-        <div class="comment" id="comments-info">
-            <ul>
-                <li th:each="commentLaw : ${postLaw.commentLawList}" th:text="${commentLaw.content}"></li>
-            </ul>
+            <!-- 수정 버튼을 위한 폼 -->
+            <form th:action="@{/lawsupport/modify/{id}(id=${postLaw.id})}" method="get">
+                <button id="edit" type="submit" class="btn btn-outline-secondary">수정</button>
+            </form>
+
+            <!-- 삭제 버튼을 위한 폼, 로그인된 사용자와 게시물 작성자 비교 -->
+            <form th:action="@{/lawsupport/delete/{id}(id=${postLaw.id})}" method="post"
+                  onsubmit="return confirm('정말로 삭제하시겠습니까?');"
+                  th:if="${postLaw.author != null and currentUser != null and postLaw.author.id == currentUser.id}">
+                <button id="delete" type="submit" class="btn btn-outline-danger">삭제</button>
+            </form>
         </div>
 
+        <h5 th:text="|댓글 ${#lists.size(postLaw.commentLawList)}개|"></h5>
+        <tbody>
+        <tr th:each="commentLaw : ${postLaw.commentLawList}" class="comment-row">
+            <td>
+                <div class="comment">
+                    <span th:text="${commentLaw.author != null ? commentLaw.author.nickname : 'Unknown'}"></span>
+                    <span th:text="${#temporals.format(commentLaw.createDate, 'yyyy-MM-dd-HH:mm')}"></span>
+                </div>
+                <div class="comment-content" th:text="${commentLaw.content}"></div>
+            </td>
+        </tr>
+        </tbody>
+
         <form class="comment-write" th:action="@{|/commentlaw/create/${postLaw.id}|}" method="post">
-            <div class="user-id" id="user-info">임시 아이디</div>
+            <div class="user-id" id="user-info"></div><!--임시아이디영역-->
             <div class="input-container">
-                <textarea id="comment-input" class="text-input" name="content" ></textarea>
+                <textarea id="comment-input" class="text-input"  name="content"></textarea>
                 <button id="comment-button" class="text-button" type="submit">작성</button>
             </div>
         </form>
@@ -91,18 +110,17 @@
 
 <footer>
     <div class="footer-container">
-      <ul class="footer-btn">
-        <li><a href="#" id="footer_terms">이용약관</a></li>
-        <li>
-          <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
-        </li>
-           <li><a href="/views/inquire.html" id="footer_contact">문의/신고</a></li>
-           <li><a href="/views/inquire.html" id="footer_ads">광고안내</a></li>
-      </ul>
+
+        <ul class="footer-btn">
+            <li><a href="#">이용약관</a></li>
+            <li><a href="/views/Privacy_Policy.html" style="font-weight: bold;">개인정보처리방침</a></li>
+            <li><a href="/views/inquire.html">문의/신고</a></li>
+            <li><a href="/views/inquire.html">광고안내</a></li>
+        </ul>
     </div>
   </footer>
 
-<script src="/src/js/post_law.js"></script>
+<script src="/src/js/post.js"></script>
 </body>
 
 </html>

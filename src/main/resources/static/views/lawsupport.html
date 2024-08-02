@@ -1,162 +1,184 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
-
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/b3f3cec821.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../src/css/lawsupport.css">
-    <script src="../src/js/lang.js" defer></script>
+    <title>Networker 법률지원 게시판</title>
+    <link rel="stylesheet" href="../src/css/board.css">
     <link rel="stylesheet" href="../src/css/shared.css" />
-    <title>법률지원</title>
+    <script src="../src/js/lang.js" defer></script>
 </head>
-
 <body>
-    <header>
-        <div class="header-content">
-            <a href="/main" style="text-decoration: none">
-                <span class="logo">
-                    <img src="../src/assets/logo.png" alt="logo" />
-                    <h1 id="site_title">Networker</h1>
-                </span>
-            </a>
-            <div class="menu">
-                <a href="/main" id="menu_home">홈</a>
-                <a href="/views/news.html" id="menu_news">정보</a>
-                <a href="/post/list" id="menu_board">자유게시판</a>
-                <a href="/views/store.html" id="menu_store">스토어</a>
-                <a href="/lawsupport/main" id="menu_law">법률지원</a>
-                <a href="/views/review.html" id="menu_review">기업리뷰</a>
+<header>
+    <div class="header-content">
+        <a href="/main" style="text-decoration: none;">
+            <span class="logo">
+                <img src="../src/assets/logo.png">
+                <h1>Networker</h1>
+            </span>
+        </a>
+        <div class="menu">
+            <a href="/main" id="menu_home">홈</a>
+            <a href="/views/news.html" id="menu_news">정보</a>
+            <a href="/post/list" id="menu_board">자유게시판</a>
+            <a href="/views/store.html" id="menu_store">스토어</a>
+            <a href="/lawsupport/main" id="menu_law">법률지원</a>
+            <a href="/views/review.html" id="menu_review">기업리뷰</a>
+        </div>
+        <div class="auth-buttons">
+            <a href="/views/login.html" id="login">로그인</a>
+            <a href="/views/signup.html" id="signup">회원가입</a>
+            <div class="profile-icon">
+                <a href="/views/profile.html" id="profile-size"
+                ><img src="../src/assets/profile.png" alt="Profile"
+                /></a>
             </div>
-            <div class="auth-buttons">
-                <a href="/views/login.html" id="login">로그인</a>
-                <a href="/views/signup.html" id="signup">회원가입</a>
-                <div class="profile-icon">
-                    <a href="/views/profile.html" id="profile-size"><img src="../src/assets/profile.png"
-                            alt="Profile" /></a>
-                </div>
-                <div class="language-selector">
-                    <img src="../src/assets/earth_icon.png" alt="earth" class="earth-icon">
-                    <label for="languageSelector"></label>
-                    <select id="languageSelector">
-                        <option value="en">English</option>
-                        <option value="ko" selected>한국어</option>
-                        <option value="zh">中文</option>
-                        <option value="ja">日本語</option>
-                        <option value="vi">Tiếng Việt</option>
-                        <option value="mn">Монгол</option>
-                        <option value="uk">українська мова</option>
-                    </select>
-                </div>
+            <div class="language-selector">
+                <img src="../src/assets/earth_icon.png" alt="earth" class="earth-icon">
+                <label for="languageSelector"></label>
+                <select id="languageSelector">
+                    <option value="en">English</option>
+                    <option value="ko" selected>한국어</option>
+                    <option value="zh">中文</option>
+                    <option value="ja">日本語</option>
+                    <option value="vi">Tiếng Việt</option>
+                    <option value="mn">Монгол</option>
+                    <option value="uk">українська мова</option>
+                </select>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
-    <main>
-        <table class="community">
-            <thead>
-                <tr>
-                    <th class="number">번호</th>
-                    <th class="title">제목</th>
-                    <th class="writer">글쓴이</th>
-                    <th class="date">작성일</th>
-                    <th class="views">조회수</th>
-                    <th class="recommend">추천</th>
-                </tr>
-            </thead>
-            <tbody id="post-list">
-                <!--post list-->
-                <tr th:each="postLaw, loop:${paging}">
-                    <td th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}"></td>
-                    <td>
-                        <a th:href="@{/lawsupport/detail/{id}(id=${postLaw.id})}" th:text="${postLaw.subject}"></a>
-                        <span class="text-danger small ms-2"
-                              th:if="${#lists.size(postLaw.commentLawList) > 0}"
-                              th:text="${#lists.size(postLaw.commentLawList)}">
-                        </span>
-                    </td>
-                    <td class="writer">NULL</td>
-                    <td th:text="${#temporals.format(postLaw.createDate, 'yyyy-MM-dd-HH:mm')}"></td>
-                    <td class="views">NULL</td>
-                    <td class="recommend">NULL</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="bottom-box">
-            <div class="bottom-btn-box">
-                <button id="recommended-button" class="write-post-button recommended_posts">
-                    추천글
-                </button>
-                <button id="all-posts-button" class="write-post-button all_posts">
-                    전체글
-                </button>
-                <button id="post-button" class="write-post-button write_post" onclick="window.location.href='createpost_law.html'">
-                    글쓰기
-                </button>
-            </div>
-        
-            <div th:if="${!paging.isEmpty()}">
-                <ul class="pagination justify-content-center">
-                    <!-- Previous button -->
-                    <li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
-                        <button>
-                            <a class="page-link" th:href="@{/post/list(page=${paging.number - 1})}">
-                                <span class="previous">이전</span>
-                            </a>
-                        </button>
-                    </li>
-        
-                    <!-- Page numbers -->
-                    <li th:each="page : ${#numbers.sequence(0, paging.totalPages-1)}"
-                        th:classappend="${page == paging.number} ? 'active'" class="page-item">
-                        <!-- Display page number starting from 1 -->
-                        <a th:text="${page + 1}" class="page-link" th:href="@{|?page=${page}|}"></a>
-                    </li>
-        
-                    <!-- Next button -->
-                    <li class="page-item" th:classappend="${!paging.hasNext} ? 'disabled'">
-                        <button>
-                            <a class="page-link" th:href="@{/lawsupport/main(page=${paging.number + 1})}">
-                                <span class="next">다음</span>
-                            </a>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        
-            <div class="bottom-search-box">
-                <div class="dropdown">
-                    <select class="search-category">
-                        <option value="제목+내용" class="title_and_content">제목+내용</option>
-                        <option value="제목" class="search_title">제목</option>
-                        <option value="내용" class="content">내용</option>
-                        <option value="글쓴이" class="writer">글쓴이</option>
-                    </select>
-                </div>
-                <div class="search-container">
-                    <input class="search-input search_placeholder" type="text" name="query" placeholder="검색어 입력">
-                    <button class="search-btn search_t" type="button">검색</button>
-                </div>
-            </div>
+<main>
+    <h2>법률지원 게시판</h2>
+    <table id="post-table" class="post-table">
+        <thead>
+        <tr>
+            <th id="number">번호</th>
+            <th id="title">제목</th>
+            <th id="author">작성자</th>
+            <th id="date">작성일</th>
+            <!--                    <th id="views">조회수</th>-->
+            <!--                    <th id="recommend">추천</th>-->
+        </tr>
+        </thead>
+        <tbody id="post-list">
+        <!--post list-->
+        <tr th:each="postLaw, loop:${paging}">
+            <td th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}"></td>
+            <td>
+                <a th:href="@{/lawsupport/detail/{id}(id=${postLaw.id})}" th:text="${postLaw.subject}"></a>
+                <span class="text-danger small ms-2"
+                      th:if="${#lists.size(postLaw.commentLawList) > 0}"
+                      th:text="${#lists.size(postLaw.commentLawList)}">
+                    </span>
+            </td>
+            <td th:text="${postLaw.author != null ? postLaw.author.nickname : 'Unknown'}"></td>
+            <td th:text="${#temporals.format(postLaw.createDate, 'yyyy-MM-dd-HH:mm')}"></td>
+            <!--                <td>NULL</td>-->
+            <!--                <td>NULL</td>-->
+        </tr>
+        </tbody>
+    </table>
+    <div class="bottom-box">
+        <div class="bottom-btn-box">
+            <button id="all_posts">전체글</button>
+            <button id="recommended_posts">추천글</button>
+            <button class="write-post-button" onclick="window.location.href='/lawsupport/create'" id="write_post">
+                글쓰기
+            </button>
         </div>
-    </main>
 
-    <footer>
-      <div class="footer-container">
+        <!-- <div class="pagination" id="pagination"></div> -->
+        <!-- Pagination buttons will be loaded here dynamically -->
+
+        <div th:if="${!paging.isEmpty()}">
+            <ul class="pagination justify-content-center">
+                <!-- Previous button -->
+                <li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
+                    <button>
+                        <a class="page-link" href="javascript:void(0)" th:data-page="${paging.number-1}">
+                            <span id="previous">이전</span>
+                        </a>
+                    </button>
+                </li>
+
+                <!-- Page numbers -->
+                <li th:each="page : ${#numbers.sequence(0, paging.totalPages-1)}"
+                    th:classappend="${page == paging.number} ? 'active'"
+                    class="page-item">
+                    <!-- Display page number starting from 1 -->
+                    <a th:text="${page + 1}" class="page-link" href="javascript:void(0)" th:data-page="${page}"></a>
+                </li>
+
+                <!-- Next button -->
+                <li class="page-item" th:classappend="${!paging.hasNext} ? 'disabled'">
+                    <button>
+                        <a class="page-link"
+                           href="javascript:void(0)" th:data-page="${paging.number+1}">
+                            <span class="next">다음</span>
+                        </a>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <form th:action="@{/lawsupport/main}" method="get" id="searchForm">
+            <input type="hidden" id="kw" name="kw" th:value="${kw}">
+            <input type="hidden" id="page" name="page" th:value="${paging.number}">
+        </form>
+
+
+
+
+    </div>
+    <div class="bottom-search-box">
+        <div class="dropdown">
+            <select class="search-category">
+                <option value="제목+내용" class="title_and_content">제목+내용</option>
+                <option value="제목" class="search_title">제목</option>
+                <option value="내용" class="content">내용</option>
+                <option value="글쓴이" class="writer">글쓴이</option>
+            </select>
+        </div>
+        <div class="search-container">
+            <input class="search-input search_placeholder" type="text" name="query" id="search_kw" th:value="${kw}" placeholder="검색어 입력">
+            <button class="search-btn search_t" type="button" id="btn_search">검색</button>
+        </div>
+    </div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-container">
         <ul class="footer-btn">
-          <li><a href="#" id="footer_terms">이용약관</a></li>
-          <li>
-            <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
-          </li>
-             <li><a href="/views/inquire.html" id="footer_contact">문의/신고</a></li>
-             <li><a href="/views/inquire.html" id="footer_ads">광고안내</a></li>
+            <li><a href="#" id="footer_terms">이용약관</a></li>
+            <li>
+                <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
+            </li>
+            <li><a href="/views/inquire.html" id="footer_contact">문의/신고</a></li>
+            <li><a href="/views/inquire.html" id="footer_ads">광고안내</a></li>
         </ul>
-      </div>
-    </footer>
+    </div>
+</footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script> <!-- Fuse.js library -->
-    <script src="../src/js/lawsupport.js"></script>
-    <script src="../src/js/search_law.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script> <!-- Fuse.js library -->
+<script src="../src/js/search.js" defer></script>
+<script src="../src/js/board.js"></script>
+<script layout:fragment="script" type='text/javascript'>
+    const page_elements = document.getElementsByClassName("page-link");
+    Array.from(page_elements).forEach(function(element) {
+        element.addEventListener('click', function() {
+            document.getElementById('page').value = this.dataset.page;
+            document.getElementById('searchForm').submit();
+        });
+    });
+    const btn_search = document.getElementById("btn_search");
+    btn_search.addEventListener('click', function() {
+        document.getElementById('kw').value = document.getElementById('search_kw').value;
+        document.getElementById('page').value = 0;  // 검색버튼을 클릭할 경우 0페이지부터 조회한다.
+        document.getElementById('searchForm').submit();
+    });
+</script>
 </body>
-
 </html>
