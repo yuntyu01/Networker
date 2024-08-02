@@ -3,7 +3,7 @@ spring:
     url: jdbc:mysql://43.201.135.252/networker
     username: root
     password: happyk!
-    #driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
