@@ -6,9 +6,7 @@
     <link rel="stylesheet" href="../src/css/shared.css">
     <link rel="stylesheet" href="../src/css/review_page.css">
     <link rel="stylesheet" href="../src/css/write_review.css">
-    <script src="../src/js/lang.js" defer></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>기업 리뷰하기</title>
+    <title>넥스트 테크 리뷰 작성</title>
 </head>
 <body>
     <header>
@@ -29,6 +27,7 @@
             </div>
             <div class="auth-buttons">
                 <a href="/views/login.html" id="login">로그인</a>
+                <a href="/views/signup.html" id="signup
                 <a href="/views/signup.html" id="signup">회원가입</a>
                 <div class="profile-icon">
                     <a href="/views/profile.html">
@@ -54,8 +53,8 @@
 
     <main>
         <section class="review-form">
-            <h2 class="write_company_review_heading">기업 리뷰 작성</h2>
-            <form id="reviewForm" action="/submit_review" method="POST">
+            <h2 class="write_company_review_heading">넥스트 테크 리뷰 작성</h2>
+            <form id="reviewForm" action="#" method="POST">
                 <div class="form-group">
                     <label for="headline" class="headline_label">회사에 대한 한줄 평</label>
                     <input type="text" id="headline" name="headline" class="headline_input" placeholder="한 줄 평을 입력하세요" required>
@@ -70,7 +69,7 @@
                 </div>
                 <div class="form-group">
                     <label for="rating" class="rating_label">별점</label>
-                    <input type="hidden" id="rating" name="rating" value="0"> <!-- hidden input for rating -->
+                    <input type="hidden" id="rating" name="rating" value="0">
                     <div class="star_rating">
                         <span class="star" value="1"></span>
                         <span class="star" value="2"></span>
@@ -83,7 +82,7 @@
                     <button type="submit" class="submit_review_button">리뷰 제출</button>
                 </div>
             </form>
-        </section>          
+        </section>
     </main>
 
     <footer>
@@ -115,7 +114,7 @@
                         prevSibling = prevSibling.previousElementSibling;
                     }
                     selectedRating = this.getAttribute('value');
-                    ratingInput.value = selectedRating; // set the hidden input value
+                    ratingInput.value = selectedRating; // 별점 값을 hidden input에 설정
                 });
             });
 
@@ -131,17 +130,19 @@
                     pros,
                     cons,
                     rating: selectedRating,
-                    date: new Date().toLocaleDateString()
+                    date: new Date().toLocaleDateString(),
+                    companyId: 'next-tech' // 넥스트 테크 회사 ID
                 };
 
                 let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-                reviews.push(review);
+                reviews.push(review); // 기존 리뷰를 유지하면서 새 리뷰 추가
                 localStorage.setItem('reviews', JSON.stringify(reviews));
 
                 alert('리뷰가 제출되었습니다.');
-                window.location.href = 'company_test.html'; // navigate to company_2.html
+                window.location.href = 'company4.html'; // 리뷰 제출 후 넥스트 테크 페이지로 이동
             });
         });
     </script>
 </body>
 </html>
+

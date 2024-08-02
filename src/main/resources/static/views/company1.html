@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>스마트 테크놀로지</title>
+    <title>솔루션 테크</title>
     <link rel="stylesheet" href="../src/css/shared.css" />
     <link rel="stylesheet" href="../src/css/review_page.css" />
     <script src="../src/js/company.js" defer></script>
@@ -77,9 +77,9 @@
     <main>
       <section id="info">
         <div class="company_info">
-          <img src="../src/assets/company5.png" alt="스마트 테크놀로지" />
+          <img src="../src/assets/Solution Tech.png" alt="솔루션 테크 로고" />
           <div class="text_container">
-            <h3>스마트 테크놀로지</h3>
+            <h3>솔루션 테크</h3>
             <p id="Company_Description">
               <div id="average-rating" class="rating">☆☆☆☆☆ (0.0)</div><br />
               업계: IT 솔루션 및 서비스<br />
@@ -89,7 +89,7 @@
                 <button
                   id="write-post-button"
                   class="write_review_button"
-                  onclick="window.location.href='../views/write_6.html'"
+                  onclick="window.location.href='../views/write_1.html'"
                 >
                   리뷰하기
                 </button>
@@ -102,11 +102,6 @@
         <div class="reviews" id="reviews-container">
           <!-- 리뷰 항목이 동적으로 추가될 예정 -->
         </div>
-        <!-- <div class="pagination">
-          <button class="active">1</button>
-          <button><a href="networker.html">2</a></button>
-          <button>3</button>
-      </div> -->
       </section>
     </main>
 
@@ -128,10 +123,10 @@
         const reviewsContainer = document.getElementById('reviews-container');
         const averageRatingElement = document.getElementById('average-rating');
 
-        // 로컬 스토리지에서 'smart-technology'에 대한 리뷰 데이터만 불러오기
+        // 로컬 스토리지에서 'solution-tech'에 대한 리뷰 데이터만 불러오기
         const allReviews = JSON.parse(localStorage.getItem('reviews')) || [];
         const reviews = allReviews.filter(
-          (review) => review.companyId === 'smart-technology'
+          (review) => review.companyId === 'solution-tech'
         );
 
         if (reviews.length === 0) {

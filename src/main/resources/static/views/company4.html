@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>넥스트 테크</title>
@@ -9,95 +9,154 @@
     <script src="../src/js/company.js" defer></script>
     <script src="../src/js/lang.js" defer></script>
     <script src="https://kit.fontawesome.com/b3f3cec821.js" crossorigin="anonymous"></script>
-  </head>
-  <body>
+    <style>
+        .average-rating {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .rating {
+            color: gold; /* 별 색상 변경 */
+        }
+        .review-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
     <header>
-      <div class="header-content">
-        <a href="networker.html" style="text-decoration: none">
-          <span class="logo">
-            <img src="../src/assets/logo.png" alt="logo" />
-            <h1 id="site_title" class="notranslate">Networker</h1>
-          </span>
-        </a>
-        <div class="menu">
-          <a href="networker.html" id="menu_home">홈</a>
-          <a href="news.html" id="menu_news">정보</a>
-          <a href="board.html" id="menu_board">자유게시판</a>
-          <a href="store.html" id="menu_store">스토어</a>
-          <a href="lawsupport.html" id="menu_law">법률지원</a>
-          <a href="review.html" id="menu_review">기업리뷰</a>
+        <div class="header-content">
+            <a href="networker.html" style="text-decoration: none">
+                <span class="logo">
+                    <img src="../src/assets/logo.png" alt="logo" />
+                    <h1 id="site_title" class="notranslate">Networker</h1>
+                </span>
+            </a>
+            <div class="menu">
+                <a href="networker.html" id="menu_home">홈</a>
+                <a href="news.html" id="menu_news">정보</a>
+                <a href="board.html" id="menu_board">자유게시판</a>
+                <a href="store.html" id="menu_store">스토어</a>
+                <a href="lawsupport.html" id="menu_law">법률지원</a>
+                <a href="review.html" id="menu_review">기업리뷰</a>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html" id="login">로그인</a>
+                <a href="signup.html" id="signup">회원가입</a>
+                <div class="profile-icon">
+                    <a href="profile.html"><img src="../src/assets/profile.png" alt="Profile" /></a>
+                </div>
+                <div class="language-selector">
+                    <img
+                      src="../src/assets/earth_icon.png"
+                      alt="earth"
+                      class="earth-icon"
+                    />
+                    <label for="languageSelector"></label>
+                    <select id="languageSelector">
+                      <option value="en">English</option>
+                      <option value="ko" selected>한국어</option>
+                      <option value="zh">中文</option>
+                      <option value="ja">日本語</option>
+                      <option value="vi">Tiếng Việt</option>
+                      <option value="mn">Монгол</option>
+                      <option value="uk">українська мова</option>
+                    </select>
+                </div>
+            </div>
         </div>
-        <div class="auth-buttons">
-          <a href="login.html" id="login">로그인</a>
-          <a href="signup.html" id="signup">회원가입</a>
-          <div class="profile-icon">
-            <a href="profile.html"><img src="../src/assets/profile.png" alt="Profile" /></a>
-          </div>
-          <div class="language-selector">
-            <img
-              src="../src/assets/earth_icon.png"
-              alt="earth"
-              class="earth-icon"
-            />
-            <label for="languageSelector"></label>
-            <select id="languageSelector">
-              <option value="en">English</option>
-              <option value="ko" selected>한국어</option>
-              <option value="zh">中文</option>
-              <option value="ja">日本語</option>
-              <option value="vi">Tiếng Việt</option>
-              <option value="mn">Монгол</option>
-              <option value="uk">українська мова</option>
-            </select>
-          </div>
-        </div>
-      </div>
     </header>
 
     <main>
-      <section id="info">
-        <div class="company_info">
-            <img src="../src/assets/company3.png" alt="" />
-            <div class="text_container">
-                <h3>에이스 인더스트리</h3>
-                <p id="Company_Description">
-                  <div id="average-rating" class="rating">☆☆☆☆☆ (0.0)</div><br>
-                  업계: IT 솔루션 및 서비스<br>
-              </p>      
-                  <div class="bottom-box">
-                    <div class="bottom-btn-box">
-                      <button id="write-post-button" class="write_review_button" onclick="window.location.href='../views/write_review.html'">
-                        리뷰하기
-                    </button>                                        
+        <section id="info">
+            <div class="company_info">
+                <img src="../src/assets/company3.png" alt="넥스트 테크" />
+                <div class="text_container">
+                    <h3>넥스트 테크</h3>
+                    <p id="Company_Description">
+                      <div id="average-rating" class="rating">☆☆☆☆☆ (0.0)</div><br>
+                      업계: IT 솔루션 및 서비스<br>
+                  </p>      
+                      <div class="bottom-box">
+                        <div class="bottom-btn-box">
+                          <button id="write-post-button" class="write_review_button" onclick="window.location.href='../views/write_4.html'">
+                            리뷰하기
+                        </button>                                        
+                        </div>
                     </div>
-                </div>
-        </div>
-    </section>
-    <section id="review">
-      <div class="reviews" id="reviews-container">
-          <!-- 리뷰 항목이 동적으로 추가될 예정 -->
-      </div>
-      <!-- <div class="pagination">
-          <button class="active">1</button>
-          <button><a href="networker.html">2</a></button>
-          <button>3</button>
-      </div> -->
-  </section>
-
+            </div>
+        </section>
+        <section id="review">
+            <div class="reviews" id="reviews-container">
+                <!-- 리뷰 항목이 동적으로 추가될 예정 -->
+            </div>
+        </section>
     </main>
 
     <footer>
-      <div class="footer-container">
-        <ul class="footer-btn">
-          <li><a href="#" id="footer_terms">이용약관</a></li>
-          <li>
-            <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
-          </li>
-             <li><a href="/views/inquire.html" id="footer_contact">문의/신고</a></li>
-             <li><a href="/views/inquire.html" id="footer_ads">광고안내</a></li>
-        </ul>
-      </div>
+        <div class="footer-container">
+            <ul class="footer-btn">
+                <li><a href="#" id="footer_terms">이용약관</a></li>
+                <li>
+                    <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
+                </li>
+                <li><a href="/views/inquire.html" id="footer_contact">문의/신고</a></li>
+                <li><a href="/views/inquire.html" id="footer_ads">광고안내</a></li>
+            </ul>
+        </div>
     </footer>
 
-  </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const reviewsContainer = document.getElementById('reviews-container');
+            const averageRatingElement = document.getElementById('average-rating');
+
+            // 로컬 스토리지에서 'next-tech'에 대한 리뷰 데이터만 불러오기
+            const allReviews = JSON.parse(localStorage.getItem('reviews')) || [];
+            const reviews = allReviews.filter(review => review.companyId === 'next-tech');
+
+            if (reviews.length === 0) {
+                reviewsContainer.innerHTML = '<p>아직 작성된 리뷰가 없습니다.</p>';
+                averageRatingElement.innerHTML = '☆☆☆☆☆ (0.0)';
+            } else {
+                // 별점 평균 계산
+                const totalRating = reviews.reduce(
+                    (sum, review) => sum + parseInt(review.rating),
+                    0
+                );
+                const averageRating = (totalRating / reviews.length).toFixed(1); // 소수점 첫째 자리까지 표시
+                const fullStars = '★'.repeat(Math.floor(averageRating));
+                const halfStar = averageRating % 1 !== 0 ? '☆' : ''; // 반올림에 따라 빈 별 추가
+                const emptyStars = '☆'.repeat(5 - Math.ceil(averageRating));
+
+                // 별점 평균 업데이트
+                averageRatingElement.innerHTML = `${fullStars}${halfStar}${emptyStars} (${averageRating})`;
+
+                // 각 리뷰를 화면에 추가
+                reviews.forEach(review => {
+                    const reviewItem = document.createElement('div');
+                    reviewItem.classList.add('review-item');
+
+                    reviewItem.innerHTML = `
+                        <h4>${review.headline}</h4>
+                        <div class="rating">${'★'.repeat(review.rating)}${'☆'.repeat(
+                          5 - review.rating
+                        )}</div>
+                        <p><strong>장점:</strong> ${review.pros}</p>
+                        <p><strong>단점:</strong> ${review.cons}</p>
+                        <p><em>${review.date}</em></p>
+                    `;
+
+                    reviewsContainer.appendChild(reviewItem);
+                });
+            }
+        });
+    </script>
+</body>
 </html>
