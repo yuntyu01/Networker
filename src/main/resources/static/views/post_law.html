@@ -62,7 +62,7 @@
                 <td th:text="${#temporals.format(postLaw.createDate, 'yyyy-MM-dd-HH:mm')}"></td>
             </h4>
             <!-- Markdown을 HTML로 변환한 결과를 렌더링 -->
-            <div id="post-content" th:utext="${postLawContent}"></div>
+            <div id="post-content" th:utext="${postContent}"></div>
         </div>
         <div class="center-align">
             <!--<button id="recommend" class="recommend-button" type="button" onclick="recommend()">추천</button>-->
