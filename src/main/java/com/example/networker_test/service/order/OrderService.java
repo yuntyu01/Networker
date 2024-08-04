@@ -219,6 +219,8 @@ public class OrderService {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No order history found for user: " + userEmail);
         }
 
+        orderInfo.sort(Comparator.comparing(OrderInfo::getCreatedAt).reversed());
+
         for (OrderInfo orderInfos : orderInfo) {
             logger.info("OrderInfo found: " + orderInfos);
             List<CartItems> cartItems = cartItemsRepository.findByOrderInfo(orderInfos);
