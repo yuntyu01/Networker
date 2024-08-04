@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 유저 아이디(이메일) 정보 가져오기
     let userEmail = '';
+
+    // 유저 아이디(이메일) 정보 가져오기
     const checkLoginStatus = () => {
         fetch('/board', {
             method: 'GET',
@@ -11,6 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (data.loggedIn) {
                     // 유저 이메일(아이디) 저장
                     userEmail = data.userEmail;
+
+                    // 주문내역가져오기
+                    fetchOrders(userEmail);
                 }
                 else {  // 비 로그인 상태
                     window.alert("로그인이 필요합니다.");
@@ -22,9 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 페이지 로드 시 로그인 상태 확인
     checkLoginStatus();
-
-    // 주문내역가져오기
-    fetchOrders(userEmail);
 });
 
 function fetchOrders(userEmail) {
@@ -38,7 +39,7 @@ function fetchOrders(userEmail) {
     })
         .then(response => response.json())
         .then(data => {
-            const emptyList = document.querySelector('.empty-list');
+            const emptyList = document.querySelector('.empty_list_message');
             const orderTableBody = document.getElementById('orderTableBody');
             data.forEach(info => {
                 // 데이터 없다는 텍스트 숨기기
