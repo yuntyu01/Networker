@@ -12,8 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (data.loggedIn) {
                     // 유저 이메일(아이디) 저장
                     userEmail = data.userEmail;
-                    console.log("data.userEmail : "+data.userEmail);
-                    console.log("userEmail : "+userEmail);
 
                     // 주문내역가져오기
                     fetchOrders(userEmail);
