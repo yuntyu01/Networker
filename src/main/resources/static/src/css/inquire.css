@@ -37,6 +37,11 @@ h2 {
     font-weight: bold;
 }
 
+#content{
+    width: 100%;
+    resize: none;
+}
+
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="password"],
