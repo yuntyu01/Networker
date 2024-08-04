@@ -62,6 +62,16 @@ body {
   background-color: #f9f9f9;
 }
 
+/* 메인 */
+main {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
 /* 헤더*/
 header {
   background-color: #759465;
@@ -265,4 +275,140 @@ body > .skiptranslate > iframe.skiptranslate {
 /* 도구 막대가 만든 여백 제거 */
 body {
   top: 0px !important; 
+}
+
+
+/* 다크모드 테마적용 시*/
+:root {
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #fff;
+    --background-color: #2b2b2b;
+  }
+
+  body{
+    background-color: #2b2b2b;
+  }
+
+  main{
+    background-color: #425339;
+  }
+  li, p, th, #board_free, #board_news{
+    color: #000;
+  }
+
+  /*장바구니 테이블*/
+  .cart-table td {
+    color: #fff;
+    background-color: var(--background-color)
+  }
+
+  /*배송정보 입력*/
+  .order-container h2{
+    color: var(--text-color);
+  }
+
+  #order-form label{
+    color: #000;
+  }
+
+  /* 글쓰기 */
+  .editor-toolbar{
+    background-color: #fff;
+  }
+
+  /* 로그인 */
+  .register-link a {
+    color: var(--text-color);
+  }
+
+  /* 이메일 변경 */
+  .email-change-container{
+    background-color: #425339;
+  }
+
+  .email-change-container h2{
+    color: var(--text-color);
+  }
+
+  #email-change-form p{
+    color: var(--text-color);
+  }
+
+  /* 닉네임 변경 */
+  .nickname-container{
+    background-color: #425339;
+  }
+
+  .set_nickname_heading{
+    color: var(--text-color);
+  }
+
+  /* 비밀번호 변경 */
+  .change_password_heading{
+    color: #fff;
+  }
+
+  .password_criteria_note{
+    color: white;
+  }
+
+  /* 정보 */
+  .news-item{
+    background-color: rgb(193, 199, 186);
+  }
+
+  .inquiry_heading{
+    color: #fff;
+  }
+
+  .inquiry-container{
+    background-color: #425339;
+  }
+
+  .privacy_notice{
+    color: var(--text-color);
+  }
+
+  /* 게시판 */
+  table{
+    background-color: #ffffffa8;
+  }
+
+  /* 주문 결제 내역 */
+  .order_payment_history_heading, .empty_list_message{
+    color: var(--text-color);
+  }
+
+  /* 상품 상세 정보 */
+  .product-detail-container{
+    color: #000;
+  }
+  .product-detail-tabs button{
+    color: #000;
+  }
+  .tab-content{
+    color: #000;
+  }
+
+  /* 프로필 */
+  .profile-info h2, .profile-info p{
+    color: var(--text-color);
+  }
+
+  .profile-sections h3, .profile-sections ul li {
+    color: #000;
+  }
+
+  .search-box {
+    background-color: #425339;
+  }
+
+  .search-btn{
+    background-color: #425339;
+  }
+
 }
