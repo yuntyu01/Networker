@@ -1,6 +1,6 @@
 /* main */
 main {
-    width: 1200px;
+    max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
     height: auto;

@@ -10,7 +10,7 @@ main {
 
 /* 전체 폼 */
 form {
-    width: 960px;
+    width: 100%;
     margin: auto;
 }
 
@@ -20,11 +20,12 @@ form {
 }
 form h3 {
     margin-top: 40px;
-    margin-bottom: 0px;
+    margin-bottom: 20px;
 }
 /* 제목 입력 칸 */
 .post-title {
-    width: 480px;
+    max-width: 480px;
+    width: 98%;
     height: 25px;
 }
 

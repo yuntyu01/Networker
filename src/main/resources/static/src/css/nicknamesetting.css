@@ -14,8 +14,9 @@ h2 {
 }
 
 .nickname-container {
-    padding: 20px;
-    width: 40%; /* 가로 크기 40%로 조정 */
+    max-width: 480px;
+    padding: 20px 0;
+    width: 100%;
     margin: 0 auto; /* 가운데 정렬 */
     background-color: #fff;
 }
@@ -26,12 +27,12 @@ h2 {
 
 .form-group label {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-weight: bold;
 }
 
 .form-group input[type="text"] {
-    width: 100%;
+    width: 95%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -50,12 +51,4 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
     background-color: #4c8991;
-}
-
-p {
-    color: #666;
-    font-size: 12px;
-    text-align: left;
-    line-height: 1.5;
-    margin-top: 0;
 }
