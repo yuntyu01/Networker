@@ -24,6 +24,7 @@ main {
 }
 
 .delete-account-container p {
+    max-width: 480px;
     font-size: 14px;
     color: #333;
     margin-bottom: 20px;
