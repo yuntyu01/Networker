@@ -28,6 +28,7 @@ main {
     text-decoration: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 16px;
 }
 
 .cart-button-container:hover {
@@ -42,6 +43,7 @@ main {
     height: 40px;
     text-align: center;
     padding: 10px;
+    margin-left: 10px   ;
 }
 
 .search-text {
