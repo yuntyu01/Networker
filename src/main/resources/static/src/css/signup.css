@@ -123,11 +123,6 @@ p {
     margin-bottom: 15px;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #000;
-}
 
 .form-group input {
     width: 80%;
@@ -222,4 +217,25 @@ button:hover {
     background: rgba(255, 255, 255, 0.3);
     color: #000;
     font-size: 16px;
+}
+
+
+/* 다크모드 테마적용 시*/
+:root {
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #fff;
+    --background-color: #2b2b2b;
+  }
+
+  .form-group label{
+    color: var(--text-color);
+  }
+
+  .login-link a{
+    color: var(--text-color);
+  }
 }
