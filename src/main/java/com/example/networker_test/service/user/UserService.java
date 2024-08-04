@@ -4,6 +4,7 @@ import com.example.networker_test.domain.user.User;
 import com.example.networker_test.repository.user.UserRepository;
 import com.example.networker_test.dto.user.reponese.UserResponse;
 import com.example.networker_test.dto.user.request.UserCreateRequest;
+import com.example.networker_test.service.order.OrderService;
 import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,10 +26,12 @@ public class UserService {
     private final UserRepository userRepository;
     private final Logger logger = LoggerFactory.getLogger(UserService.class);
     private final BCryptPasswordEncoder passwordEncoder;
+    private final OrderService orderService;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, OrderService orderService) {
         this.userRepository = userRepository;
         this.passwordEncoder = new BCryptPasswordEncoder();
+        this.orderService = orderService;
     }
 
     @Transactional

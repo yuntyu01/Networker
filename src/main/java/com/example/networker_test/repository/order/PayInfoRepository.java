@@ -6,9 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface PaymentInfoRepository extends JpaRepository<PaymentInfo, Long>
-{
-
-    PaymentInfo findByOrderInfo(OrderInfo orderInfo);
-
+public interface PayInfoRepository extends JpaRepository<PaymentInfo, Long> {
+    List<PaymentInfo> findByOrderInfo(OrderInfo orderInfo);
 }

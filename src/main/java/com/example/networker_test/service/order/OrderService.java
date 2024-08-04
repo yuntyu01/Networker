@@ -4,18 +4,19 @@ import com.example.networker_test.domain.order.CartItems;
 import com.example.networker_test.domain.order.OrderInfo;
 import com.example.networker_test.domain.order.PaymentInfo;
 import com.example.networker_test.domain.order.ShippingInfo;
+import com.example.networker_test.domain.user.User;
 import com.example.networker_test.dto.order.cartItem.CartItemsDTO;
+import com.example.networker_test.dto.order.orderResponse.OrderResponse;
 import com.example.networker_test.dto.order.orderinfo.OrderInfoDTO;
 import com.example.networker_test.dto.order.paymentinfo.PaymentInfoDTO;
 import com.example.networker_test.dto.order.request.OrderData;
 import com.example.networker_test.dto.order.shippinginfo.ShippingInfoDTO;
-import com.example.networker_test.repository.order.CartItemsRepository;
-import com.example.networker_test.repository.order.OrderInfoRepository;
-import com.example.networker_test.repository.order.PaymentInfoRepository;
-import com.example.networker_test.repository.order.ShippingInfoRepository;
+import com.example.networker_test.repository.order.*;
+import com.example.networker_test.repository.user.UserRepository;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,11 +26,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.Reader;
+import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderService {
@@ -40,14 +44,15 @@ public class OrderService {
     private final ShippingInfoRepository shippingInfoRepository;
     private final PaymentInfoRepository paymentInfoRepository;
     private final CartItemsRepository cartItemsRepository;
+    private final PayInfoRepository payInfoRepository;
 
-    public OrderService(OrderInfoRepository orderInfoRepository, ShippingInfoRepository shippingInfoRepository, PaymentInfoRepository paymentInfoRepository, CartItemsRepository cartItemsRepository) {
+    public OrderService(OrderInfoRepository orderInfoRepository, ShippingInfoRepository shippingInfoRepository, PaymentInfoRepository paymentInfoRepository, CartItemsRepository cartItemsRepository, PayInfoRepository payInfoRepository) {
         this.orderInfoRepository = orderInfoRepository;
         this.shippingInfoRepository = shippingInfoRepository;
         this.paymentInfoRepository = paymentInfoRepository;
         this.cartItemsRepository = cartItemsRepository;
+        this.payInfoRepository = payInfoRepository;
     }
-
 
 
     public ResponseEntity<JSONObject> confirmPayment(@RequestBody String jsonBody) throws Exception {
@@ -113,7 +118,7 @@ public class OrderService {
         return ResponseEntity.ok().body(Map.of("success", true));
     }
 
-        @Transactional
+    @Transactional
     public OrderInfo saveOrderInfo(OrderInfoDTO orderInfoDTO) {
         OrderInfo orderInfo = new OrderInfo();
         orderInfo.setOrderId(orderInfoDTO.getOrderId());
@@ -121,7 +126,7 @@ public class OrderService {
         orderInfo.setEmail(orderInfoDTO.getEmail());
         orderInfo.setMobile(orderInfoDTO.getMobile());
         orderInfo.setUserid(orderInfoDTO.getUserId());
-            return orderInfoRepository.save(orderInfo);
+        return orderInfoRepository.save(orderInfo);
     }
 
     @Transactional
@@ -179,6 +184,7 @@ public class OrderService {
 
         return shippingInfoRepository.save(shippingInfo);
     }
+
     public ResponseEntity<?> getPaymentInfo(String orderId) {
         Optional<OrderInfo> orderInfoOptional = orderInfoRepository.findById(orderId);
         if (orderInfoOptional.isPresent()) {
@@ -201,7 +207,45 @@ public class OrderService {
         } else {
             return ResponseEntity.status(404).body("Order not found");
         }
-
     }
 
+    public ResponseEntity<?> getOrderHistory( String userEmail) {
+        logger.info("Fetching order history for userEmail: " + userEmail);
+        List<OrderInfo> orderInfo = orderInfoRepository.findByUserid(userEmail);
+        List<OrderResponse> orderResponses = new ArrayList<>();
+
+        if (orderInfo.isEmpty()) {
+            logger.info("No orders found for userEmail: " + userEmail);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No order history found for user: " + userEmail);
+        }
+
+        for (OrderInfo orderInfos : orderInfo) {
+            logger.info("OrderInfo found: " + orderInfos);
+            List<CartItems> cartItems = cartItemsRepository.findByOrderInfo(orderInfos);
+
+            for (CartItems item : cartItems) {
+                logger.info("CartItem found: " + item);
+                List<PaymentInfo> paymentInfo = payInfoRepository.findByOrderInfo(orderInfos);
+                for (PaymentInfo pay : paymentInfo) {
+                    logger.info("PaymentInfo found: " + pay);
+                    OrderResponse orderResponse = new OrderResponse(
+                            item.getProductName(),
+                            String.valueOf(item.getProductCount()),
+                            item.getProductImage(),
+                            orderInfos.getOrderId(),
+                            String.valueOf(orderInfos.getCreatedAt()),
+                            String.valueOf(pay.getTotalAmount())
+                    );
+                    orderResponses.add(orderResponse);
+                }
+            }
+        }
+
+        if (orderResponses.isEmpty()) {
+            logger.info("Order responses are empty for userEmail: " + userEmail);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No order history found for user: " + userEmail);
+        }
+
+        return ResponseEntity.ok(orderResponses);
+    }
 }

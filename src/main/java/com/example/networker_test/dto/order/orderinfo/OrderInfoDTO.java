@@ -3,6 +3,7 @@ package com.example.networker_test.dto.order.orderinfo;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Getter
