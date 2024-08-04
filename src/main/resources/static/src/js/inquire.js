@@ -32,8 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     inquiryTypeSelect.addEventListener('change', () => {
         if (inquiryTypeSelect.value === 'advertisement') {
-            contentInput.value = "1. 캠페인 내용\n2. 기간\n3. 예산";
-        } else {
+            contentInput.value = "1. 캠페인 내용\n\n2. 기간\n\n3. 예산";
+        } 
+        else if (inquiryTypeSelect.value === 'add-company') {
+            contentInput.value = "1. 기업 리뷰에 추가하기 희망하는 기업명\n\n2. 재직증명\n\n3. 간략한 기업 정보";
+        }
+        else {
             contentInput.value = "";
         }
     });
