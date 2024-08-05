@@ -56,11 +56,11 @@ function fetchOrders(userEmail) {
                     <td>₩ ${info.totalAmount.slice(0, -3)}</td>
                     <td>${info.created_at.slice(0, -4)}</td>
                 `;
-                /* 주문 상세 정보 확인 페이지로 이동
+                /* 주문 상세 정보 확인 페이지로 이동*/
                 row.addEventListener('click', () => {
-                    window.location.href = `/order-details.html?orderId=${info.orderId}`;
+                    window.location.href = `/orderdetails.html?orderId=${info.orderId}`;
                 });
-                */
+                
                 orderTableBody.appendChild(row);
             });
         })
