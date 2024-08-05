@@ -44,5 +44,5 @@ spring:
 #    servlet:
 #    content-type: text/html
 file:
-  upload-dir: /home/test/files
+  upload-dir: /home/ubuntu/files
 #    /home/ubuntu/files
