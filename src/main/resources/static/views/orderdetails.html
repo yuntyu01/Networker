@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>주문/결제 내역</title>
-    <link rel="stylesheet" href="../src/css/orderinfo.css">
+    <title>주문/결제 상세내역</title>
+    <link rel="stylesheet" href="../src/css/orderdetails.css">
     <link rel="stylesheet" href="../src/css/shared.css">
-    <script src="../src/js/lang.js" defer></script>
+    <script src="../src/js/orderdetails.js" defer></script>
 </head>
 <body>
     <header>
@@ -49,23 +49,29 @@
     </header>
 
     <main>
-        <h2 class="order_payment_history_heading">주문/결제 내역</h2>
-        <div class="order-history-container">
-            <table class="order-table">
-                <thead>
-                    <tr>
-                        <th class="order_number">주문번호</th>
-                        <th class="image_header">이미지</th>
-                        <th class="product_info">구매상품</th>
-                        <th class="payment_amount">결제금액</th>
-                        <th class="order_date">주문일시</th>
-                    </tr>
-                </thead>
-                <tbody id="orderTableBody">
-                    <!-- JavaScript에서 주문 내역을 동적으로 추가합니다. -->
-                </tbody>
-            </table>
-            <p class="empty_list_message">주문 내역이 없습니다.</p>
+        <h2 class="order-details-heading">주문 상세내역</h2>
+        <div class="order-details-container">
+            <p>주문 번호: <span id="orderId"></span></p>
+            <p>주문 일시: <span id="orderDate"></span></p>
+
+            <h3>구매한 상품</h3>
+            <div class="product-list-container">
+                <table class="product-table">
+                    <thead>
+                        <tr>
+                            <th class="image-header">이미지</th>
+                            <th class="product-info">상품명</th>
+                            <th class="payment-amount">가격</th>
+                            <th class="count">수량</th>
+                        </tr>
+                    </thead>
+                    <tbody id="product-list">
+                        <!-- JavaScript에서 주문 내역을 동적으로 추가합니다. -->
+                    </tbody>
+                </table>
+            </div>
+
+            <p>총 결제 금액: <span id="total-amount"></span></p>
         </div>
     </main>
 
@@ -76,12 +82,10 @@
             <li>
               <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
             </li>
-               <li><a href="/views/inquire.html" id="footer_contact">문의/신고</a></li>
-               <li><a href="/views/inquire.html" id="footer_ads">광고안내</a></li>
+            <li><a href="/views/inquire.html" id="footer_contact">문의/신고</a></li>
+            <li><a href="/views/inquire.html" id="footer_ads">광고안내</a></li>
           </ul>
         </div>
-      </footer>
-
-    <script src="../src/js/orderinfo.js"></script>
+    </footer>
 </body>
 </html>
