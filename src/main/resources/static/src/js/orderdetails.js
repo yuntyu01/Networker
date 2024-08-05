@@ -41,15 +41,16 @@ function fetchOrderDetails(orderId) {
     .then(response => response.json())
     .then(data => {
         /* 디버깅용 */
-        console.log("디버깅용 response data 확인 : "+data);
-
+        console.log("디버깅용 response data 확인");
+        console.log("data.created_at : "+ data.created_at);
+        console.log("data.totalAmount : "+ data.totalAmount);
 
         const productList = document.getElementById('product-list');
 
         // 주문 번호
         document.getElementById("orderId").innerText = `${orderId}`;
         // 주문 일시
-        document.getElementById("orderDate").innerText = `${data.created_at.slice(0, -4)}`;
+        document.getElementById("orderDate").innerText = `${data.created_at}`;
 
         data.product.forEach(product => {
 
