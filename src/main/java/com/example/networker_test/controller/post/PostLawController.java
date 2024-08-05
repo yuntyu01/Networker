@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/lawsupport")
@@ -120,14 +121,14 @@ public class PostLawController {
 
             // 파일의 URL 생성
             String fileUrl = "/lawsupport/files/" + fileName;
-            return ResponseEntity.ok(fileUrl);
+            return ResponseEntity.ok(Map.of("fileUrl", fileUrl));
         } catch (IOException e) {
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("파일 업로드 실패");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("error", "파일 업로드 실패"));
         }
     }
 
-    @GetMapping("/lawsupport/{filename:.+}")
+    @GetMapping("/files/{filename:.+}")
     public ResponseEntity<Resource> getFile(@PathVariable String filename) {
         try {
             Path filePath = Paths.get(uploadDir).resolve(filename).normalize();
@@ -160,7 +161,7 @@ public class PostLawController {
         }
     }
 
-    @GetMapping("/lawsupport/modify/{id}")
+    @GetMapping("/modify/{id}")
     public String showModifyForm(@PathVariable("id") Integer id, Model model, HttpSession session) {
         // 게시물 조회
         PostLaw postLaw = postLawService.getPost(id);
@@ -180,19 +181,6 @@ public class PostLawController {
         model.addAttribute("postId", id);
 
         return "modifypost_law"; // 수정 폼 템플릿
-    }
-
-    @GetMapping("/modify/{id}")
-    public String modifyPostLawForm(@PathVariable("id") Integer id, Model model, HttpSession session) {
-        PostLaw postLaw = postLawService.getPost(id);
-        // 세션에서 사용자 정보 가져오기
-        User loggedInUser = (User) session.getAttribute("user");
-        if (loggedInUser == null || !loggedInUser.getNickname().equals(postLaw.getAuthor().getNickname())) {
-            return "redirect:/login"; // 권한이 없는 경우 로그인 페이지로 리다이렉트
-        }
-        model.addAttribute("postForm", new PostLawForm(postLaw.getSubject(), postLaw.getContent()));
-        model.addAttribute("postId", id);
-        return "modifypost_law"; // 수정 폼을 표시할 템플릿 이름
     }
 
     @PostMapping("/modify/{id}")

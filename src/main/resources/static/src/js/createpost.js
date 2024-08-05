@@ -47,20 +47,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        fetch('/post/uploadImage', {
-            method: 'POST',
-            body: formData,
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.fileUrl) {
-
-                const imageMarkdown = `![Image](${data.fileUrl})\n`;
-                contentTextarea.value += imageMarkdown;
-            } else {
-                console.error('파일 업로드 실패:', data);
-            }
-        })
-        .catch(error => console.error('Error:', error));
+    // 파일 업로드 이벤트 리스너
+    document.getElementById('image-upload').addEventListener('change', function(event) {
+        var file = event.target.files[0];
+        if (file) {
+            var formData = new FormData();
+            formData.append('file', file);
+            fetch('/post/uploadImage', {
+                method: 'POST',
+                body: formData
+            }).then(response => response.text())
+              .then(imageUrl => {
+                  // Markdown 에디터에 이미지 URL 삽입
+                  var markdownText = simplemde.value();
+                  simplemde.value(markdownText + `\n![Image](${imageUrl})\n`);
+              })
+              .catch(error => console.error('Error:', error));
+        }
     });
-});
