@@ -1,5 +1,6 @@
 package com.example.networker_test.controller.order;
 
+import com.example.networker_test.dto.order.OrderIdDTO;
 import com.example.networker_test.dto.order.UserEmailDTO;
 import com.example.networker_test.dto.order.orderResponse.OrderResponse;
 import com.example.networker_test.dto.order.request.OrderData;
@@ -41,5 +42,11 @@ public class OrderController {
     public ResponseEntity<?> getOrderHistory(@RequestBody UserEmailDTO userEmailDTO) {
         logger.info("Received userEmail: " + userEmailDTO.getUserEmail());
         return orderService.getOrderHistory(userEmailDTO.getUserEmail());
+    }
+
+    @PostMapping("/orderdetails")
+    public ResponseEntity<?> getOrderDetails(@RequestBody OrderIdDTO orderIdDTO) {
+        logger.info("Received orderId: " + orderIdDTO.getOrderId());
+        return orderService.getOrderDetails(orderIdDTO.getOrderId());
     }
 }

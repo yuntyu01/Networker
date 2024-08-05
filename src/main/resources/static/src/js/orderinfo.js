@@ -58,7 +58,7 @@ function fetchOrders(userEmail) {
                 `;
                 /* 주문 상세 정보 확인 페이지로 이동*/
                 row.addEventListener('click', () => {
-                    window.location.href = `/views//orderdetails.html?orderId=${info.orderId}`;
+                    window.location.href = `/views/orderdetails.html?orderId=${info.orderId}`;
                 });
                 
                 orderTableBody.appendChild(row);

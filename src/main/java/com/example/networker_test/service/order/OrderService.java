@@ -4,14 +4,18 @@ import com.example.networker_test.domain.order.CartItems;
 import com.example.networker_test.domain.order.OrderInfo;
 import com.example.networker_test.domain.order.PaymentInfo;
 import com.example.networker_test.domain.order.ShippingInfo;
+import com.example.networker_test.domain.store.Product;
 import com.example.networker_test.domain.user.User;
+import com.example.networker_test.dto.order.OrderIdDTO;
 import com.example.networker_test.dto.order.cartItem.CartItemsDTO;
+import com.example.networker_test.dto.order.orderResponse.OrderDetailsResponse;
 import com.example.networker_test.dto.order.orderResponse.OrderResponse;
 import com.example.networker_test.dto.order.orderinfo.OrderInfoDTO;
 import com.example.networker_test.dto.order.paymentinfo.PaymentInfoDTO;
 import com.example.networker_test.dto.order.request.OrderData;
 import com.example.networker_test.dto.order.shippinginfo.ShippingInfoDTO;
 import com.example.networker_test.repository.order.*;
+import com.example.networker_test.repository.store.ProductRepository;
 import com.example.networker_test.repository.user.UserRepository;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -45,13 +49,15 @@ public class OrderService {
     private final PaymentInfoRepository paymentInfoRepository;
     private final CartItemsRepository cartItemsRepository;
     private final PayInfoRepository payInfoRepository;
+    private final ProductRepository productRepository;
 
-    public OrderService(OrderInfoRepository orderInfoRepository, ShippingInfoRepository shippingInfoRepository, PaymentInfoRepository paymentInfoRepository, CartItemsRepository cartItemsRepository, PayInfoRepository payInfoRepository) {
+    public OrderService(OrderInfoRepository orderInfoRepository, ShippingInfoRepository shippingInfoRepository, PaymentInfoRepository paymentInfoRepository, CartItemsRepository cartItemsRepository, PayInfoRepository payInfoRepository, ProductRepository productRepository) {
         this.orderInfoRepository = orderInfoRepository;
         this.shippingInfoRepository = shippingInfoRepository;
         this.paymentInfoRepository = paymentInfoRepository;
         this.cartItemsRepository = cartItemsRepository;
         this.payInfoRepository = payInfoRepository;
+        this.productRepository = productRepository;
     }
 
 
@@ -209,7 +215,7 @@ public class OrderService {
         }
     }
 
-    public ResponseEntity<?> getOrderHistory( String userEmail) {
+    public ResponseEntity<?> getOrderHistory(String userEmail) {
         logger.info("Fetching order history for userEmail: " + userEmail);
         List<OrderInfo> orderInfo = orderInfoRepository.findByUserid(userEmail);
         List<OrderResponse> orderResponses = new ArrayList<>();
@@ -249,5 +255,47 @@ public class OrderService {
         }
 
         return ResponseEntity.ok(orderResponses);
+    }
+
+    public ResponseEntity<?> getOrderDetails(String orderId) {
+        List<OrderInfo> orderInfo = orderInfoRepository.findByOrderId(orderId);
+        List<OrderDetailsResponse> orderDetailsResponses = new ArrayList<>();
+        if (orderInfo.isEmpty()) {
+            logger.info("No orders found for userEmail: " + orderId);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No order history found for user: " + orderId);
+        }
+
+        for (OrderInfo orderInfos : orderInfo) {
+            logger.info("OrderInfo found: " + orderInfos);
+            List<CartItems> cartItems = cartItemsRepository.findByOrderInfo(orderInfos);
+            for (CartItems item : cartItems) {
+                logger.info("Item found: " + item);
+                List<PaymentInfo> paymentInfo = payInfoRepository.findByOrderInfo(orderInfos);
+                for (PaymentInfo pay : paymentInfo) {
+                    logger.info("PaymentInfo found: " + pay);
+                    List<Product> products = productRepository.findByName(item.getProductName());
+                    for (Product product : products) {
+                        logger.info("Product found: " + product);
+                        OrderDetailsResponse OrderDetailsResponse = new OrderDetailsResponse(
+                                String.valueOf(orderInfos.getCreatedAt()),
+                                product.getImage(),
+                                product.getName(),
+                                String.valueOf(product.getPrice()),
+                                String.valueOf(item.getProductCount()),
+                                String.valueOf(pay.getTotalAmount())
+                        );
+                        orderDetailsResponses.add(OrderDetailsResponse);
+                    }
+                }
+            }
+        }
+
+            if (orderDetailsResponses.isEmpty()) {
+                logger.info("Order responses are empty for userEmail: " + orderId);
+                return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No order history found for user: " + orderId);
+            }
+
+        return ResponseEntity.ok(orderDetailsResponses);
+
     }
 }
