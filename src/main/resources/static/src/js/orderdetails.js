@@ -40,6 +40,10 @@ function fetchOrderDetails(orderId) {
     })
     .then(response => response.json())
     .then(data => {
+        /* 디버깅용 */
+        console.log("디버깅용 response data 확인 : "+data);
+
+
         const productList = document.getElementById('product-list');
 
         // 주문 번호
@@ -47,7 +51,10 @@ function fetchOrderDetails(orderId) {
         // 주문 일시
         document.getElementById("orderDate").innerText = `${data.created_at.slice(0, -4)}`;
 
-        data.forEach(product => {
+        data.product.forEach(product => {
+
+            console.log("디버깅용 product 확인"+product);
+
             // 주문/결제 상세 정보 화면 요소 추가
             const row = document.createElement('tr');
             row.classList.add('product-row');
