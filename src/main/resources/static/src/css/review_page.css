@@ -127,7 +127,7 @@ main {
   color: #759465;
   background: white;
   border-color: #769900;
-  width: 82px;
+  width: 86px;
   height: 35px;
   line-height: 31px;
   font-weight: bold;
@@ -205,4 +205,12 @@ main {
   width: 100%;
   height: 66.666666666667%;
   background-size: 100% 100%;
+}
+
+#info .company_info {
+  background-color: #fff !important; /* 다크 모드에서도 흰색 배경 */
+  color: #000 !important; /* 다크 모드 시 글자 색을 검정으로 */
+  border: 1px solid #ccc; /* 테두리 색상 추가 */
+  border-radius: 5px; /* 테두리 반경 추가 */
+  padding: 10px; /* 패딩 추가 */
 }
