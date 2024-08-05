@@ -183,20 +183,62 @@ main select {
 }
 
 
-
-/* 게시판용 다크모드 스타일 */
-.dark-mode h2, .dark-mode p, .dark-mode th, .dark-mode td, .dark-mode tr, .dark-mode a, .dark-mode a:visited{
+/* 일반 다크 모드 스타일 */
+.dark-mode h2,
+.dark-mode p,
+.dark-mode th,
+.dark-mode td,
+.dark-mode tr,
+.dark-mode a,
+.dark-mode a:visited {
     color: var(--text-color);
 }
-  
-/* 미디어 쿼리: 시스템 다크모드 */
+
+/* h2 요소를 위한 다크 모드 스타일 */
+.dark-mode h2 {
+    color: #ffffff; /* 제목을 흰색으로 설정 */
+}
+
+/* 특정 요소에 대한 다크 모드 스타일 */
+.dark-mode #post-table th,
+.dark-mode #post-table td,
+.dark-mode #post-table a,
+.dark-mode #post-table a:visited {
+    color: #ffffff; /* 게시물 테이블 텍스트를 흰색으로 설정 */
+}
+
+/* 이전과 다음 버튼 스타일 */
+.dark-mode #pagination .page-link,
+.dark-mode #pagination .page-link:visited {
+    color: #000000; /* 이전과 다음 링크를 검은색으로 설정 */
+}
+
+/* 시스템 다크 모드를 위한 미디어 쿼리 */
 @media (prefers-color-scheme: dark) {
     :root {
-      --text-color: #fff;
-      --background-color: #2b2b2b;
+        --text-color: #fff; /* 다크 모드의 기본 텍스트 색상 */
+        --background-color: #2b2b2b; /* 배경 색상 */
     }
 
-    h2, li, p, th, tr, td, a, a:visited{
-      color: var(--text-color);
+    h2,
+    li,
+    p,
+    th,
+    tr,
+    td,
+    a,
+    a:visited {
+        color: var(--text-color);
+    }
+
+    /* 다크 모드에서 h2 제목을 흰색으로 설정 */
+    h2 {
+        color: #ffffff;
+    }
+
+    /* 다크 모드에서 이전과 다음 버튼은 검은색으로 설정 */
+    #previous,
+    .next {
+        color: #000000;
     }
 }
