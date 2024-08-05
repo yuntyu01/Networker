@@ -92,3 +92,26 @@ form h3 {
     color: #fff;
     box-shadow: inset 3em 3em 0 0 var(--hover);
 }
+
+
+
+/* 글쓰기용 다크모드 스타일 */
+.dark-mode .btn-container button, .dark-mode h2,.dark-mode h3, .dark-mode p, .dark-mode td, .dark-mode tr, .dark-mode .editor-toolbar a::before{
+    color: var(--text-color);
+}
+
+.dark-mode tr th .dark-mode .editor-toolbar a::after{
+    color: #2b2b2b;
+}
+  
+/* 미디어 쿼리: 시스템 다크모드 */
+@media (prefers-color-scheme: dark) {
+    :root {
+      --text-color: #fff;
+      --background-color: #2b2b2b;
+    }
+
+    h2, li, p, th, tr, td .btn-container, h3, .editor-toolbar a::before{
+      color: var(--text-color);
+    }
+}

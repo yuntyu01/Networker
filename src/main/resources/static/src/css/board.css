@@ -181,3 +181,22 @@ main select {
     background: transparent;
     color: white;
 }
+
+
+
+/* 게시판용 다크모드 스타일 */
+.dark-mode h2, .dark-mode p, .dark-mode th, .dark-mode td, .dark-mode tr, .dark-mode a, .dark-mode a:visited{
+    color: var(--text-color);
+}
+  
+/* 미디어 쿼리: 시스템 다크모드 */
+@media (prefers-color-scheme: dark) {
+    :root {
+      --text-color: #fff;
+      --background-color: #2b2b2b;
+    }
+
+    h2, li, p, th, tr, td, a, a:visited{
+      color: var(--text-color);
+    }
+}
