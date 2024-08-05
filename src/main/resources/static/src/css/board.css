@@ -39,6 +39,7 @@ td:nth-child(2) {
 }
 
 table a {
+    color: #2b2b2b;
     text-decoration: none;
 }
 
@@ -55,10 +56,48 @@ main ul {
 }
 
 main li {
+    height: 28px;
+    padding: 1px 0;
+    text-align: center;
     margin-left: 5px;
     list-style: none;
     cursor: pointer;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
 }
+
+main li a{
+    text-decoration: none;
+    color: #000;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+main button a:hover,
+main button a:focus{
+    color: white;
+}
+
+main li button{
+    background-color: white;
+    color: #759465;
+    border: 1px solid #759465; 
+    font: inherit;
+    border-radius: 5px;
+    line-height: 1;
+    margin: 2px;
+    padding: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+main li button a{
+    padding: 4px;
+}
+
 
 /* 게시글 밑 모든 버튼의 큰 틀 */
 .bottom-box {
@@ -85,8 +124,9 @@ main li {
 
 /* 전체글 추천글 글쓰기 버튼 디자인 */
 .bt-btn {
-    background: none;
-    border: 2px solid;
+    background-color: white;
+    color: #759465;
+    border: 2px solid #759465; 
     font: inherit;
     border-radius: 5px;
     line-height: 1;
@@ -97,22 +137,36 @@ main li {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.bt-btn {
-    color: black;
-    border-color: black;
-    background-color: white;
     -webkit-transition: 0.3s;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 .bt-btn:hover,
-.bt-btn:focus {
+.bt-btn:focus,
+main li button:hover,
+main li button:hover main li button a {
     border-color: #759465;
     background-color: #759465;
     color: #fff;
     box-shadow: inset 3em 3em 0 0 var(--hover);
+}
+
+.page-item{
+    display: inline-block;
+    text-align: center;
+    height: 28px;
+}
+
+#page-num{
+    display: inline-block;
+    padding-top: 3px;
+    height: 100%;
+}
+
+#page-num:hover,
+#page-num:active{
+    color: #759465;
 }
 
 .bottom-search-box {
@@ -130,7 +184,6 @@ main li {
 
 /* 검색창 및 드롭박스 디자인 */
 main .search-container {
-    background: #759465;
     max-width: 350px;
     width: 100%;
     height: 39px;
@@ -144,28 +197,31 @@ main .search-container {
 /* 드롭박스 */
 .dropdown {
     margin-right: 20px;
-    width: 96px;
-    height: 39px;
-    background: #759465;
-
+    width: 106px;
+    height: 36px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: solid 1px #759465;
+    background-color: white;
 }
 
 main select {
-    height: 30px;
+    width: 94px;
+    height: 36px;
     font-size: 14px;
     font-weight: bold;
     text-align: center;
     border: none;
+    padding-right: 10px;
 }
 
 /* 검색창 */
 .search-input {
     width: 100%;
-    height: 28px;
-    border: none;
+    height: 34px;
+    padding-left: 10px;
+    border: solid 1px #759465;
     background: white;
     outline: none;
     color: #333;
@@ -178,8 +234,16 @@ main select {
     height: 38px;
     border: none;
     outline: none;
-    background: transparent;
+    background: #759465;
     color: white;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background-color: white;
+    color: #759465;
+    cursor: pointer;
+    border: 1px solid #759465;
 }
 
 
@@ -200,11 +264,21 @@ main select {
 }
 
 /* 특정 요소에 대한 다크 모드 스타일 */
+.dark-mode #post-table tr,
 .dark-mode #post-table th,
 .dark-mode #post-table td,
 .dark-mode #post-table a,
-.dark-mode #post-table a:visited {
+.dark-mode #post-table a:visited,
+#page-num:hover,
+#page-num:active {
     color: #ffffff; /* 게시물 테이블 텍스트를 흰색으로 설정 */
+}
+
+.dark-mode .search-btn,
+.bt-btn:hover,
+.bt-btn:focus {
+    border: 1px solid #fff;
+    cursor: pointer;
 }
 
 /* 이전과 다음 버튼 스타일 */
@@ -240,5 +314,12 @@ main select {
     #previous,
     .next {
         color: #000000;
+    }
+
+    .search-btn, 
+    .bt-btn:hover,
+    .bt-btn:focus {
+        border: 1px solid #fff;
+        cursor: pointer;
     }
 }
