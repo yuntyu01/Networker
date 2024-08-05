@@ -8,7 +8,7 @@ import com.example.networker_test.domain.user.User;
 import com.example.networker_test.service.comment.CommentService;
 import com.example.networker_test.service.post.PostRecommendationService;
 import com.example.networker_test.service.post.PostService;
-import com.example.networker_test.service.user.UserService; // UserService 추가
+import com.example.networker_test.service.user.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,11 +30,11 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/post")
 @RequiredArgsConstructor
-
 public class PostController {
 	private final PostService postService;
 	private final CommentService commentService;
@@ -56,7 +56,6 @@ public class PostController {
 		return "board";
 	}
 
-
 	@GetMapping("/detail/{id}")
 	public String detail(Model model, @PathVariable("id") Integer id, CommentForm commentForm) {
 		Post post = this.postService.getPost(id);
@@ -75,7 +74,6 @@ public class PostController {
 							 @RequestParam(value="file", required = false) MultipartFile file,
 							 HttpSession session) {
 		if (bindingResult.hasErrors()) {
-
 			return "createpost";
 		}
 
@@ -105,7 +103,6 @@ public class PostController {
 		}
 	}
 
-
 	@PostMapping("/uploadImage")
 	public ResponseEntity<?> uploadImage(@RequestParam("file") MultipartFile file) {
 		try {
@@ -118,10 +115,10 @@ public class PostController {
 
 			// 파일의 URL 생성
 			String fileUrl = "/post/files/" + fileName;
-			return ResponseEntity.ok(fileUrl);
+			return ResponseEntity.ok(Map.of("fileUrl", fileUrl));
 		} catch (IOException e) {
 			e.printStackTrace();
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("파일 업로드 실패");
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("error", "파일 업로드 실패"));
 		}
 	}
 
@@ -140,7 +137,6 @@ public class PostController {
 		}
 	}
 
-
 	@PostMapping("/comment/{postId}")
 	public String createComment(@PathVariable("postId") Integer postId,
 								@RequestParam(value="content") String content,
@@ -157,10 +153,9 @@ public class PostController {
 			e.printStackTrace();
 			return "댓글 등록 실패";
 		}
-
 	}
 
-	@GetMapping("/post/modify/{id}")
+	@GetMapping("/modify/{id}")
 	public String showModifyForm(@PathVariable("id") Integer id, Model model, HttpSession session) {
 		// 게시물 조회
 		Post post = postService.getPost(id);
@@ -179,21 +174,7 @@ public class PostController {
 		model.addAttribute("postForm", postForm);
 		model.addAttribute("postId", id);
 
-		return "modifyPost"; // 수정 폼 템플릿
-	}
-
-
-	@GetMapping("/modify/{id}")
-	public String modifyPostForm(@PathVariable("id") Integer id, Model model, HttpSession session) {
-		Post post = postService.getPost(id);
-		// 세션에서 사용자 정보 가져오기
-		User loggedInUser = (User) session.getAttribute("user");
-		if (loggedInUser == null || !loggedInUser.getNickname().equals(post.getAuthor().getNickname())) {
-			return "redirect:/views/login.html"; // 권한이 없는 경우 로그인 페이지로 리다이렉트
-		}
-		model.addAttribute("postForm", new PostForm(post.getSubject(), post.getContent()));
-		model.addAttribute("postId", id);
-		return "modifypost"; // 수정 폼을 표시할 템플릿 이름
+		return "modifypost"; // 수정 폼 템플릿
 	}
 
 	@PostMapping("/modify/{id}")
@@ -209,7 +190,7 @@ public class PostController {
 		// 세션에서 사용자 정보 가져오기
 		User loggedInUser = (User) session.getAttribute("user");
 		if (loggedInUser == null || !loggedInUser.getNickname().equals(post.getAuthor().getNickname())) {
-			return "redirect:views/login.html"; // 로그인되지 않았거나 권한이 없는 경우 리다이렉트
+			return "redirect:/views/login.html"; // 로그인되지 않았거나 권한이 없는 경우 리다이렉트
 		}
 
 		post.setSubject(postForm.getSubject());
@@ -243,7 +224,6 @@ public class PostController {
 		}
 	}
 
-
 	@PostMapping("/recommend/{id}")
 	public String recommendPost(@PathVariable("id") Integer id, HttpSession session) {
 		User currentUser = (User) session.getAttribute("user");
@@ -260,7 +240,3 @@ public class PostController {
 		}
 	}
 }
-
-
-
-

@@ -31,3 +31,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // 페이지 로드 시 로그인 상태 확인
     checkLoginStatus();
 });
+
+//프랑켄슈타인 코드
