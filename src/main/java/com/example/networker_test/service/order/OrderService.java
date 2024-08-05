@@ -219,30 +219,40 @@ public class OrderService {
         logger.info("Fetching order history for userEmail: " + userEmail);
         List<OrderInfo> orderInfo = orderInfoRepository.findByUserid(userEmail);
         List<OrderResponse> orderResponses = new ArrayList<>();
+        Set<String> processedOrderIds = new HashSet<>();
 
         if (orderInfo.isEmpty()) {
             logger.info("No orders found for userEmail: " + userEmail);
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No order history found for user: " + userEmail);
         }
 
+        // 최신순으로 정렬
         orderInfo.sort(Comparator.comparing(OrderInfo::getCreatedAt).reversed());
 
         for (OrderInfo orderInfos : orderInfo) {
+            String orderId = orderInfos.getOrderId();
+            if (processedOrderIds.contains(orderId)) {
+                continue;
+            }
+            processedOrderIds.add(orderId);
+
             logger.info("OrderInfo found: " + orderInfos);
             List<CartItems> cartItems = cartItemsRepository.findByOrderInfo(orderInfos);
+            int itemCount = cartItems.size();  // 해당 orderId의 item 개수
 
-            for (CartItems item : cartItems) {
-                logger.info("CartItem found: " + item);
-                List<PaymentInfo> paymentInfo = payInfoRepository.findByOrderInfo(orderInfos);
-                for (PaymentInfo pay : paymentInfo) {
-                    logger.info("PaymentInfo found: " + pay);
+            List<PaymentInfo> paymentInfo = payInfoRepository.findByOrderInfo(orderInfos);
+            for (PaymentInfo pay : paymentInfo) {
+                logger.info("PaymentInfo found: " + pay);
+
+                if (!cartItems.isEmpty()) {
+                    CartItems item = cartItems.get(0);  // cartItems 리스트에서 첫 번째 항목 사용
                     OrderResponse orderResponse = new OrderResponse(
                             item.getProductName(),
-                            String.valueOf(item.getProductCount()),
+                            String.valueOf(itemCount),  // orderId의 item 개수를 사용
                             item.getProductImage(),
                             orderInfos.getOrderId(),
                             String.valueOf(orderInfos.getCreatedAt()),
-                            String.valueOf(pay.getTotalAmount())
+                            String.valueOf(pay.getFinalAmount())
                     );
                     orderResponses.add(orderResponse);
                 }
@@ -282,7 +292,7 @@ public class OrderService {
                                 product.getName(),
                                 String.valueOf(product.getPrice()),
                                 String.valueOf(item.getProductCount()),
-                                String.valueOf(pay.getTotalAmount())
+                                String.valueOf(pay.getFinalAmount())
                         );
                         orderDetailsResponses.add(OrderDetailsResponse);
                     }
