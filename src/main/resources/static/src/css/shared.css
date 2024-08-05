@@ -342,7 +342,7 @@ body {
 }
 
 :root.dark-mode {
-  --text-color: #fff;
+  --text-color: #000;
   --background-color: #2b2b2b;
 }
 
