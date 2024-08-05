@@ -44,3 +44,51 @@ form h3 {
 .btn-cancel{
     background-color:darkgray;
 }
+
+
+.btn-container button {
+    background: none;
+    border: 2px solid;
+    font: inherit;
+    border-radius: 5px;
+    line-height: 1;
+    margin: 0.5em;
+    padding: 1em 2em;
+    height: 35px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-button {
+    color: black;
+    border-color: black;
+    background-color: white;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.post-button:hover,
+.post-button:focus {
+    border-color: #759465;
+    background-color: #759465;
+    color: #fff;
+    box-shadow: inset 3em 3em 0 0 var(--hover);
+}
+
+.cancel-button {
+    color: black;
+    border-color: black;
+    background-color: white;
+    -webkit-transition: 0.3s; 
+    transition: 0.3s;
+}
+
+.cancel-button:hover,
+.cancel-button:focus {
+    border-color: darkgray;
+    background-color: darkgray;
+    color: #fff;
+    box-shadow: inset 3em 3em 0 0 var(--hover);
+}
