@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const contentTextarea = document.querySelector('.post-body');
 
     // 취소 버튼 누를 때 돌아감 기능
-    document.getElementById('cancel-button').onclick = function() {
+    document.querySelector('.cancel-button').onclick = function() {
         window.location.href = '/post/list';
     };
 
