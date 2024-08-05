@@ -11,14 +11,14 @@ public class OrderDetailsResponse {
     private String productName;
     private String price;
     private String count;
-    private String totalAmount;
+    private String finalAmount;
 
-    public OrderDetailsResponse(String created_at, String image, String productName, String price, String count, String totalAmount) {
+    public OrderDetailsResponse(String created_at, String image, String productName, String price, String count, String finalAmount) {
         this.created_at = created_at;
         this.image = image;
         this.productName = productName;
         this.price = price;
         this.count = count;
-        this.totalAmount = totalAmount;
+        this.finalAmount = finalAmount;
     }
 }
