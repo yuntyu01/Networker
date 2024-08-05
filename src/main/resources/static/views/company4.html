@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>넥스트 테크</title>
-    <link rel="stylesheet" href="../src/css/shared.css" />
-    <link rel="stylesheet" href="../src/css/review_page.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에이스 인더스토리</title>
+    <link rel="stylesheet" href="../src/css/shared.css">
+    <link rel="stylesheet" href="../src/css/review_page.css">
     <script src="../src/js/company.js" defer></script>
     <script src="../src/js/lang.js" defer></script>
     <script src="https://kit.fontawesome.com/b3f3cec821.js" crossorigin="anonymous"></script>
@@ -35,7 +35,7 @@
         <div class="header-content">
             <a href="networker.html" style="text-decoration: none">
                 <span class="logo">
-                    <img src="../src/assets/logo.png" alt="logo" />
+                    <img src="../src/assets/logo.png" alt="logo">
                     <h1 id="site_title" class="notranslate">Networker</h1>
                 </span>
             </a>
@@ -51,23 +51,19 @@
                 <a href="login.html" id="login">로그인</a>
                 <a href="signup.html" id="signup">회원가입</a>
                 <div class="profile-icon">
-                    <a href="profile.html"><img src="../src/assets/profile.png" alt="Profile" /></a>
+                    <a href="profile.html"><img src="../src/assets/profile.png" alt="Profile"></a>
                 </div>
                 <div class="language-selector">
-                    <img
-                      src="../src/assets/earth_icon.png"
-                      alt="earth"
-                      class="earth-icon"
-                    />
+                    <img src="../src/assets/earth_icon.png" alt="earth" class="earth-icon">
                     <label for="languageSelector"></label>
                     <select id="languageSelector">
-                      <option value="en">English</option>
-                      <option value="ko" selected>한국어</option>
-                      <option value="zh">中文</option>
-                      <option value="ja">日本語</option>
-                      <option value="vi">Tiếng Việt</option>
-                      <option value="mn">Монгол</option>
-                      <option value="uk">українська мова</option>
+                        <option value="en">English</option>
+                        <option value="ko" selected>한국어</option>
+                        <option value="zh">中文</option>
+                        <option value="ja">日本語</option>
+                        <option value="vi">Tiếng Việt</option>
+                        <option value="mn">Монгол</option>
+                        <option value="uk">українська мова</option>
                     </select>
                 </div>
                 <div class="dark-mode-toggle">
@@ -75,7 +71,7 @@
                         <input type="checkbox" id="darkModeToggle">
                         <span class="slider round"></span>
                     </label>
-                  </div>
+                </div>
             </div>
         </div>
     </header>
@@ -83,23 +79,25 @@
     <main>
         <section id="info">
             <div class="company_info">
-                <img src="../src/assets/company3.png" alt="넥스트 테크" />
+                <img src="../src/assets/company3.png" alt="에이스 인더스토리">
                 <div class="text_container">
                     <h3>에이스 인더스토리</h3>
                     <p id="Company_Description">
-                      <div id="average-rating" class="rating">☆☆☆☆☆ (0.0)</div><br>
-                      업계: IT 솔루션 및 서비스<br>
-                  </p>      
-                      <div class="bottom-box">
-                        <button
-                        id="write-post-button"
-                        class="write_review_button"
-                        onclick="window.location.href='../views/write_review.html?companyId=ace-inthestory'" // 각 회사에 맞는 companyId 사용
-                    >
-                        리뷰하기
-                        </button>                                            
+                        <div id="average-rating" class="rating">☆☆☆☆☆ (0.0)</div><br>
+                        업계: IT 솔루션 및 서비스<br>
+                    </p>
+                    <div class="bottom-box">
+                        <div class="bottom-btn-box">
+                            <button
+                                id="write-post-button"
+                                class="write_review_button"
+                                onclick="window.location.href='../views/write_review.html?companyId=4'"
+                            >
+                                리뷰하기
+                            </button>
                         </div>
                     </div>
+                </div>
             </div>
         </section>
         <section id="review">
@@ -126,16 +124,16 @@
       document.addEventListener('DOMContentLoaded', function () {
         const reviewsContainer = document.getElementById('reviews-container');
         const averageRatingElement = document.getElementById('average-rating');
-    
+
         // 이 부분을 각 회사별로 변경
         const companyId = 'ace-inthestory'; // 각 회사별 ID 설정
-    
+
         // 로컬 스토리지에서 특정 회사에 대한 리뷰 데이터만 불러오기
         const allReviews = JSON.parse(localStorage.getItem('reviews')) || [];
         const reviews = allReviews.filter(
           (review) => review.companyId === companyId
         );
-    
+
         if (reviews.length === 0) {
           reviewsContainer.innerHTML = '<p>아직 작성된 리뷰가 없습니다.</p>';
           averageRatingElement.innerHTML = '☆☆☆☆☆ (0.0)';
@@ -149,15 +147,15 @@
           const fullStars = '★'.repeat(Math.floor(averageRating));
           const halfStar = averageRating % 1 !== 0 ? '☆' : ''; // 반올림에 따라 빈 별 추가
           const emptyStars = '☆'.repeat(5 - Math.ceil(averageRating));
-    
+
           // 별점 평균 업데이트
           averageRatingElement.innerHTML = `${fullStars}${halfStar}${emptyStars} (${averageRating})`;
-    
+
           // 각 리뷰를 화면에 추가
           reviews.forEach((review) => {
             const reviewItem = document.createElement('div');
             reviewItem.classList.add('review-item');
-    
+
             reviewItem.innerHTML = `
                 <h4>${review.headline}</h4>
                 <div class="rating">${'★'.repeat(review.rating)}${'☆'.repeat(
@@ -167,12 +165,12 @@
                 <p><strong>단점:</strong> ${review.cons}</p>
                 <p><em>${review.date}</em></p>
             `;
-    
+
             reviewsContainer.appendChild(reviewItem);
           });
         }
       });
     </script>
-    
 </body>
 </html>
+

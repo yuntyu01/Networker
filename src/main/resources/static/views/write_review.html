@@ -56,7 +56,7 @@
     <main>
         <section class="review-form">
             <h2 class="write_company_review_heading">리뷰 작성</h2>
-            <form id="reviewForm" method="POST">
+            <form id="reviewForm">
                 <div class="form-group">
                     <label for="headline" class="headline_label">회사에 대한 한줄 평</label>
                     <input type="text" id="headline" name="headline" class="headline_input" placeholder="한 줄 평을 입력하세요" required>
@@ -102,63 +102,89 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const stars = document.querySelectorAll('.star_rating .star');
-            const ratingInput = document.getElementById('rating');
-            let selectedRating = 0;
+    const stars = document.querySelectorAll('.star_rating .star');
+    const ratingInput = document.getElementById('rating');
+    let selectedRating = 0;
 
-            stars.forEach(star => {
-                star.addEventListener('click', function () {
-                    stars.forEach(s => s.classList.remove('on'));
-                    this.classList.add('on');
-                    let prevSibling = this.previousElementSibling;
-                    while (prevSibling) {
-                        prevSibling.classList.add('on');
-                        prevSibling = prevSibling.previousElementSibling;
-                    }
-                    selectedRating = this.getAttribute('value');
-                    ratingInput.value = selectedRating; // 별점 값을 hidden input에 설정
-                });
-            });
+    const prosInput = document.getElementById('pros');
+    const consInput = document.getElementById('cons');
 
-            const reviewForm = document.getElementById('reviewForm');
-            reviewForm.addEventListener('submit', function (event) {
-                event.preventDefault();
-                const headline = document.getElementById('headline').value;
-                const pros = document.getElementById('pros').value;
-                const cons = document.getElementById('cons').value;
-                
-                // URL에서 companyId를 가져옴
-                const urlParams = new URLSearchParams(window.location.search);
-                const companyId = urlParams.get('companyId') || 'default-company';
+    // Placeholder 텍스트가 클릭 시 사라지도록 설정
+    const handleFocus = (event) => {
+        if (event.target.value === event.target.placeholder) {
+            event.target.value = '';
+        }
+    };
 
-                const review = {
-                    headline,
-                    pros,
-                    cons,
-                    rating: selectedRating,
-                    date: new Date().toLocaleDateString(),
-                    companyId // URL에서 가져온 회사 ID 사용
-                };
+    const handleBlur = (event) => {
+        if (event.target.value === '') {
+            event.target.value = event.target.placeholder;
+        }
+    };
 
-                // fetch를 사용하여 백엔드로 POST 요청 보내기
-                fetch('/api/reviews', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(review)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    alert('리뷰가 제출되었습니다.');
-                    window.location.href = `company${companyId}.html`; // 각 회사의 페이지로 이동
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('리뷰 제출에 실패했습니다.');
-                });
-            });
+    prosInput.addEventListener('focus', handleFocus);
+    prosInput.addEventListener('blur', handleBlur);
+    consInput.addEventListener('focus', handleFocus);
+    consInput.addEventListener('blur', handleBlur);
+
+    // Placeholder 초기화
+    if (prosInput.value === '') {
+        prosInput.value = prosInput.placeholder;
+    }
+    if (consInput.value === '') {
+        consInput.value = consInput.placeholder;
+    }
+
+    stars.forEach(star => {
+        star.addEventListener('click', function () {
+            stars.forEach(s => s.classList.remove('on'));
+            this.classList.add('on');
+            let prevSibling = this.previousElementSibling;
+            while (prevSibling) {
+                prevSibling.classList.add('on');
+                prevSibling = prevSibling.previousElementSibling;
+            }
+            selectedRating = this.getAttribute('value');
+            ratingInput.value = selectedRating; // 별점 값을 hidden input에 설정
         });
+    });
+
+    const reviewForm = document.getElementById('reviewForm');
+    reviewForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const headline = document.getElementById('headline').value;
+        const pros = document.getElementById('pros').value;
+        const cons = document.getElementById('cons').value;
+        const rating = ratingInput.value;
+
+        // URL에서 companyId를 가져옴
+        const urlParams = new URLSearchParams(window.location.search);
+        const companyId = urlParams.get('companyId') || 'default-company';
+
+        const review = {
+            companyId,
+            headline,
+            pros,
+            cons,
+            rating,
+            date: new Date().toISOString().split('T')[0]
+        };
+
+        // 로컬 스토리지에 리뷰 데이터 저장
+        const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+        reviews.push(review);
+        localStorage.setItem('reviews', JSON.stringify(reviews));
+
+        alert('리뷰가 제출되었습니다.');
+        const companyList = ['solution-tech', 'next-tech', 'future-solutions', 'ace-inthestory', 'global-innovation', 'smart-technology'];
+        const companyIndex = companyList.indexOf(companyId);
+        if (companyIndex !== -1) {
+            window.location.href = `company${companyIndex + 1}.html`;
+        } else {
+            console.error('Invalid companyId');
+        }
+    });
+});
     </script>
 </body>
 </html>
