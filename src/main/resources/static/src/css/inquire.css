@@ -75,3 +75,32 @@ p {
     line-height: 1.5;
     margin-top: 0;
 }
+
+
+/* 다크 모드 */
+.dark-mode h2,
+.dark-mode p,
+.dark-mode .form-group label,
+.dark-mode .privacy_consent_text{
+    color: #fff;
+}
+
+.dark-mode .inquiry-container{
+    background-color: #759465;
+}
+
+:root {
+    color-scheme: light dark;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text-color: #fff;
+      --background-color: #2b2b2b;
+    }
+
+    .profile-info h2, p, .form-group label, .privacy_consent_text{
+        color: #fff;
+    }
+
+}  

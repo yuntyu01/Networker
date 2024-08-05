@@ -78,6 +78,18 @@ p {
     background: #bbb;
 }
 
+
+/* 다크 모드 */
+.dark-mode h2,
+.dark-mode p{
+    color: #fff;
+}
+
+.dark-mode button{
+    background-color: #fff;
+    color: #000;
+}
+
 :root {
   color-scheme: light dark;
 }
@@ -88,12 +100,12 @@ p {
       --background-color: #2b2b2b;
     }
 
-    h2{
+    h2, p{
         color: var(--text-color);
     }
 
-    p{
-        color: var(--text-color)
+    button{
+        background-color: #fff;
+        color: #000;
     }
-
 }  

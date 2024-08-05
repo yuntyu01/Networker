@@ -160,6 +160,18 @@ h2 {
 
 
 /* 다크 모드 */
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode .order-details-container p,
+.dark-mode .summary-total{
+    color: #fff;
+}
+
+.dark-mode .product-table td{
+    background-color: #ffffff21;
+    color: #fff;
+}
+
 @media (prefers-color-scheme: dark) {
     :root {
       --text-color: #fff;
