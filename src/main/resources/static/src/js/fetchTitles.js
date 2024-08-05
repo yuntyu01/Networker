@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+
     // 정보 게시판의 뉴스 제목을 로드
     const infoList = document.querySelector('.board-content-info');
 
@@ -7,6 +8,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 제목을 <li> 요소로 변환하여 삽입
     infoList.innerHTML = newsItems.map(item => `<li><a href="${item.url}" target="_blank">${item.title}</a></li>`).join('');
+    /*
+    // 웹서버에 데이터 요청하는 방식으로 수정
+    const infoList = document.querySelector('.board-content-info');
+
+    fetch('/infolist')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(infodata => {
+                const row = document.createElement('li');
+                row.innerHTML = `<li><a href="${infodata.url}" target="_blank">${infodata.title}</a></li>`;
+                infoList.appendChild();
+            })
+        })
+        .catch(error => {
+            console.error('정보글 불러오기 오류:', error);
+            boardContent.innerHTML = '<li>정보글 정보를 불러올 수 없습니다.</li>';
+        });
+    */
+
 });
 
 document.addEventListener("DOMContentLoaded", function() {
