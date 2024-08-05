@@ -355,7 +355,7 @@ const langResource = {
     cons_input: "Write the company's cons",
     rating_label: "Rating",
     submit_review_button: "Submit Review",
-    write_review_button: "Write a Review",
+    write_review_button: "Review",
   },
   zh: {
     menu_home: "首页",
@@ -534,7 +534,7 @@ const langResource = {
     cons_input: "写下公司的缺点",
     rating_label: "评分",
     submit_review_button: "提交评论",
-    write_review_button: "写评论",
+    write_review_button: "评论",
   },
   ja: {
     menu_home: "ホーム",
@@ -713,7 +713,7 @@ const langResource = {
     cons_input: "会社の短所を書いてください",
     rating_label: "評価",
     submit_review_button: "レビューを提出",
-    write_review_button: "レビューを書く",
+    write_review_button: "レビュー",
   },
   vi: {
     menu_home: "Trang Chủ",
@@ -892,7 +892,7 @@ const langResource = {
     cons_input: "Viết điểm yếu của công ty",
     rating_label: "Đánh giá",
     submit_review_button: "Gửi Đánh giá",
-    write_review_button: "Viết đánh giá",
+    write_review_button: "Đánh giá",
   },
   mn: {
     menu_home: "Нүүр",
@@ -1071,7 +1071,7 @@ const langResource = {
     cons_input: "Компанийн сул талыг бичнэ үү",
     rating_label: "Үнэлгээ",
     submit_review_button: "Үнэлгээг илгээх",
-    write_review_button: "Сэтгэгдэл бичих",
+    write_review_button: "Шүүмж",
   },
   uk: {
     menu_home: "Головна",
@@ -1250,7 +1250,7 @@ const langResource = {
     cons_input: "Напишіть недоліки компанії",
     rating_label: "Рейтинг",
     submit_review_button: "Відправити відгук",
-    write_review_button: "Написати відгук",
+    write_review_button: "Відгук",
   },
 };
 

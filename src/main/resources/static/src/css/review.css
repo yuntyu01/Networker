@@ -1,48 +1,69 @@
 /* 검색 창 스타일 */
 #search-section {
-    margin-top: 20px;
-    margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .sort-search-bar {
-    width: 100%;
+  width: 100%;
 }
 
 .search-box-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex; /* 검색창과 버튼을 가로로 배치 */
+  justify-content: center; /* 전체를 가운데 정렬 */
+  align-items: center; /* 세로 가운데 정렬 */
 }
 
 .search-box {
-
-    border: 1px solid #759465;
-    background-color: white;
-    width: 500px;
-    height: 35px;
-    padding: 5px;
-    border-radius: 16px;
+  border: 1px solid #759465;
+  background-color: white;
+  width: 500px;
+  height: 35px;
+  padding: 5px;
+  /* margin-left: 180px; */
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  position: relative; /* 상대 위치로 설정 */
 }
 
 .search-text {
-    border: none;
-    outline: none;
-    font-size: 16px;
-    width: 230px;
-    height: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  width: calc(100% - 40px); /* 돋보기를 위한 공간 확보 */
+  height: 100%;
+  padding-left: 10px;
 }
 
 .search-btn {
-    margin-left: 215px;
-    border: none;
-    background-color: white;
-    height: 100%;
-    width: 30px;
-    cursor: pointer;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute; /* 돋보기를 절대 위치로 설정 */
+  right: 10px; /* 검색창 오른쪽에 배치 */
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .search-btn:hover {
-    background-color: #759465;
+  background-color: #759465;
+}
+
+/* 버튼 스타일 */
+.add-company-button {
+  background-color: #4CAF50; /* 버튼 배경색 */
+  color: white; /* 버튼 글자색 */
+  padding: 10px 20px; /* 버튼 패딩 */
+  border: none; /* 버튼 테두리 제거 */
+  border-radius: 5px; /* 버튼 둥근 모서리 */
+  cursor: pointer; /* 마우스 커서 변경 */
+  transition: background-color 0.3s ease; /* 배경색 변경 효과 */
+  margin-left: 10px; /* 검색창과의 간격 조정 */
+}
+
+.add-company-button:hover {
+  background-color: #45a049; /* 호버 시 버튼 배경색 변경 */
 }
 
 .content {
@@ -61,6 +82,7 @@
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
+    margin-left: 0px;
     }
   
   .review-item img {
