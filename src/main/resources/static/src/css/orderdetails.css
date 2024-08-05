@@ -57,6 +57,7 @@ h2 {
 }
 
 .product-table td {
+    font-size: medium;
     padding-left: 20px;
     text-align: center;
 }
@@ -115,3 +116,57 @@ h2 {
 #product-list li span:first-child {
     font-weight: bold;
 }
+
+
+/* 예상 결제 금액 */
+.price-summary {
+    display: flex; /* Flexbox 사용 */
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    width: 100%;
+}
+
+.summary-table {
+    display: inline-table; /* inline-table 사용으로 float 제거 */
+    margin: 20px 0;
+}
+
+.summary-table td {
+    padding: 10px 30px;
+    font-size: 18px;
+    border-bottom: 1px solid #ddd;
+}
+
+.summary-table td:nth-child(1) {
+    text-align: left;
+}
+
+.summary-table td:nth-child(2) {
+    text-align: right;
+}
+
+.summary-table .summary-amount {
+    font-weight: bold;
+}
+
+.summary-table .summary-total td {
+    font-size: 20px;
+    font-weight: bold;
+    border-top: 2px solid #ddd;
+}
+
+.summary-total {
+    color: #759465;
+}
+
+
+/* 다크 모드 */
+@media (prefers-color-scheme: dark) {
+    :root {
+      --text-color: #fff;
+      --background-color: #2b2b2b;
+    }
+
+    h2, h3, .order-details-container p {
+        color: var(--text-color);
+    }
+}  

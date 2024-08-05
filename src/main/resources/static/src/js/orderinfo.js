@@ -53,7 +53,7 @@ function fetchOrders(userEmail) {
                     <td>${info.orderId}</td>
                     <td><img src="${info.image}" alt="${info.productName}" /></td>
                     <td>${info.productName} 외 ${info.count - 1}건</td>
-                    <td>₩ ${info.totalAmount.slice(0, -3)}</td>
+                    <td>₩ ${info.finalAmount.slice(0, -3)}</td>
                     <td>${info.created_at.slice(0, -4)}</td>
                 `;
                 /* 주문 상세 정보 확인 페이지로 이동*/

@@ -40,22 +40,14 @@ function fetchOrderDetails(orderId) {
     })
     .then(response => response.json())
     .then(data => {
-        /* 디버깅용 */
-        console.log("디버깅용 response data 확인");
-        console.log("data.created_at : "+ data.created_at);
-        console.log("data.totalAmount : "+ data.totalAmount);
-
         const productList = document.getElementById('product-list');
 
         // 주문 번호
         document.getElementById("orderId").innerText = `${orderId}`;
         // 주문 일시
-        document.getElementById("orderDate").innerText = `${data.created_at}`;
+        document.getElementById("orderDate").innerText = `${data[0].created_at.slice(0, -4)}`;
 
-        data.product.forEach(product => {
-
-            console.log("디버깅용 product 확인"+product);
-
+        data.forEach(product => {
             // 주문/결제 상세 정보 화면 요소 추가
             const row = document.createElement('tr');
             row.classList.add('product-row');
@@ -68,8 +60,11 @@ function fetchOrderDetails(orderId) {
             productList.appendChild(row);
         });
 
+        // 총 상품 금액
+        document.querySelector(".summary-amount").innerText = `₩ ${Number(data[0].finalAmount)-4000}`;
+
         // 총 결제 금액
-        document.getElementById("total-amount").innerText = `₩ ${data.totalAmount}`;
+        document.querySelector(".total-payment").innerText = `₩ ${data[0].finalAmount.slice(0, -3)}`;
     })
     .catch(error => {
         console.error('Error fetching order details:', error);
