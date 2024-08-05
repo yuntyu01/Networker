@@ -227,3 +227,44 @@
 .tab-content.active {
     display: block;
 }
+
+
+
+
+/* 다크모드 테마적용 시*/
+.dark-mode h2{
+    color: #fff;
+}
+
+.dark-mode .back-to-store-button{
+    background-color: #fff;
+    color: #759465;
+}
+.dark-mode .back-to-store-button:hover{
+    background-color: #557247;
+    color: #fff;
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #fff;
+    --background-color: #2b2b2b;
+  }
+
+    h2{
+        color: var(--text-color);
+    }
+    .back-to-store-button{
+        background-color: #fff;
+        color: #759465;
+    }
+    .back-to-store-button:hover{
+        background-color: #557247;
+        color: #fff;
+    }
+
+}

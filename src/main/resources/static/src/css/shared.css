@@ -158,6 +158,53 @@ header {
 
 /* 언어 변경 스타일 */
 
+.language-selector select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: rgba(255, 255, 255, 0.2); /* 반투명 배경 */
+  backdrop-filter: blur(10px); /* 블러 효과 */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* 투명한 테두리 */
+  border-radius: 5px; /* 둥근 모서리 */
+  padding: 5px;
+  font-size: 16px;
+  color: #fff; /* 텍스트 색상 */
+  outline: none;
+  width: 150px; /* 너비 조정 */
+}
+
+.language-selector select option {
+  background: rgb(117 148 101); /* 배경색 */
+  color: #fff; /* 글자색 */
+  padding: 5px;
+}
+
+
+.language-selector select:focus {
+  border-color: rgba(255, 255, 255, 0.6); /* 포커스 시 테두리 색 변경 */
+}
+.language-selector select::-ms-expand {
+  display: none; /* IE 화살표 숨기기 */
+}
+
+.language-selector {
+  position: relative;
+  display: inline-block;
+}
+
+.language-selector:after {
+  content: '\25BC'; /* 아랫방향 화살표 */
+  font-size: 12px;
+  color: #000;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+
+
 .language-selector {
   display: inline-block;
   vertical-align: middle;
@@ -220,7 +267,8 @@ header {
 }
 
 .dark-mode-toggle{
-  height: 20px;
+  height: 40px;
+  vertical-align: middle; /* 수직 가운데 정렬 */
 }
 /* 다크모드 토글 스위치 스타일 */
 .switch {
@@ -228,6 +276,7 @@ header {
   display: inline-block;
   width: 50px; /* 버튼 크기 조정 */
   height: 26px;
+  vertical-align: middle; /* 수직 가운데 정렬 */
 }
 
 .slider {

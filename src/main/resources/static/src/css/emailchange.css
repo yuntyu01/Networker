@@ -108,6 +108,15 @@ ul.footer-btn > li {
 
 
 /* 다크모드 테마적용 시*/
+.dark-mode h2,
+.dark-mode p,
+.dark-mode .form-group label {
+    color: #fff;
+}
+.dark-mode .email-change-container{
+    background-color: #759465;
+}
+
 :root {
     color-scheme: light dark;
   }
@@ -118,7 +127,7 @@ ul.footer-btn > li {
       --background-color: #2b2b2b;
     }
 
-    .form-group label{
+    .form-group label, h2, p{
         color: #fff;
     }
 

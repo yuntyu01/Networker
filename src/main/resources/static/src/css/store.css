@@ -213,3 +213,42 @@ main {
     text-align: center;
     font-size: 18px;
 }
+
+
+
+/* 다크모드 테마적용 시*/
+.dark-mode h2{
+    color: #fff;
+}
+
+.dark-mode .sort-buttons button{
+    background-color: #fff;
+    color: #759465;
+}
+.dark-mode .sort-buttons button:hover{
+    background-color: #557247;
+    color: #fff;
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #fff;
+    --background-color: #2b2b2b;
+  }
+
+  h2{
+    color: var(--text-color);
+  }
+  .sort-buttons button{
+    background-color: #fff;
+    color: #759465;
+  }
+  .sort-buttons button:hover{
+    background-color: #557247;
+    color: #fff;
+  }
+}
