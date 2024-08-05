@@ -158,3 +158,15 @@ main {
   flex-direction: column;
   justify-content: space-evenly;
 }
+
+h2 {
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.dark-mode h2
+{    color: var(--text-color);
+}
+.dark-mode h2 {
+  color: #ffffff; /* 제목을 흰색으로 설정 */
+}
