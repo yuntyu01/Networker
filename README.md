@@ -1,4 +1,9 @@
 # NetWorker - 외국인 노동자를 위한 커뮤니티 플랫폼
+- 개발 기간 : 2024.07.08 ~ ing
+- 멋쟁이 사자처럼 12th 해커톤(GROWL TO WORLD) 참가작
+- 한국교통대학교 멋쟁이 사자처럼 대학 12기 1팀
+
+## 프로젝트 소개
 ![me1](https://github.com/user-attachments/assets/574185b0-e575-4de8-a713-6397dfa8d165)
 ![me2](https://github.com/user-attachments/assets/72b7d736-a378-4294-a662-4f089f1163b0)
 ![me3](https://github.com/user-attachments/assets/82f58321-5365-47b5-a8f7-764296298b47)
