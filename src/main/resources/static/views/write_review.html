@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../src/css/shared.css">
     <link rel="stylesheet" href="../src/css/review_page.css">
     <link rel="stylesheet" href="../src/css/write_review.css">
-    <title>넥스트 테크 리뷰 작성</title>
+    <title>리뷰 작성</title>
 </head>
 <body>
     <header>
@@ -27,7 +27,6 @@
             </div>
             <div class="auth-buttons">
                 <a href="/views/login.html" id="login">로그인</a>
-                <a href="/views/signup.html" id="signup
                 <a href="/views/signup.html" id="signup">회원가입</a>
                 <div class="profile-icon">
                     <a href="/views/profile.html">
@@ -53,8 +52,8 @@
 
     <main>
         <section class="review-form">
-            <h2 class="write_company_review_heading">넥스트 테크 리뷰 작성</h2>
-            <form id="reviewForm" action="#" method="POST">
+            <h2 class="write_company_review_heading">리뷰 작성</h2>
+            <form id="reviewForm" method="POST">
                 <div class="form-group">
                     <label for="headline" class="headline_label">회사에 대한 한줄 평</label>
                     <input type="text" id="headline" name="headline" class="headline_input" placeholder="한 줄 평을 입력하세요" required>
@@ -124,6 +123,10 @@
                 const headline = document.getElementById('headline').value;
                 const pros = document.getElementById('pros').value;
                 const cons = document.getElementById('cons').value;
+                
+                // URL에서 companyId를 가져옴
+                const urlParams = new URLSearchParams(window.location.search);
+                const companyId = urlParams.get('companyId') || 'default-company';
 
                 const review = {
                     headline,
@@ -131,18 +134,28 @@
                     cons,
                     rating: selectedRating,
                     date: new Date().toLocaleDateString(),
-                    companyId: 'next-tech' // 넥스트 테크 회사 ID
+                    companyId // URL에서 가져온 회사 ID 사용
                 };
 
-                let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-                reviews.push(review); // 기존 리뷰를 유지하면서 새 리뷰 추가
-                localStorage.setItem('reviews', JSON.stringify(reviews));
-
-                alert('리뷰가 제출되었습니다.');
-                window.location.href = 'company4.html'; // 리뷰 제출 후 넥스트 테크 페이지로 이동
+                // fetch를 사용하여 백엔드로 POST 요청 보내기
+                fetch('/api/reviews', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(review)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert('리뷰가 제출되었습니다.');
+                    window.location.href = `company${companyId}.html`; // 각 회사의 페이지로 이동
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('리뷰 제출에 실패했습니다.');
+                });
             });
         });
     </script>
 </body>
 </html>
-

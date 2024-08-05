@@ -87,12 +87,12 @@
             <div class="bottom-box">
               <div class="bottom-btn-box">
                 <button
-                  id="write-post-button"
-                  class="write_review_button"
-                  onclick="window.location.href='../views/write_1.html'"
-                >
-                  리뷰하기
-                </button>
+                id="write-post-button"
+                class="write_review_button"
+                onclick="window.location.href='../views/write_review.html?companyId=solution-tech'" // 각 회사에 맞는 companyId 사용
+            >
+                리뷰하기
+            </button>
               </div>
             </div>
           </div>
@@ -122,13 +122,16 @@
       document.addEventListener('DOMContentLoaded', function () {
         const reviewsContainer = document.getElementById('reviews-container');
         const averageRatingElement = document.getElementById('average-rating');
-
-        // 로컬 스토리지에서 'solution-tech'에 대한 리뷰 데이터만 불러오기
+    
+        // 이 부분을 각 회사별로 변경
+        const companyId = 'solution-tech'; // 각 회사별 ID 설정
+    
+        // 로컬 스토리지에서 특정 회사에 대한 리뷰 데이터만 불러오기
         const allReviews = JSON.parse(localStorage.getItem('reviews')) || [];
         const reviews = allReviews.filter(
-          (review) => review.companyId === 'solution-tech'
+          (review) => review.companyId === companyId
         );
-
+    
         if (reviews.length === 0) {
           reviewsContainer.innerHTML = '<p>아직 작성된 리뷰가 없습니다.</p>';
           averageRatingElement.innerHTML = '☆☆☆☆☆ (0.0)';
@@ -142,15 +145,15 @@
           const fullStars = '★'.repeat(Math.floor(averageRating));
           const halfStar = averageRating % 1 !== 0 ? '☆' : ''; // 반올림에 따라 빈 별 추가
           const emptyStars = '☆'.repeat(5 - Math.ceil(averageRating));
-
+    
           // 별점 평균 업데이트
           averageRatingElement.innerHTML = `${fullStars}${halfStar}${emptyStars} (${averageRating})`;
-
+    
           // 각 리뷰를 화면에 추가
           reviews.forEach((review) => {
             const reviewItem = document.createElement('div');
             reviewItem.classList.add('review-item');
-
+    
             reviewItem.innerHTML = `
                 <h4>${review.headline}</h4>
                 <div class="rating">${'★'.repeat(review.rating)}${'☆'.repeat(
@@ -160,11 +163,11 @@
                 <p><strong>단점:</strong> ${review.cons}</p>
                 <p><em>${review.date}</em></p>
             `;
-
+    
             reviewsContainer.appendChild(reviewItem);
           });
         }
       });
-    </script>
+    </script>    
   </body>
 </html>
