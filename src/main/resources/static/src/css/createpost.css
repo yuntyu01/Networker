@@ -62,7 +62,7 @@ form h3 {
     cursor: pointer;
 }
 
-.post-button {
+.post-button, #post-button, #cancel-button {
     color: black;
     border-color: black;
     background-color: white;
@@ -70,8 +70,8 @@ form h3 {
     transition: 0.3s;
 }
 
-.post-button:hover,
-.post-button:focus {
+.post-button:hover, #post-button:hover, #cancel-button:hover,
+.post-button:focus, #post-button:focus, #cancel-button:focus {
     border-color: #759465;
     background-color: #759465;
     color: #fff;
@@ -104,6 +104,24 @@ form h3 {
 .dark-mode tr th .dark-mode .editor-toolbar a::after{
     color: #2b2b2b;
 }
+
+.dark-mode .post-button, .dark-mode #post-button, .dark-mode #cancel-button, .dark-mode .cancel-button {
+    color: #759465;
+    border-color: white;
+    background-color: white;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+
+.dark-mode .post-button:hover, .dark-mode #post-button:hover, .dark-mode #cancel-button:hover, .dark-mode .cancel-button:hover,
+.dark-mode .post-button:focus, .dark-mode #post-button:focus, .dark-mode #cancel-button:focus, .dark-mode .cancel-button:focus {
+    border-color: white;
+    background-color: rgba(255, 255, 255, 0.247);
+    color: #fff;
+    box-shadow: inset 3em 3em 0 0 var(--hover);
+}
+
   
 /* 미디어 쿼리: 시스템 다크모드 */
 @media (prefers-color-scheme: dark) {
@@ -115,4 +133,20 @@ form h3 {
     h2, li, p, th, tr, td .btn-container, h3, .editor-toolbar a::before{
       color: var(--text-color);
     }
+    .post-button, #post-button, #cancel-button, .cancel-button {
+        color: #759465;
+        border-color: white;
+        background-color: white;
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+    }
+    
+    
+    .post-button:hover, #post-button:hover, #cancel-button:hover, .cancel-button:hover,
+    .post-button:focus, #post-button:focus, #cancel-button:focus, .cancel-button:focus {
+        border-color: white;
+        background-color: rgba(255, 255, 255, 0.247);
+        color: #759465;
+        box-shadow: inset 3em 3em 0 0 var(--hover);
+    }    
 }
