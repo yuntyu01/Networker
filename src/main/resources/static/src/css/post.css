@@ -181,7 +181,7 @@ main button {
 
 
 /* 다크 모드 스타일 */
-.dark-mode h1, .dark-mode h2, .dark-mode h4, .dark-mode h5, .dark-mode p, #post-content, #post-content p{
+.dark-mode h1, .dark-mode h2, .dark-mode h4, .dark-mode h5, .dark-mode p, .dark-mode #post-content, .dark-mode #post-content p{
     color: #fff;
 }
 
