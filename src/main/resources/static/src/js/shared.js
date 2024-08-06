@@ -15,12 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     loginButton.style.display = 'none';
                     signupButton.style.display = 'none';
                     profileIcon.style.display = 'inline-block';
-                    postButton.style.display = 'inline-block';
                 } else {
                     loginButton.style.display = 'inline-block';
                     signupButton.style.display = 'inline-block';
                     profileIcon.style.display = 'none';
-                    postButton.style.display = 'none';
                 }
             })
             .catch(error => console.error('Error:', error));
@@ -37,14 +35,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    let count = 0;
+
     // 윈도우 크기 변경 시 메뉴 상태 초기화
     window.addEventListener('resize', () => {
-        if (window.innerWidth > 745) {
-        menu.classList.remove('active');
-        
-        // 페이지 로드 시 로그인 상태 확인
-        checkLoginStatus();
+        if( count == 0 ){
+            if (window.innerWidth > 745) {
+                count += 1;
+                menu.classList.remove('active');
+                
+                // 페이지 로드 시 로그인 상태 확인
+                checkLoginStatus();
+            }
         }
+
     });
 
 });

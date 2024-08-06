@@ -26,6 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => console.error('Error:', error));
     };
+
+
+    
       
     // 헤더 로고 반응형 스타일 적용 및 드롭다운 기능 활성화
     const logo = document.querySelector('.logo');
@@ -38,13 +41,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    
+    let count = 0;
+
     // 윈도우 크기 변경 시 메뉴 상태 초기화
     window.addEventListener('resize', () => {
-        if (window.innerWidth > 745) {
-        menu.classList.remove('active');
-        // 페이지 로드 시 로그인 상태 확인
-        checkLoginStatus();
+        if( count == 0 ){
+            if (window.innerWidth > 745) {
+                count += 1;
+                menu.classList.remove('active');
+                
+                // 페이지 로드 시 로그인 상태 확인
+                checkLoginStatus();
+            }
         }
+
     });
-    
+
 });
