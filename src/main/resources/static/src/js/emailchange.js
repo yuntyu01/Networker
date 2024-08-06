@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const profileIcon = document.querySelector('.profile-icon');
     // 로그인 상태 확인 함수(로그인 여부에 따라 헤더 요소 변경)
     const checkLoginStatus = () => {
         fetch('/board', {
@@ -10,12 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (data.loggedIn) {
                     // 로그인 했을때
                     if (window.innerWidth > 1090) {
-                        loginButton.style.display = 'none';
-                        signupButton.style.display = 'none';
                         profileIcon.style.display = 'inline-block';
                     } else {
-                        loginButton.style.display = 'none';
-                        signupButton.style.display = 'none';
                         profileIcon.style.display = 'inline-block';
                     }
                 } else { //로그인안했을때
