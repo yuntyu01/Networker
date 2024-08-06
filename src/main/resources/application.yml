@@ -46,3 +46,9 @@ spring:
 file:
   upload-dir: /home/ubuntu/files
 #    /home/ubuntu/files
+azure:
+  translation:
+    api-key: e0a29fef869f49199b388986d542e341
+    endpoint: https://api.cognitive.microsofttranslator.com
+    region: koreacentral
+

@@ -5,21 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 - Networker</title>
-
     <link rel="stylesheet" href="/src/css/post.css">
-    <!-- <script src="/src/js/lang.js" defer></script> -->
     <link rel="stylesheet" href="/src/css/shared.css" />
     <script src="/src/js/darkmode.js" defer></script>
+    <script src="/src/js/translate.js" defer></script>
+    <script src="/src/js/translateapi.js" defer></script><!-- 번역을 위한 JS 파일 포함 -->
 </head>
 
 <body>
 <header>
     <div class="header-content">
         <a href="/main" style="text-decoration: none">
-                <span class="logo">
-                    <img src="/src/assets/logo.png" alt="logo" />
-                    <h1 id="site_title">Networker</h1>
-                </span>
+            <span class="logo">
+                <img src="/src/assets/logo.png" alt="logo" />
+                <h1 id="site_title">Networker</h1>
+            </span>
         </a>
         <div class="menu">
             <a href="/main" id="menu_home">홈</a>
@@ -40,7 +40,7 @@
             <div class="language-selector">
                 <img src="/src/assets/earth_icon.png" alt="earth" class="earth-icon">
                 <label for="languageSelector"></label>
-                <select id="languageSelector">
+                <select id="languageSelector" onchange="translateContent(this.value)">
                     <option value="en">English</option>
                     <option value="ko" selected>한국어</option>
                     <option value="zh">中文</option>
@@ -55,42 +55,35 @@
                     <input type="checkbox" id="darkModeToggle">
                     <span class="slider round"></span>
                 </label>
-              </div>
+            </div>
         </div>
     </div>
 </header>
 
 <main>
-    <div class="post" id="post-details">
+    <div class="post" id="post-details" data-post-id="${post.id}"> <!-- data-post-id 속성 추가 -->
         <h2>자유게시판</h2>
         <div class="content" id="post-info">
-            <h1 th:text="${post.subject}"></h1>
+            <h1 id="post-subject" th:text="${post.subject}"></h1> <!-- 번역된 제목이 들어갈 곳 -->
             <h4>
                 <td th:text="${post.author != null ? post.author.nickname : 'Unknown'}"></td>
                 <td th:text="${#temporals.format(post.createDate, 'yyyy-MM-dd-HH:mm')}"></td>
             </h4>
             <!-- Markdown을 HTML로 변환한 결과를 렌더링 -->
-            <div id="post-content" th:utext="${postContent}"></div>
-        </div>
-        <div class="center-align">
-            <!--<button id="recommend" class="recommend-button" type="button" onclick="recommend()">추천</button>-->
-            <form th:action="@{/post/recommend/{id}(id=${post.id})}" method="post"
-                  th:if="${currentUser != null}">
-                <button id="recommend" type="submit" class="recommend-button">추천</button>
-            </form>
+            <div id="post-content" th:utext="${postContent}"></div> <!-- 번역된 내용이 들어갈 곳 -->
         </div>
         <div class="right-align">
             <!-- 수정 버튼을 위한 폼 -->
-<!--            <form th:action="@{/post/modify/{id}(id=${post.id})}" method="get">-->
-<!--                <button id="edit" type="submit" class="btn btn-outline-secondary">수정</button>-->
-<!--            </form>-->
+            <!--            <form th:action="@{/post/modify/{id}(id=${post.id})}" method="get">-->
+            <!--                <button id="edit" type="submit" class="btn btn-outline-secondary">수정</button>-->
+            <!--            </form>-->
 
             <!-- 삭제 버튼을 위한 폼, 로그인된 사용자와 게시물 작성자 비교 -->
-<!--            <form th:action="@{/post/delete/{id}(id=${post.id})}" method="post"-->
-<!--                  onsubmit="return confirm('정말로 삭제하시겠습니까?');"-->
-<!--                  th:if="${post.author != null and currentUser != null and post.author.id == currentUser.id}">-->
-<!--                <button id="delete" type="submit" class="btn btn-outline-danger">삭제</button>-->
-<!--            </form>-->
+            <!--            <form th:action="@{/post/delete/{id}(id=${post.id})}" method="post"-->
+            <!--                  onsubmit="return confirm('정말로 삭제하시겠습니까?');"-->
+            <!--                  th:if="${post.author != null and currentUser != null and post.author.id == currentUser.id}">-->
+            <!--                <button id="delete" type="submit" class="btn btn-outline-danger">삭제</button>-->
+            <!--            </form>-->
             <div class="button-group">
                 <form id="edit-button-form" th:action="@{/post/modify/{id}(id=${post.id})}" method="get" style="display:inline;">
                     <button type="submit" class="btn btn-mod">수정</button>
@@ -126,18 +119,17 @@
 
 <footer>
     <div class="footer-container">
-      <ul class="footer-btn">
-        <li><a href="#" id="footer_terms">이용약관</a></li>
-        <li>
-          <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
-        </li>
-           <li><a href="/views/inquire.html" id="footer_contact">문의/신고</a></li>
-           <li><a href="/views/inquire.html" id="footer_ads">광고안내</a></li>
-      </ul>
+        <ul class="footer-btn">
+            <li><a href="#" id="footer_terms">이용약관</a></li>
+            <li>
+                <a href="/views/Privacy_Policy.html" id="footer_privacy" style="font-weight: bold">개인정보처리방침</a>
+            </li>
+            <li><a href="/views/inquire.html" id="footer_contact">문의/신고</a></li>
+            <li><a href="/views/inquire.html" id="footer_ads">광고안내</a></li>
+        </ul>
     </div>
-  </footer>
+</footer>
 
 <script src="/src/js/post.js"></script>
 </body>
-
 </html>
