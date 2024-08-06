@@ -13,6 +13,22 @@ main {
     justify-content: space-evenly;
 }
 
+.section {
+    display: flex;
+    flex-direction: row;
+}
+
+.ads-container {
+    width: 200px;
+}
+
+.adsbygoogle {
+    display: inline-block;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+
 /* 게시판 양식 */
 table {
     margin-top: 20px;
@@ -47,6 +63,9 @@ table a:visited {
     color: transparent;
 }
 
+/* 광고 */
+
+
 /* 페이지 번호 양식 1페이지 2페이지 3페이지 ... */
 main ul {
     display: flex;
@@ -66,7 +85,7 @@ main li {
     transition: 0.3s;
 }
 
-main li a{
+main li a {
     text-decoration: none;
     color: #000;
     -webkit-transition: 0.3s;
@@ -74,14 +93,14 @@ main li a{
 }
 
 main button a:hover,
-main button a:focus{
+main button a:focus {
     color: white;
 }
 
-main li button{
+main li button {
     background-color: white;
     color: #759465;
-    border: 1px solid #759465; 
+    border: 1px solid #759465;
     font: inherit;
     border-radius: 5px;
     line-height: 1;
@@ -94,7 +113,7 @@ main li button{
     transition: 0.3s;
 }
 
-main li button a{
+main li button a {
     padding: 4px;
 }
 
@@ -126,7 +145,7 @@ main li button a{
 .bt-btn {
     background-color: white;
     color: #759465;
-    border: 2px solid #759465; 
+    border: 2px solid #759465;
     font: inherit;
     border-radius: 5px;
     line-height: 1;
@@ -152,20 +171,20 @@ main li button:hover main li button a {
     box-shadow: inset 3em 3em 0 0 var(--hover);
 }
 
-.page-item{
+.page-item {
     display: inline-block;
     text-align: center;
     height: 28px;
 }
 
-#page-num{
+#page-num {
     display: inline-block;
     padding-top: 3px;
     height: 100%;
 }
 
 #page-num:hover,
-#page-num:active{
+#page-num:active {
     color: #759465;
 }
 
@@ -260,7 +279,8 @@ main select {
 
 /* h2 요소를 위한 다크 모드 스타일 */
 .dark-mode h2 {
-    color: #ffffff; /* 제목을 흰색으로 설정 */
+    color: #ffffff;
+    /* 제목을 흰색으로 설정 */
 }
 
 /* 특정 요소에 대한 다크 모드 스타일 */
@@ -271,7 +291,8 @@ main select {
 .dark-mode #post-table a:visited,
 .dark-mode #page-num:hover,
 .dark-mode #page-num:active {
-    color: #ffffff; /* 게시물 테이블 텍스트를 흰색으로 설정 */
+    color: #ffffff;
+    /* 게시물 테이블 텍스트를 흰색으로 설정 */
 }
 
 .dark-mode .search-btn,
@@ -284,14 +305,17 @@ main select {
 /* 이전과 다음 버튼 스타일 */
 .dark-mode #pagination .page-link,
 .dark-mode #pagination .page-link:visited {
-    color: #000000; /* 이전과 다음 링크를 검은색으로 설정 */
+    color: #000000;
+    /* 이전과 다음 링크를 검은색으로 설정 */
 }
 
 /* 시스템 다크 모드를 위한 미디어 쿼리 */
 @media (prefers-color-scheme: dark) {
     :root {
-        --text-color: #fff; /* 다크 모드의 기본 텍스트 색상 */
-        --background-color: #2b2b2b; /* 배경 색상 */
+        --text-color: #fff;
+        /* 다크 모드의 기본 텍스트 색상 */
+        --background-color: #2b2b2b;
+        /* 배경 색상 */
     }
 
     h2,
@@ -316,7 +340,7 @@ main select {
         color: #000000;
     }
 
-    .search-btn, 
+    .search-btn,
     .bt-btn:hover,
     .bt-btn:focus {
         border: 1px solid #fff;
