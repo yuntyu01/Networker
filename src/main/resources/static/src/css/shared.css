@@ -461,28 +461,10 @@ main {
 }
 
 /* 반응형 헤더 스타일 */
-@media (max-width: 1090px) {
-  #login, #signup, .profile-icon img{
-    display: none;
-  }
-  #login-icon{
-    display: inline-block;
-    width: 35px;
-    height: 35px;
-    vertical-align: middle;
-  }
-}
+
 
 @media (max-width: 745px) {
-  #login, #signup, .profile-icon img{
-    display: none;
-  }
-  #login-icon{
-    display: inline-block;
-    width: 35px;
-    height: 35px;
-    vertical-align: middle;
-  }
+
 
   .menu {
     display: none;

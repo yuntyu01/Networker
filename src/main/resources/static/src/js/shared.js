@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     else{
                         loginButton.style.display = 'none';
                         signupButton.style.display = 'none';
-                        profileIcon.style.display = 'none';
+                        profileIcon.style.display = 'inline-block';
                     }
                 }
             })
