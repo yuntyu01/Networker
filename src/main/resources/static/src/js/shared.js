@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const signupButton = document.querySelector('#signup');
     const profileIcon = document.querySelector('.profile-icon');
 
-    // 로그인 상태 확인 함수(로그인 여부에 따라 헤더 요소 변경)
+    // 로그인 상태 확인 함수
     const checkLoginStatus = () => {
         fetch('/board', {
             method: 'GET',
@@ -12,22 +12,40 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 if (data.loggedIn) {
-                    loginButton.style.display = 'none';
-                    signupButton.style.display = 'none';
-                    profileIcon.style.display = 'inline-block';
-                } else {
-                    loginButton.style.display = 'inline-block';
-                    signupButton.style.display = 'inline-block';
-                    profileIcon.style.display = 'none';
+                    // 로그인 했을때
+                    if (window.innerWidth > 1090) {
+                        loginButton.style.display = 'none';
+                        signupButton.style.display = 'none';
+                        profileIcon.style.display = 'inline-block';
+                    } else {
+                        loginButton.style.display = 'none';
+                        signupButton.style.display = 'none';
+                        profileIcon.style.display = 'inline-block';
+                    }
+                } else { //로그인안했을때
+                    if( window.innerWidth > 1090){
+                        loginButton.style.display = 'inline-block';
+                        signupButton.style.display = 'inline-block';
+                        profileIcon.style.display = 'none';
+                    }
+                    else{
+                        loginButton.style.display = 'none';
+                        signupButton.style.display = 'none';
+                        profileIcon.style.display = 'none';
+                    }
                 }
             })
             .catch(error => console.error('Error:', error));
     };
 
+    // 윈도우 크기 변경 시 요소 가시성 조정
+    window.addEventListener('resize', checkLoginStatus);
+
     // 페이지 로드 시 로그인 상태 확인
     checkLoginStatus();
 });
-    
+
+
 document.addEventListener('DOMContentLoaded', () => {
       
     // 헤더 로고 반응형 스타일 적용 및 드롭다운 기능 활성화
