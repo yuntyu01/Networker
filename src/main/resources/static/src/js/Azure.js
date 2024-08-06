@@ -37,6 +37,5 @@ document.getElementById('languageSelector').addEventListener('change', function 
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('번역에 실패했습니다. 다시 시도해주세요.');
     });
 });
