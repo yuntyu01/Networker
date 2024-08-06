@@ -62,7 +62,7 @@ form h3 {
     cursor: pointer;
 }
 
-.post-button {
+.post-button, #post-button, #cancel-button {
     color: black;
     border-color: black;
     background-color: white;
@@ -70,8 +70,8 @@ form h3 {
     transition: 0.3s;
 }
 
-.post-button:hover,
-.post-button:focus {
+.post-button:hover, #post-button:hover, #cancel-button:hover,
+.post-button:focus, #post-button:focus, #cancel-button:focus {
     border-color: #759465;
     background-color: #759465;
     color: #fff;
