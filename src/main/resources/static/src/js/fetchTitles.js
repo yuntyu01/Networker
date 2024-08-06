@@ -16,8 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
         boardContent.innerHTML = '<li>정보글 정보를 불러올 수 없습니다.</li>';
     });
 
-
-
 });
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -68,3 +66,4 @@ function formatDate(dateString) {
   const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
   return new Date(dateString).toLocaleDateString('ko-KR', options);
 }
+

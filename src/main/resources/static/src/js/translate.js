@@ -1,4 +1,3 @@
-
 const langResource = {
   ko: {
     menu_home: "홈",
@@ -150,3 +149,4 @@ function updateLanguage(lang) {
     });
   }
 }
+
