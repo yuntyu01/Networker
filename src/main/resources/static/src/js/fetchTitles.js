@@ -15,29 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error('정보글 불러오기 오류:', error);
         boardContent.innerHTML = '<li>정보글 정보를 불러올 수 없습니다.</li>';
     });
-
-
-    // 자게글 타이틀 출력
-    const freeList = document.querySelector('.free-content');
-    const apiEndpoint = 'http://knutlion-networker.store/post/list';
-
-    fetch('/freelist')
-    .then(response => response.json())
-    .then(data => {
-        data.forEach(freedata => {
-            const row = document.createElement('li');
-            row.innerHTML = `<li><a href="${apiEndpoint}${freedata.id}" target="_blank">${freedata.subject}</a></li>`;
-            infoList.appendChild(row);
-        })
-    })
-    .catch(error => {
-        console.error('정보글 불러오기 오류:', error);
-        boardContent.innerHTML = '<li>정보글 정보를 불러올 수 없습니다.</li>';
-    });    
     
 
 });
-/*
+
 document.addEventListener("DOMContentLoaded", function() {
   const apiEndpoint = 'http://knutlion-networker.store/post/list';
   const boardContent = document.querySelector('.board-content');
@@ -80,9 +61,10 @@ document.addEventListener("DOMContentLoaded", function() {
           boardContent.innerHTML = '<li>게시물을 불러올 수 없습니다.</li>';
       });
 });
-*/
+
 // 날짜 형식을 포맷하는 함수
 function formatDate(dateString) {
   const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
   return new Date(dateString).toLocaleDateString('ko-KR', options);
 }
+
