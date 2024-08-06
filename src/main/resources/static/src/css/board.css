@@ -255,7 +255,7 @@ main select {
 .dark-mode tr,
 .dark-mode a,
 .dark-mode a:visited {
-    color: var(--text-color);
+    color: #fff;
 }
 
 /* h2 요소를 위한 다크 모드 스타일 */
