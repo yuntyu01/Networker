@@ -34,26 +34,6 @@ async function main() {
         return;
     }
 
-    //로그인 상태 확인 함수
-    const checkLoginStatus = () => {
-        fetch('/board', {
-            method: 'GET',
-            credentials: 'include'
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (!data.loggedIn) {
-                    // 비 로그인 상태
-                    window.alert("로그인이 필요합니다.");
-                    window.location.href = 'login.html';
-                }
-            })
-            .catch(error => console.error('Error:', error));
-    };
-
-    // 페이지 로드 시 로그인 상태 확인
-    checkLoginStatus();
-
     const button = document.getElementById("payment-request-button");
     // ------  결제위젯 초기화 ------
     const clientKey = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm";

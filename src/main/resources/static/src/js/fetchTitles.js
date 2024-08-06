@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error('정보글 불러오기 오류:', error);
         boardContent.innerHTML = '<li>정보글 정보를 불러올 수 없습니다.</li>';
     });
-    
 
 });
 
