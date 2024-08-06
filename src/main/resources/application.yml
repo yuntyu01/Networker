@@ -45,3 +45,4 @@ spring:
 #    content-type: text/html
 file:
   upload-dir: /home/ubuntu/files
+#    /home/ubuntu/files
