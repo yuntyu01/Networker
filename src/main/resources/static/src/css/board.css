@@ -34,6 +34,31 @@ table {
     margin-top: 20px;
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
+}
+
+th:first-child,
+td:first-child {
+    width: 5%;
+    /* 첫 번째 열의 너비를 설정 */
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+    width: 60%;
+    /* 첫 번째 열의 너비를 설정 */
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+    width: 15%;
+    /* 첫 번째 열의 너비를 설정 */
+}
+
+th:last-child,
+td:last-child {
+    width: 20%;
+    /* 첫 번째 열의 너비를 설정 */
 }
 
 th {
@@ -270,9 +295,10 @@ main select {
 .dark-mode p,
 .dark-mode th,
 .dark-mode td,
-.dark-mode tr:visited{
+.dark-mode tr:visited {
     color: #fff;
 }
+
 /* h2 요소를 위한 다크 모드 스타일 */
 .dark-mode h2 {
     color: #ffffff;
@@ -313,7 +339,7 @@ main select {
         --background-color: #2b2b2b;
         /* 배경 색상 */
     }
-      
+
     h2,
     li,
     p,
@@ -321,8 +347,8 @@ main select {
     tr,
     td,
     a,
-    a:visited { 
-      color: var(--text-color);
+    a:visited {
+        color: var(--text-color);
     }
 
     /* 다크 모드에서 h2 제목을 흰색으로 설정 */
@@ -331,12 +357,13 @@ main select {
     }
 
 
-     /* 다크 모드에서 이전과 다음 버튼은 검은색으로 설정 */
-     #previous,
-     .next {
-     color: black; /* 다크 모드 글씨 색상: 검은색 */
-    /* 다크 모드 배경색: 흰색 */
-        }
+    /* 다크 모드에서 이전과 다음 버튼은 검은색으로 설정 */
+    #previous,
+    .next {
+        color: black;
+        /* 다크 모드 글씨 색상: 검은색 */
+        /* 다크 모드 배경색: 흰색 */
+    }
 
     .search-btn,
     .bt-btn:hover,
