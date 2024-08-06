@@ -59,6 +59,7 @@ form h3 {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .post-button {
