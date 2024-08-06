@@ -46,11 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 윈도우 크기 변경 시 메뉴 상태 초기화
     window.addEventListener('resize', () => {
-        if( count == 0 ){
-            if (window.innerWidth > 745) {
-                count += 1;
-                menu.classList.remove('active');
-                
+
+        if ( window.innerWidth > 745 ) {
+            menu.classList.remove('active');
+            if(count == 0){
+                count ++;
                 // 페이지 로드 시 로그인 상태 확인
                 checkLoginStatus();
             }
