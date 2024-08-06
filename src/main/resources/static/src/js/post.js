@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const editButtonForm = document.querySelector('#edit-button-form');
     const deleteButtonForm = document.querySelector('#delete-button-form');
 
+
     // 로그인 상태 및 작성자를 확인하는 함수 정의
     const checkStatus = () => {
         // 서버에 로그인 상태를 확인하기 위한 GET 요청을 보냅니다.
@@ -17,9 +18,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         .then(async data => {
             if (data.loggedIn) {
                 // 로그인 상태인 경우
-                loginButton.style.display = 'none';
-                signupButton.style.display = 'none';
-                profileIcon.style.display = 'inline-block';
+                if (window.innerWidth > 1090) {
+                  loginButton.style.display = 'none';
+                  signupButton.style.display = 'none';
+                  profileIcon.style.display = 'inline-block';
+              } else {
+                  loginButton.style.display = 'none';
+                  signupButton.style.display = 'none';
+                  profileIcon.style.display = 'inline-block';
+              }
 
                 const postUserId = document.querySelector('.postuserId').textContent;
                 const userId = data.userEmail;
@@ -35,9 +42,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             } else {
                 // 로그아웃 상태인 경우
-                loginButton.style.display = 'inline-block';
-                signupButton.style.display = 'inline-block';
-                profileIcon.style.display = 'none';
+                if( window.innerWidth > 1090){
+                  loginButton.style.display = 'inline-block';
+                  signupButton.style.display = 'inline-block';
+                  profileIcon.style.display = 'none';
+                }
+                else{
+                  loginButton.style.display = 'none';
+                  signupButton.style.display = 'none';
+                  profileIcon.style.display = 'inline-block';
+                }
 
                 // 로그아웃 상태에서 버튼을 숨깁니다.
                 editButtonForm.style.display = 'none';
@@ -201,3 +215,25 @@ const langResource = {
     }
   };
   
+  
+document.addEventListener('DOMContentLoaded', () => {
+      
+  // 헤더 로고 반응형 스타일 적용 및 드롭다운 기능 활성화
+  const logo = document.querySelector('.logo');
+  const menu = document.querySelector('.menu');
+
+  logo.addEventListener('click', (event) => {
+      if (window.innerWidth <= 745) {
+      event.preventDefault(); // 745px 이하에서는 기본 동작 막기
+      menu.classList.toggle('active');
+      }
+  });
+
+  // 윈도우 크기 변경 시 메뉴 상태 초기화
+  window.addEventListener('resize', () => {
+      if ( window.innerWidth > 745 ) {
+          menu.classList.remove('active');
+      }
+  });
+
+});
