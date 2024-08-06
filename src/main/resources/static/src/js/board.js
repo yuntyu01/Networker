@@ -26,11 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => console.error('Error:', error));
     };
-
-    // 페이지 로드 시 로그인 상태 확인
-    checkLoginStatus();
-
-        
+      
     // 헤더 로고 반응형 스타일 적용 및 드롭다운 기능 활성화
     const logo = document.querySelector('.logo');
     const menu = document.querySelector('.menu');
@@ -46,6 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => {
         if (window.innerWidth > 745) {
         menu.classList.remove('active');
+        // 페이지 로드 시 로그인 상태 확인
+        checkLoginStatus();
         }
     });
     
