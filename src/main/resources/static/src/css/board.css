@@ -269,14 +269,14 @@ main select {
 .dark-mode #post-table td,
 .dark-mode #post-table a,
 .dark-mode #post-table a:visited,
-#page-num:hover,
-#page-num:active {
+.dark-mode #page-num:hover,
+.dark-mode #page-num:active {
     color: #ffffff; /* 게시물 테이블 텍스트를 흰색으로 설정 */
 }
 
 .dark-mode .search-btn,
-.bt-btn:hover,
-.bt-btn:focus {
+.dark-mode .bt-btn:hover,
+.dark-mode .bt-btn:focus {
     border: 1px solid #fff;
     cursor: pointer;
 }
