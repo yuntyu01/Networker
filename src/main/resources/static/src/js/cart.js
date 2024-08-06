@@ -1,8 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 로그인 여부 확인 관련 요소
-    const loginButton = document.querySelector('#login');
-    const signupButton = document.querySelector('#signup');
-    const profileIcon = document.querySelector('.profile-icon');
     // 장바구니 관련 요소
     const cartTableBody = document.querySelector('.cart-table tbody');
     const clearCartButton = document.querySelector('.clear-btn');
@@ -125,29 +121,5 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.shipping').textContent = `${shipping}원`;
         document.querySelector('.total-amount').textContent = `${finalTotal}원`;
     }
-
-    // 로그인 상태 확인 함수(로그인 여부에 따라 헤더 요소 변경)
-    const checkLoginStatus = () => {
-        fetch('/board', {
-            method: 'GET',
-            credentials: 'include'
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.loggedIn) {
-                    loginButton.style.display = 'none';
-                    signupButton.style.display = 'none';
-                    profileIcon.style.display = 'inline-block';
-                } else {
-                    loginButton.style.display = 'inline-block';
-                    signupButton.style.display = 'inline-block';
-                    profileIcon.style.display = 'none';
-                }
-            })
-            .catch(error => console.error('Error:', error));
-    };
-
-    // 페이지 로드 시 로그인 상태 확인
-    checkLoginStatus();
 
 });

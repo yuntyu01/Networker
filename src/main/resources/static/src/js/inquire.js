@@ -6,30 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailInput = document.getElementById('email');
     const fileInput = document.getElementById('file');
 
-    const loginButton = document.querySelector('#login');
-    const signupButton = document.querySelector('#signup');
-    const profileIcon = document.querySelector('.profile-icon');
-    
-    const checkLoginStatus = () => {
-        fetch('/board', {
-            method: 'GET',
-            credentials: 'include'
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.loggedIn) {
-                    loginButton.style.display = 'none';
-                    signupButton.style.display = 'none';
-                    profileIcon.style.display = 'inline-block';
-                } else {
-                    loginButton.style.display = 'inline-block';
-                    signupButton.style.display = 'inline-block';
-                    profileIcon.style.display = 'none';
-                }
-            })
-            .catch(error => console.error('Error:', error));
-    };
-
     inquiryTypeSelect.addEventListener('change', () => {
         if (inquiryTypeSelect.value === 'advertisement') {
             contentInput.value = "1. 캠페인 내용\n\n2. 기간\n\n3. 예산";
@@ -98,6 +74,4 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('문의 접수 중 오류가 발생했습니다.');
             });
     });
-
-    checkLoginStatus();
 });
