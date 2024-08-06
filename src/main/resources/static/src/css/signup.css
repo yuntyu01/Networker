@@ -222,7 +222,7 @@ button:hover {
 
 /* 다크모드 테마적용 시*/
 .dark-mode h2,
-.dark-mode, .form-group label,
+.dark-mode .form-group label,
 .dark-mode .login-link a{
     color: #fff;
 }

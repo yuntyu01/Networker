@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginButton = document.querySelector('#login');
     const signupButton = document.querySelector('#signup');
     const profileIcon = document.querySelector('.profile-icon');
-    const postButton = document.querySelector('.bottom-btn-box .write-post-button')
 
     // 로그인 상태 확인 함수(로그인 여부에 따라 헤더 요소 변경)
     const checkLoginStatus = () => {
@@ -30,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 페이지 로드 시 로그인 상태 확인
     checkLoginStatus();
 
-        
+    
     // 헤더 로고 반응형 스타일 적용 및 드롭다운 기능 활성화
     const logo = document.querySelector('.logo');
     const menu = document.querySelector('.menu');
@@ -48,5 +47,5 @@ document.addEventListener('DOMContentLoaded', () => {
         menu.classList.remove('active');
         }
     });
-    
+
 });
