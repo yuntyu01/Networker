@@ -25,7 +25,8 @@ public class Post {
 	
 	@Column(columnDefinition = "TEXT")
 	private String content;
-	
+
+	@Column(name = "create_date")
 	private LocalDateTime createDate;
 
 	@ManyToOne

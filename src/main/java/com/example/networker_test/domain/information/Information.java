@@ -13,7 +13,7 @@ public class Information {
     @Id
     private String title;
     private String url;
-    @Column(length = 500)
+    @Column(length = 1000)
     private String content;
     private String image;
 

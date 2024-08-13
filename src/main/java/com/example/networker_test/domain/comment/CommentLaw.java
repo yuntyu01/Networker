@@ -12,6 +12,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(name = "commentlaw")
 public class CommentLaw {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

@@ -1,5 +1,6 @@
 package com.example.networker_test.domain.post;
 
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -7,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
+@Table(name = "postform")
 public class PostForm {
     @NotEmpty(message="제목을 입력해주세요")
     @Size(max=200)

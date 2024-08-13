@@ -13,6 +13,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(name = "postlaw")
 public class PostLaw {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Entity
 @Data
+@Table(name = "postrecommendation")
 public class PostRecommendation {
 
     @Id
